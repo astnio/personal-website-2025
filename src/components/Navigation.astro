@@ -1,0 +1,29 @@
+---
+const navLinks = [
+  { url: '/', label: 'Home' },
+  { url: '/blog', label: 'Blog' },
+  { url: '/about', label: 'About' },
+];
+---
+
+<style>
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1rem;
+
+    list-style: none;
+  }
+</style>
+
+<ul>
+  {
+    navLinks.map((navLink) => (
+      <li>
+        <a href={navLink.url}>{navLink.label}</a>
+      </li>
+    ))
+  }
+</ul>

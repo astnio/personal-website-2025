@@ -1,0 +1,16 @@
+---
+import Logo from '../components/Logo.astro';
+---
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<nav>
+  <Logo />
+  <slot />
+</nav>
