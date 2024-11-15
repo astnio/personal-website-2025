@@ -1,9 +1,31 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+import profilePicture from '../images/portrait_transbg_nooutline.png';
 
 const title = 'Astro';
 ---
 
 <BaseLayout title={title}>
-  <h1>Astro</h1>
+  <section>
+    <Image
+      src={profilePicture}
+      alt='A photo of Austin'
+      loading='lazy'
+      decoding='async'
+      width='512'
+    />
+    <h1>Austin Hagel</h1>
+    <p>
+      A versatile professional dedicated to delivering comprehensive and
+      adaptable solutions across a range of services. Committed to excellence
+      and reliability, ensuring tailored support that meets diverse needs with a
+      seamless approach. Bringing a blend of creativity and technical expertise
+      to foster effective results.
+    </p>
+    <nav>
+      <ul></ul>
+    </nav>
+  </section>
 </BaseLayout>
