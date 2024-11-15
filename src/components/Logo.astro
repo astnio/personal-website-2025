@@ -5,16 +5,28 @@
 <style>
   a {
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.6ch;
+    font-size: 1.4rem;
 
-    color: cornflowerblue;
+    color: white;
+    background-color: cornflowerblue;
+
+    border-radius: 2pt;
+
+    padding-inline: 0.4rem;
+    padding-block: 0.2rem;
+
+    transition-property: color, background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
   }
 
   a:hover {
-    color: cornsilk;
+    color: cornflowerblue;
+    background-color: white;
   }
 </style>
 
-<a href='/'><span>Logo</span></a>
+<a href='/'><span id='logo'>Logo</span></a>

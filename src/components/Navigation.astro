@@ -1,4 +1,6 @@
 ---
+import Logo from '../components/Logo.astro';
+
 const navLinks = [
   { url: '/', label: 'Home' },
   { url: '/blog', label: 'Blog' },
@@ -7,23 +9,58 @@ const navLinks = [
 ---
 
 <style>
-  ul {
+  nav {
     display: flex;
     align-items: center;
     justify-content: center;
 
+    width: 100%;
+
+    background-color: rgb(43, 43, 43);
+
+    margin-bottom: auto;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    padding-inline: 1rem;
+    padding-block: 0.8rem;
 
     list-style: none;
   }
+
+  li:first-child {
+    margin-right: auto;
+  }
+
+  li:last-child {
+    margin-left: auto;
+  }
 </style>
 
-<ul>
-  {
-    navLinks.map((navLink) => (
-      <li>
-        <a href={navLink.url}>{navLink.label}</a>
-      </li>
-    ))
-  }
-</ul>
+<nav>
+  <ul>
+    <li>
+      <Logo />
+    </li>
+    {
+      navLinks.map((navLink) => (
+        <li>
+          <a href={navLink.url}>{navLink.label}</a>
+        </li>
+      ))
+    }
+    <li>
+      <button>Contact</button>
+    </li>
+  </ul>
+</nav>
