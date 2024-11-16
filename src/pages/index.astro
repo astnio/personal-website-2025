@@ -8,18 +8,27 @@ import LinkList from '../components/LinkList.astro';
 const title = 'Astro';
 ---
 
+<style>
+  .profile-image {
+    border-radius: 50%;
+    border: 2px solid white;
+
+    background-color: cornflowerblue;
+
+    width: 16rem;
+    height: 16rem;
+  }
+</style>
+
 <BaseLayout title={title}>
   <section>
-    <box-icon
-      name='rocket'
-      color='white'
-    ></box-icon>
     <Image
       src={profilePicture}
       alt='A photo of Austin'
       loading='lazy'
       decoding='async'
       width='512'
+      class='profile-image'
     />
     <h1>Austin Hagel</h1>
     <p>
