@@ -25,3 +25,7 @@ body {
 
   font-family: 'IBM Plex Serif', serif;
 }
+
+.max-width {
+  max-width: 1024px;
+}
