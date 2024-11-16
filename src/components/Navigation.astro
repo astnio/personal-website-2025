@@ -59,6 +59,36 @@ const navLinks = [
   a:hover {
     color: cornflowerblue;
   }
+
+  .btn-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 1pt;
+
+    padding-block: 0.4rem;
+    padding-inline: 1rem;
+
+    font-family: 'IBM Plex Serif', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2ch;
+    font-weight: 700;
+    color: white;
+
+    background-color: var(--clr-surface);
+
+    transition-property: color, background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  .btn-contact:hover {
+    color: var(--clr-surface);
+    background-color: white;
+    cursor: pointer;
+  }
 </style>
 
 <nav>
@@ -74,7 +104,7 @@ const navLinks = [
       ))
     }
     <li>
-      <button>Contact</button>
+      <button class='btn-contact'>Contact</button>
     </li>
   </ul>
 </nav>
