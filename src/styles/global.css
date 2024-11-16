@@ -1,8 +1,14 @@
 :root {
   color-scheme: dark light;
-}
 
-html {
+  --clr-text: white;
+
+  --clr-primary: rgb(86, 231, 219);
+  --clr-primary-trans-10: rgba(86, 231, 219, 0.1);
+
+  --clr-surface: rgb(57, 57, 57);
+  --clr-surface-trans-40: rgba(57, 57, 57, 0.4);
+
   font-family: sans-serif;
 }
 
