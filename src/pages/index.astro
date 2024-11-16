@@ -9,19 +9,54 @@ const title = 'Astro';
 ---
 
 <style>
+  .hero-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 6rem;
+
+    padding-inline: 1rem;
+  }
+
   .profile-image {
     border-radius: 50%;
     border: 2px solid white;
 
     background-color: cornflowerblue;
 
-    width: 16rem;
-    height: 16rem;
+    --image-size: 24rem;
+
+    width: var(--image-size);
+    height: var(--image-size);
+  }
+
+  .hero-title {
+    font-size: 4.6rem;
+    font-weight: 200;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hero-paragraph {
+    max-width: 74ch;
+    font-size: 1.2rem;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  hr {
+    margin-block: 1.6rem;
+
+    border: none;
+
+    width: 100%;
+    background-color: white;
+    height: 1px;
   }
 </style>
 
 <BaseLayout title={title}>
-  <section>
+  <section class='hero-wrapper'>
     <Image
       src={profilePicture}
       alt='A photo of Austin'
@@ -30,14 +65,19 @@ const title = 'Astro';
       width='512'
       class='profile-image'
     />
-    <h1>Austin Hagel</h1>
-    <p>
-      A versatile professional dedicated to delivering comprehensive and
-      adaptable solutions across a range of services. Committed to excellence
-      and reliability, ensuring tailored support that meets diverse needs with a
-      seamless approach. Bringing a blend of creativity and technical expertise
-      to foster effective results.
-    </p>
-    <LinkList />
+    <div>
+      <h1 class='hero-title'>Austin Hagel</h1>
+      <hr />
+      <p class='hero-paragraph'>
+        A versatile professional dedicated to delivering comprehensive and
+        adaptable solutions across a range of services. Committed to excellence
+        and reliability, ensuring tailored support that meets diverse needs with
+        a seamless approach. Bringing a blend of creativity and technical
+        expertise to foster effective results.
+      </p>
+      <div class='hero-link-list'>
+        <LinkList />
+      </div>
+    </div>
   </section>
 </BaseLayout>
