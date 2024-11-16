@@ -1,13 +1,18 @@
 :root {
   color-scheme: dark light;
 
-  --clr-text: white;
+  --clr-primary: #8aadf4;
+  --clr-secondary: #b7bdf8;
+  --clr-error: #ed8796;
+  --clr-warning: #f5a97f;
 
-  --clr-primary: rgb(86, 231, 219);
-  --clr-primary-trans-10: rgba(86, 231, 219, 0.1);
+  --clr-text: #cad3f5;
+  --clr-text-hover: #8fa3e6;
 
-  --clr-surface: rgb(57, 57, 57);
-  --clr-surface-trans-40: rgba(57, 57, 57, 0.4);
+  --clr-surface-600: #1e2030;
+  --clr-surface-500: #24273a;
+  --clr-surface-400: #363a4f;
+  --clr-surface-300: #494d64;
 
   font-family: sans-serif;
 }
