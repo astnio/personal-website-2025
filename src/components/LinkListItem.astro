@@ -2,6 +2,34 @@
 const { url, label, iconName, iconColor, iconType } = Astro.props;
 ---
 
+<style>
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    text-decoration: none;
+    color: white;
+
+    background-color: cornflowerblue;
+
+    border-radius: 1pt;
+
+    padding-inline: 1rem;
+    padding-block: 0.4rem;
+
+    width: fit-content;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+
+    font-size: 1.2rem;
+  }
+</style>
+
 <a href={url}>
   {
     iconName && (
@@ -12,7 +40,7 @@ const { url, label, iconName, iconColor, iconType } = Astro.props;
       />
     )
   }
-  <span>
+  <p>
     {label}
-  </span>
+  </p>
 </a>

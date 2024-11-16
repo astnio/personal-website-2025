@@ -17,6 +17,12 @@ const title = 'Astro';
     padding-inline: 1rem;
   }
 
+  .hero-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
   .profile-image {
     border-radius: 50%;
     border: 2px solid white;
@@ -65,7 +71,7 @@ const title = 'Astro';
       width='512'
       class='profile-image'
     />
-    <div>
+    <div class='hero-info-wrapper'>
       <h1 class='hero-title'>Austin Hagel</h1>
       <hr />
       <p class='hero-paragraph'>
