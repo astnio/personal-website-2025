@@ -1,7 +1,57 @@
 ---
+import LinkListItem from './LinkListItem.astro';
 
+const links = [
+  {
+    url: 'https://astn.sh/linkedin',
+    label: 'LinkedIn',
+    iconName: 'linkedin',
+    iconColor: 'white',
+    iconType: 'logo',
+  },
+  {
+    url: 'https://astn.sh/frontend-mentor',
+    label: 'Frontend Mentor',
+    iconName: 'dashboard',
+    iconColor: 'white',
+    iconType: 'solid',
+  },
+  {
+    url: '/blog',
+    label: 'Blog',
+    iconName: 'message-square-dots',
+    iconColor: 'white',
+  },
+  {
+    url: 'https://astn.sh/github',
+    label: 'Github',
+    iconName: 'github',
+    iconColor: 'white',
+    iconType: 'logo',
+  },
+  {
+    url: '/projects',
+    label: 'Projects',
+    iconName: 'code-block',
+    iconColor: 'white',
+  },
+];
 ---
 
 <nav>
-    <ul></ul>
+  <ul>
+    {
+      links.map((link) => (
+        <li>
+          <LinkListItem
+            url={link.url}
+            label={link.label}
+            iconName={link.iconName}
+            iconColor={link.iconColor}
+            iconType={link.iconType}
+          />
+        </li>
+      ))
+    }
+  </ul>
 </nav>

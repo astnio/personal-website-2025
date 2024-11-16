@@ -1,11 +1,17 @@
 ---
-const { url, label, icon } = Astro.props;
+const { url, label, iconName, iconColor, iconType } = Astro.props;
 ---
 
 <a href={url}>
-  <span>
-    {icon}
-  </span>
+  {
+    iconName && (
+      <box-icon
+        name={iconName}
+        color={iconColor}
+        type={iconType}
+      />
+    )
+  }
   <span>
     {label}
   </span>
