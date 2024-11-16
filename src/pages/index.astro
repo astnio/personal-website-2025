@@ -9,11 +9,17 @@ const title = 'Astro';
 ---
 
 <style>
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+
   .hero-wrapper {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     align-items: center;
-    gap: 6rem;
+    justify-content: center;
+    gap: 2.4rem;
 
     padding-inline: 1rem;
   }
@@ -21,7 +27,8 @@ const title = 'Astro';
   .hero-info-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
+    justify-content: center;
   }
 
   .profile-image {
@@ -30,14 +37,14 @@ const title = 'Astro';
 
     background-color: var(--clr-surface-trans-40);
 
-    --image-size: 18rem;
+    --image-size: 12rem;
 
     width: var(--image-size);
     height: var(--image-size);
   }
 
   .hero-title {
-    font-size: 3.6rem;
+    font-size: 2rem;
     font-weight: 200;
     padding: 0;
     margin: 0;
@@ -74,13 +81,6 @@ const title = 'Astro';
     />
     <div class='hero-info-wrapper'>
       <h1 class='hero-title'>Austin Hagel</h1>
-      <hr />
-      <p class='hero-paragraph'>
-        A versatile professional dedicated to delivering comprehensive and
-        adaptable solutions across a range of services. Committed to excellence
-        and reliability while bringing a blend of creativity and technical
-        expertise to foster effective results.
-      </p>
       <div class='hero-link-list'>
         <LinkList />
       </div>
