@@ -40,6 +40,7 @@ const internalLinks = [
 
 <style>
   h3 {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,16 +48,32 @@ const internalLinks = [
     padding-block: 0.4rem;
     margin: 0;
 
-    border-radius: 2pt;
-    border: 1px solid var(--clr-surface-400);
-
-    margin-top: 1rem;
+    /* border-radius: 999px; */
+    /* border: 2px solid var(--clr-surface-400); */
 
     font-size: 1.2rem;
     font-weight: 600;
 
     width: 100%;
 
+    /* background-color: var(--clr-surface-200); */
+  }
+
+  h3::after {
+    left: 0;
+  }
+
+  h3::before {
+    right: 0;
+  }
+
+  h3::after,
+  h3::before {
+    content: '';
+    position: absolute;
+
+    width: 25%;
+    height: 0.06rem;
     background-color: var(--clr-surface-200);
   }
 
@@ -87,37 +104,49 @@ const internalLinks = [
   li {
     width: 100%;
   }
+
+  .links-nav {
+    gap: 2rem;
+  }
+
+  .link-list-wrapper {
+    width: 100%;
+  }
 </style>
 
-<nav>
-  <h3>What I Do</h3>
-  <ul>
-    {
-      internalLinks.map((link) => (
-        <li>
-          <LinkListItem
-            url={link.url}
-            label={link.label}
-            iconClass={link.iconClass}
-            newTab={false}
-          />
-        </li>
-      ))
-    }
-  </ul>
+<nav class='links-nav'>
+  <div class='link-list-wrapper'>
+    <h3>What I Do</h3>
+    <ul>
+      {
+        internalLinks.map((link) => (
+          <li>
+            <LinkListItem
+              url={link.url}
+              label={link.label}
+              iconClass={link.iconClass}
+              newTab={false}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 
-  <h3>Where I Am</h3>
-  <ul>
-    {
-      externalLinks.map((link) => (
-        <li>
-          <LinkListItem
-            url={link.url}
-            label={link.label}
-            iconClass={link.iconClass}
-          />
-        </li>
-      ))
-    }
-  </ul>
+  <div class='link-list-wrapper'>
+    <h3>Where I Am</h3>
+    <ul>
+      {
+        externalLinks.map((link) => (
+          <li>
+            <LinkListItem
+              url={link.url}
+              label={link.label}
+              iconClass={link.iconClass}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </nav>
