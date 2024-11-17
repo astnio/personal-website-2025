@@ -1,5 +1,5 @@
 ---
-const { url, label, iconName, iconColor, iconType } = Astro.props;
+const { url, label, iconClass } = Astro.props;
 ---
 
 <style>
@@ -34,24 +34,26 @@ const { url, label, iconName, iconColor, iconType } = Astro.props;
     color: var(--clr-surface-400);
   }
 
-  p {
+  .link-label {
+    position: relative;
+    top: 0.05rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 0;
     margin: 0;
 
     font-size: 1rem;
   }
+
+  .link-icon {
+    font-size: 1.4rem;
+  }
 </style>
 
 <a href={url}>
-  {
-    iconName && (
-      <box-icon
-        name={iconName}
-        color={iconColor}
-        type={iconType}
-      />
-    )
-  }
-  <span class='bx bx-user'></span>
-  {label}
+  {iconClass && <span class=`link-icon ${iconClass}` />}
+  <span class="link-label">{label}</span>  
 </a>

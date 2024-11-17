@@ -5,36 +5,27 @@ const links = [
   {
     url: 'https://astn.sh/linkedin',
     label: 'LinkedIn',
-    iconName: 'linkedin-square',
-    iconColor: 'white',
-    iconType: 'logo',
+    iconClass: 'bx bxl-linkedin-square',
   },
   {
     url: 'https://astn.sh/frontend-mentor',
     label: 'Frontend Mentor',
-    iconName: 'dashboard',
-    iconColor: 'white',
-    iconType: 'solid',
+    iconClass: 'bx bxs-dashboard',
   },
   {
     url: '/blog',
     label: 'Blog',
-    iconName: 'message-square-dots',
-    iconColor: 'white',
-    iconType: 'solid',
+    iconClass: 'bx bxs-message-square-dots',
   },
   {
     url: 'https://astn.sh/github',
     label: 'Github',
-    iconName: 'github',
-    iconColor: 'white',
-    iconType: 'logo',
+    iconClass: 'bx bxl-github',
   },
   {
     url: '/projects',
     label: 'Projects',
-    iconName: 'code-block',
-    iconColor: 'white',
+    iconClass: 'bx bx-code-block',
   },
 ];
 ---
@@ -64,9 +55,7 @@ const links = [
           <LinkListItem
             url={link.url}
             label={link.label}
-            iconName={link.iconName}
-            iconColor={link.iconColor}
-            iconType={link.iconType}
+            iconClass={link.iconClass}
           />
         </li>
       ))
