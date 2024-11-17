@@ -3,6 +3,9 @@ const { url, label, iconClass } = Astro.props;
 ---
 
 <style>
+  :root {
+    --padding-spacing: 1.8rem;
+  }
   a {
     display: flex;
     align-items: center;
@@ -18,10 +21,9 @@ const { url, label, iconClass } = Astro.props;
     border-radius: 1pt;
     outline: 1px solid var(--clr-surface-300);
 
-    padding-inline: 1rem;
-    padding-block: 0.4rem;
+    padding-inline: var(--padding-spacing);
+    padding-block: 0.6rem;
 
-    width: fit-content;
 
     transition-property: color, background-color, outline;
     transition-duration: 0.1s;
@@ -43,13 +45,16 @@ const { url, label, iconClass } = Astro.props;
     justify-content: center;
 
     padding: 0;
-    margin: 0;
+    margin: auto;
+    margin-left: 1.4rem;
+    padding-right: var(--padding-spacing);
 
     font-size: 1rem;
   }
 
   .link-icon {
     font-size: 1.4rem;
+    margin-right: auto;
   }
 </style>
 

@@ -31,10 +31,19 @@ const links = [
 ---
 
 <style>
-  ul {
+  nav {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 0.6rem;
 
@@ -42,8 +51,10 @@ const links = [
 
     padding: 0;
     margin-top: 2rem;
+  }
 
-    max-width: 36rem;
+  li {
+    width: 100%;
   }
 </style>
 
