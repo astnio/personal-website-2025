@@ -5,18 +5,35 @@ export default function initColorSchemeDetector() {
     '(prefers-color-scheme: light)'
   ).matches;
 
-  function setColorScheme(colorScheme) {
+  function saveColorScheme(colorScheme) {
     localStorage.setItem('colorScheme', colorScheme);
+  }
+
+  function getSavedColorScheme() {
+    return localStorage.getItem('colorScheme');
+  }
+
+  function setColorScheme(colorScheme) {
     documentRoot.setAttribute('data-color-scheme', colorScheme);
   }
 
-  function checkUserPrefferedColorScheme() {
+  function setPrefferedColorScheme() {
     if (prefersLightTheme) {
       setColorScheme('light');
+      saveColorScheme('light');
     } else {
       setColorScheme('dark');
+      saveColorScheme('dark');
     }
   }
 
-  checkUserPrefferedColorScheme();
+  function checkSavedColorScheme() {
+    if (getSavedColorScheme()) {
+      setColorScheme(getSavedColorScheme());
+    } else {
+      setPrefferedColorScheme();
+    }
+  }
+
+  checkSavedColorScheme();
 }
