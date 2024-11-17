@@ -1,5 +1,5 @@
 ---
-const { url, label, iconClass } = Astro.props;
+const { url, label, iconClass, newTab = 'true' } = Astro.props;
 ---
 
 <style>
@@ -58,7 +58,7 @@ const { url, label, iconClass } = Astro.props;
   }
 </style>
 
-<a href={url}>
+<a href={url} target={newTab ? `_blank` : ''}>
   {iconClass && <span class=`link-icon ${iconClass}` />}
   <span class="link-label">{label}</span>  
 </a>
