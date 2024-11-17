@@ -30,18 +30,34 @@ const internalLinks = [
     label: 'Projects',
     iconClass: 'bx bx-code-block',
   },
+  {
+    url: '/about',
+    label: 'About Austin',
+    iconClass: 'bx bxs-detail',
+  },
 ];
 ---
 
 <style>
   h3 {
-    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-block: 0.4rem;
     margin: 0;
+
+    border-radius: 2pt;
+    border: 1px solid var(--clr-surface-400);
 
     margin-top: 1rem;
 
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
+
+    width: 100%;
+
+    background-color: var(--clr-surface-200);
   }
 
   nav {
@@ -74,21 +90,7 @@ const internalLinks = [
 </style>
 
 <nav>
-  <h3>External Sites</h3>
-  <ul>
-    {
-      externalLinks.map((link) => (
-        <li>
-          <LinkListItem
-            url={link.url}
-            label={link.label}
-            iconClass={link.iconClass}
-          />
-        </li>
-      ))
-    }
-  </ul>
-  <h3>My Work</h3>
+  <h3>What I Do</h3>
   <ul>
     {
       internalLinks.map((link) => (
@@ -98,6 +100,21 @@ const internalLinks = [
             label={link.label}
             iconClass={link.iconClass}
             newTab={false}
+          />
+        </li>
+      ))
+    }
+  </ul>
+
+  <h3>Where I Am</h3>
+  <ul>
+    {
+      externalLinks.map((link) => (
+        <li>
+          <LinkListItem
+            url={link.url}
+            label={link.label}
+            iconClass={link.iconClass}
           />
         </li>
       ))
