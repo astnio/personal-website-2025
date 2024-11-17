@@ -10,16 +10,28 @@ const { url, label, iconName, iconColor, iconType } = Astro.props;
     gap: 0.6rem;
 
     text-decoration: none;
-    color: white;
 
-    background-color: var(--clr-surface);
+    color: var(--clr-text);
+
+    background-color: var(--clr-surface-400);
 
     border-radius: 1pt;
+    outline: 1px solid var(--clr-surface-300);
 
     padding-inline: 1rem;
     padding-block: 0.4rem;
 
     width: fit-content;
+
+    transition-property: color, background-color, outline;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  a:hover {
+    background-color: var(--clr-text);
+    outline: 1px solid var(--clr-primary);
+    color: var(--clr-surface-400);
   }
 
   p {
@@ -40,7 +52,6 @@ const { url, label, iconName, iconColor, iconType } = Astro.props;
       />
     )
   }
-  <p>
-    {label}
-  </p>
+  <span class='bx bx-user'></span>
+  {label}
 </a>
