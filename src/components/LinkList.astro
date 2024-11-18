@@ -39,44 +39,6 @@ const internalLinks = [
 ---
 
 <style>
-  h3 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding-block: 0.4rem;
-    margin: 0;
-
-    /* border-radius: 999px; */
-    /* border: 2px solid var(--clr-surface-400); */
-
-    font-size: 1.2rem;
-    font-weight: 600;
-
-    width: 100%;
-
-    /* background-color: var(--clr-surface-200); */
-  }
-
-  h3::after {
-    left: 0;
-  }
-
-  h3::before {
-    right: 0;
-  }
-
-  h3::after,
-  h3::before {
-    content: '';
-    position: absolute;
-
-    width: 25%;
-    height: 0.06rem;
-    background-color: var(--clr-surface-200);
-  }
-
   nav {
     display: flex;
     flex-direction: column;
@@ -112,11 +74,42 @@ const internalLinks = [
   .link-list-wrapper {
     width: 100%;
   }
+
+  .link-list-title-wrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+
+  .link-list-title-hr {
+    align-self: center;
+
+    width: 100%;
+    height: 1px;
+
+    background-color: var(--clr-surface-200);
+  }
+
+  .link-list-title {
+    text-align: center;
+    justify-self: center;
+    margin: 0;
+
+    padding-inline: 1rem;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    width: 100%;
+  }
 </style>
 
 <nav class='links-nav'>
   <div class='link-list-wrapper'>
-    <h3>What I Do</h3>
+    <div class='link-list-title-wrapper'>
+      <div class='link-list-title-hr'></div>
+      <h3 class='link-list-title'>What I Do</h3>
+      <div class='link-list-title-hr'></div>
+    </div>
     <ul>
       {
         internalLinks.map((link) => (
@@ -134,7 +127,11 @@ const internalLinks = [
   </div>
 
   <div class='link-list-wrapper'>
-    <h3>Where I Am</h3>
+    <div class='link-list-title-wrapper'>
+      <div class='link-list-title-hr'></div>
+      <h3 class='link-list-title'>Where I Am</h3>
+      <div class='link-list-title-hr'></div>
+    </div>
     <ul>
       {
         externalLinks.map((link) => (
