@@ -1,0 +1,32 @@
+---
+
+---
+
+<style>
+  button {
+    font-family: 'IBM Plex Serif', serif;
+    color: var(--clr-text);
+
+    border: none;
+    outline: 1px solid var(--clr-surface-400);
+
+    padding-inline: 1rem;
+    padding-block: 0.6rem;
+
+    background-color: var(--clr-surface-600);
+
+    cursor: pointer;
+
+    transition-property: outline, color, background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  button:hover {
+    color: var(--clr-surface-600);
+    background-color: var(--clr-text);
+    outline: 1px solid var(--clr-text);
+  }
+</style>
+
+<button>Light Toggle</button>
