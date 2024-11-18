@@ -5,6 +5,7 @@ const navLinks = [
   { url: '/', label: 'Home' },
   { url: '/blog', label: 'Blog' },
   { url: '/about', label: 'About' },
+  { url: '/projects', label: 'Projects' },
 ];
 ---
 
@@ -63,18 +64,19 @@ const navLinks = [
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.4rem;
 
     border: none;
     border-radius: 999px;
     outline: 1px solid var(--clr-surface-200);
 
-    padding-block: 0.4rem;
-    padding-inline: 1rem;
+    padding-block: 0.6rem;
+    padding-inline: 1.2rem;
 
     font-family: 'IBM Plex Serif', serif;
     text-transform: capitalize;
     letter-spacing: 0.2ch;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1rem;
 
     background-color: var(--clr-surface-400);
@@ -105,7 +107,10 @@ const navLinks = [
       ))
     }
     <li>
-      <button class='btn-contact'>Contact</button>
+      <button class='btn-contact'>
+        <span class='bx bxs-chat'></span>
+        <span>Contact</span>
+      </button>
     </li>
   </ul>
 </nav>
