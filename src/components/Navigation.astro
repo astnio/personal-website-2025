@@ -1,5 +1,7 @@
 ---
 import Logo from '../components/Logo.astro';
+import ContactButton from './ContactButton.astro';
+import NavLinks from './NavLinks.astro';
 
 const navLinks = [
   { url: '/', label: 'Home' },
@@ -12,8 +14,6 @@ const navLinks = [
 <style>
   nav {
     display: flex;
-    align-items: center;
-    justify-content: center;
 
     width: 100%;
 
@@ -22,95 +22,33 @@ const navLinks = [
     margin-bottom: auto;
   }
 
-  ul {
+  .nav-content-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
-
-    width: 100%;
-
-    margin: 0;
-    padding: 0;
+    justify-content: space-between;
 
     padding-inline: 1rem;
     padding-block: 0.8rem;
 
-    list-style: none;
+    width: 100%;
   }
 
-  li:first-child {
-    margin-right: auto;
-  }
-
-  li:last-child {
-    margin-left: auto;
-  }
-
-  a {
-    text-decoration: none;
-    text-transform: capitalize;
-
-    transition-property: color;
-    transition-duration: 0.1s;
-    transition-timing-function: ease-out;
-  }
-
-  a:hover {
-    color: var(--clr-primary);
-  }
-
-  .btn-contact {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-
-    border: none;
-    border-radius: 999px;
-    outline: 1px solid var(--clr-surface-200);
-
-    padding-block: 0.6rem;
-    padding-inline: 1.2rem;
-
-    font-family: 'IBM Plex Serif', serif;
-    text-transform: capitalize;
-    letter-spacing: 0.2ch;
-    font-weight: 600;
-    font-size: 1rem;
-
-    background-color: var(--clr-surface-400);
-
-    transition-property: color, background-color, outline;
-    transition-duration: 0.1s;
-    transition-timing-function: ease-out;
-  }
-
-  .btn-contact:hover {
-    background-color: var(--clr-text);
-    color: var(--clr-surface-600);
-    cursor: pointer;
-    outline: 1px solid var(--clr-primary);
+  @media screen and (max-width: 768px) {
+    .nav-links-wrapper,
+    .contact-btn-wrapper {
+      display: none;
+    }
   }
 </style>
 
 <nav>
-  <ul class='max-width'>
-    <li>
-      <Logo />
-    </li>
-    {
-      navLinks.map((navLink) => (
-        <li>
-          <a href={navLink.url}>{navLink.label}</a>
-        </li>
-      ))
-    }
-    <li>
-      <button class='btn-contact'>
-        <span class='bx bxs-chat'></span>
-        <span>Contact</span>
-      </button>
-    </li>
-  </ul>
+  <div class='nav-content-wrapper max-width'>
+    <Logo />
+    <div class='nav-links-wrapper'>
+      <NavLinks />
+    </div>
+    <div class='contact-btn-wrapper'>
+      <ContactButton />
+    </div>
+  </div>
 </nav>

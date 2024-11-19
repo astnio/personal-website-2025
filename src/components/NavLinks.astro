@@ -1,0 +1,47 @@
+---
+const navLinks = [
+  { url: '/', label: 'Home' },
+  { url: '/blog', label: 'Blog' },
+  { url: '/about', label: 'About' },
+  { url: '/projects', label: 'Projects' },
+];
+---
+
+<style>
+  a {
+    text-decoration: none;
+    text-transform: capitalize;
+
+    transition-property: color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  a:hover {
+    color: var(--clr-primary);
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+</style>
+
+<ul>
+  {
+    navLinks.map((navLink) => (
+      <li>
+        <a href={navLink.url}>{navLink.label}</a>
+      </li>
+    ))
+  }
+</ul>
