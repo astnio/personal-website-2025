@@ -21,13 +21,15 @@
   --clr-text: #cad3f5;
   --clr-subtext: #a5adcb;
 
-  --clr-surface-700: #181926;
-  --clr-surface-600: #1e2030;
-  --clr-surface-500: #24273a;
-  --clr-surface-400: #363a4f;
-  --clr-surface-300: #494d64;
-  --clr-surface-200: #5b6078;
-  --clr-surface-100: #6e738d;
+  --clr-surface-800: rgb(17, 17, 27);
+  --clr-surface-700: rgb(24, 24, 37);
+  --clr-surface-600: rgb(30, 30, 46);
+  --clr-surface-500: rgb(49, 50, 68);
+  --clr-surface-400: rgb(69, 71, 90);
+  --clr-surface-300: rgb(88, 91, 112);
+  --clr-surface-200: rgb(108, 112, 134);
+  --clr-surface-100: rgb(127, 132, 156);
+  --clr-surface-50: rgb(147, 153, 178);
 }
 
 :root[data-color-scheme='light'] {
@@ -48,13 +50,15 @@
   --clr-text: #4c4f69;
   --clr-subtext: #5c5f77;
 
-  --clr-surface-700: #dce0e8;
-  --clr-surface-600: #e6e9ef;
-  --clr-surface-500: #eff1f5;
-  --clr-surface-400: #ccd0da;
-  --clr-surface-300: #bcc0cc;
-  --clr-surface-200: #acb0be;
-  --clr-surface-100: #9ca0b0;
+  --clr-surface-800: rgb(220, 224, 232);
+  --clr-surface-700: rgb(230, 233, 239);
+  --clr-surface-600: rgb(239, 241, 245);
+  --clr-surface-500: rgb(204, 208, 218);
+  --clr-surface-400: rgb(188, 192, 204);
+  --clr-surface-300: rgb(172, 176, 190);
+  --clr-surface-200: rgb(156, 160, 176);
+  --clr-surface-100: rgb(140, 143, 161);
+  --clr-surface-50: rgb(124, 127, 147);
 }
 
 body {
@@ -71,7 +75,7 @@ body {
   font-family: 'IBM Plex Serif', serif;
   color: var(--clr-text);
 
-  background-color: var(--clr-surface-500);
+  background-color: var(--clr-surface-600);
 }
 
 a,

@@ -7,11 +7,15 @@ import NavLinks from './NavLinks.astro';
 
 <style>
   nav {
+    position: sticky;
+    top: 0;
+
     display: flex;
 
     width: 100%;
 
-    background-color: var(--clr-surface-600);
+    background-color: var(--clr-surface-400);
+    backdrop-filter: blur(10px);
 
     margin-bottom: auto;
   }
