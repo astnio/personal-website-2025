@@ -1,14 +1,8 @@
 ---
 import Logo from '../components/Logo.astro';
 import ContactButton from './ContactButton.astro';
+import MenuButton from './MenuButton.astro';
 import NavLinks from './NavLinks.astro';
-
-const navLinks = [
-  { url: '/', label: 'Home' },
-  { url: '/blog', label: 'Blog' },
-  { url: '/about', label: 'About' },
-  { url: '/projects', label: 'Projects' },
-];
 ---
 
 <style>
@@ -33,10 +27,18 @@ const navLinks = [
     width: 100%;
   }
 
+  .menu-btn-wrapper {
+    display: none;
+  }
+
   @media screen and (max-width: 768px) {
     .nav-links-wrapper,
     .contact-btn-wrapper {
       display: none;
+    }
+
+    .menu-btn-wrapper {
+      display: block;
     }
   }
 </style>
@@ -49,6 +51,9 @@ const navLinks = [
     </div>
     <div class='contact-btn-wrapper'>
       <ContactButton />
+    </div>
+    <div class='menu-btn-wrapper'>
+      <MenuButton />
     </div>
   </div>
 </nav>
