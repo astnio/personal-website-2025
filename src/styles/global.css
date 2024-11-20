@@ -33,19 +33,6 @@
   --clr-base: rgb(36, 39, 58);
   --clr-mantle: rgb(30, 32, 48);
   --clr-crust: rgb(24, 25, 38);
-
-  /* --clr-text: #cad3f5;
-  --clr-subtext: #a5adcb;
-
-  --clr-surface-800: rgb(17, 17, 27);
-  --clr-surface-700: rgb(24, 24, 37);
-  --clr-surface-600: rgb(30, 30, 46);
-  --clr-surface-500: rgb(49, 50, 68);
-  --clr-surface-400: rgb(69, 71, 90);
-  --clr-surface-300: rgb(88, 91, 112);
-  --clr-surface-200: rgb(108, 112, 134);
-  --clr-surface-100: rgb(127, 132, 156);
-  --clr-surface-50: rgb(147, 153, 178); */
 }
 
 :root[data-color-scheme='light'] {
@@ -94,7 +81,7 @@ body {
   font-family: 'IBM Plex Serif', serif;
   color: var(--clr-text);
 
-  background-color: var(--clr-surface-600);
+  background-color: var(--clr-base);
 }
 
 a,
