@@ -19,20 +19,32 @@
   --clr-warning: var(--clr-yellow);
 
   --clr-text: rgb(202, 211, 245);
+  --clr-text-trans-60: rgba(202, 211, 245, 0.6);
   --clr-subtext-1: rgb(184, 192, 224);
+  --clr-subtext-1-trans-60: rgba(184, 192, 224, 0.6);
   --clr-subtext-0: rgb(165, 173, 203);
+  --clr-subtext-0-trans-60: rgba(165, 173, 203, 0.6);
 
   --clr-overlay-2: rgb(147, 154, 183);
+  --clr-overlay-2-trans-60: rgba(147, 154, 183, 0.6);
   --clr-overlay-1: rgb(128, 135, 162);
+  --clr-overlay-1-trans-60: rgba(128, 135, 162, 0.6);
   --clr-overlay-0: rgb(110, 115, 141);
+  --clr-overlay-0-trans-60: rgba(110, 115, 141, 0.6);
 
   --clr-surface-2: rgb(91, 96, 120);
+  --clr-surface-2-trans-60: rgba(91, 96, 120, 0.6);
   --clr-surface-1: rgb(73, 77, 100);
+  --clr-surface-1-trans-60: rgba(73, 77, 100, 0.6);
   --clr-surface-0: rgb(54, 58, 79);
+  --clr-surface-0-trans-60: rgba(54, 58, 79, 0.6);
 
   --clr-base: rgb(36, 39, 58);
+  --clr-base-trans-60: rgba(36, 39, 58, 0.6);
   --clr-mantle: rgb(30, 32, 48);
+  --clr-mantle-trans-60: rgba(30, 32, 48, 0.6);
   --clr-crust: rgb(24, 25, 38);
+  --clr-crust-trans-60: rgba(24, 25, 38, 0.6);
 }
 
 :root[data-color-scheme='light'] {
@@ -51,20 +63,38 @@
   --clr-warning: var(--clr-yellow);
 
   --clr-text: rgb(76, 79, 105);
+  --clr-text-trans-20: rgb(76, 79, 105);
   --clr-subtext-1: rgb(92, 95, 119);
+  --clr-subtext-1-trans-20: rgb(92, 95, 119);
   --clr-subtext-0: rgb(108, 111, 133);
+  --clr-subtext-0-trans-20: rgb(108, 111, 133);
 
   --clr-overlay-2: rgb(124, 127, 147);
+  --clr-overlay-2-trans-20: rgb(124, 127, 147);
   --clr-overlay-1: rgb(140, 143, 161);
+  --clr-overlay-1-trans-20: rgb(140, 143, 161);
   --clr-overlay-0: rgb(156, 160, 176);
+  --clr-overlay-0-trans-20: rgb(156, 160, 176);
 
   --clr-surface-2: rgb(172, 176, 190);
+  --clr-surface-2-trans-20: rgb(172, 176, 190);
   --clr-surface-1: rgb(188, 192, 204);
+  --clr-surface-1-trans-20: rgb(188, 192, 204);
   --clr-surface-0: rgb(204, 208, 218);
+  --clr-surface-0-trans-20: rgb(204, 208, 218);
 
   --clr-base: rgb(239, 241, 245);
+  --clr-base-trans-20: rgb(239, 241, 245);
   --clr-mantle: rgb(230, 233, 239);
+  --clr-mantle-trans-20: rgb(230, 233, 239);
   --clr-crust: rgb(220, 224, 232);
+  --clr-crust-trans-20: rgb(220, 224, 232);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
 body {

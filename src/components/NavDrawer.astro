@@ -2,6 +2,41 @@
 
 ---
 
-<style></style>
+<style>
+  #nav-drawer {
+    isolation: isolate;
 
-<div></div>
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    width: 24rem;
+    max-width: 80vw;
+
+    height: 100vh;
+
+    transform: translateX(0%);
+
+    z-index: 10;
+  }
+
+  #nav-drawer::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    background-color: var(--clr-base-trans-60);
+
+    z-index: -1;
+  }
+</style>
+
+<div id='nav-drawer'></div>
