@@ -54,11 +54,13 @@
     const navDrawer = document.getElementById('nav-drawer');
     const drawerOverlay = document.getElementById('overlay');
     const btnOpenMenu = document.getElementById('btn-open-nav-drawer');
+    const drawerWrapper = document.getElementById('drawer-wrapper');
 
     btnOpenMenu?.addEventListener('click', () => {
       navDrawer?.setAttribute('data-active', 'true');
       drawerOverlay?.setAttribute('data-active', 'true');
       document.body.setAttribute('data-scroll-active', 'false');
+      drawerWrapper!.style.pointerEvents = 'all';
     });
   });
 </script>

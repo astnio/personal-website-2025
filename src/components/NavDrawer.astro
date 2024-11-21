@@ -17,13 +17,13 @@ import NavLinks from './NavLinks.astro';
 
     transform: translateX(0%);
 
-    z-index: 10;
-
     overflow: hidden;
 
     transition-property: transform;
     transition-duration: 0.25s;
     transition-timing-function: ease-in-out;
+
+    z-index: 10;
   }
 
   #nav-drawer::before {
@@ -81,24 +81,27 @@ import NavLinks from './NavLinks.astro';
 </style>
 
 <div
-  data-active='true'
-  id='overlay'>
-</div>
-<div
-  data-active='true'
+  data-active='false'
   id='nav-drawer'>
   <NavLinks />
+</div>
+
+<div
+  data-active='false'
+  id='overlay'>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const drawerOverlay = document.getElementById('overlay');
     const navDrawer = document.getElementById('nav-drawer');
+    const drawerWrapper = document.getElementById('drawer-wrapper');
 
     drawerOverlay!.addEventListener('click', () => {
       navDrawer!.setAttribute('data-active', 'false');
       drawerOverlay!.setAttribute('data-active', 'false');
       document.body.setAttribute('data-scroll-active', 'true');
+      drawerWrapper!.style.pointerEvents = 'none';
     });
   });
 </script>
