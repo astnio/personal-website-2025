@@ -136,6 +136,12 @@ body {
   background: var(--clr-base);
   background: var(--clr-gradient-bg);
   background-position: 10% 10%;
+
+  overflow-y: auto;
+}
+
+body[data-scroll-active='false'] {
+  overflow-y: hidden;
 }
 
 a,

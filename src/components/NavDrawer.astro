@@ -95,10 +95,10 @@ import NavLinks from './NavLinks.astro';
     const drawerOverlay = document.getElementById('overlay');
     const navDrawer = document.getElementById('nav-drawer');
 
-    drawerOverlay?.addEventListener('click', () => {
-      console.log('click');
-      navDrawer?.setAttribute('data-active', 'false');
-      drawerOverlay.setAttribute('data-active', 'false');
+    drawerOverlay!.addEventListener('click', () => {
+      navDrawer!.setAttribute('data-active', 'false');
+      drawerOverlay!.setAttribute('data-active', 'false');
+      document.body.setAttribute('data-scroll-active', 'true');
     });
   });
 </script>

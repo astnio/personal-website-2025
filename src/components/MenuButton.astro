@@ -58,6 +58,7 @@
     btnOpenMenu?.addEventListener('click', () => {
       navDrawer?.setAttribute('data-active', 'true');
       drawerOverlay?.setAttribute('data-active', 'true');
+      document.body.setAttribute('data-scroll-active', 'false');
     });
   });
 </script>
