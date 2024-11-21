@@ -22,7 +22,7 @@
     overflow: hidden;
 
     transition-property: transform;
-    transition-duration: 0.15s;
+    transition-duration: 0.25s;
     transition-timing-function: ease-in-out;
   }
 
@@ -57,6 +57,14 @@
     backdrop-filter: blur(6px);
 
     z-index: 9;
+
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+
+    transition-property: opacity, visibility;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
   }
 
   #nav-drawer[data-active='false'] {
@@ -64,7 +72,9 @@
   }
 
   #overlay[data-active='false'] {
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
   }
 </style>
 
