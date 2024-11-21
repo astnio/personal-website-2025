@@ -1,5 +1,5 @@
 ---
-
+import NavLinks from './NavLinks.astro';
 ---
 
 <style>
@@ -10,7 +10,7 @@
     right: 0;
     top: 0;
 
-    width: 24rem;
+    width: 12rem;
     max-width: 80vw;
 
     height: 100dvh;
@@ -42,6 +42,8 @@
     background-color: var(--clr-base-trans-60);
 
     border-left: 1px solid var(--clr-surface-0);
+
+    z-index: -1;
   }
 
   #overlay {
@@ -85,6 +87,7 @@
 <div
   data-active='true'
   id='nav-drawer'>
+  <NavLinks />
 </div>
 
 <script>
