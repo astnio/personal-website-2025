@@ -1,5 +1,6 @@
 ---
 import ColorSchemeToggle from './ColorSchemeToggle.astro';
+const currentYear = new Date().getFullYear();
 ---
 
 <style>
@@ -9,9 +10,24 @@ import ColorSchemeToggle from './ColorSchemeToggle.astro';
     width: 100%;
 
     margin-top: auto;
+    padding-top: 8rem;
   }
 
-  .footer-content-wrapper {
+  .footer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    border-top: 1px solid var(--clr-surface-0);
+
+    padding-block: 1rem;
+
+    background-color: var(--clr-mantle);
+  }
+
+  .footer-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -22,9 +38,33 @@ import ColorSchemeToggle from './ColorSchemeToggle.astro';
   }
 </style>
 
-<footer class='max-width'>
-  <div class='footer-content-wrapper'>
-    <p>&#169; Austin Hagel 2021-2024</p>
-    <ColorSchemeToggle />
+<footer>
+  <div class='footer-wrapper max-width'>
+    <div class='footer-content'>
+      <p>
+        &#169; Austin Hagel 2021-<span id='footer-copyright-current-year'
+          >{currentYear}</span
+        >
+      </p>
+      <ColorSchemeToggle />
+    </div>
   </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Below is setting the year to the most current year automatically.
+    //
+    // I am using this because the code in the frontmatter will only show
+    // the current year from the last time the project was built. That is
+    // fine as the default, however in the case I do not rebuild the project
+    // for over a year, then this script will keep it up to date.
+
+    const currentYearLabel = document.getElementById(
+      'footer-copyright-current-year'
+    );
+    const currentYear = new Date().getFullYear();
+
+    currentYearLabel!.innerText = String(currentYear);
+  });
+</script>

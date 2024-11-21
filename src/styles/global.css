@@ -139,6 +139,7 @@ body {
   background-position: 10% 10%;
 
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 body[data-scroll-active='false'] {
