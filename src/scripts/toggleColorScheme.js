@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const documentRoot = document.querySelector(':root');
   const lightToggle = document.getElementById('btn-light-toggle');
+  const lightToggleLabel = document.getElementById('light-toggle-theme-label');
 
   function getSavedColorScheme() {
     return localStorage.getItem('colorScheme');
@@ -15,13 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function toggleColorScheme() {
-    console.log('click');
     if (getSavedColorScheme() === 'dark') {
       setColorScheme('light');
       saveColorScheme('light');
+      lightToggleLabel.innerText = 'Light';
     } else if (getSavedColorScheme() === 'light') {
       setColorScheme('dark');
       saveColorScheme('dark');
+      lightToggleLabel.innerText = 'Dark';
     }
   }
 

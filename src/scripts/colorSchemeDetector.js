@@ -35,5 +35,23 @@ export default function initColorSchemeDetector() {
     }
   }
 
+  document.addEventListener('DOMContentLoaded', () => {
+    const lightToggleLabel = document.getElementById(
+      'light-toggle-theme-label'
+    );
+
+    function toCaptialized(word) {
+      return String(word).charAt(0).toUpperCase() + String(word).slice(1);
+    }
+
+    function updateLightToggleLabel() {
+      const colorScheme = localStorage.getItem('colorScheme');
+
+      lightToggleLabel.innerText = toCaptialized(colorScheme);
+    }
+
+    updateLightToggleLabel();
+  });
+
   checkSavedColorScheme();
 }
