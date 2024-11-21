@@ -1,10 +1,6 @@
 ---
-const navLinks = [
-  { url: '/', label: 'Home' },
-  { url: '/blog', label: 'Blog' },
-  { url: '/about', label: 'About' },
-  { url: '/projects', label: 'Projects' },
-];
+import links from '../scripts/links.json';
+const navLinks = links.internalLinks;
 ---
 
 <style>
