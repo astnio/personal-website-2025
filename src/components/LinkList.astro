@@ -1,41 +1,13 @@
 ---
 import LinkListItem from './LinkListItem.astro';
+import links from '../scripts/links.json';
 
-const internalLinks = [
-  {
-    url: '/about',
-    label: 'About',
-    iconClass: 'bx bxs-detail',
-  },
-  {
-    url: '/blog',
-    label: 'Blog',
-    iconClass: 'bx bxs-message-square-dots',
-  },
-  {
-    url: '/projects',
-    label: 'Projects',
-    iconClass: 'bx bx-code-block',
-  },
-];
+const internalLinks = links.internalLinks.filter((link) => {
+  if (link.url === '/') return false;
+  else return true;
+});
 
-const externalLinks = [
-  {
-    url: 'https://astn.sh/linkedin',
-    label: 'LinkedIn',
-    iconClass: 'bx bxl-linkedin-square',
-  },
-  {
-    url: 'https://astn.sh/frontend-mentor',
-    label: 'Frontend Mentor',
-    iconClass: 'bx bxs-dashboard',
-  },
-  {
-    url: 'https://astn.sh/github',
-    label: 'Github',
-    iconClass: 'bx bxl-github',
-  },
-];
+const externalLinks = links.externalLinks;
 ---
 
 <style>
