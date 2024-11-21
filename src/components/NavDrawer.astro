@@ -13,13 +13,17 @@
     width: 24rem;
     max-width: 80vw;
 
-    height: 100vh;
+    height: 100dvh;
 
     transform: translateX(0%);
 
     z-index: 10;
 
-    display: none;
+    overflow: hidden;
+
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
   }
 
   #nav-drawer::before {
@@ -53,10 +57,35 @@
     backdrop-filter: blur(6px);
 
     z-index: 9;
+  }
 
+  #nav-drawer[data-active='false'] {
+    transform: translateX(100%);
+  }
+
+  #overlay[data-active='false'] {
     display: none;
   }
 </style>
 
-<div id='overlay'></div>
-<div id='nav-drawer'></div>
+<div
+  data-active='true'
+  id='overlay'>
+</div>
+<div
+  data-active='true'
+  id='nav-drawer'>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const drawerOverlay = document.getElementById('overlay');
+    const navDrawer = document.getElementById('nav-drawer');
+
+    drawerOverlay?.addEventListener('click', () => {
+      console.log('click');
+      navDrawer?.setAttribute('data-active', 'false');
+      drawerOverlay.setAttribute('data-active', 'false');
+    });
+  });
+</script>
