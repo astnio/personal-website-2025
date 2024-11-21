@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const documentRoot = document.querySelector(':root');
-  const lightToggle = document.getElementById('btn-light-toggle');
+  const lightToggle = document.getElementById('chk-light-toggle');
   const lightToggleLabel = document.getElementById('light-toggle-theme-label');
 
   function getSavedColorScheme() {
@@ -20,12 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
       setColorScheme('light');
       saveColorScheme('light');
       lightToggleLabel.innerText = 'Light';
+      lightToggle.checked = false;
     } else if (getSavedColorScheme() === 'light') {
       setColorScheme('dark');
       saveColorScheme('dark');
       lightToggleLabel.innerText = 'Dark';
+      lightToggle.checked = true;
     }
   }
 
-  lightToggle.addEventListener('click', toggleColorScheme);
+  lightToggle.addEventListener('change', toggleColorScheme);
 });

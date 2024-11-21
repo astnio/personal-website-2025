@@ -1,8 +1,8 @@
 export default function initColorSchemeDetector() {
   const documentRoot = document.querySelector(':root');
 
-  const prefersLightTheme = window.matchMedia(
-    '(prefers-color-scheme: light)'
+  const prefersDarkTheme = window.matchMedia(
+    '(prefers-color-scheme: dark)'
   ).matches;
 
   function saveColorScheme(colorScheme) {
@@ -18,12 +18,12 @@ export default function initColorSchemeDetector() {
   }
 
   function setPrefferedColorScheme() {
-    if (prefersLightTheme) {
-      setColorScheme('light');
-      saveColorScheme('light');
-    } else {
+    if (prefersDarkTheme) {
       setColorScheme('dark');
       saveColorScheme('dark');
+    } else {
+      setColorScheme('light');
+      saveColorScheme('light');
     }
   }
 
@@ -40,6 +40,8 @@ export default function initColorSchemeDetector() {
       'light-toggle-theme-label'
     );
 
+    const lightToggle = document.getElementById('chk-light-toggle');
+
     function toCaptialized(word) {
       return String(word).charAt(0).toUpperCase() + String(word).slice(1);
     }
@@ -48,6 +50,12 @@ export default function initColorSchemeDetector() {
       const colorScheme = localStorage.getItem('colorScheme');
 
       lightToggleLabel.innerText = toCaptialized(colorScheme);
+
+      if (colorScheme === 'dark') {
+        lightToggle.checked = true;
+      } else {
+        lightToggle.checked = false;
+      }
     }
 
     updateLightToggleLabel();

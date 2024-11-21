@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: center;
 
-    gap: 8px;
+    gap: 0.4rem;
 
     margin-left: auto;
   }
@@ -41,8 +41,8 @@
     position: relative;
     display: inline-block;
 
-    width: 48px;
-    height: 28px;
+    width: 3.4rem;
+    height: 1.8rem;
   }
 
   .switch input {
@@ -55,38 +55,45 @@
     position: absolute;
     cursor: pointer;
     inset: 0;
-    background-color: var(--clr-text);
+    background-color: var(--clr-mantle);
     transition: 0.1s ease-out;
+
+    outline: 2px solid var(--clr-surface-0);
   }
 
   .slider:before {
     position: absolute;
     content: '';
 
-    height: 20px;
-    width: 20px;
+    --slider-size: 1.25rem;
 
-    left: 6px;
-    bottom: 4px;
+    height: var(--slider-size);
+    width: var(--slider-size);
 
-    background-color: var(--clr-primary);
+    left: 0.4rem;
+    bottom: 0.3rem;
+
+    background-color: var(--clr-yellow);
     transition: 0.1s ease-out;
   }
 
   input:checked + .slider {
-    background-color: var(--clr-crust);
+    background-color: var(--clr-mantle);
   }
 
-  input:focus + .slider {
-    box-shadow: 0 0 1px var(--clr-primary);
+  input:focus + .slider,
+  input:hover + .slider {
+    outline: 2px solid var(--clr-primary);
   }
 
   input:checked + .slider:before {
-    transform: translateX(16px);
+    transform: translateX(1.4rem);
+
+    background-color: var(--clr-primary);
   }
 
   .slider.round {
-    border-radius: 34px;
+    border-radius: 999px;
   }
 
   .slider.round:before {
@@ -94,15 +101,13 @@
   }
 </style>
 
-<!-- <button id='btn-light-toggle'>Light Toggle</button> -->
-
 <div class='light-switch-container'>
   <p><span id='light-toggle-theme-label'></span> Theme</p>
   <span class='light-switch-icon light-switch-icon-light'></span>
   <label class='switch'>
     <input
       type='checkbox'
-      id='light-toggle'
+      id='chk-light-toggle'
       checked
     />
     <span class='slider round'></span>
