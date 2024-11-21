@@ -45,6 +45,13 @@
   --clr-mantle-trans-60: rgba(30, 32, 48, 0.6);
   --clr-crust: rgb(24, 25, 38);
   --clr-crust-trans-60: rgba(24, 25, 38, 0.6);
+
+  --clr-gradient-bg: radial-gradient(
+    circle,
+    var(--clr-surface-0) 0%,
+    var(--clr-base) 50%,
+    var(--clr-mantle) 100%
+  );
 }
 
 :root[data-color-scheme='light'] {
@@ -89,6 +96,13 @@
   --clr-mantle-trans-20: rgb(230, 233, 239);
   --clr-crust: rgb(220, 224, 232);
   --clr-crust-trans-20: rgb(220, 224, 232);
+
+  --clr-gradient-bg: radial-gradient(
+    circle,
+    var(--clr-base) 0%,
+    var(--clr-surface-0) 50%,
+    var(--clr-surface-2) 100%
+  );
 }
 
 *,
@@ -111,7 +125,9 @@ body {
   font-family: 'IBM Plex Serif', serif;
   color: var(--clr-text);
 
-  background-color: var(--clr-base);
+  background: var(--clr-base);
+  background: var(--clr-gradient-bg);
+  background-position: 10% 10%;
 }
 
 a,
