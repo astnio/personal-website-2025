@@ -89,21 +89,21 @@
   --clr-mantle: rgb(230, 233, 239);
   --clr-crust: rgb(220, 224, 232);
 
-  --clr-text-trans-20: rgb(76, 79, 105);
-  --clr-subtext-1-trans-20: rgb(92, 95, 119);
-  --clr-subtext-0-trans-20: rgb(108, 111, 133);
+  --clr-text-trans-60: rgba(76, 79, 105, 0.6);
+  --clr-subtext-1-trans-60: rgba(92, 95, 119, 0.6);
+  --clr-subtext-0-trans-60: rgba(108, 111, 133, 0.6);
 
-  --clr-overlay-2-trans-20: rgb(124, 127, 147);
-  --clr-overlay-1-trans-20: rgb(140, 143, 161);
-  --clr-overlay-0-trans-20: rgb(156, 160, 176);
+  --clr-overlay-2-trans-60: rgba(124, 127, 147, 0.6);
+  --clr-overlay-1-trans-60: rgba(140, 143, 161, 0.6);
+  --clr-overlay-0-trans-60: rgba(156, 160, 176, 0.6);
 
-  --clr-surface-2-trans-20: rgb(172, 176, 190);
-  --clr-surface-1-trans-20: rgb(188, 192, 204);
-  --clr-surface-0-trans-20: rgb(204, 208, 218);
+  --clr-surface-2-trans-60: rgba(172, 176, 190, 0.6);
+  --clr-surface-1-trans-60: rgba(188, 192, 204, 0.6);
+  --clr-surface-0-trans-60: rgba(204, 208, 218, 0.6);
 
-  --clr-base-trans-20: rgb(239, 241, 245);
-  --clr-mantle-trans-20: rgb(230, 233, 239);
-  --clr-crust-trans-20: rgb(220, 224, 232);
+  --clr-base-trans-60: rgba(239, 241, 245, 0.6);
+  --clr-mantle-trans-60: rgba(230, 233, 239, 0.6);
+  --clr-crust-trans-60: rgba(220, 224, 232, 0.6);
 
   --clr-gradient-bg: radial-gradient(
     circle,
