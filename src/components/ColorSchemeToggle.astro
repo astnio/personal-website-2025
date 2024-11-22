@@ -3,36 +3,12 @@
 ---
 
 <style>
-  /* button {
-    font-family: 'IBM Plex Serif', serif;
-    color: var(--clr-text);
-
-    border: none;
-    outline: 1px solid var(--clr-surface-1);
-
-    padding-inline: 1rem;
-    padding-block: 0.6rem;
-
-    background-color: var(--clr-surface-0);
-
-    cursor: pointer;
-
-    transition-property: outline, color, background-color;
-    transition-duration: 0.1s;
-    transition-timing-function: ease-out;
-  }
-
-  button:hover {
-    background-color: var(--clr-surface-1);
-    outline: 1px solid var(--clr-surface-2);
-  } */
-
   .light-switch-container {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 0.4rem;
+    gap: 1rem;
 
     margin-left: auto;
   }
@@ -41,8 +17,10 @@
     position: relative;
     display: inline-block;
 
-    width: 3.4rem;
-    height: 1.8rem;
+    width: 3.8rem;
+    height: 1.85rem;
+
+    cursor: pointer;
   }
 
   .switch input {
@@ -55,7 +33,7 @@
     position: absolute;
     cursor: pointer;
     inset: 0;
-    background-color: var(--clr-mantle);
+    background-color: var(--clr-surface-0);
     transition: 0.1s ease-out;
 
     outline: 2px solid var(--clr-surface-0);
@@ -65,20 +43,20 @@
     position: absolute;
     content: '';
 
-    --slider-size: 1.25rem;
+    --slider-size: 1.45rem;
 
     height: var(--slider-size);
     width: var(--slider-size);
 
-    left: 0.4rem;
-    bottom: 0.3rem;
+    left: 0.24rem;
+    bottom: 0.18rem;
 
-    background-color: var(--clr-yellow);
+    background-color: var(--clr-base);
     transition: 0.1s ease-out;
   }
 
   input:checked + .slider {
-    background-color: var(--clr-mantle);
+    background-color: var(--clr-surface-2);
   }
 
   input:focus + .slider,
@@ -87,9 +65,9 @@
   }
 
   input:checked + .slider:before {
-    transform: translateX(1.4rem);
+    transform: translateX(1.85rem);
 
-    background-color: var(--clr-primary);
+    background-color: var(--clr-mantle);
   }
 
   .slider.round {
@@ -99,11 +77,53 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
+  .light-toggle-icon {
+    position: absolute;
+    left: 0.45rem;
+    bottom: 0.35rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1;
+
+    color: var(--clr-yellow);
+
+    transition-property: transform, color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  input:checked ~ .light-toggle-icon {
+    transform: translateX(1.85em);
+    color: var(--clr-texts);
+  }
+
+  input:not(:checked) ~ .light-toggle-icon > #light-toggle-icon-light {
+    display: flex;
+  }
+
+  input:not(:checked) ~ .light-toggle-icon > #light-toggle-icon-dark {
+    display: none;
+  }
+
+  input:checked ~ .light-toggle-icon > #light-toggle-icon-dark {
+    display: flex;
+  }
+
+  input:checked ~ .light-toggle-icon > #light-toggle-icon-light {
+    display: none;
+  }
+
+  .hidden {
+    display: none;
+  }
 </style>
 
 <div class='light-switch-container'>
   <p><span id='light-toggle-theme-label'></span> Theme</p>
-  <span class='light-switch-icon light-switch-icon-light'></span>
   <label class='switch'>
     <input
       type='checkbox'
@@ -111,6 +131,16 @@
       checked
     />
     <span class='slider round'></span>
+    <div class='light-toggle-icon'>
+      <span
+        id='light-toggle-icon-light'
+        class='bx bxs-sun'
+      ></span>
+      <span
+        id='light-toggle-icon-dark'
+        class='bx bxs-moon'
+      ></span>
+    </div>
   </label>
 </div>
 
