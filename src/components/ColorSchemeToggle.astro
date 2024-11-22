@@ -31,12 +31,22 @@
 
   .slider {
     position: absolute;
-    cursor: pointer;
     inset: 0;
-    background-color: var(--clr-surface-0);
+
+    cursor: pointer;
+
+    background: var(--clr-surface-0);
+    background: linear-gradient(
+      90deg,
+      var(--clr-surface-0) 0%,
+      var(--clr-base) 100%
+    );
+
+    outline: 1px solid var(--clr-surface-1);
+
     transition: 0.1s ease-out;
 
-    outline: 2px solid var(--clr-surface-0);
+    overflow: hidden;
   }
 
   .slider:before {
@@ -51,23 +61,30 @@
     left: 0.24rem;
     bottom: 0.18rem;
 
+    outline: 1px solid var(--clr-surface-0);
+
     background-color: var(--clr-base);
     transition: 0.1s ease-out;
   }
 
   input:checked + .slider {
     background-color: var(--clr-surface-2);
+    background: linear-gradient(
+      90deg,
+      var(--clr-base) 0%,
+      var(--clr-surface-0) 100%
+    );
   }
 
   input:focus + .slider,
   input:hover + .slider {
-    outline: 2px solid var(--clr-primary);
+    outline: 1px solid var(--clr-surface-2);
   }
 
   input:checked + .slider:before {
     transform: translateX(1.85rem);
 
-    background-color: var(--clr-mantle);
+    background: var(--clr-mantle);
   }
 
   .slider.round {
