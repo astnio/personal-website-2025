@@ -71,20 +71,74 @@ const title = 'Austin Hagel';
 
     margin-top: 2rem;
   }
+
+  .hero-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .hero-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+    }
+
+    .profile-image {
+      --image-size: 18rem;
+    }
+
+    h1.hero-title {
+      font-size: 2.6rem;
+    }
+
+    .hero-content-wrapper {
+      grid-row: 1;
+      justify-self: end;
+      margin-top: 2.4rem;
+    }
+
+    .hero-paragraph-wrapper {
+      grid-row: 2;
+      grid-column-start: 1;
+      grid-column-end: -1;
+    }
+
+    .hero-info-wrapper {
+      grid-row: 1;
+      width: 20rem;
+      justify-self: start;
+    }
+  }
 </style>
 
 <BaseLayout title={title}>
   <section class='hero-wrapper max-width'>
-    <Image
-      src={profilePicture}
-      alt='A photo of Austin'
-      loading='lazy'
-      decoding='async'
-      width='512'
-      class='profile-image'
-    />
-    <div class='hero-info-wrapper'>
+    <div class='hero-content-wrapper'>
+      <Image
+        src={profilePicture}
+        alt='A photo of Austin'
+        loading='lazy'
+        decoding='async'
+        width='512'
+        class='profile-image'
+      />
       <h1 class='hero-title'>Austin Hagel</h1>
+    </div>
+
+    <div class='hero-paragraph-wrapper'>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+        accusantium commodi quaerat error ex sint provident enim exercitationem
+        deserunt incidunt sed, consectetur reprehenderit id, laboriosam fugiat
+        nemo voluptatum optio nisi.
+      </p>
+    </div>
+
+    <div class='hero-info-wrapper'>
       <div class='hero-link-list'>
         <LinkList />
       </div>
