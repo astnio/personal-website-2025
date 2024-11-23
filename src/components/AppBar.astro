@@ -1,5 +1,6 @@
 ---
 import Logo from '../components/Logo.astro';
+import ColorSchemeToggle from './ColorSchemeToggle.astro';
 import ContactButton from './ContactButton.astro';
 import MenuButton from './MenuButton.astro';
 import NavLinks from './NavLinks.astro';
@@ -57,6 +58,13 @@ import NavLinks from './NavLinks.astro';
     display: none;
   }
 
+  .contact-btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
   @media screen and (max-width: 768px) {
     .nav-links-wrapper,
     .contact-btn-wrapper {
@@ -76,6 +84,7 @@ import NavLinks from './NavLinks.astro';
       <NavLinks />
     </div>
     <div class='contact-btn-wrapper'>
+      <ColorSchemeToggle />
       <ContactButton />
     </div>
     <div class='menu-btn-wrapper'>
@@ -89,8 +98,6 @@ import NavLinks from './NavLinks.astro';
     const navbar = document.getElementById('navigation-bar');
     let prevScrollPos = window.scrollY;
     const navbarHeight = navbar!.scrollHeight;
-
-    console.log(navbarHeight);
 
     window.onscroll = function () {
       let currentScrollPos = window.scrollY;

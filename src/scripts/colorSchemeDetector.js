@@ -36,11 +36,11 @@ export default function initColorSchemeDetector() {
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    const lightToggleLabel = document.getElementById(
-      'light-toggle-theme-label'
+    const lightToggleLabels = document.querySelectorAll(
+      '.light-toggle-theme-label'
     );
 
-    const lightToggle = document.getElementById('chk-light-toggle');
+    const lightToggles = document.querySelectorAll('.chk-light-toggle');
 
     function toCaptialized(word) {
       return String(word).charAt(0).toUpperCase() + String(word).slice(1);
@@ -49,12 +49,18 @@ export default function initColorSchemeDetector() {
     function updateLightToggleLabel() {
       const colorScheme = localStorage.getItem('colorScheme');
 
-      lightToggleLabel.innerText = toCaptialized(colorScheme);
+      lightToggleLabels.forEach((toggleLabel) => {
+        toggleLabel.innerText = toCaptialized(colorScheme);
+      });
 
       if (colorScheme === 'dark') {
-        lightToggle.checked = true;
+        lightToggles.forEach((toggle) => {
+          toggle.checked = true;
+        });
       } else {
-        lightToggle.checked = false;
+        lightToggles.forEach((toggle) => {
+          toggle.checked = false;
+        });
       }
     }
 

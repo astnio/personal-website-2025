@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   const documentRoot = document.querySelector(':root');
-  const lightToggle = document.getElementById('chk-light-toggle');
-  const lightToggleLabel = document.getElementById('light-toggle-theme-label');
+  const lightToggles = document.querySelectorAll('.chk-light-toggle');
+  const lightToggleLabels = document.querySelectorAll(
+    '.light-toggle-theme-label'
+  );
 
   function getSavedColorScheme() {
     return localStorage.getItem('colorScheme');
@@ -19,15 +21,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (getSavedColorScheme() === 'dark') {
       setColorScheme('light');
       saveColorScheme('light');
-      lightToggleLabel.innerText = 'Light';
-      lightToggle.checked = false;
+      lightToggles.forEach((toggle) => {
+        toggle.checked = false;
+      });
+
+      lightToggleLabels.forEach((toggleLabel) => {
+        toggleLabel.innerText = 'Light';
+      });
     } else if (getSavedColorScheme() === 'light') {
       setColorScheme('dark');
       saveColorScheme('dark');
-      lightToggleLabel.innerText = 'Dark';
-      lightToggle.checked = true;
+      lightToggles.forEach((toggle) => {
+        toggle.checked = true;
+      });
+
+      lightToggleLabels.forEach((toggleLabel) => {
+        toggleLabel.innerText = 'Dark';
+      });
     }
   }
 
-  lightToggle.addEventListener('change', toggleColorScheme);
+  lightToggles.forEach((toggle) => {
+    toggle.addEventListener('change', toggleColorScheme);
+  });
 });
