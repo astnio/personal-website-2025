@@ -5,8 +5,12 @@ const navLinks = links.internalLinks;
 
 <style>
   a {
+    position: relative;
+
     text-decoration: none;
     text-transform: capitalize;
+
+    padding-block: 0.4rem;
 
     transition-property: color;
     transition-duration: 0.1s;
@@ -15,6 +19,27 @@ const navLinks = links.internalLinks;
 
   a:hover {
     color: var(--clr-primary);
+  }
+
+  a::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0.1rem;
+    left: 0;
+
+    width: 0;
+    height: 1px;
+
+    background-color: var(--clr-primary);
+
+    transition-property: width;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+  }
+
+  a:hover::after {
+    width: 100%;
   }
 
   ul {
