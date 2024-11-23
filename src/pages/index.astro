@@ -6,7 +6,7 @@ import profilePicture from '../images/portrait_transbg_nooutline.png';
 import LinkList from '../components/HeroLinks.astro';
 import data from '../scripts/data.json';
 
-const aboutMeParagraph = data.aboutMeParagraph;
+const aboutMeParagraph = data.aboutMeSentence;
 
 const title = 'Austin Hagel';
 ---
@@ -50,7 +50,7 @@ const title = 'Austin Hagel';
   }
 
   h1.hero-title {
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 400;
     letter-spacing: 0.02ch;
 
@@ -83,6 +83,28 @@ const title = 'Austin Hagel';
     gap: 1rem;
   }
 
+  .about-me {
+    max-width: 40ch;
+    text-align: justify;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  hr {
+    min-width: 100%;
+    width: 20rem;
+
+    border: none;
+
+    height: 1px;
+
+    background-color: var(--clr-text);
+
+    margin: 0;
+    padding: 0;
+  }
+
   @media screen and (min-width: 768px) {
     .hero-wrapper {
       display: grid;
@@ -95,7 +117,7 @@ const title = 'Austin Hagel';
     }
 
     h1.hero-title {
-      font-size: 2.6rem;
+      font-size: 2.8rem;
     }
 
     .hero-content-wrapper {
@@ -115,6 +137,16 @@ const title = 'Austin Hagel';
       width: 20rem;
       justify-self: start;
     }
+
+    .about-me {
+      max-width: 74ch;
+      text-align: left;
+      margin-inline: auto;
+    }
+
+    hr.hero-hr {
+      display: none;
+    }
   }
 </style>
 
@@ -130,10 +162,11 @@ const title = 'Austin Hagel';
         class='profile-image'
       />
       <h1 class='hero-title'>Austin Hagel</h1>
+      <hr class='hero-hr' />
     </div>
 
     <div class='hero-paragraph-wrapper'>
-      <p>{aboutMeParagraph}</p>
+      <p class='about-me'>{aboutMeParagraph}</p>
     </div>
 
     <div class='hero-info-wrapper'>
