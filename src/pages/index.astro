@@ -4,6 +4,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 import profilePicture from '../images/portrait_transbg_nooutline.png';
 import LinkList from '../components/HeroLinks.astro';
+import data from '../scripts/data.json';
+
+const aboutMeParagraph = data.aboutMeParagraph;
 
 const title = 'Austin Hagel';
 ---
@@ -130,12 +133,7 @@ const title = 'Austin Hagel';
     </div>
 
     <div class='hero-paragraph-wrapper'>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-        accusantium commodi quaerat error ex sint provident enim exercitationem
-        deserunt incidunt sed, consectetur reprehenderit id, laboriosam fugiat
-        nemo voluptatum optio nisi.
-      </p>
+      <p>{aboutMeParagraph}</p>
     </div>
 
     <div class='hero-info-wrapper'>

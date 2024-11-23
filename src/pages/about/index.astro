@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+import data from '../../scripts/data.json';
+
+const aboutMeParagraph = data.aboutMeParagraph;
+
 const title = 'About';
 ---
 
@@ -14,10 +18,7 @@ const title = 'About';
   <section class='max-width'>
     <h1>About</h1>
     <p class='hero-paragraph'>
-      A versatile professional dedicated to delivering comprehensive and
-      adaptable solutions across a range of services. Committed to excellence
-      and reliability while bringing a blend of creativity and technical
-      expertise to foster effective results.
+      {aboutMeParagraph}
     </p>
   </section>
 </BaseLayout>
