@@ -152,6 +152,11 @@ import NavLinks from './NavLinks.astro';
       closeDrawer();
     });
 
+    /*
+    This checks page height to detect scroll bar and adds margin to
+    prevent page from shifting when scrollbar gets removed when the scroll-y
+    is disabled when the drawer is enabled
+    */
     function checkPageScrollHeight() {
       if (window.innerHeight < document.documentElement.scrollHeight){
       document.body.setAttribute('data-page-height-scroll', 'true')
