@@ -4,17 +4,36 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = 'Projects';
 ---
 
+<style>
+  section {
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+  }
+</style>
+
 <BaseLayout title={title}>
-  <h1>Projects</h1>
-  <hr />
-  <h2>Featured</h2>
-  <p>My featured projects</p>
-  <ul>
-    <li>Project 1</li>
-    <li>Project 2</li>
-    <li>Project 3</li>
-  </ul>
-  <h2>Archive</h2>
-  <p>My archived projects</p>
-  <a href='/projects/archive'>Archived Projects</a>
+  <section class='max-width'>
+    <h1>Projects</h1>
+    <hr />
+  </section>
+
+  <section class='max-width'>
+    <h2>Featured</h2>
+    <p>My featured projects</p>
+    <ul>
+      <li>Project 1</li>
+      <li>Project 2</li>
+      <li>Project 3</li>
+    </ul>
+  </section>
+
+  <section class='max-width'>
+    <h2>Archive</h2>
+    <p>My archived projects</p>
+    <a href='/projects/archive'>Archived Projects</a>
+  </section>
 </BaseLayout>
