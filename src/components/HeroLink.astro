@@ -17,13 +17,13 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
 
     color: var(--clr-text);
 
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-surface-1);
 
     border-radius: 1pt;
-    outline: 1px solid var(--clr-surface-1);
+    outline: 1px solid var(--clr-surface-2);
 
-    padding-inline: var(--spacing);
-    padding-block: 0.6rem;
+    height: 2.4rem;
+    min-width: 16rem;
 
 
     transition-property: color, background-color, outline;
@@ -32,9 +32,11 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
   }
 
   a:hover {
-    background-color: var(--clr-surface-1);
-    outline: 1px solid var(--clr-surface-2);
+    background-color: var(--clr-overlay-0);
+    outline: 1px solid var(--clr-overlay-2);
   }
+
+
 
   .link-label {
     position: relative;
@@ -45,20 +47,50 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
     justify-content: center;
 
     padding: 0;
+
     margin: auto;
-    margin-left: 1.4rem;
+    margin-left: 1rem;
     padding-right: var(--spacing);
+
 
     font-size: 1rem;
   }
 
-  .link-icon {
-    font-size: 1.4rem;
+  .link-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     margin-right: auto;
+
+    aspect-ratio: 1;
+
+    background-color: var(--clr-surface-0);
+
+    height: 100%;
+
+    transition-property: background-color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a:hover > .link-icon-wrapper {
+    background-color: var(--clr-surface-1);
+  }
+
+  .link-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.4rem;
+
+
+    height: 100%;
   }
 </style>
 
 <a href={url} target={newTab ? `_blank` : ''}>
-  {iconClass && <span class=`link-icon ${iconClass}` />}
+  {iconClass && <div class="link-icon-wrapper"><span class=`link-icon ${iconClass}`></span></div> }
   <span class="link-label">{label}</span>  
 </a>
