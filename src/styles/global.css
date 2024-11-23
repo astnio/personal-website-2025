@@ -52,9 +52,9 @@
 
   --clr-gradient-bg: radial-gradient(
     circle,
-    var(--clr-surface-0) 0%,
-    var(--clr-base) 50%,
-    var(--clr-mantle) 100%
+    var(--clr-base) 0%,
+    var(--clr-mantle) 50%,
+    var(--clr-crust) 100%
   );
 }
 
@@ -108,8 +108,8 @@
   --clr-gradient-bg: radial-gradient(
     circle,
     var(--clr-base) 0%,
-    var(--clr-surface-0) 50%,
-    var(--clr-surface-2) 100%
+    var(--clr-mantle) 50%,
+    var(--clr-crust) 100%
   );
 }
 
@@ -131,6 +131,7 @@ body {
   padding-top: 6rem;
   margin: 0;
 
+
   font-family: 'IBM Plex Serif', serif;
   color: var(--clr-text);
 
@@ -143,6 +144,11 @@ body {
 
 body[data-scroll-active='false'] {
   overflow-y: hidden;
+}
+
+
+body[data-scroll-active='false'][data-page-height-scroll="true"] > main {
+  margin-right: 1rem;
 }
 
 a,
