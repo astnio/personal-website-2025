@@ -53,7 +53,7 @@
     position: absolute;
     content: '';
 
-    --slider-size: 1.45rem;
+    --slider-size: 1.48rem;
 
     height: var(--slider-size);
     width: var(--slider-size);
@@ -97,8 +97,8 @@
 
   .light-toggle-icon {
     position: absolute;
-    left: 0.45rem;
-    bottom: 0.35rem;
+    left: 0.4rem;
+    bottom: 0.3rem;
 
     display: flex;
     align-items: center;
@@ -107,6 +107,15 @@
     z-index: 1;
 
     color: var(--clr-yellow);
+    font-size: 1.16rem;
+
+
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    padding: 0;
+    margin: 0;
 
     transition-property: transform, color;
     transition-duration: 0.1s;
@@ -114,7 +123,7 @@
   }
 
   input:checked ~ .light-toggle-icon {
-    transform: translateX(1.85em);
+    transform: translateX(1.8rem);
     color: var(--clr-texts);
   }
 
@@ -131,10 +140,6 @@
   }
 
   input:checked ~ .light-toggle-icon > #light-toggle-icon-light {
-    display: none;
-  }
-
-  .hidden {
     display: none;
   }
 </style>
