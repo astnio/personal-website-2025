@@ -141,10 +141,24 @@
   input:checked ~ .light-toggle-icon > #light-toggle-icon-light {
     display: none;
   }
+
+  .visually-hidden {
+    position: absolute !important;
+    top: -9999px;
+    left: -9999px;
+
+    height: 1px;
+    width: 1px;
+
+    overflow: hidden;
+
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px, 1px);
+  }
 </style>
 
 <div class='light-switch-container'>
-  <p>
+  <p class='visually-hidden'>
     <span class='light-toggle-theme-label'></span> Theme
   </p>
   <label class='switch'>
