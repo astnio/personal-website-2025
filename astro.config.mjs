@@ -2,14 +2,14 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 
-import remarkGfm from 'remark-gfm';
+import rehypeCallouts from 'rehype-callouts';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://test.astn.io',
 
   markdown: {
-    remarkPlugins: [[remarkGfm, {}]],
+    rehypePlugins: [rehypeCallouts],
     shikiConfig: {
       themes: {
         light: 'catppuccin-latte',
