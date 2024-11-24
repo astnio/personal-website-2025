@@ -204,6 +204,10 @@ main {
   width: 100%;
 }
 
+p {
+  margin-block: 0.8rem;
+}
+
 hr {
   border: none;
 
@@ -211,6 +215,39 @@ hr {
   height: 1px;
 
   background-color: var(--clr-text);
+}
+
+ul,
+ol {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.6rem;
+
+  padding: 0;
+  padding-left: 1rem;
+}
+
+blockquote {
+  background-color: var(--clr-mantle);
+
+  padding-block: 1rem;
+  padding-inline: 2rem;
+
+  margin-inline: 0;
+  margin-block: 1rem;
+
+  outline: 1px solid var(--clr-surface-0);
+  border-radius: 4pt;
+}
+
+/* TODO: figure out how to get these to work again */
+/* blockquote::before {
+  content: open-quote;
+} */
+
+.contains-task-list {
+  list-style-type: none;
 }
 
 .max-width {
