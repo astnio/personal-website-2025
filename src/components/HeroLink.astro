@@ -62,6 +62,7 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 
     padding: 0;
 
@@ -72,6 +73,14 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
 
     font-size: 1rem;
     font-weight: 100;
+
+    transition-property: margin-left;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-out;
+  }
+
+  a:hover > .link-label {
+    margin-left: 3.2rem;
   }
 
   .link-icon-wrapper {
@@ -106,9 +115,41 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
 
     height: 100%;
   }
+
+  a::after {
+    content: '\00BB';
+
+    position: absolute;
+    right: 3rem;
+    bottom: 0.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    aspect-ratio: 1;
+
+    height: 100%;
+
+    opacity: 0;
+
+    font-size: 2rem;
+
+    transition-property: opacity, right;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-out;
+  }
+
+  a:hover::after {
+    opacity: 1.0;
+    right: 0;    
+  }
+
 </style>
 
-<a href={url} target={newTab ? `_blank` : ''}>
-  {iconClass && <div class="link-icon-wrapper"><span class=`link-icon ${iconClass}`></span></div> }
-  <span class="link-label">{label}</span>  
+<a class="hero-link" href={url} target={newTab ? `_blank` : ''}>
+  {
+  iconClass && (<div class="link-icon-wrapper"><span class=`link-icon ${iconClass}`></span></div>)
+}
+  <span class="link-label">{label}</span>
 </a>
