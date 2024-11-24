@@ -1,5 +1,8 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allProjects = await getCollection('projects');
 
 const title = 'Projects';
 ---
@@ -25,9 +28,13 @@ const title = 'Projects';
     <h2>Featured</h2>
     <p>My featured projects</p>
     <ul>
-      <li>Project 1</li>
-      <li>Project 2</li>
-      <li>Project 3</li>
+      {
+        allProjects.map((project) => (
+          <li>
+            <a href={`/projects/${project.slug}`}>{project.data.title}</a>
+          </li>
+        ))
+      }
     </ul>
   </section>
 

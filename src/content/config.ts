@@ -11,7 +11,22 @@ const blogCollection = defineCollection({
   }),
 });
 
+const projectCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date_completed: z.date(),
+    description: z.string(),
+    github_link: z.string(),
+    demo_link: z.string(),
+    project_page_link: z.string(),
+    tags: z.array(z.string()),
+    image: z.string().optional(),
+  }),
+});
+
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
   blog: blogCollection,
+  projects: projectCollection,
 };
