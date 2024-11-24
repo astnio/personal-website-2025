@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
 
 const allProjects = await getCollection('projects');
 
@@ -16,6 +17,17 @@ const title = 'Projects';
   h1 {
     font-size: 2.4rem;
   }
+
+  ul.feature-projects-list {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 2rem;
+
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+  }
 </style>
 
 <BaseLayout title={title}>
@@ -27,11 +39,14 @@ const title = 'Projects';
   <section class='max-width'>
     <h2>Featured</h2>
     <p>My featured projects</p>
-    <ul>
+    <ul class='feature-projects-list'>
       {
         allProjects.map((project) => (
           <li>
-            <a href={`/projects/${project.slug}`}>{project.data.title}</a>
+            <ProjectCard
+              url={`/projects/${project.slug}`}
+              title={project.data.title}
+            />
           </li>
         ))
       }

@@ -1,0 +1,22 @@
+---
+const { url, title } = Astro.props;
+---
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40rem;
+
+    background-color: var(--clr-base);
+
+    border-radius: 4pt;
+  }
+</style>
+
+<div class='project-card'>
+  <a href={url}>{title}</a>
+</div>
