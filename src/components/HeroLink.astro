@@ -44,15 +44,15 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
     width: 100%;
     height: 100%;
 
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-base);
 
-    opacity: 0.4;
+    /* opacity: 0.4; */
 
     z-index: -1;
   }
 
   a:hover::before {
-    background-color: var(--clr-surface-1);
+    background-color: var(--clr-surface-0);
   }
 
   .link-label {
@@ -83,7 +83,7 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
 
     aspect-ratio: 1;
 
-    background-color: var(--clr-base);
+    background-color: var(--clr-mantle);
 
     height: 100%;
 
@@ -93,7 +93,7 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
   }
 
   a:hover > .link-icon-wrapper {
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-base);
   }
 
   .link-icon {
