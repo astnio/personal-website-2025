@@ -96,3 +96,11 @@ function doStuff() {
 ```
 
 Above is a code snippet. Let's see if I can get these to work!
+
+```js
+const example2 = 'more examples!';
+
+function doStuff() {
+  console.log(example2);
+}
+```
