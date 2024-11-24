@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 
+// https://github.com/lin-stephanie/rehype-callouts
 import rehypeCallouts from 'rehype-callouts';
 
 // https://astro.build/config
