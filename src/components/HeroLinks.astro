@@ -73,12 +73,32 @@ const externalLinks = links.externalLinks;
 
     width: 100%;
   }
+
+  @media screen and (min-width: 768px) {
+    .link-list-title-wrapper {
+      display: flex;
+      align-items: start;
+      justify-content: center;
+    }
+
+    .link-list-title-hr-left {
+      display: none;
+    }
+
+    .link-list-title {
+      text-align: start;
+      padding: 0;
+      padding-right: 1.2rem;
+      width: fit-content;
+      flex-shrink: 0;
+    }
+  }
 </style>
 
 <nav class='links-nav'>
   <div class='link-list-wrapper'>
     <div class='link-list-title-wrapper'>
-      <div class='link-list-title-hr'></div>
+      <div class='link-list-title-hr link-list-title-hr-left'></div>
       <h3 class='link-list-title'>What I Do</h3>
       <div class='link-list-title-hr'></div>
     </div>
@@ -100,7 +120,7 @@ const externalLinks = links.externalLinks;
 
   <div class='link-list-wrapper'>
     <div class='link-list-title-wrapper'>
-      <div class='link-list-title-hr'></div>
+      <div class='link-list-title-hr link-list-title-hr-left'></div>
       <h3 class='link-list-title'>Where I Am</h3>
       <div class='link-list-title-hr'></div>
     </div>
