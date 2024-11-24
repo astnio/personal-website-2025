@@ -5,7 +5,7 @@ import '../styles/codeBlockCopyButton.css';
 
 <style>
   .post-wrapper-spacer {
-    padding-inline: 1rem;
+    padding-inline: 0;
     width: 100%;
   }
 
@@ -16,12 +16,22 @@ import '../styles/codeBlockCopyButton.css';
     height: 100%;
 
     padding-block: 1rem;
-    padding-inline: 4rem;
+    padding-inline: 1rem;
 
-    border-radius: 4pt;
     outline: 1px solid var(--clr-surface-0);
 
     background-color: var(--clr-base);
+  }
+
+  @media screen and (min-width: 768px) {
+    .post-wrapper-spacer {
+      padding-inline: 1rem;
+    }
+
+    .post-wrapper {
+      padding-inline: 4rem;
+      border-radius: 4pt;
+    }
   }
 </style>
 
