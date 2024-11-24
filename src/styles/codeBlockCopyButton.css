@@ -1,0 +1,96 @@
+.btn-copy-wrapper {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(24px + 1rem);
+  height: calc(24px + 1rem);
+
+  aspect-ratio: 1;
+
+  margin: 0;
+  padding: 0;
+}
+
+.btn-copy {
+  position: absolute;
+  left: 50%;
+  top: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  aspect-ratio: 1;
+
+  border: none;
+  border-radius: 50%;
+
+  padding: 1rem;
+  margin: 0;
+
+  background: none;
+
+  transform: translate(-50%);
+
+  transition: top 0.15s ease-in-out;
+}
+
+.btn-copy:hover {
+  cursor: pointer;
+  top: -1px;
+}
+
+.btn-copy:active {
+  cursor: pointer;
+  top: 2px;
+}
+
+.btn-copied-label {
+  position: absolute;
+  right: 2.5rem;
+  top: 0.1rem;
+
+  transform: translateY(-50%);
+
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+
+  pointer-events: none;
+
+  animation-name: copiedTextAnim;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+.copy-code-icon {
+  font-size: 1.6rem;
+}
+
+@keyframes copiedTextAnim {
+  0% {
+    opacity: 0%;
+    transform: translateY(-50%) translateX(20px);
+  }
+  10% {
+    opacity: 100%;
+    transform: translateY(-50%) translateX(0);
+  }
+  40% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
