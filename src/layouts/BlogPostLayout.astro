@@ -1,0 +1,31 @@
+---
+import BaseLayout from './BaseLayout.astro';
+---
+
+<style>
+  .post-wrapper-spacer {
+    padding-inline: 1rem;
+    width: 100%;
+  }
+
+  .post-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    padding: 1rem;
+    margin: 1rem;
+
+    border-radius: 4pt;
+    outline: 1px solid var(--clr-surface-1);
+
+    background-color: var(--clr-base);
+  }
+</style>
+
+<div class='post-wrapper-spacer max-width'>
+  <div class='post-wrapper'>
+    <slot />
+  </div>
+</div>
