@@ -1,0 +1,46 @@
+---
+interface Props {
+  variant: 'tip' | 'caution' | 'danger' | 'info';
+}
+
+const { variant } = Astro.props;
+
+const icon = () => {
+  switch (variant) {
+    case 'tip':
+      return 'bx bxs-bulb';
+    case 'caution':
+      return 'bx bxs-message-alt-error';
+    case 'danger':
+      return 'bx bxs-error';
+    case 'info':
+      return 'bx bxs-info-circle';
+  }
+};
+---
+
+<style>
+  .tip {
+    outline: 1px solid gold;
+  }
+
+  .caution {
+    outline: 1px solid darkorange;
+  }
+
+  .danger {
+    outline: 1px solid crimson;
+  }
+
+  .info {
+    outline: 1px solid skyblue;
+  }
+</style>
+
+<div class=`${variant}`>
+  <div>
+    <span class={icon()}></span>
+    <p>{variant.toUpperCase()}</p>
+  </div>
+  <slot />
+</div>

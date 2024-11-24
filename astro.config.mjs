@@ -1,11 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
 
 import remarkGfm from 'remark-gfm';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://test.astn.io',
+
   markdown: {
     remarkPlugins: [[remarkGfm, {}]],
     shikiConfig: {
@@ -22,4 +24,6 @@ export default defineConfig({
       transformers: [],
     },
   },
+
+  integrations: [mdx()],
 });
