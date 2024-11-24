@@ -15,6 +15,14 @@ export default function initColorSchemeDetector() {
 
   function setColorScheme(colorScheme) {
     documentRoot.setAttribute('data-color-scheme', colorScheme);
+
+    if (colorScheme === 'dark') {
+      documentRoot.classList.remove('light');
+      documentRoot.classList.add('dark');
+    } else if (colorScheme === 'light') {
+      documentRoot.classList.add('light');
+      documentRoot.classList.remove('dark');
+    }
   }
 
   function setPrefferedColorScheme() {
