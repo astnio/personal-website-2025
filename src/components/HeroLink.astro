@@ -8,19 +8,18 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
   }
 
   a {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
 
+    color: var(--clr-text);
     text-decoration: none;
 
-    color: var(--clr-text);
-
-    background-color: var(--clr-surface-1);
-
     border-radius: 1pt;
-    outline: 1px solid var(--clr-surface-2);
+    outline: 1px solid var(--clr-surface-1);
 
     height: 2.4rem;
     min-width: 16rem;
@@ -32,11 +31,29 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
   }
 
   a:hover {
-    background-color: var(--clr-overlay-0);
-    outline: 1px solid var(--clr-overlay-2);
+    outline: 1px solid var(--clr-surface-2);
   }
 
+  a::before {
+    content: '';
 
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--clr-surface-0);
+
+    opacity: 0.4;
+
+    z-index: -1;
+  }
+
+  a:hover::before {
+    background-color: var(--clr-surface-1);
+  }
 
   .link-label {
     position: relative;
@@ -54,6 +71,7 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
 
 
     font-size: 1rem;
+    font-weight: 100;
   }
 
   .link-icon-wrapper {
@@ -65,7 +83,7 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
 
     aspect-ratio: 1;
 
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-base);
 
     height: 100%;
 
@@ -75,7 +93,7 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
   }
 
   a:hover > .link-icon-wrapper {
-    background-color: var(--clr-surface-1);
+    background-color: var(--clr-surface-0);
   }
 
   .link-icon {
