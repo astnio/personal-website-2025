@@ -20,13 +20,26 @@ const title = 'Projects';
 
   ul.feature-projects-list {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     gap: 2rem;
 
     list-style: none;
 
     padding: 0;
     margin: 0;
+  }
+
+  @media screen and (min-width: 1024px) {
+    ul.feature-projects-list {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 2rem;
+
+      list-style: none;
+
+      padding: 0;
+      margin: 0;
+    }
   }
 </style>
 
