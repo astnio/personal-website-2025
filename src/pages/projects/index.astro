@@ -59,6 +59,11 @@ const title = 'Projects';
             <ProjectCard
               url={`/projects/${project.slug}`}
               title={project.data.title}
+              description={project.data.description}
+              tags={project.data.tags}
+              githubUrl={project.data.github_link}
+              demoUrl={project.data.demo_link}
+              projectPageUrl={project.data.project_page_link}
             />
           </li>
         ))
