@@ -7,7 +7,7 @@ import NavLinks from './NavLinks.astro';
 ---
 
 <style>
-  nav#navigation-bar {
+  nav#app-bar {
     isolation: isolate;
 
     position: fixed;
@@ -24,6 +24,8 @@ import NavLinks from './NavLinks.astro';
     transition-property: top;
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
+
+    z-index: 1;
   }
 
   .nav-content-wrapper::before {
@@ -77,7 +79,7 @@ import NavLinks from './NavLinks.astro';
   }
 </style>
 
-<nav id='navigation-bar'>
+<nav id='app-bar'>
   <div class='nav-content-wrapper max-width'>
     <Logo />
     <div class='nav-links-wrapper'>
@@ -95,7 +97,7 @@ import NavLinks from './NavLinks.astro';
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const navbar = document.getElementById('navigation-bar');
+    const navbar = document.getElementById('app-bar');
     let prevScrollPos = window.scrollY;
     const navbarHeight = navbar!.scrollHeight;
 
