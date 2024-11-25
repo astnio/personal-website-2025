@@ -10,7 +10,30 @@ export default defineConfig({
   site: 'https://test.astn.io',
 
   markdown: {
-    rehypePlugins: [rehypeCallouts],
+    rehypePlugins: [
+      [
+        rehypeCallouts,
+        {
+          callouts: {
+            note: {
+              color: 'var(--clr-blue)',
+            },
+            tip: {
+              color: 'var(--clr-teal)',
+            },
+            check: {
+              color: 'var(--clr-green)',
+            },
+            warning: {
+              color: 'var(--clr-peach)',
+            },
+            danger: {
+              color: 'var(--clr-red)',
+            },
+          },
+        },
+      ],
+    ],
     shikiConfig: {
       themes: {
         light: 'catppuccin-latte',
