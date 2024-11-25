@@ -2,9 +2,9 @@
 title: Project Two
 date_completed: 2024-02-01
 description: 'An example project!'
-github_link: https://astn.sh/gh-ts-simple-e-com
-demo_link: https://astn.sh/ts-simple-e-com
-project_page_link: https://example.com
+github_url: https://astn.sh/gh-ts-simple-e-com
+demo_url: https://astn.sh/ts-simple-e-com
+project_page_url: https://example.com
 tags: ['Typescript', 'Vite']
 image: ''
 ---
@@ -61,9 +61,9 @@ This is a horizontal rule:
 
 ---
 
-[This is a link!](https://example.com)
+[This is a url!](https://example.com)
 
-[This is a referenced link!][1]
+[This is a referenced url!][1]
 
 [1]: https://example.com
 

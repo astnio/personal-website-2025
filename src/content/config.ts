@@ -17,10 +17,40 @@ const projectCollection = defineCollection({
     title: z.string(),
     date_completed: z.date(),
     description: z.string(),
-    github_link: z.string(),
-    demo_link: z.string(),
-    project_page_link: z.string(),
+    github_url: z.string(),
+    demo_url: z.string(),
+    project_page_url: z.string(),
     tags: z.array(z.string()),
+    image: z.string().optional(),
+  }),
+});
+
+const femProjectCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date_completed: z.date(),
+    description: z.string(),
+    github_url: z.string(),
+    demo_url: z.string(),
+    project_page_url: z.string(),
+    fem_page_url: z.string(),
+    tags: z.array(z.string()),
+    image: z.string().optional(),
+  }),
+});
+
+const jobCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    company: z.string(),
+    role: z.string(),
+    date_started: z.date(),
+    date_ended: z.date().optional(),
+    description: z.string(),
+    skills: z.array(z.string()).optional(),
+    job_page_url: z.string(),
+    tags: z.array(z.string()).optional(),
     image: z.string().optional(),
   }),
 });
@@ -29,4 +59,6 @@ const projectCollection = defineCollection({
 export const collections = {
   blog: blogCollection,
   projects: projectCollection,
+  fem_projects: femProjectCollection,
+  jobs: jobCollection,
 };
