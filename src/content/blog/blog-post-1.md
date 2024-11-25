@@ -74,14 +74,14 @@ See `rgb(9, 105, 218)` and `hsl(212, 92%, 45%)` for more examples.
 > [!TIP]
 > This a tip alert!
 
-> [!IMPORTANT]
-> This is an important alert!
+> [!CHECK]
+> This is a check alert!
 
 > [!WARNING]
 > This is a warning alert!
 
-> [!CAUTION]
-> This is a caution alert!
+> [!DANGER]
+> This is a danger alert!
 
 ## Project One
 
