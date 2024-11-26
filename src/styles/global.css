@@ -258,8 +258,8 @@ blockquote {
   margin-inline: 0;
   margin-block: 1rem;
 
-  outline: 1px solid var(--clr-surface-1);
-  border-radius: 4pt;
+  /* outline: 1px solid var(--clr-surface-1); */
+  /* border-radius: 4pt; */
 
   overflow: hidden;
 }
@@ -285,7 +285,7 @@ blockquote::after {
 
 blockquote > blockquote {
   background-color: var(--clr-crust);
-  outline: 1px solid var(--clr-surface-0);
+  /* outline: 1px solid var(--clr-surface-0); */
 }
 
 blockquote > blockquote::before {
@@ -353,8 +353,8 @@ html.light .astro-code span {
 .astro-code {
   padding-inline: 0.5rem;
   padding-block: 0.5rem;
-  outline: 1px solid var(--clr-surface-0);
-  border-radius: 2pt;
+  /* outline: 1px solid var(--clr-surface-0); */
+  /* border-radius: 2pt; */
 
   background-color: var(--clr-mantle);
 }
