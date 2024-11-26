@@ -220,6 +220,8 @@ main {
   justify-content: center;
 
   width: 100%;
+
+  margin-block: auto;
 }
 
 p {
@@ -246,6 +248,12 @@ ol {
   padding-left: 1rem;
 }
 
+@media screen and (min-width: 768px) {
+  main {
+    padding-top: 8rem;
+  }
+}
+
 blockquote {
   isolation: isolate;
   position: relative;
@@ -257,9 +265,6 @@ blockquote {
 
   margin-inline: 0;
   margin-block: 1rem;
-
-  /* outline: 1px solid var(--clr-surface-1); */
-  /* border-radius: 4pt; */
 
   overflow: hidden;
 }
@@ -285,7 +290,6 @@ blockquote::after {
 
 blockquote > blockquote {
   background-color: var(--clr-crust);
-  /* outline: 1px solid var(--clr-surface-0); */
 }
 
 blockquote > blockquote::before {
@@ -333,7 +337,7 @@ blockquote > blockquote::before {
 html.dark .astro-code,
 html.dark .astro-code span {
   color: var(--shiki-dark);
-  /* background-color: var(--shiki-dark-bg); */
+
   /* Optional, if you also want font styles */
   font-style: var(--shiki-dark-font-style);
   font-weight: var(--shiki-dark-font-weight);
@@ -343,7 +347,7 @@ html.dark .astro-code span {
 html.light .astro-code,
 html.light .astro-code span {
   color: var(--shiki-light);
-  /* background-color: var(--shiki-light-bg); */
+
   /* Optional, if you also want font styles */
   font-style: var(--shiki-light-font-style);
   font-weight: var(--shiki-light-font-weight);
@@ -353,9 +357,6 @@ html.light .astro-code span {
 .astro-code {
   padding-inline: 0.5rem;
   padding-block: 0.5rem;
-  /* outline: 1px solid var(--clr-surface-0); */
-  /* border-radius: 2pt; */
-
   background-color: var(--clr-mantle);
 }
 
