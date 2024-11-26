@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let prevScrollPos = window.scrollY;
 
-  window.onscroll = function () {
+  function handleAppBarOnScroll() {
     let currentScrollPos = window.scrollY;
     if (prevScrollPos > currentScrollPos) {
       navbar.style.transform = 'translateY(0%)';
@@ -11,5 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.style.transform = 'translateY(-100%)';
     }
     prevScrollPos = currentScrollPos;
-  };
+  }
+
+  window.addEventListener('scroll', handleAppBarOnScroll);
 });
