@@ -11,6 +11,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  touch-action: auto;
+}
+
 body {
   display: flex;
   flex-direction: column;
