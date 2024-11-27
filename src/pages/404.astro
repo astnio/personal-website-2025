@@ -1,9 +1,28 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const img404NotFound = '/error_images/undraw_page_not_found.svg';
 const title = 'Page Not Found';
 ---
 
+<style>
+  .image-404-error {
+    max-width: 100%;
+    padding-inline: 1rem;
+  }
+
+  .image-404-error > svg {
+    fill: red;
+  }
+</style>
+
 <BaseLayout title={title}>
-  <h1>404 Page not found</h1>
+  <img
+    src={img404NotFound}
+    alt={'Error image for "404 Page not Found"'}
+    class='image-404-error'
+  />
+  <h1>Error 404</h1>
+  <p>Page not found</p>
 </BaseLayout>
