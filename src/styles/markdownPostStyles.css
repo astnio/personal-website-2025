@@ -1,0 +1,135 @@
+blockquote {
+  isolation: isolate;
+  position: relative;
+
+  background-color: var(--clr-mantle);
+
+  padding-block: 1rem;
+  padding-inline: 2rem;
+
+  margin-inline: 0;
+  margin-block: 1rem;
+
+  overflow: hidden;
+}
+
+blockquote::before {
+  content: open-quote;
+
+  position: absolute;
+  top: -3.6rem;
+  left: -0.2rem;
+
+  color: var(--clr-overlay-0);
+  font-size: 16rem;
+
+  opacity: 0.15;
+
+  z-index: -1;
+}
+
+blockquote::after {
+  content: no-close-quote;
+}
+
+blockquote > blockquote {
+  background-color: var(--clr-crust);
+}
+
+blockquote > blockquote::before {
+  content: '';
+  top: -2rem;
+}
+
+.contains-task-list {
+  list-style-type: none;
+}
+
+.max-width {
+  max-width: 1024px;
+  margin-inline: auto;
+}
+
+#drawer-wrapper {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  top: -9999px;
+  left: -9999px;
+
+  height: 1px;
+  width: 1px;
+
+  overflow: hidden;
+
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px, 1px);
+}
+
+html.dark .astro-code,
+html.dark .astro-code span {
+  color: var(--shiki-dark);
+
+  /* Optional, if you also want font styles */
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+  text-decoration: var(--shiki-dark-text-decoration);
+}
+
+html.light .astro-code,
+html.light .astro-code span {
+  color: var(--shiki-light);
+
+  /* Optional, if you also want font styles */
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+}
+
+.astro-code {
+  padding-inline: 0.5rem;
+  padding-block: 0.5rem;
+  background-color: var(--clr-mantle);
+}
+
+.astro-code > code {
+  counter-reset: step;
+  counter-increment: step calc(var(--code-line-start, 1) - 1);
+}
+
+.astro-code > code .line::before {
+  content: counter(step);
+  counter-increment: step;
+
+  width: 1.5rem;
+
+  padding-right: 0.75rem;
+  padding-block: 0.2rem;
+
+  margin-right: 0.75rem;
+
+  display: inline-block;
+
+  text-align: right;
+  color: var(--clr-surface-1);
+
+  border-right: 1px solid currentColor;
+}
+
+div.callout {
+  background-color: var(--clr-mantle);
+  padding-block: 1rem;
+  padding-left: 1.25rem;
+}
