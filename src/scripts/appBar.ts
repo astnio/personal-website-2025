@@ -9,14 +9,14 @@ document.addEventListener('astro:page-load', () => {
   let wasScrollingDown = false;
 
   function hideAppBar() {
-    navbar.style.transform = 'translateY(-100%)';
+    navbar!.style.transform = 'translateY(-100%)';
   }
 
   function revealAppBar() {
-    navbar.style.transform = 'translateY(0%)';
+    navbar!.style.transform = 'translateY(0%)';
   }
 
-  function updateScrollDireciton(scrollDir) {
+  function updateScrollDireciton(scrollDir: number) {
     if (scrollDir > 0) {
       isScrollingDown = true;
     } else if (scrollDir < 0) {

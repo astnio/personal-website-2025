@@ -5,23 +5,23 @@ export default function initColorSchemeDetector() {
     '(prefers-color-scheme: dark)'
   ).matches;
 
-  function saveColorScheme(colorScheme) {
+  function saveColorScheme(colorScheme: 'dark' | 'light') {
     localStorage.setItem('colorScheme', colorScheme);
   }
 
   function getSavedColorScheme() {
-    return localStorage.getItem('colorScheme');
+    return localStorage.getItem('colorScheme') as 'dark' | 'light';
   }
 
-  function setColorScheme(colorScheme) {
-    documentRoot.setAttribute('data-color-scheme', colorScheme);
+  function setColorScheme(colorScheme: 'dark' | 'light') {
+    documentRoot!.setAttribute('data-color-scheme', colorScheme);
 
     if (colorScheme === 'dark') {
-      documentRoot.classList.remove('light');
-      documentRoot.classList.add('dark');
+      documentRoot!.classList.remove('light');
+      documentRoot!.classList.add('dark');
     } else if (colorScheme === 'light') {
-      documentRoot.classList.add('light');
-      documentRoot.classList.remove('dark');
+      documentRoot!.classList.add('light');
+      documentRoot!.classList.remove('dark');
     }
   }
 
@@ -44,21 +44,21 @@ export default function initColorSchemeDetector() {
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    const lightToggleLabels = document.querySelectorAll(
-      '.light-toggle-theme-label'
-    );
+    const lightToggleLabels: NodeListOf<HTMLInputElement> =
+      document.querySelectorAll('.light-toggle-theme-label');
 
-    const lightToggles = document.querySelectorAll('.chk-light-toggle');
+    const lightToggles: NodeListOf<HTMLInputElement> =
+      document.querySelectorAll('.chk-light-toggle');
 
-    function toCaptialized(word) {
+    function toCaptialized(word: string) {
       return String(word).charAt(0).toUpperCase() + String(word).slice(1);
     }
 
     function updateLightToggleLabel() {
       const colorScheme = localStorage.getItem('colorScheme');
 
-      lightToggleLabels.forEach((toggleLabel) => {
-        toggleLabel.innerText = toCaptialized(colorScheme);
+      lightToggleLabels.forEach((toggleLabel: HTMLInputElement) => {
+        toggleLabel.innerText = toCaptialized(colorScheme as 'dark' | 'light');
       });
 
       if (colorScheme === 'dark') {

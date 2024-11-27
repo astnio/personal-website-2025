@@ -4,8 +4,8 @@ document.addEventListener('astro:page-load', () => {
   const overlay = document.getElementById('overlay');
 
   function openDrawer() {
-    overlay.setAttribute('data-active', 'true');
-    navDrawer.setAttribute('data-active', 'true');
+    overlay!.setAttribute('data-active', 'true');
+    navDrawer!.setAttribute('data-active', 'true');
     document.body.setAttribute('data-scroll-active', 'false');
   }
 

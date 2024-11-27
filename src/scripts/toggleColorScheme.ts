@@ -1,27 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
   const documentRoot = document.querySelector(':root');
-  const lightToggles = document.querySelectorAll('.chk-light-toggle');
-  const lightToggleLabels = document.querySelectorAll(
-    '.light-toggle-theme-label'
-  );
+  const lightToggles: NodeListOf<HTMLInputElement> =
+    document.querySelectorAll('.chk-light-toggle');
+  const lightToggleLabels: NodeListOf<HTMLInputElement> =
+    document.querySelectorAll('.light-toggle-theme-label');
 
   function getSavedColorScheme() {
     return localStorage.getItem('colorScheme');
   }
 
-  function saveColorScheme(colorScheme) {
+  function saveColorScheme(colorScheme: 'light' | 'dark') {
     localStorage.setItem('colorScheme', colorScheme);
   }
 
-  function setColorScheme(colorScheme) {
-    documentRoot.setAttribute('data-color-scheme', colorScheme);
+  function setColorScheme(colorScheme: 'light' | 'dark') {
+    documentRoot!.setAttribute('data-color-scheme', colorScheme);
 
     if (colorScheme === 'dark') {
-      documentRoot.classList.remove('light');
-      documentRoot.classList.add('dark');
+      documentRoot!.classList.remove('light');
+      documentRoot!.classList.add('dark');
     } else if (colorScheme === 'light') {
-      documentRoot.classList.add('light');
-      documentRoot.classList.remove('dark');
+      documentRoot!.classList.add('light');
+      documentRoot!.classList.remove('dark');
     }
   }
 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toggle.checked = false;
       });
 
-      lightToggleLabels.forEach((toggleLabel) => {
+      lightToggleLabels.forEach((toggleLabel: HTMLInputElement) => {
         toggleLabel.innerText = 'Light';
       });
     } else if (getSavedColorScheme() === 'light') {

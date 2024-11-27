@@ -1,5 +1,5 @@
 import 'boxicons';
-import initColorSchemeDetector from '../scripts/colorSchemeDetector';
+import initColorSchemeDetector from './colorSchemeDetector';
 
 initColorSchemeDetector();
 

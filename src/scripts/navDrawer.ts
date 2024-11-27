@@ -4,12 +4,12 @@ document.addEventListener('astro:page-load', () => {
   const navLinks = document.querySelectorAll('.nav-link');
 
   function closeDrawer() {
-    navDrawer.setAttribute('data-active', 'false');
-    overlay.setAttribute('data-active', 'false');
+    navDrawer!.setAttribute('data-active', 'false');
+    overlay!.setAttribute('data-active', 'false');
     document.body.setAttribute('data-scroll-active', 'true');
   }
 
-  overlay.addEventListener('click', () => {
+  overlay!.addEventListener('click', () => {
     closeDrawer();
   });
 

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isScrollingDown = true;
   let wasScrollingDown = false;
 
-  function normalizeNumbers(val, max, min) {
+  function normalizeNumbers(val: number, max: number, min: number) {
     return Math.round(((val - min) / (max - min)) * 100);
   }
 
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // }
   }
 
-  function updateScrollDireciton(scrollDir) {
+  function updateScrollDireciton(scrollDir: number) {
     if (scrollDir > 0) {
       isScrollingDown = true;
     } else if (scrollDir < 0) {
