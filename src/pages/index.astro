@@ -32,18 +32,26 @@ const title = 'Austin Hagel';
     justify-content: center;
   }
 
-  .profile-image {
+  .image-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 10px solid var(--clr-base);
     border-radius: 50%;
-    outline: 2px solid var(--clr-text);
 
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-primary);
 
+    overflow: hidden;
+
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .profile-image {
     --image-size: 256px;
 
     width: var(--image-size);
     height: var(--image-size);
-
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25);
   }
 
   h1.hero-title {
@@ -144,14 +152,17 @@ const title = 'Austin Hagel';
 <BaseLayout title={title}>
   <section class='hero-wrapper max-width'>
     <div class='hero-content-wrapper'>
-      <Image
-        src={profilePicture}
-        alt='A photo of Austin'
-        loading='lazy'
-        decoding='async'
-        width='256'
-        class='profile-image'
-      />
+      <div class='image-frame'>
+        <Image
+          src={profilePicture}
+          alt='A photo of Austin'
+          loading='lazy'
+          decoding='async'
+          width='256'
+          class='profile-image'
+        />
+      </div>
+
       <h1 class='hero-title'>Austin Hagel</h1>
     </div>
 
