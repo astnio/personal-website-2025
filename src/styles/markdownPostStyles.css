@@ -45,39 +45,6 @@ blockquote > blockquote::before {
   list-style-type: none;
 }
 
-.max-width {
-  max-width: 1024px;
-  margin-inline: auto;
-}
-
-#drawer-wrapper {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  overflow: hidden;
-
-  pointer-events: none;
-}
-
-.visually-hidden {
-  position: absolute !important;
-  top: -9999px;
-  left: -9999px;
-
-  height: 1px;
-  width: 1px;
-
-  overflow: hidden;
-
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px, 1px);
-}
-
 html.dark .astro-code,
 html.dark .astro-code span {
   color: var(--shiki-dark);
