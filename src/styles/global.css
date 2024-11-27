@@ -203,9 +203,9 @@ body[data-scroll-active='false'] {
   overflow-y: hidden;
 }
 
-body[data-scroll-active='false'][data-page-height-scroll='true'] > main {
+/* body[data-scroll-active='false'][data-page-height-scroll='true'] > main {
   margin-right: 1rem;
-}
+} */
 
 a,
 p,
