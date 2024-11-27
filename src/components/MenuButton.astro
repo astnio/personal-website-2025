@@ -43,7 +43,8 @@
 
 <button
   class='menu-btn'
-  id='btn-open-nav-drawer'>
+  id='btn-open-nav-drawer'
+  transition:persist>
   <div class='menu-btn-line-1 menu-btn-line'></div>
   <div class='menu-btn-line-2 menu-btn-line'></div>
   <div class='menu-btn-line-3 menu-btn-line'></div>
@@ -54,13 +55,15 @@
     const navDrawer = document.getElementById('nav-drawer');
     const drawerOverlay = document.getElementById('overlay');
     const btnOpenMenu = document.getElementById('btn-open-nav-drawer');
-    const drawerWrapper = document.getElementById('drawer-wrapper');
+    const overlay = document.getElementById('overlay');
 
-    btnOpenMenu?.addEventListener('click', () => {
+    function openDrawer() {
+      overlay!.setAttribute('data-active', 'true');
       navDrawer?.setAttribute('data-active', 'true');
       drawerOverlay?.setAttribute('data-active', 'true');
       document.body.setAttribute('data-scroll-active', 'false');
-      drawerWrapper!.style.pointerEvents = 'all';
-    });
+    }
+
+    btnOpenMenu?.addEventListener('click', openDrawer);
   });
 </script>

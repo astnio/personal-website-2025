@@ -73,7 +73,11 @@ const navLinks = links.internalLinks;
   {
     navLinks.map((navLink) => (
       <li>
-        <a href={navLink.url}>{navLink.label}</a>
+        <a
+          class='nav-link'
+          href={navLink.url}>
+          {navLink.label}
+        </a>
       </li>
     ))
   }

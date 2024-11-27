@@ -2,64 +2,26 @@
 import '../styles/fonts.css';
 import '../styles/global.css';
 import '../styles/boxicons.min.css';
+
+import CommonHead from '../components/CommonHead.astro';
+import NavDrawer from '../components/NavDrawer.astro';
 import Navigation from '../components/AppBar.astro';
 import Footer from '../components/Footer.astro';
-import NavDrawer from '../components/NavDrawer.astro';
+import { fade } from 'astro:transitions';
 
 const { title } = Astro.props;
 ---
 
 <html lang='en'>
-  <head>
-    <meta charset='utf-8' />
-
-    <link
-      rel='apple-touch-icon'
-      sizes='180x180'
-      href='/favicon/apple-touch-icon.png'
-    />
-    <link
-      rel='icon'
-      type='image/png'
-      sizes='32x32'
-      href='/favicon/favicon-32x32.png'
-    />
-    <link
-      rel='icon'
-      type='image/png'
-      sizes='16x16'
-      href='/favicon/favicon-16x16.png'
-    />
-    <link
-      rel='manifest'
-      href='/favicon/site.webmanifest'
-    />
-
-    <meta
-      name='viewport'
-      content='width=device-width'
-    />
-    <meta
-      name='generator'
-      content={Astro.generator}
-    />
-    <title>{title}</title>
-  </head>
+  <CommonHead title={title} />
   <body>
-    <div id='drawer-wrapper'>
-      <NavDrawer />
-    </div>
+    <NavDrawer />
     <Navigation />
-    <main>
+    <main transition:animate={fade({ duration: '0.4s' })}>
       <slot />
     </main>
     <Footer />
   </body>
 </html>
 
-<script>
-  import 'boxicons';
-  import initColorSchemeDetector from '../scripts/colorSchemeDetector';
-
-  initColorSchemeDetector();
-</script>
+<script src='../scripts/main.js'></script>

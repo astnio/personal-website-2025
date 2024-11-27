@@ -98,6 +98,12 @@ import NavLinks from './NavLinks.astro';
     visibility: hidden;
   }
 
+  #overlay[data-active='true'] {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+
   .logo-wrapper {
     display: flex;
     align-items: center;
@@ -132,7 +138,8 @@ import NavLinks from './NavLinks.astro';
 
 <div
   data-active='false'
-  id='nav-drawer'>
+  id='nav-drawer'
+  transition:persist>
   <div class='logo-wrapper'>
     <Logo inDrawer='true' />
   </div>
@@ -147,24 +154,30 @@ import NavLinks from './NavLinks.astro';
 
 <div
   data-active='false'
-  id='overlay'>
+  id='overlay'
+  transition:persist>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const drawerOverlay = document.getElementById('overlay');
+    const overlay = document.getElementById('overlay');
     const navDrawer = document.getElementById('nav-drawer');
     const drawerWrapper = document.getElementById('drawer-wrapper');
+    const navLinks = document.querySelectorAll('.nav-link');
 
     function closeDrawer() {
       navDrawer!.setAttribute('data-active', 'false');
-      drawerOverlay!.setAttribute('data-active', 'false');
+      overlay!.setAttribute('data-active', 'false');
       document.body.setAttribute('data-scroll-active', 'true');
       drawerWrapper!.style.pointerEvents = 'none';
     }
 
-    drawerOverlay!.addEventListener('click', () => {
+    overlay!.addEventListener('click', () => {
       closeDrawer();
+    });
+
+    navLinks.forEach((navLink) => {
+      navLink.addEventListener('click', closeDrawer);
     });
 
     /*
