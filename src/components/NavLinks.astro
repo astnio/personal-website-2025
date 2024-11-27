@@ -42,6 +42,24 @@ const navLinks = links.internalLinks;
     width: 100%;
   }
 
+  a[data-is-current-page='true'] {
+    color: var(--clr-surface-2);
+  }
+
+  a[data-is-current-page='true']:hover {
+    color: var(--clr-overlay-1);
+  }
+
+  a[data-is-current-page='true']::after {
+    background-color: var(--clr-surface-2);
+    width: 100%;
+  }
+
+  a[data-is-current-page='true']:hover::after {
+    background-color: var(--clr-overlay-1);
+    width: 100%;
+  }
+
   ul.nav-links {
     display: flex;
     flex-direction: row;
@@ -71,14 +89,21 @@ const navLinks = links.internalLinks;
 
 <ul class='nav-links'>
   {
-    navLinks.map((navLink) => (
-      <li>
-        <a
-          class='nav-link'
-          href={navLink.url}>
-          {navLink.label}
-        </a>
-      </li>
-    ))
+    navLinks.map((navLink) => {
+      const isActive =
+        Astro.url.pathname === navLink.url ||
+        (navLink.url !== '/' && Astro.url.pathname.startsWith(navLink.url));
+
+      return (
+        <li>
+          <a
+            class='nav-link'
+            href={navLink.url}
+            data-is-current-page={isActive.toString()}>
+            {navLink.label}
+          </a>
+        </li>
+      );
+    })
   }
 </ul>
