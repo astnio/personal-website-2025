@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-import profilePicture from '../images/portrait_transbg_nooutline.png';
+import profilePicture from '../images/hero_profile_image/lorelei-2-removebg.png';
 import LinkList from '../components/HeroLinks.astro';
 import data from '../scripts/data.json';
 
@@ -38,7 +38,7 @@ const title = 'Austin Hagel';
 
     background-color: var(--clr-surface-0);
 
-    --image-size: 12rem;
+    --image-size: 256px;
 
     width: var(--image-size);
     height: var(--image-size);
@@ -111,10 +111,6 @@ const title = 'Austin Hagel';
       gap: 8rem;
     }
 
-    .profile-image {
-      --image-size: 18rem;
-    }
-
     h1.hero-title {
       font-size: 2.8rem;
     }
@@ -122,7 +118,7 @@ const title = 'Austin Hagel';
     .hero-content-wrapper {
       grid-row: 1;
       justify-self: end;
-      margin-top: 2.4rem;
+      margin-top: 1.8rem;
     }
 
     .hero-paragraph-wrapper {
@@ -153,7 +149,7 @@ const title = 'Austin Hagel';
         alt='A photo of Austin'
         loading='lazy'
         decoding='async'
-        width='512'
+        width='256'
         class='profile-image'
       />
       <h1 class='hero-title'>Austin Hagel</h1>
