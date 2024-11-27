@@ -126,7 +126,7 @@ const navLinks = links.internalLinks;
 
       width: 100%;
 
-      background-color: var(--clr-crust);
+      background-color: var(--clr-mantle);
       outline: 1px solid var(--clr-surface-0);
 
       padding-inline: 1rem;
@@ -142,7 +142,7 @@ const navLinks = links.internalLinks;
     }
 
     a:hover {
-      background-color: var(--clr-mantle);
+      background-color: var(--clr-base);
       outline: 1px solid var(--clr-surface-1);
     }
 
@@ -151,7 +151,9 @@ const navLinks = links.internalLinks;
     }
 
     a[data-is-current-page='true'] {
-      background-color: var(--clr-base);
+      background-color: var(--clr-crust);
+      outline: 1px solid var(--clr-base);
+
     }
 
     a::before {
