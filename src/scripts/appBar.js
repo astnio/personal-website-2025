@@ -54,6 +54,10 @@ document.addEventListener('astro:page-load', () => {
     updateAppBar();
 
     prevScrollPos = currentScrollPos;
+
+    if (currentScrollPos <= 1) {
+      revealAppBar();
+    }
   }
 
   window.addEventListener('scroll', handleAppBarOnScroll);

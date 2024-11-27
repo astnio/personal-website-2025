@@ -1,5 +1,4 @@
 document.addEventListener('astro:page-load', () => {
-  console.log('heyyy');
   const navDrawer = document.getElementById('nav-drawer');
   const drawerOverlay = document.getElementById('overlay');
   const btnOpenMenu = document.getElementById('btn-open-nav-drawer');
