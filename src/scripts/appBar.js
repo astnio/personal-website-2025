@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('astro:page-load', () => {
   const navbar = document.getElementById('app-bar');
 
   const scrollActivationDistance = 150;
