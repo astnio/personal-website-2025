@@ -7,12 +7,17 @@ const navLinks = links.internalLinks;
   a {
     position: relative;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+
     text-decoration: none;
     text-transform: capitalize;
 
     padding-block: 0.4rem;
 
-    transition-property: color;
+    transition-property: color, opacity;
     transition-duration: 0.1s;
     transition-timing-function: ease-out;
   }
@@ -43,21 +48,41 @@ const navLinks = links.internalLinks;
   }
 
   a[data-is-current-page='true'] {
-    color: var(--clr-surface-2);
+    color: var(--clr-secondary);
+
+    opacity: 0.8;
   }
 
   a[data-is-current-page='true']:hover {
-    color: var(--clr-overlay-1);
-  }
-
-  a[data-is-current-page='true']::after {
-    background-color: var(--clr-surface-2);
-    width: 100%;
+    color: var(--clr-secondary);
+    opacity: 1;
   }
 
   a[data-is-current-page='true']:hover::after {
-    background-color: var(--clr-overlay-1);
+    background-color: var(--clr-secondary);
     width: 100%;
+  }
+
+  a::before {
+    content: '\203A';
+
+    position: absolute;
+    left: 0;
+    top: -0.1rem;
+
+    transform: translateX(0);
+    opacity: 0;
+
+    font-size: 1.6rem;
+
+    transition-property: transform, opacity;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a[data-is-current-page='true']::before {
+    transform: translateX(-0.75rem);
+    opacity: 1;
   }
 
   ul.nav-links {
@@ -83,6 +108,14 @@ const navLinks = links.internalLinks;
       height: 100%;
 
       font-size: 1.4rem;
+    }
+
+    a::before {
+      font-size: 2rem;
+    }
+
+    a[data-is-current-page='true']::before {
+      transform: translateX(-1rem);
     }
   }
 </style>
