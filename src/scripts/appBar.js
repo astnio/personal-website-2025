@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('app-bar');
 
-  let prevScrollPos = window.scrollY;
-
-  const scrollActivationHeight = 150;
+  const scrollActivationDistance = 150;
 
   let totalScrollDistance = 0;
-  let userIsScrollingDown = true;
-  let userWasScrollingDown = false;
+  let prevScrollPos = window.scrollY;
+  let isScrollingDown = true;
+  let wasScrollingDown = false;
 
   function hideAppBar() {
     navbar.style.transform = 'translateY(-100%)';
@@ -17,40 +16,42 @@ document.addEventListener('DOMContentLoaded', () => {
     navbar.style.transform = 'translateY(0%)';
   }
 
-  function updateScrollDireciton(currScrollDir) {
-    if (currScrollDir > 0) {
-      userIsScrollingDown = true;
-    } else if (currScrollDir < 0) {
-      userIsScrollingDown = false;
+  function updateScrollDireciton(scrollDir) {
+    if (scrollDir > 0) {
+      isScrollingDown = true;
+    } else if (scrollDir < 0) {
+      isScrollingDown = false;
     }
 
-    if (userIsScrollingDown !== userWasScrollingDown) {
+    if (isScrollingDown !== wasScrollingDown) {
       totalScrollDistance = 0;
     }
 
-    userWasScrollingDown = userIsScrollingDown;
+    wasScrollingDown = isScrollingDown;
   }
 
-  function handleAppBarOnScroll() {
-    let currentScrollPos = window.scrollY;
-
-    let currentScrollDirection = currentScrollPos - prevScrollPos;
-    let currentScrollDistance = Math.abs(currentScrollPos - prevScrollPos);
-
-    totalScrollDistance = totalScrollDistance + currentScrollDistance;
-
-    updateScrollDireciton(currentScrollDirection);
-
-    if (!userIsScrollingDown && totalScrollDistance > scrollActivationHeight) {
+  function updateAppBar() {
+    if (!isScrollingDown && totalScrollDistance > scrollActivationDistance) {
       revealAppBar();
       totalScrollDistance = 0;
     } else if (
-      userIsScrollingDown &&
-      totalScrollDistance > scrollActivationHeight
+      isScrollingDown &&
+      totalScrollDistance > scrollActivationDistance
     ) {
       hideAppBar();
       totalScrollDistance = 0;
     }
+  }
+
+  function handleAppBarOnScroll() {
+    let currentScrollPos = window.scrollY;
+    let scrollDirection = currentScrollPos - prevScrollPos;
+    let scrollDistance = Math.abs(scrollDirection);
+
+    totalScrollDistance += scrollDistance;
+
+    updateScrollDireciton(scrollDirection);
+    updateAppBar();
 
     prevScrollPos = currentScrollPos;
   }
