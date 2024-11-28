@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (revealProgress > 0) {
       revealProgressInverse = Math.abs(revealProgress - 100);
-      navbar.style.transform = `translateY(-${revealProgressInverse}%)`;
+      navbar!.style.transform = `translateY(-${revealProgressInverse}%)`;
     } else if (revealProgress <= 0) {
       return;
     }
