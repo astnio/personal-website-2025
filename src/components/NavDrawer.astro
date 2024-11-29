@@ -156,7 +156,10 @@ import NavLinks from './NavLinks.astro';
 
 <div
   data-active='false'
-  id='overlay'>
+  id='overlay'
+  aria-label='Close Navigation Menu'
+  role='button'
+  tabindex='0'>
 </div>
 
 <script src='../scripts/navDrawer.ts'></script>
