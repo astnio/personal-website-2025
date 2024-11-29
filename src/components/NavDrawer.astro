@@ -29,7 +29,9 @@ import NavLinks from './NavLinks.astro';
 
     overflow: hidden;
 
-    transition-property: transform;
+    visibility: visible;
+
+    transition-property: transform, visibility;
     transition-duration: 0.25s;
     transition-timing-function: ease-in-out;
 
@@ -90,6 +92,7 @@ import NavLinks from './NavLinks.astro';
 
   #nav-drawer[data-active='false'] {
     transform: translateX(100%);
+    visibility: hidden;
   }
 
   #overlay[data-active='false'] {
@@ -136,7 +139,7 @@ import NavLinks from './NavLinks.astro';
   }
 </style>
 
-<div
+<aside
   data-active='false'
   id='nav-drawer'>
   <div class='logo-wrapper'>
@@ -149,7 +152,7 @@ import NavLinks from './NavLinks.astro';
   <div class='light-toggle-wrapper'>
     <ColorSchemeToggle />
   </div>
-</div>
+</aside>
 
 <div
   data-active='false'
