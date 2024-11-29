@@ -4,6 +4,7 @@ import ColorSchemeToggle from './ColorSchemeToggle.astro';
 import ContactButton from './ContactButton.astro';
 import MenuButton from './OpenDrawerButton.astro';
 import NavLinks from './NavLinks.astro';
+import OpenNavDialogButton from './OpenNavDialogButton.astro';
 ---
 
 <style>
@@ -75,6 +76,7 @@ import NavLinks from './NavLinks.astro';
 
     .menu-btn-wrapper {
       display: flex;
+      gap: 1rem;
     }
   }
 </style>
@@ -91,6 +93,7 @@ import NavLinks from './NavLinks.astro';
     </div>
     <div class='menu-btn-wrapper'>
       <MenuButton />
+      <OpenNavDialogButton />
     </div>
   </div>
 </nav>
