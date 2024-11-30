@@ -28,6 +28,23 @@ const title = 'Blog';
     padding: 0;
   }
 
+  .blog-topics-nav {
+    grid-column: span 2;
+    margin-bottom: 4rem;
+  }
+
+  .blog-topics-list {
+    display: flex;
+    flex-direction: row;
+
+    background-color: var(--clr-base);
+
+    padding: 1rem;
+
+    border: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-wrapper);
+  }
+
   .blog-nav-list-title {
     display: flex;
     align-items: center;
@@ -48,6 +65,9 @@ const title = 'Blog';
   }
 
   .blog-post-cards-list {
+    display: flex;
+    gap: 1rem;
+
     width: 100%;
   }
 
@@ -70,11 +90,34 @@ const title = 'Blog';
 
   .blog-nav-list {
     display: flex;
+    gap: 1rem;
   }
 
   .category-list {
     display: flex;
     gap: 0.6rem;
+  }
+
+  .tags-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem 0.6rem;
+  }
+
+  .blog-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--clr-surface-0);
+
+    padding-inline: 1em;
+    padding-block: 0.2rem;
+
+    border-radius: var(--radius-pill);
+
+    text-transform: lowercase;
   }
 
   .wrapper {
@@ -84,10 +127,7 @@ const title = 'Blog';
   }
 
   @media screen and (min-width: 768px) {
-    ul {
-      display: flex;
-      gap: 2rem;
-
+    .blog-post-cards-list {
       padding-right: 1rem;
     }
 
@@ -113,47 +153,8 @@ const title = 'Blog';
       margin-top: clamp(4rem, 20vh, 24rem);
     }
 
-    .blog-topics-nav {
-      grid-column: span 2;
-      margin-bottom: 4rem;
-    }
-
-    .blog-topics-list {
-      display: flex;
-      flex-direction: row;
-
-      background-color: var(--clr-base);
-
-      padding: 1rem;
-
-      border: 1px solid var(--clr-surface-0);
-      border-radius: var(--radius-wrapper);
-    }
-
     .blog-nav-list-title {
       /* margin-bottom: 2rem; */
-    }
-
-    .tags-list {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 1rem 0.6rem;
-    }
-
-    .blog-tag {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background-color: var(--clr-surface-0);
-
-      padding-inline: 1em;
-      padding-block: 0.2rem;
-
-      border-radius: var(--radius-pill);
-
-      text-transform: lowercase;
     }
   }
 </style>
