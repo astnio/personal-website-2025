@@ -62,6 +62,12 @@
   );
 
   --bg-pattern-opacity: 1;
+
+  --radius-button: 4pt;
+  --radius-card: 4pt;
+  --radius-wrapper: 4pt;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
 }
 
 :root[data-color-scheme='light'] {
@@ -128,4 +134,10 @@
   );
 
   --bg-pattern-opacity: 0.4;
+
+  --radius-button: 4pt;
+  --radius-card: 4pt;
+  --radius-wrapper: 4pt;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
 }
