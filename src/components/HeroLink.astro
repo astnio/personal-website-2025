@@ -24,7 +24,6 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
     height: 2.4rem;
     min-width: 16rem;
 
-
     transition-property: color, background-color, outline;
     transition-duration: 0.1s;
     transition-timing-function: ease-out;
@@ -45,8 +44,6 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
     height: 100%;
 
     background-color: var(--clr-base);
-
-    /* opacity: 0.4; */
 
     z-index: -1;
   }
@@ -74,13 +71,13 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
     font-size: 1rem;
     font-weight: 500;
 
-    transition-property: margin-left;
+    transition-property: transform;
     transition-duration: 0.35s;
     transition-timing-function: ease-out;
   }
 
   a:hover > .link-label {
-    margin-left: 3.2rem;
+    transform: translateX(-1rem);
   }
 
   .link-icon-wrapper {
@@ -96,13 +93,14 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
 
     height: 100%;
 
-    transition-property: background-color;
+    transition-property: background-color, color;
     transition-duration: 0.15s;
     transition-timing-function: ease-out;
   }
 
   a:hover > .link-icon-wrapper {
     background-color: var(--clr-base);
+    color: var(--clr-primary);
   }
 
   .link-icon {
@@ -112,11 +110,10 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
 
     font-size: 1.4rem;
 
-
     height: 100%;
   }
 
-  a::after {
+  .link-label::after {
     content: '\00BB';
 
     position: absolute;
@@ -134,13 +131,14 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
     opacity: 0;
 
     font-size: 2rem;
+    color: var(--clr-primary);
 
     transition-property: opacity, right;
     transition-duration: 0.35s;
     transition-timing-function: ease-out;
   }
 
-  a:hover::after {
+  a:hover > .link-label::after {
     opacity: 1.0;
     right: 0;    
   }
@@ -149,7 +147,12 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
 
 <a class="hero-link" href={url} target={newTab ? `_blank` : ''}>
   {
-  iconClass && (<div class="link-icon-wrapper"><span class=`link-icon ${iconClass}`></span></div>)
+  iconClass && ( 
+  <div class="link-icon-wrapper">
+    <span class=`link-icon ${iconClass}`>
+    </span>
+  </div>
+)
 }
   <span class="link-label">{label}</span>
 </a>

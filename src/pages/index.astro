@@ -115,8 +115,9 @@ const title = 'Austin Hagel';
   @media screen and (min-width: 768px) {
     .hero-wrapper {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: auto 1fr;
       gap: 8rem;
+      width: 100%;
     }
 
     h1.hero-title {
@@ -137,7 +138,8 @@ const title = 'Austin Hagel';
 
     .hero-info-wrapper {
       grid-row: 1;
-      width: 20rem;
+      /* width: 20rem; */
+      width: 100%;
       justify-self: start;
     }
 
