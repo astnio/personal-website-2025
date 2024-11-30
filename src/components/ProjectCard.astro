@@ -7,8 +7,8 @@ const { url, title, description, tags, githubUrl, demoUrl, projectPageUrl } =
   .project-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: space-between;
     gap: 1rem;
 
     min-height: 40rem;
@@ -18,10 +18,13 @@ const { url, title, description, tags, githubUrl, demoUrl, projectPageUrl } =
     border-radius: var(--radius-card);
 
     outline: 1px solid var(--clr-surface-0);
+
+    padding: 2rem;
   }
 
   ul.tags-list {
     display: flex;
+    flex-direction: row;
     gap: 1rem;
 
     list-style: none;
@@ -45,6 +48,7 @@ const { url, title, description, tags, githubUrl, demoUrl, projectPageUrl } =
 
   ul.links-list {
     display: flex;
+    flex-direction: row;
     gap: 1rem;
 
     list-style: none;
