@@ -9,15 +9,6 @@ const title = 'Blog';
 ---
 
 <style>
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-inline: 1rem;
-    width: 100%;
-  }
-
   a {
     text-decoration: none;
   }
@@ -45,43 +36,106 @@ const title = 'Blog';
     width: 100%;
   }
 
-  .other-wrapper {
+  .blog-nav-sublist-wrapper {
     display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    padding: 2rem;
 
     background-color: var(--clr-base);
+    width: 100%;
+
+    border-radius: var(--radius-wrapper);
+    border: 1px solid var(--clr-surface-0);
+  }
+
+  .blog-nav-list {
+    display: flex;
+  }
+
+  .wrapper {
+    padding-inline: 1rem;
+
+    width: 100%;
   }
 
   @media screen and (min-width: 768px) {
     ul {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
       gap: 2rem;
 
-      padding-right: 4rem;
+      padding-right: 1rem;
     }
 
     .wrapper {
       display: grid;
       grid-template-columns: 1fr auto;
+      align-items: start;
     }
 
-    .other-wrapper {
+    .blog-nav-list {
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      align-items: start;
 
       font-size: 1.2rem;
-      padding-block: 2rem;
-      padding-inline: 1rem;
 
       margin-left: auto;
 
-      max-width: 8rem;
-      min-height: 38rem;
+      max-width: 18rem;
     }
 
     .blog-title {
       grid-column: span 2;
+      margin-top: clamp(4rem, 20vh, 24rem);
+    }
+
+    .blog-topics-nav {
+      grid-column: span 2;
+      margin-bottom: 4rem;
+    }
+
+    .blog-topics-list {
+      display: flex;
+      flex-direction: row;
+
+      background-color: var(--clr-base);
+
+      padding: 1rem;
+
+      border: 1px solid var(--clr-surface-0);
+      border-radius: var(--radius-wrapper);
+    }
+
+    .blog-nav-sublist {
+      display: flex;
+      gap: 0;
+    }
+
+    .blog-nav-list-title {
+      margin-bottom: 2rem;
+    }
+
+    .tags-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem 0.6rem;
+    }
+
+    .blog-tag {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: var(--clr-surface-0);
+
+      padding-inline: 1em;
+      padding-block: 0.2rem;
+
+      border-radius: var(--radius-pill);
+
+      text-transform: lowercase;
     }
   }
 </style>
@@ -89,6 +143,45 @@ const title = 'Blog';
 <BaseLayout title={title}>
   <div class='wrapper max-width'>
     <h1 class='blog-title'>Blog</h1>
+    <nav class='blog-topics-nav'>
+      <ul class='blog-topics-list'>
+        <li class='blog-topics-list-item'>
+          <a
+            class='blog-topics-link'
+            href='#'
+            >Topic 1</a
+          >
+        </li>
+        <li class='blog-topics-list-item'>
+          <a
+            class='blog-topics-link'
+            href='#'
+            >Topic 2</a
+          >
+        </li>
+        <li class='blog-topics-list-item'>
+          <a
+            class='blog-topics-link'
+            href='#'
+            >Topic 3</a
+          >
+        </li>
+        <li class='blog-topics-list-item'>
+          <a
+            class='blog-topics-link'
+            href='#'
+            >Topic 4</a
+          >
+        </li>
+        <li class='blog-topics-list-item'>
+          <a
+            class='blog-topics-link'
+            href='#'
+            >Topic 5</a
+          >
+        </li>
+      </ul>
+    </nav>
     <nav class='blog-post-cards-wrapper'>
       <ul class='blog-post-cards-list'>
         {
@@ -105,13 +198,31 @@ const title = 'Blog';
         }
       </ul>
     </nav>
-    <nav class='other-links'>
-      <ul class='other-wrapper'>
-        <li>
-          <a href='/blog/tags'>Tags</a>
+    <nav class='blog-nav'>
+      <ul class='blog-nav-list'>
+        <li class='blog-nav-sublist-wrapper'>
+          <a
+            href='/blog/categories'
+            class='blog-nav-list-title'
+            >Categories</a
+          >
+          <ul class='blog-nav-sublist category-list'>
+            <li>Category 1</li>
+            <li>Category 2</li>
+            <li>Category 3</li>
+          </ul>
         </li>
-        <li>
-          <a href='/blog/categories'>Categories</a>
+        <li class='blog-nav-sublist-wrapper'>
+          <a
+            href='/blog/tags'
+            class='blog-nav-list-title'
+            >Tags</a
+          >
+          <ul class='blog-nav-sublist tags-list'>
+            <li class='blog-tag'>Tag 1</li>
+            <li class='blog-tag'>Tag 2</li>
+            <li class='blog-tag'>Tag 3</li>
+          </ul>
         </li>
       </ul>
     </nav>
