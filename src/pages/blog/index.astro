@@ -28,6 +28,21 @@ const title = 'Blog';
     padding: 0;
   }
 
+  .blog-nav-list-title {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    gap: 0.6rem;
+
+    font-weight: 500;
+
+    background-color: var(--clr-mantle);
+
+    width: 100%;
+    padding: 1rem;
+  }
+
   .blog-post-cards-wrapper {
     width: 100%;
   }
@@ -41,8 +56,6 @@ const title = 'Blog';
     flex-direction: column;
     align-items: start;
 
-    padding: 2rem;
-
     background-color: var(--clr-base);
     width: 100%;
 
@@ -50,8 +63,18 @@ const title = 'Blog';
     border: 1px solid var(--clr-surface-0);
   }
 
+  .blog-nav-sublist {
+    padding-inline: 1rem;
+    padding-block: 1rem;
+  }
+
   .blog-nav-list {
     display: flex;
+  }
+
+  .category-list {
+    display: flex;
+    gap: 0.6rem;
   }
 
   .wrapper {
@@ -107,13 +130,8 @@ const title = 'Blog';
       border-radius: var(--radius-wrapper);
     }
 
-    .blog-nav-sublist {
-      display: flex;
-      gap: 0;
-    }
-
     .blog-nav-list-title {
-      margin-bottom: 2rem;
+      /* margin-bottom: 2rem; */
     }
 
     .tags-list {
@@ -203,9 +221,10 @@ const title = 'Blog';
         <li class='blog-nav-sublist-wrapper'>
           <a
             href='/blog/categories'
-            class='blog-nav-list-title'
-            >Categories</a
-          >
+            class='blog-nav-list-title'>
+            <span class='bx bxs-category'></span>
+            <span>Categories</span>
+          </a>
           <ul class='blog-nav-sublist category-list'>
             <li>Category 1</li>
             <li>Category 2</li>
@@ -215,9 +234,10 @@ const title = 'Blog';
         <li class='blog-nav-sublist-wrapper'>
           <a
             href='/blog/tags'
-            class='blog-nav-list-title'
-            >Tags</a
-          >
+            class='blog-nav-list-title'>
+            <span class='bx bxs-tag'></span>
+            <span>Tags</span>
+          </a>
           <ul class='blog-nav-sublist tags-list'>
             <li class='blog-tag'>Tag 1</li>
             <li class='blog-tag'>Tag 2</li>
