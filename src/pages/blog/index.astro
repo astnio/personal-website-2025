@@ -59,6 +59,11 @@ const title = 'Blog';
       padding-right: 4rem;
     }
 
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+
     .other-wrapper {
       flex-direction: column;
       align-items: center;
@@ -73,13 +78,17 @@ const title = 'Blog';
       max-width: 8rem;
       min-height: 38rem;
     }
+
+    .blog-title {
+      grid-column: span 2;
+    }
   }
 </style>
 
 <BaseLayout title={title}>
   <div class='wrapper max-width'>
+    <h1 class='blog-title'>Blog</h1>
     <nav class='blog-post-cards-wrapper'>
-      <h1>Blog</h1>
       <ul class='blog-post-cards-list'>
         {
           allPosts.map((post) => (
