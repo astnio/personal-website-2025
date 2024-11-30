@@ -129,19 +129,19 @@
     color: var(--clr-texts);
   }
 
-  input:not(:checked) ~ .light-toggle-icon > #light-toggle-icon-light {
+  input:not(:checked) ~ .light-toggle-icon > .light-toggle-icon-light {
     display: flex;
   }
 
-  input:not(:checked) ~ .light-toggle-icon > #light-toggle-icon-dark {
+  input:not(:checked) ~ .light-toggle-icon > .light-toggle-icon-dark {
     display: none;
   }
 
-  input:checked ~ .light-toggle-icon > #light-toggle-icon-dark {
+  input:checked ~ .light-toggle-icon > .light-toggle-icon-dark {
     display: flex;
   }
 
-  input:checked ~ .light-toggle-icon > #light-toggle-icon-light {
+  input:checked ~ .light-toggle-icon > .light-toggle-icon-light {
     display: none;
   }
 </style>
@@ -164,14 +164,8 @@
     />
     <span class='slider round'></span>
     <div class='light-toggle-icon'>
-      <span
-        id='light-toggle-icon-light'
-        class='bx bxs-sun'
-      ></span>
-      <span
-        id='light-toggle-icon-dark'
-        class='bx bxs-moon'
-      ></span>
+      <span class='light-toggle-icon-light bx bxs-sun'></span>
+      <span class='light-toggle-icon-dark bx bxs-moon'></span>
     </div>
   </label>
 </div>
