@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.chk-light-toggle');
   const lightToggleLabels: NodeListOf<HTMLInputElement> =
     document.querySelectorAll('.light-toggle-theme-label');
+  const blogBgImageLight = document.querySelector('.blog-bg-img-light');
+  const blogBgImageDark = document.querySelector('.blog-bg-img-dark');
 
   function getSavedColorScheme() {
     return localStorage.getItem('colorScheme');
@@ -19,9 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (colorScheme === 'dark') {
       documentRoot!.classList.remove('light');
       documentRoot!.classList.add('dark');
+      blogBgImageDark!.setAttribute('data-active', 'true');
+      blogBgImageLight!.setAttribute('data-active', 'false');
     } else if (colorScheme === 'light') {
       documentRoot!.classList.add('light');
       documentRoot!.classList.remove('dark');
+      blogBgImageDark!.setAttribute('data-active', 'false');
+      blogBgImageLight!.setAttribute('data-active', 'true');
     }
   }
 

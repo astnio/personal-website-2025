@@ -1,5 +1,7 @@
 export default function initColorSchemeDetector() {
   const documentRoot = document.querySelector(':root');
+  const blogBgImageLight = document.querySelector('.blog-bg-img-light');
+  const blogBgImageDark = document.querySelector('.blog-bg-img-dark');
 
   const prefersDarkTheme = window.matchMedia(
     '(prefers-color-scheme: dark)'
@@ -19,9 +21,13 @@ export default function initColorSchemeDetector() {
     if (colorScheme === 'dark') {
       documentRoot!.classList.remove('light');
       documentRoot!.classList.add('dark');
+      blogBgImageDark!.setAttribute('data-active', 'true');
+      blogBgImageLight!.setAttribute('data-active', 'false');
     } else if (colorScheme === 'light') {
       documentRoot!.classList.add('light');
       documentRoot!.classList.remove('dark');
+      blogBgImageDark!.setAttribute('data-active', 'false');
+      blogBgImageLight!.setAttribute('data-active', 'true');
     }
   }
 

@@ -167,6 +167,21 @@ const title = 'Blog';
     width: 100%;
   }
 
+  .blog-bg-img-dark[data-active='true'] {
+    display: flex;
+  }
+
+  .blog-bg-img-dark[data-active='false'] {
+    display: none;
+  }
+
+  .blog-bg-img-light[data-active='true'] {
+    display: flex;
+  }
+
+  .blog-bg-img-light[data-active='false'] {
+    display: none;
+  }
   @media screen and (min-width: 768px) {
     .blog-bg-image-wrapper {
       max-height: 36rem;
@@ -207,9 +222,25 @@ const title = 'Blog';
 </style>
 
 <BaseLayout title={title}>
-  <div class='blog-bg-image-wrapper'>
+  <div
+    data-active='true'
+    class='blog-bg-image-wrapper blog-bg-img-dark'>
     <Image
       src={darkBgImage}
+      alt='Landscape'
+      class='blog-bg-image'
+      decoding='async'
+      loading='lazy'
+      width={2560}
+      height={1200}
+    />
+  </div>
+
+  <div
+    data-active='false'
+    class='blog-bg-image-wrapper blog-bg-img-light'>
+    <Image
+      src={lightBgImage}
       alt='Landscape'
       class='blog-bg-image'
       decoding='async'
