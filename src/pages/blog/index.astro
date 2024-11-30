@@ -215,7 +215,7 @@ const title = 'Blog';
         </li>
       </ul>
     </nav>
-    <nav class='blog-post-cards-wrapper'>
+    <section class='blog-post-cards-wrapper'>
       <ul class='blog-post-cards-list'>
         {
           allPosts.map((post) => (
@@ -230,36 +230,38 @@ const title = 'Blog';
           ))
         }
       </ul>
-    </nav>
-    <nav class='blog-nav'>
-      <ul class='blog-nav-list'>
-        <li class='blog-nav-sublist-wrapper'>
-          <a
-            href='/blog/categories'
-            class='blog-nav-list-title'>
-            <span class='bx bxs-category'></span>
-            <span>Categories</span>
-          </a>
-          <ul class='blog-nav-sublist category-list'>
-            <li>Category 1</li>
-            <li>Category 2</li>
-            <li>Category 3</li>
-          </ul>
-        </li>
-        <li class='blog-nav-sublist-wrapper'>
-          <a
-            href='/blog/tags'
-            class='blog-nav-list-title'>
-            <span class='bx bxs-tag'></span>
-            <span>Tags</span>
-          </a>
-          <ul class='blog-nav-sublist tags-list'>
-            <li class='blog-tag'>Tag 1</li>
-            <li class='blog-tag'>Tag 2</li>
-            <li class='blog-tag'>Tag 3</li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
+    </section>
+    <aside>
+      <nav class='blog-nav'>
+        <ul class='blog-nav-list'>
+          <li class='blog-nav-sublist-wrapper'>
+            <a
+              href='/blog/categories'
+              class='blog-nav-list-title'>
+              <span class='bx bxs-category'></span>
+              <span>Categories</span>
+            </a>
+            <ul class='blog-nav-sublist category-list'>
+              <li>Category 1</li>
+              <li>Category 2</li>
+              <li>Category 3</li>
+            </ul>
+          </li>
+          <li class='blog-nav-sublist-wrapper'>
+            <a
+              href='/blog/tags'
+              class='blog-nav-list-title'>
+              <span class='bx bxs-tag'></span>
+              <span>Tags</span>
+            </a>
+            <ul class='blog-nav-sublist tags-list'>
+              <li class='blog-tag'>Tag 1</li>
+              <li class='blog-tag'>Tag 2</li>
+              <li class='blog-tag'>Tag 3</li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
   </div>
 </BaseLayout>
