@@ -9,6 +9,7 @@ const title = 'Blog';
 ---
 
 <style>
+  /* *** General *** */
   a {
     text-decoration: none;
   }
@@ -28,6 +29,8 @@ const title = 'Blog';
     padding: 0;
   }
 
+  /* *** Blog Topics Navigation *** */
+
   .blog-topics-nav {
     grid-column: span 2;
     margin-bottom: 4rem;
@@ -45,6 +48,8 @@ const title = 'Blog';
     border-radius: var(--radius-wrapper);
   }
 
+  /* *** Blog Side Navigation *** */
+
   .blog-nav-list-title {
     display: flex;
     align-items: center;
@@ -58,17 +63,6 @@ const title = 'Blog';
 
     width: 100%;
     padding: 1rem;
-  }
-
-  .blog-post-cards-wrapper {
-    width: 100%;
-  }
-
-  .blog-post-cards-list {
-    display: flex;
-    gap: 1rem;
-
-    width: 100%;
   }
 
   .blog-nav-sublist-wrapper {
@@ -93,10 +87,14 @@ const title = 'Blog';
     gap: 1rem;
   }
 
+  /*** Side Nav - Categories ***/
+
   .category-list {
     display: flex;
     gap: 0.6rem;
   }
+
+  /*** Side Nav - Tags ***/
 
   .tags-list {
     display: flex;
@@ -120,6 +118,21 @@ const title = 'Blog';
     text-transform: lowercase;
   }
 
+  /* *** Blog Post Cards *** */
+
+  .blog-post-cards-wrapper {
+    width: 100%;
+  }
+
+  .blog-post-cards-list {
+    display: flex;
+    gap: 1rem;
+
+    width: 100%;
+  }
+
+  /* *** Utility *** */
+
   .wrapper {
     padding-inline: 1rem;
 
@@ -127,14 +140,15 @@ const title = 'Blog';
   }
 
   @media screen and (min-width: 768px) {
-    .blog-post-cards-list {
-      padding-right: 1rem;
+    .page-title {
+      grid-column: span 2;
+      margin-top: clamp(4rem, 20vh, 24rem);
     }
 
-    .wrapper {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: start;
+    /* *** Blog Post Cards *** */
+
+    .blog-post-cards-list {
+      padding-right: 1rem;
     }
 
     .blog-nav-list {
@@ -148,20 +162,19 @@ const title = 'Blog';
       max-width: 18rem;
     }
 
-    .blog-title {
-      grid-column: span 2;
-      margin-top: clamp(4rem, 20vh, 24rem);
-    }
+    /* *** Utility *** */
 
-    .blog-nav-list-title {
-      /* margin-bottom: 2rem; */
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
     }
   }
 </style>
 
 <BaseLayout title={title}>
   <div class='wrapper max-width'>
-    <h1 class='blog-title'>Blog</h1>
+    <h1 class='page-title'>Blog</h1>
     <nav class='blog-topics-nav'>
       <ul class='blog-topics-list'>
         <li class='blog-topics-list-item'>
