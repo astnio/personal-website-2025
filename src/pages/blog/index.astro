@@ -3,6 +3,10 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPostCard from '../../components/BlogPostCard.astro';
 
+import lightBgImage from '../../images/blog_bg/pexels-sashmere.jpg';
+import darkBgImage from '../../images/blog_bg/pexels-therato.jpg';
+import { Image } from 'astro:assets';
+
 const allPosts = await getCollection('blog');
 
 const title = 'Blog';
@@ -27,6 +31,29 @@ const title = 'Blog';
     display: flex;
 
     padding: 0;
+  }
+
+  .blog-bg-image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: -1;
+    margin-top: -16rem;
+
+    width: 100vw;
+    max-height: 38rem;
+
+    overflow: hidden;
+
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+
+  .blog-bg-image {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   /* *** Blog Topics Navigation *** */
@@ -141,9 +168,13 @@ const title = 'Blog';
   }
 
   @media screen and (min-width: 768px) {
+    .blog-bg-image-wrapper {
+      max-height: 48rem;
+    }
+
     .page-title {
       grid-column: span 2;
-      margin-top: clamp(4rem, 20vh, 24rem);
+      /* margin-top: clamp(4rem, 20vh, 24rem); */
     }
 
     /* *** Blog Post Cards *** */
@@ -174,6 +205,17 @@ const title = 'Blog';
 </style>
 
 <BaseLayout title={title}>
+  <div class='blog-bg-image-wrapper'>
+    <Image
+      src={darkBgImage}
+      alt='Landscape'
+      class='blog-bg-image'
+      decoding='async'
+      loading='lazy'
+      width={2560}
+      height={1200}
+    />
+  </div>
   <div class='wrapper max-width'>
     <h1 class='page-title'>Blog</h1>
     <nav class='blog-topics-nav'>
