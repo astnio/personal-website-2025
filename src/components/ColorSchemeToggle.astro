@@ -1,5 +1,5 @@
 ---
-
+const { id } = Astro.props;
 ---
 
 <style>
@@ -154,12 +154,13 @@
   </p>
   <label
     class='switch'
-    for='color-scheme-toggle'>
+    for=`color-scheme-toggle-${id}`>
     <span class='visually-hidden'>Toggle Color Scheme</span>
     <input
       type='checkbox'
       class='chk-light-toggle'
-      name='color-scheme-toggle'
+      name=`color-scheme-toggle-${id}`
+      id=`color-scheme-toggle-${id}`
       checked
     />
     <span class='slider round'></span>
