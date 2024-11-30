@@ -143,6 +143,13 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
     right: 0;    
   }
 
+  @media screen and (min-width: 768px) {
+    a {
+      flex-shrink: 1;
+      min-width: fit-content;
+    }
+  }
+
 </style>
 
 <a class="hero-link" href={url} target={newTab ? `_blank` : ''}>
