@@ -1,0 +1,81 @@
+---
+const { title, url, image, imageAlt, summary, tags, date } = Astro.props;
+---
+
+<style>
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    padding: 0;
+  }
+
+  article {
+    background-color: var(--clr-base);
+    padding: 1rem;
+    width: 100%;
+
+    border-radius: var(--radius-card);
+
+    border: 1px solid var(--clr-surface-0);
+  }
+
+  .post-tags {
+    flex-direction: row;
+  }
+
+  .tag {
+    background-color: var(--clr-surface-0);
+    outline: 1px solid var(--clr-surface-1);
+    border-radius: var(--radius-pill);
+
+    padding-inline: 0.8rem;
+    padding-block: 0.2rem;
+  }
+</style>
+
+<article class='blog-card'>
+  <header>
+    <h3>
+      <a href={url}>{title}</a>
+    </h3>
+    <time datetime={date}>{date}</time>
+  </header>
+
+  <div class='blog-card-content'>
+    <img
+      src={image}
+      alt={imageAlt}
+      loading='lazy'
+    />
+
+    <p>
+      {summary}
+    </p>
+  </div>
+
+  <footer>
+    <ul class='post-tags'>
+      {
+        tags.map((tag: string) => (
+          <li>
+            <p class='tag'>{tag}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <!-- <div class='blog-card-meta'>
+      <span>By Jane Doe</span>
+      <a
+        href='/blog/post-1#comments'
+        aria-label='Comments for Revolutionary AI Breakthrough'>
+        <span aria-hidden='true'>💬</span>
+        <span class='sr-only'>Comments</span>
+        <span>24</span>
+      </a>
+      <span>5 min read</span>
+    </div> -->
+  </footer>
+</article>

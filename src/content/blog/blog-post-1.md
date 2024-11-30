@@ -1,6 +1,7 @@
 ---
 title: 'Example Post'
 tags: ['example', 'blog']
+summary: 'An example of a post!'
 ---
 
 # Heading 1

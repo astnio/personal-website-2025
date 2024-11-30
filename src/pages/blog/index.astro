@@ -1,31 +1,109 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPostCard from '../../components/BlogPostCard.astro';
 
 const allPosts = await getCollection('blog');
 
 const title = 'Blog';
 ---
 
+<style>
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 1rem;
+    width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+
+    padding: 0;
+  }
+
+  .blog-post-cards-wrapper {
+    width: 100%;
+  }
+
+  .blog-post-cards-list {
+    width: 100%;
+  }
+
+  .other-wrapper {
+    display: flex;
+
+    background-color: var(--clr-base);
+  }
+
+  @media screen and (min-width: 768px) {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+
+      padding-right: 4rem;
+    }
+
+    .other-wrapper {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 1.2rem;
+      padding-block: 2rem;
+      padding-inline: 1rem;
+
+      margin-left: auto;
+
+      max-width: 8rem;
+      min-height: 38rem;
+    }
+  }
+</style>
+
 <BaseLayout title={title}>
-  <h1>Blog</h1>
-  <nav>
-    <ul>
-      {
-        allPosts.map((post) => (
-          <li>
-            <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-          </li>
-        ))
-      }
-    </ul>
-    <ul>
-      <li>
-        <a href='/blog/tags'>Tags</a>
-      </li>
-      <li>
-        <a href='/blog/categories'>Categories</a>
-      </li>
-    </ul>
-  </nav>
+  <div class='wrapper max-width'>
+    <nav class='blog-post-cards-wrapper'>
+      <h1>Blog</h1>
+      <ul class='blog-post-cards-list'>
+        {
+          allPosts.map((post) => (
+            <li>
+              <BlogPostCard
+                url={`/blog/${post.slug}`}
+                title={post.data.title}
+                summary={post.data.summary}
+                tags={post.data.tags}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <nav class='other-links'>
+      <ul class='other-wrapper'>
+        <li>
+          <a href='/blog/tags'>Tags</a>
+        </li>
+        <li>
+          <a href='/blog/categories'>Categories</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </BaseLayout>
