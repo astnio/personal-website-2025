@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('astro:page-load', () => {
   const documentRoot = document.querySelector(':root');
   const lightToggles: NodeListOf<HTMLInputElement> =
     document.querySelectorAll('.chk-light-toggle');
@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function toggleColorScheme() {
+    console.log(getSavedColorScheme());
     if (getSavedColorScheme() === 'dark') {
       setColorScheme('light');
       saveColorScheme('light');

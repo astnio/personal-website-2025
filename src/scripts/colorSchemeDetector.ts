@@ -58,7 +58,7 @@ export default function initColorSchemeDetector() {
     }
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     const lightToggleLabels: NodeListOf<HTMLInputElement> =
       document.querySelectorAll('.light-toggle-theme-label');
 
