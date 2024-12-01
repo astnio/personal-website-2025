@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const blogBgImageLight = document.querySelector('.blog-bg-img-light');
   const blogBgImageDark = document.querySelector('.blog-bg-img-dark');
 
+  function pageHasBlogBgImage() {
+    if (blogBgImageDark && blogBgImageLight) return true;
+    else return false;
+  }
+
   function getSavedColorScheme() {
     return localStorage.getItem('colorScheme');
   }
@@ -21,13 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (colorScheme === 'dark') {
       documentRoot!.classList.remove('light');
       documentRoot!.classList.add('dark');
-      blogBgImageDark!.setAttribute('data-active', 'true');
-      blogBgImageLight!.setAttribute('data-active', 'false');
+      if (pageHasBlogBgImage()) {
+        blogBgImageDark!.setAttribute('data-active', 'true');
+        blogBgImageLight!.setAttribute('data-active', 'false');
+      }
     } else if (colorScheme === 'light') {
       documentRoot!.classList.add('light');
       documentRoot!.classList.remove('dark');
-      blogBgImageDark!.setAttribute('data-active', 'false');
-      blogBgImageLight!.setAttribute('data-active', 'true');
+      if (pageHasBlogBgImage()) {
+        blogBgImageDark!.setAttribute('data-active', 'false');
+        blogBgImageLight!.setAttribute('data-active', 'true');
+      }
     }
   }
 

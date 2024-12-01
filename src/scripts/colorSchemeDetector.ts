@@ -7,6 +7,11 @@ export default function initColorSchemeDetector() {
     '(prefers-color-scheme: dark)'
   ).matches;
 
+  function pageHasBlogBgImage() {
+    if (blogBgImageDark && blogBgImageLight) return true;
+    else return false;
+  }
+
   function saveColorScheme(colorScheme: 'dark' | 'light') {
     localStorage.setItem('colorScheme', colorScheme);
   }
@@ -21,13 +26,17 @@ export default function initColorSchemeDetector() {
     if (colorScheme === 'dark') {
       documentRoot!.classList.remove('light');
       documentRoot!.classList.add('dark');
-      blogBgImageDark!.setAttribute('data-active', 'true');
-      blogBgImageLight!.setAttribute('data-active', 'false');
+      if (pageHasBlogBgImage()) {
+        blogBgImageDark!.setAttribute('data-active', 'true');
+        blogBgImageLight!.setAttribute('data-active', 'false');
+      }
     } else if (colorScheme === 'light') {
       documentRoot!.classList.add('light');
       documentRoot!.classList.remove('dark');
-      blogBgImageDark!.setAttribute('data-active', 'false');
-      blogBgImageLight!.setAttribute('data-active', 'true');
+      if (pageHasBlogBgImage()) {
+        blogBgImageDark!.setAttribute('data-active', 'false');
+        blogBgImageLight!.setAttribute('data-active', 'true');
+      }
     }
   }
 
