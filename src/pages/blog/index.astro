@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPostCard from '../../components/BlogPostCard.astro';
 
 import lightBgImage from '../../images/blog_bg/pexels-sashmere.jpg';
-import darkBgImage from '../../images/blog_bg/pexels-therato.jpg';
+import darkBgImage from '../../images/blog_bg/pexels-karoldach.jpg';
 import { Image } from 'astro:assets';
 
 const allPosts = await getCollection('blog');
@@ -55,12 +55,41 @@ const title = 'Blog';
 
   .blog-bg-img-dark,
   .blog-bg-img-light {
+    isolation: isolate;
+
     opacity: 1;
     display: flex;
 
+    /* filter: grayscale(100%); */
+
     transition-property: opacity, visibility;
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
     transition-timing-function: ease-out;
+  }
+
+  .blog-bg-img-dark::before,
+  .blog-bg-img-light::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+  }
+
+  .blog-bg-img-dark::before {
+    background-color: var(--clr-overlay-2);
+    mix-blend-mode: multiply;
+  }
+
+  .blog-bg-img-light::before {
+    background-color: var(--clr-base);
+    opacity: 50%;
+    mix-blend-mode: color;
   }
 
   .blog-bg-image {
