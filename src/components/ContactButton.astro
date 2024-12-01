@@ -34,6 +34,7 @@ const { inDrawer } = Astro.props;
     background-color: var(--clr-surface-0);
     cursor: pointer;
     outline: 1px solid var(--clr-surface-1);
+    color: var(--clr-primary);
   }
 
   button.btn-contact:hover > .icon-wrapper {
@@ -44,6 +45,10 @@ const { inDrawer } = Astro.props;
   button.btn-contact[data-in-drawer='true'] {
     min-height: 3.6rem;
     font-size: 1.4rem;
+  }
+
+  button.btn-contact[data-in-drawer='true'] > .icon-wrapper {
+    font-size: 1.8rem;
   }
 
   .btn-label {
@@ -84,7 +89,7 @@ const { inDrawer } = Astro.props;
   data-in-drawer={inDrawer}
   class='btn-contact'>
   <div class='icon-wrapper'>
-    <span class='bx bxs-chat'></span>
+    <span class='contact-icon bx bxs-chat'></span>
   </div>
   <span class='btn-label'>Contact</span>
 </button>

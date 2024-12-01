@@ -129,8 +129,11 @@ const navLinks = links.internalLinks;
       background-color: var(--clr-base);
       outline: 1px solid var(--clr-surface-0);
 
-      padding-inline: 1rem;
-      padding-block: 0.8rem;
+      /* padding-inline: 1rem; */
+      /* padding-block: 0.8rem; */
+
+      padding: 0;
+      min-height: 3.4rem;
 
       border-radius: var(--radius-button);
 
@@ -145,6 +148,8 @@ const navLinks = links.internalLinks;
       background-color: var(--clr-surface-0);
       outline: 1px solid var(--clr-surface-1);
     }
+
+
 
     a::after {
       display: none;
@@ -163,9 +168,36 @@ const navLinks = links.internalLinks;
       transform: translateX(-1.4rem);
     }
 
+    .nav-link {
+      display: flex;
+      height: 100%;
+    }
+
+    .nav-link-icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      aspect-ratio: 1;
+
+      background-color: var(--clr-mantle);
+
+      margin-right: 0.8rem;
+
+      height: 100%;
+
+      transition-property: color, background-color;
+      transition-duration: 0.15s;
+      transition-timing-function: ease-out;
+    }
+
+    a:hover > .nav-link-icon-wrapper {
+      background-color: var(--clr-base);
+    }
+
     .nav-link-icon {
       display: inline-block;
-      margin-right: 0.8rem;
+      font-size: 1.8rem;
     }
   }
 </style>
@@ -183,8 +215,12 @@ const navLinks = links.internalLinks;
             class='nav-link'
             href={navLink.url}
             data-is-current-page={isActive.toString()}>
-            <span class=`nav-link-icon ${navLink.iconClass}` />
-            {navLink.label}
+            <div class="nav-link-icon-wrapper">
+              <span class=`nav-link-icon ${navLink.iconClass}` />
+            </div>
+            <span class="nav-link-label">
+              {navLink.label}
+            </span>
           </a>
         </li>
       );
