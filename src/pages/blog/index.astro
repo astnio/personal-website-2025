@@ -34,6 +34,9 @@ const title = 'Blog';
   }
 
   .blog-bg-image-wrapper {
+    position: absolute;
+    top: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,6 +51,16 @@ const title = 'Blog';
 
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+
+  .blog-bg-img-dark,
+  .blog-bg-img-light {
+    opacity: 1;
+    display: flex;
+
+    transition-property: opacity, visibility;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
   }
 
   .blog-bg-image {
@@ -162,34 +175,42 @@ const title = 'Blog';
   /* *** Utility *** */
 
   .wrapper {
+    margin-top: 14rem;
+
     padding-inline: 1rem;
 
     width: 100%;
   }
 
   .blog-bg-img-dark[data-active='true'] {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
   }
 
   .blog-bg-img-dark[data-active='false'] {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
   }
 
   .blog-bg-img-light[data-active='true'] {
-    display: flex;
+    visibility: visible;
+
+    opacity: 1;
   }
 
   .blog-bg-img-light[data-active='false'] {
-    display: none;
+    visibility: hidden;
+
+    opacity: 0;
   }
   @media screen and (min-width: 768px) {
     .blog-bg-image-wrapper {
       max-height: 36rem;
+      margin-top: -2rem;
     }
 
     .page-title {
       grid-column: span 2;
-      /* margin-top: clamp(4rem, 20vh, 24rem); */
     }
 
     /* *** Blog Post Cards *** */
@@ -215,8 +236,7 @@ const title = 'Blog';
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: start;
-
-      margin-top: -2rem;
+      margin-top: 18rem;
     }
   }
 </style>
