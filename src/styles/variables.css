@@ -1,3 +1,16 @@
+:root {
+  /* --radius-button: 4pt;
+  --radius-card: 4pt;
+  --radius-wrapper: 4pt; */
+
+  --radius-button: 0;
+  --radius-card: 0;
+  --radius-wrapper: 0;
+
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+}
+
 :root[data-color-scheme='dark'] {
   color-scheme: dark;
 
@@ -62,12 +75,6 @@
   );
 
   --bg-pattern-opacity: 1;
-
-  --radius-button: 4pt;
-  --radius-card: 4pt;
-  --radius-wrapper: 4pt;
-  --radius-pill: 999px;
-  --radius-circle: 50%;
 }
 
 :root[data-color-scheme='light'] {
@@ -134,10 +141,4 @@
   );
 
   --bg-pattern-opacity: 0.4;
-
-  --radius-button: 4pt;
-  --radius-card: 4pt;
-  --radius-wrapper: 4pt;
-  --radius-pill: 999px;
-  --radius-circle: 50%;
 }
