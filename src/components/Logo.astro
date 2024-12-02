@@ -18,6 +18,7 @@ const { inDrawer } = Astro.props;
     background-color: var(--clr-crust);
 
     outline: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-surface);
 
     padding-inline: 0.8rem;
     padding-block: 0.4rem;
@@ -36,7 +37,7 @@ const { inDrawer } = Astro.props;
     outline: 1px solid var(--clr-subtext-0);
   }
 
-  a[data-in-drawer="true"] {
+  a[data-in-drawer='true'] {
     padding-block: 1.4rem;
 
     width: 100%;
@@ -46,4 +47,8 @@ const { inDrawer } = Astro.props;
   }
 </style>
 
-<a data-in-drawer={inDrawer} href='/'><span id='logo'><span class='label-domain'>astn</span></span> </a>
+<a
+  data-in-drawer={inDrawer}
+  href='/'
+  ><span id='logo'><span class='label-domain'>astn</span></span>
+</a>
