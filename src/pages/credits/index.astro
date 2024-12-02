@@ -7,6 +7,11 @@ const credits = data.credits;
 ---
 
 <style>
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+
   ul.credits-list {
     display: flex;
     flex-direction: column;
@@ -16,6 +21,7 @@ const credits = data.credits;
     gap: 0.8rem;
 
     list-style-type: none;
+
     padding: 0;
   }
 
@@ -29,10 +35,12 @@ const credits = data.credits;
     padding-block: 0.8rem;
     padding-inline: 1.4rem;
 
-    border-radius: var(--radius-wrapper);
-    border: 1px solid var(--clr-surface-1);
+    margin: 0;
 
-    background-color: var(--clr-surface-0);
+    border-radius: var(--radius-wrapper);
+    border: 1px solid var(--clr-surface-0);
+
+    background-color: var(--clr-base);
 
     width: 100%;
   }
@@ -58,14 +66,7 @@ const credits = data.credits;
   }
 
   .wrapper {
-    padding-inline: 1rem;
-
-    background-color: var(--clr-base);
-    padding-inline: 2rem;
-    padding-block: 4rem;
-
-    border-radius: var(--radius-wrapper);
-    border: 1px solid var(--clr-surface-0);
+    margin-inline: 1rem;
   }
 </style>
 
