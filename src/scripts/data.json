@@ -84,6 +84,16 @@
       "use": "Blog BG Image (Light)",
       "name": "Photo by Eberhard Grossgasteiger",
       "url": "https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/"
+    },
+    {
+      "use": "Font (Sans Serif)",
+      "name": "SN Pro",
+      "url": "https://supernotes.app/open-source/sn-pro/"
+    },
+    {
+      "use": "Font (Serif)",
+      "name": "IBM Plex Serif",
+      "url": "https://www.ibm.com/plex/"
     }
   ]
 }
