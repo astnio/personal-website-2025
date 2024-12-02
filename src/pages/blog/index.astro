@@ -3,8 +3,8 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPostCard from '../../components/BlogPostCard.astro';
 
-import lightBgImage from '../../images/blog_bg/pexels-sashmere.jpg';
-import darkBgImage from '../../images/blog_bg/pexels-karoldach.jpg';
+import lightBgImage from '../../images/blog_bg/pexels-eberhardgross.jpg';
+import darkBgImage from '../../images/blog_bg/pexels-therato.jpg';
 import { Image } from 'astro:assets';
 
 const allPosts = await getCollection('blog');
@@ -59,8 +59,6 @@ const title = 'Blog';
 
     opacity: 1;
     display: flex;
-
-    /* filter: grayscale(100%); */
 
     transition-property: opacity, visibility;
     transition-duration: 0.3s;
