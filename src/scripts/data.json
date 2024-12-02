@@ -41,5 +41,49 @@
   ],
 
   "aboutMeParagraph": "A versatile professional dedicated to delivering comprehensive and adaptable solutions across a range of services. Committed to excellence and reliability while bringing a blend of creativity and technical expertise to foster effective results.",
-  "aboutMeSentence": "A versatile professional dedicated to delivering comprehensive and adaptable solutions across a range of services."
+
+  "aboutMeSentence": "A versatile professional dedicated to delivering comprehensive and adaptable solutions across a range of services.",
+
+  "credits": [
+    {
+      "use": "Framework",
+      "name": "Astro",
+      "url": "https://astro.build/"
+    },
+    {
+      "use": "Framework Utility",
+      "name": "Rehype Callouts",
+      "url": "https://github.com/lin-stephanie/rehype-callouts"
+    },
+    {
+      "use": "Color Theme",
+      "name": "Catppuccin",
+      "url": "https://catppuccin.com/"
+    },
+    {
+      "use": "Icons",
+      "name": "Boxicons",
+      "url": "https://boxicons.com/"
+    },
+    {
+      "use": "Assets",
+      "name": "Undraw",
+      "url": "https://undraw.co/"
+    },
+    {
+      "use": "Profile Picture",
+      "name": "DiceBear",
+      "url": "https://www.dicebear.com/"
+    },
+    {
+      "use": "Blog Background Image",
+      "name": "Photo by Stein Egil Liland",
+      "url": "https://www.pexels.com/photo/time-lapse-photo-of-northern-lights-1933316/"
+    },
+    {
+      "use": "Blog Background Image",
+      "name": "Photo by Eberhard Grossgasteiger",
+      "url": "https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/"
+    }
+  ]
 }
