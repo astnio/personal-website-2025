@@ -5,7 +5,7 @@ import BlogPostCard from '../../components/BlogPostCard.astro';
 
 import lightBgImage from '../../images/blog_bg/pexels-eberhardgross.jpg';
 import darkBgImage from '../../images/blog_bg/pexels-therato.jpg';
-import { Image } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 
 const allPosts = await getCollection('blog');
 
@@ -33,24 +33,34 @@ const title = 'Blog';
     padding: 0;
   }
 
+  /*** Blog Image  ***/
+
   .blog-bg-image-wrapper {
     position: absolute;
     top: 0;
 
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 
     z-index: -1;
-    margin-top: -16rem;
-
-    width: 100vw;
-    max-height: 38rem;
 
     overflow: hidden;
 
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+
+  .blog-bg-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    object-position: top center;
+    object-fit: fill;
+
+    height: 100%;
+    width: 100%;
   }
 
   .blog-bg-img-dark,
@@ -81,19 +91,14 @@ const title = 'Blog';
 
   .blog-bg-img-dark::before {
     background-color: var(--clr-overlay-2);
-    mix-blend-mode: multiply;
+    opacity: 80%;
+    mix-blend-mode: color;
   }
 
   .blog-bg-img-light::before {
     background-color: var(--clr-base);
-    opacity: 50%;
-    mix-blend-mode: color;
-  }
-
-  .blog-bg-image {
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
+    opacity: 40%;
+    mix-blend-mode: lighten;
   }
 
   /* *** Blog Topics Navigation *** */
@@ -232,8 +237,11 @@ const title = 'Blog';
   }
   @media screen and (min-width: 768px) {
     .blog-bg-image-wrapper {
-      max-height: 36rem;
-      margin-top: -2rem;
+      margin: 0;
+      padding: 0;
+
+      height: fit-content;
+      max-height: 40rem;
     }
 
     .page-title {
@@ -272,28 +280,30 @@ const title = 'Blog';
   <div
     data-active='true'
     class='blog-bg-image-wrapper blog-bg-img-dark'>
-    <Image
+    <Picture
+      formats={['avif', 'webp', 'jpg']}
       src={darkBgImage}
       alt='Landscape'
       class='blog-bg-image'
       decoding='async'
       loading='lazy'
       width={2560}
-      height={1200}
+      height={2560}
     />
   </div>
 
   <div
     data-active='false'
     class='blog-bg-image-wrapper blog-bg-img-light'>
-    <Image
+    <Picture
+      formats={['avif', 'webp', 'jpg']}
       src={lightBgImage}
       alt='Landscape'
       class='blog-bg-image'
       decoding='async'
       loading='lazy'
       width={2560}
-      height={1200}
+      height={2560}
     />
   </div>
   <div class='wrapper max-width'>
