@@ -1,0 +1,51 @@
+---
+
+---
+
+<style>
+  .select-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2ch;
+
+    background-color: var(--clr-base);
+    padding-block: 0.4rem;
+    padding-inline: 0.6rem;
+
+    border: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-input);
+  }
+
+  select {
+    font-family: inherit;
+    font-size: 1rem;
+
+    background-color: var(--clr-surface-0);
+    border: none;
+    border-radius: var(--radius-input);
+
+    padding-inline: 0.4rem;
+    padding-block: 0.2rem;
+
+    transition: background-color 0.15s ease-out;
+  }
+
+  select:active,
+  select:focus,
+  select:hover {
+    border: none;
+    background-color: var(--clr-surface-1);
+    outline: none;
+  }
+</style>
+
+<div class='select-wrapper'>
+  <label for='user-font'>Font</label>
+  <select
+    name='user-font'
+    id='user-font-select'>
+    <option value='serif'>Serif</option>
+    <option value='sans-serif'>Sans Serif</option>
+  </select>
+</div>
