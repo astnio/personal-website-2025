@@ -1,11 +1,7 @@
 :root {
-  /* --radius-button: 4pt;
-  --radius-card: 4pt;
-  --radius-wrapper: 4pt; */
-
-  --radius-button: 0;
-  --radius-card: 0;
-  --radius-wrapper: 0;
+  --radius-input: 6pt;
+  --radius-surface: 6pt;
+  --radius-base: 6pt;
 
   --radius-pill: 999px;
   --radius-circle: 50%;

@@ -2,7 +2,6 @@
 
 :root {
   color-scheme: dark light;
-  font-family: sans-serif;
 }
 
 *,
@@ -14,6 +13,18 @@
 html,
 body {
   touch-action: auto;
+}
+
+button {
+  font-family: inherit;
+}
+
+body[data-font='sans-serif'] {
+  font-family: 'SN Pro', sans-serif;
+}
+
+body[data-font='serif'] {
+  font-family: 'IBM Plex Serif', serif;
 }
 
 body {
@@ -28,7 +39,6 @@ body {
   padding-top: 6rem;
   margin: 0;
 
-  font-family: 'IBM Plex Serif', serif;
   color: var(--clr-text);
 
   overflow-y: auto;

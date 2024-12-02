@@ -1,3 +1,5 @@
+/*** IBM Plex Serif ***/
+
 @font-face {
   font-family: 'IBM Plex Serif';
   src: url('/fonts/IBM_Plex_Serif/IBMPlexSerif-Thin.ttf') format('truetype');
@@ -97,7 +99,74 @@
 
 @font-face {
   font-family: 'IBM Plex Serif';
-  src: url('/fonts/IBM_Plex_Serif/IBMPlexSerif-BoldItalic.ttf') format('truetype');
+  src: url('/fonts/IBM_Plex_Serif/IBMPlexSerif-BoldItalic.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/*** SN Pro ***/
+
+/* @font-face {
+  font-family: 'SN Pro';
+  src:
+    url('./fonts/SN-Pro/SNPro-Regular.woff2') format('woff2'),
+    url('./fonts/SN-Pro/SNPro-Regular.woff') format('woff'),
+    url('./fonts/SN-Pro/SNPro-Regular.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: 'SN Pro';
+  src:
+    url('./fonts/SN-Pro/SNPro-Variable.woff2') format('woff2'),
+    url('./fonts/SN-Pro/SNPro-Variable.woff') format('woff'),
+    url('./fonts/SN-Pro/SNPro-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SN Pro';
+  src:
+    url('./fonts/SN-Pro/SNPro-VariableItalic.woff2') format('woff2'),
+    url('./fonts/SN-Pro/SNPro-VariableItalic.woff') format('woff'),
+    url('./fonts/SN-Pro/SNPro-VariableItalic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+/*** Atkinson Hyperlegible ***/
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('./fonts/Atkinson-Hyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('./fonts/Atkinson-Hyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('./fonts/Atkinson-Hyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('./fonts/Atkinson-Hyperlegible/Atkinson-Hyperlegible-BoldItalic-102a.woff2')
+    format('woff2');
   font-weight: 700;
   font-style: italic;
 }
