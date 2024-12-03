@@ -76,13 +76,13 @@
       "url": "https://www.dicebear.com/"
     },
     {
-      "use": "Blog BG Image (Dark)",
-      "name": "Photo by Stein Egil Liland",
+      "use": "Blog BG Photo (Dark)",
+      "name": "Stein Egil Liland",
       "url": "https://www.pexels.com/photo/time-lapse-photo-of-northern-lights-1933316/"
     },
     {
-      "use": "Blog BG Image (Light)",
-      "name": "Photo by Eberhard Grossgasteiger",
+      "use": "Blog BG Photo (Light)",
+      "name": "Eberhard Grossgasteiger",
       "url": "https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/"
     },
     {
@@ -94,6 +94,11 @@
       "use": "Font (Serif)",
       "name": "IBM Plex Serif",
       "url": "https://www.ibm.com/plex/"
+    },
+    {
+      "use": "Font (Hyperlegible)",
+      "name": "Atkinson Hyperlegible",
+      "url": "https://www.brailleinstitute.org/freefont/"
     }
   ]
 }
