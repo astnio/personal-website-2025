@@ -7,37 +7,26 @@ const currentYear = new Date().getFullYear();
 
 <style>
   footer {
-    display: flex;
-
     width: 100%;
-
-    margin-top: auto;
-    padding-top: 8rem;
-  }
-
-  .footer-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-
-    border-top: 1px solid var(--clr-surface-0);
-
-    padding-block: 1rem;
 
     background-color: var(--clr-mantle);
+
+    margin-top: auto;
+    padding-block: 1rem;
+
+    border-top: 1px solid var(--clr-surface-0);
   }
 
   .footer-content {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     align-items: end;
-    justify-content: center;
+    justify-content: end;
 
     width: 100%;
 
     padding-inline: 1rem;
+    padding-block: 2rem;
   }
 
   .copyright-paragraph {
@@ -47,38 +36,67 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer-credit-wrapper {
+    grid-row-start: 2;
+
     display: flex;
     flex-direction: column;
     align-items: end;
   }
 
+  .customization-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    max-width: fit-content;
+
+    margin-left: auto;
+    margin-bottom: 2rem;
+  }
+
   @media screen and (min-width: 768px) {
     .footer-content {
-      flex-direction: row;
-      align-items: center;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
       justify-content: space-between;
+    }
+
+    .customization-wrapper {
+      grid-column-start: 2;
+      grid-row: 1;
+
+      flex-direction: row;
+
+      margin-bottom: 0;
+    }
+
+    .footer-credit-wrapper {
+      grid-column-start: 1;
+      grid-row: 1;
+
+      align-items: start;
     }
   }
 </style>
 
 <footer>
-  <div class='footer-wrapper'>
-    <div class='footer-content max-width'>
+  <div class='footer-content max-width'>
+    <section class='footer-credit-wrapper'>
+      <p class='copyright-paragraph'>
+        <span class='visually-hidden'>&#169;</span>
+        <span class='bx bxs-copyright'></span>
+        <span>2021 &#45;</span>
+        <span id='footer-copyright-current-year'>
+          {currentYear}
+        </span>
+        <span>Austin Hagel</span>
+      </p>
+      <a href='/credits'>Credits</a>
+    </section>
+    <section class='customization-wrapper'>
       <FontSelect />
       <ColorThemeSelect />
-      <section class='footer-credit-wrapper'>
-        <p class='copyright-paragraph'>
-          <span class='visually-hidden'>&#169;</span>
-          <span class='bx bxs-copyright'></span>
-          <span>2021 &#45;</span>
-          <span id='footer-copyright-current-year'>
-            {currentYear}
-          </span>
-          <span>Austin Hagel</span>
-        </p>
-        <a href='/credits'>Credits</a>
-      </section>
-    </div>
+    </section>
   </div>
 </footer>
 
