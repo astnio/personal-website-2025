@@ -1,4 +1,5 @@
 ---
+import ColorThemeSelect from './ColorThemeSelect.astro';
 import FontSelect from './FontSelect.astro';
 
 const currentYear = new Date().getFullYear();
@@ -64,6 +65,7 @@ const currentYear = new Date().getFullYear();
   <div class='footer-wrapper'>
     <div class='footer-content max-width'>
       <FontSelect />
+      <ColorThemeSelect />
       <section class='footer-credit-wrapper'>
         <p class='copyright-paragraph'>
           <span class='visually-hidden'>&#169;</span>

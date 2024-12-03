@@ -1,0 +1,95 @@
+---
+
+---
+
+<style>
+  .select-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2ch;
+
+    background-color: var(--clr-base);
+    padding-block: 0.4rem;
+    padding-inline: 0.6rem;
+
+    border: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-input);
+  }
+
+  select {
+    font-family: inherit;
+    font-size: 1rem;
+
+    background-color: var(--clr-surface-0);
+    border: none;
+    border-radius: var(--radius-input);
+
+    padding-inline: 0.4rem;
+    padding-block: 0.2rem;
+
+    transition: background-color 0.15s ease-out;
+  }
+
+  select:active,
+  select:focus,
+  select:hover {
+    border: none;
+    background-color: var(--clr-surface-1);
+    outline: none;
+  }
+</style>
+
+<div class='select-wrapper'>
+  <label for='color-theme'>Color Theme</label>
+  <select
+    name='color-theme'
+    id='color-theme-select'>
+    <option value='catppuccin'>Catppuccin</option>
+    <option value='dracula'>Dracula [TBD]</option>
+    <option value='high-contrast'>High Contrast [TBD]</option>
+  </select>
+</div>
+
+<script>
+  //   document.addEventListener('astro:page-load', () => {
+  //     const documentBody = document.querySelector('body');
+  //     const fontSelect = document.getElementById(
+  //       'user-font-select'
+  //     ) as HTMLInputElement;
+
+  //     function initFont() {
+  //       const userSavedFont = localStorage.getItem('font');
+
+  //       if (!userSavedFont) {
+  //         setFont('sans-serif');
+  //       } else {
+  //         setFont(userSavedFont);
+  //       }
+  //     }
+
+  //     function setFont(font: string) {
+  //       localStorage.setItem('font', font);
+  //       fontSelect.value = font;
+  //       documentBody!.setAttribute('data-font', font);
+  //     }
+
+  //     fontSelect!.addEventListener('change', () => {
+  //       switch (fontSelect!.value) {
+  //         case 'sans-serif':
+  //           setFont('sans-serif');
+  //           break;
+  //         case 'serif':
+  //           setFont('serif');
+  //           break;
+  //         case 'hyperlegible':
+  //           setFont('hyperlegible');
+  //           break;
+  //         default:
+  //           setFont('serif');
+  //       }
+  //     });
+
+  //     initFont();
+  //   });
+</script>

@@ -99,6 +99,11 @@
       "use": "Font (Hyperlegible)",
       "name": "Atkinson Hyperlegible",
       "url": "https://www.brailleinstitute.org/freefont/"
+    },
+    {
+      "use": "Font (Monospace)",
+      "name": "JetBrains Mono",
+      "url": "https://www.jetbrains.com/lp/mono/"
     }
   ]
 }
