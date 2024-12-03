@@ -1,9 +1,10 @@
 document.addEventListener('astro:page-load', () => {
   const documentRoot = document.querySelector(':root');
-  const lightToggles: NodeListOf<HTMLInputElement> =
-    document.querySelectorAll('.chk-light-toggle');
+  const lightToggles: NodeListOf<HTMLInputElement> = document.querySelectorAll(
+    '.chk-light-switch-toggle'
+  );
   const lightToggleLabels: NodeListOf<HTMLInputElement> =
-    document.querySelectorAll('.light-toggle-theme-label');
+    document.querySelectorAll('.light-switch-label');
   const blogBgImageLight = document.querySelector('.blog-bg-img-light');
   const blogBgImageDark = document.querySelector('.blog-bg-img-dark');
 

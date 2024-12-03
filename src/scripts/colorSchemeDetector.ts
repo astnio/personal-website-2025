@@ -60,10 +60,10 @@ export default function initColorSchemeDetector() {
 
   document.addEventListener('astro:page-load', () => {
     const lightToggleLabels: NodeListOf<HTMLInputElement> =
-      document.querySelectorAll('.light-toggle-theme-label');
+      document.querySelectorAll('.light-switch-label');
 
     const lightToggles: NodeListOf<HTMLInputElement> =
-      document.querySelectorAll('.chk-light-toggle');
+      document.querySelectorAll('.chk-light-switch-toggle');
 
     function toCaptialized(word: string) {
       return String(word).charAt(0).toUpperCase() + String(word).slice(1);

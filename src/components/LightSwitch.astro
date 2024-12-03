@@ -98,7 +98,7 @@ const { id } = Astro.props;
     border-radius: var(--radius-circle);
   }
 
-  .light-toggle-icon {
+  .light-switch-toggle-icon {
     position: absolute;
     left: 0.4rem;
     bottom: 0.3rem;
@@ -124,49 +124,54 @@ const { id } = Astro.props;
     transition-timing-function: ease-out;
   }
 
-  input:checked ~ .light-toggle-icon {
+  input:checked ~ .light-switch-toggle-icon {
     transform: translateX(1.8rem);
     color: var(--clr-texts);
   }
 
-  input:not(:checked) ~ .light-toggle-icon > .light-toggle-icon-light {
+  input:not(:checked)
+    ~ .light-switch-toggle-icon
+    > .light-switch-toggle-icon-light {
     display: flex;
   }
 
-  input:not(:checked) ~ .light-toggle-icon > .light-toggle-icon-dark {
+  input:not(:checked)
+    ~ .light-switch-toggle-icon
+    > .light-switch-toggle-icon-dark {
     display: none;
   }
 
-  input:checked ~ .light-toggle-icon > .light-toggle-icon-dark {
+  input:checked ~ .light-switch-toggle-icon > .light-switch-toggle-icon-dark {
     display: flex;
   }
 
-  input:checked ~ .light-toggle-icon > .light-toggle-icon-light {
+  input:checked ~ .light-switch-toggle-icon > .light-switch-toggle-icon-light {
     display: none;
   }
 </style>
 
 <div class='light-switch-container'>
   <p class='visually-hidden'>
-    <span class='light-toggle-theme-label'></span> Theme
+    <span class='light-switch-label'></span> Theme
   </p>
   <label
     class='switch'
-    for=`color-scheme-toggle-${id}`>
+    for=`light-switch-toggle-${id}`
+    title='Toggle Light Mode'>
     <span class='visually-hidden'>Toggle Color Scheme</span>
     <input
       type='checkbox'
-      class='chk-light-toggle'
-      name=`color-scheme-toggle-${id}`
-      id=`color-scheme-toggle-${id}`
+      class='chk-light-switch-toggle'
+      name=`light-switch-toggle-${id}`
+      id=`light-switch-toggle-${id}`
       checked
     />
     <span class='slider round'></span>
-    <div class='light-toggle-icon'>
-      <span class='light-toggle-icon-light bx bxs-sun'></span>
-      <span class='light-toggle-icon-dark bx bxs-moon'></span>
+    <div class='light-switch-toggle-icon'>
+      <span class='light-switch-toggle-icon-light bx bxs-sun'></span>
+      <span class='light-switch-toggle-icon-dark bx bxs-moon'></span>
     </div>
   </label>
 </div>
 
-<script src='../scripts/toggleColorScheme.ts'></script>
+<script src='../scripts/lightSwitch.ts'></script>
