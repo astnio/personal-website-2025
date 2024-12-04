@@ -6,5 +6,6 @@ initColorSchemeDetector();
 initSavedTheme();
 
 document.addEventListener('astro:page-load', () => {
+  initSavedTheme();
   initColorSchemeDetector();
 });
