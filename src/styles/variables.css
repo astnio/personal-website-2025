@@ -19,7 +19,7 @@
   --radius-base: 6pt;
 }
 
-:root[data-color-scheme='dark'] {
+:root[data-theme='catppuccin'][data-color-scheme='dark'] {
   color-scheme: dark;
 
   --clr-rosewater: #f4dbd6;
@@ -85,7 +85,7 @@
   --bg-pattern-opacity: 1;
 }
 
-:root[data-color-scheme='light'] {
+:root[data-theme='catppuccin'][data-color-scheme='light'] {
   color-scheme: light;
 
   --clr-rosewater: #dc8a78;
