@@ -5,8 +5,9 @@ document.addEventListener('astro:page-load', () => {
   const docRoot = document.querySelector(':root');
 
   function setTheme(themeName: string) {
+    console.log('set theme');
     localStorage.setItem('theme', themeName);
-    docRoot!.setAttribute('theme', themeName);
+    docRoot!.setAttribute('data-theme', themeName);
   }
 
   function getTheme() {
