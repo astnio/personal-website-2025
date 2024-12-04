@@ -74,6 +74,8 @@ html.light .astro-code span {
 .astro-code > code {
   counter-reset: step;
   counter-increment: step calc(var(--code-line-start, 1) - 1);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
 }
 
 .astro-code > code .line::before {
