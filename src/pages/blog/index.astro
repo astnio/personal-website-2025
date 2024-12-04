@@ -57,10 +57,10 @@ const title = 'Blog';
     justify-content: center;
 
     object-position: top center;
-    object-fit: fill;
+    object-fit: cover;
 
-    height: 100%;
     width: 100%;
+    max-height: 34rem;
   }
 
   .blog-bg-img-dark,
@@ -241,7 +241,13 @@ const title = 'Blog';
       padding: 0;
 
       height: fit-content;
-      max-height: 40rem;
+      max-height: 60vh;
+    }
+
+    .blog-bg-image {
+      min-width: 100%;
+      height: auto;
+      max-height: 100%;
     }
 
     .page-title {
@@ -271,7 +277,7 @@ const title = 'Blog';
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: start;
-      margin-top: 18rem;
+      margin-top: 20rem;
     }
   }
 </style>
@@ -307,7 +313,6 @@ const title = 'Blog';
     />
   </div>
   <div class='wrapper max-width'>
-    <h1 class='page-title'>Blog</h1>
     <nav class='blog-topics-nav'>
       <ul class='blog-topics-list'>
         <li class='blog-topics-list-item'>
