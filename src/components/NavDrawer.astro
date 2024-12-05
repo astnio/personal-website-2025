@@ -10,7 +10,7 @@ import NavLinks from './NavLinks.astro';
     isolation: isolate;
 
     position: fixed;
-    right: 0;
+    left: 0;
     top: 0;
 
     display: flex;
@@ -94,7 +94,7 @@ import NavLinks from './NavLinks.astro';
   }
 
   #nav-drawer[data-active='false'] {
-    transform: translateX(100%);
+    transform: translateX(-100%);
     visibility: hidden;
   }
 
