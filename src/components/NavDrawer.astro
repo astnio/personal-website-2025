@@ -23,7 +23,7 @@ import NavLinks from './NavLinks.astro';
 
     height: 100dvh;
 
-    transform: translateX(0%);
+    transform: translateY(0%);
 
     border-left: 1px solid var(--clr-base);
 
@@ -94,7 +94,7 @@ import NavLinks from './NavLinks.astro';
   }
 
   #nav-drawer[data-active='false'] {
-    transform: translateX(-100%);
+    transform: translateY(-100%);
     visibility: hidden;
   }
 
@@ -146,9 +146,9 @@ import NavLinks from './NavLinks.astro';
   data-active='false'
   id='nav-drawer'
   transition:animate='none'>
-  <div class='logo-wrapper'>
+  <!-- <div class='logo-wrapper'>
     <Logo inDrawer='true' />
-  </div>
+  </div> -->
   <div class='nav-drawer-content'>
     <NavLinks />
     <ContactButton inDrawer='true' />
