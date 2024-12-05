@@ -23,8 +23,6 @@ import NavLinks from './NavLinks.astro';
 
     height: 100dvh;
 
-    transform: translateY(0%);
-
     border-left: 1px solid var(--clr-base);
 
     box-shadow: -12px 0px 16px rgba(0, 0, 0, 0.1);
@@ -33,11 +31,25 @@ import NavLinks from './NavLinks.astro';
 
     visibility: visible;
 
-    transition-property: transform, visibility;
-    transition-duration: 0.25s;
+    transition-property: transform, visibility, opacity, pointer-events;
+    transition-duration: 0.35s;
     transition-timing-function: ease-in-out;
 
     z-index: 10;
+  }
+
+  #nav-drawer[data-active='true'] {
+    transform: translateY(0%);
+    pointer-events: all;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #nav-drawer[data-active='false'] {
+    transform: translateY(-100%);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
   }
 
   #nav-drawer::before {
@@ -84,18 +96,9 @@ import NavLinks from './NavLinks.astro';
 
     z-index: 9;
 
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-
-    transition-property: opacity, visibility;
+    transition-property: opacity, visibility, pointer-events;
     transition-duration: 0.25s;
     transition-timing-function: ease-out;
-  }
-
-  #nav-drawer[data-active='false'] {
-    transform: translateY(-100%);
-    visibility: hidden;
   }
 
   #overlay[data-active='false'] {
