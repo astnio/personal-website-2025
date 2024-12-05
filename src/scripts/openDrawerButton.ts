@@ -6,8 +6,30 @@ document.addEventListener('astro:page-load', () => {
   function openDrawer() {
     overlay!.setAttribute('data-active', 'true');
     navDrawer!.setAttribute('data-active', 'true');
+    btnOpenMenu!.setAttribute('data-action', 'close');
     document.body.setAttribute('data-scroll-active', 'false');
   }
 
-  btnOpenMenu?.addEventListener('click', openDrawer);
+  function closeDrawer() {
+    overlay!.setAttribute('data-active', 'false');
+    navDrawer!.setAttribute('data-active', 'false');
+    btnOpenMenu!.setAttribute('data-action', 'open');
+    document.body.setAttribute('data-scroll-active', 'true');
+  }
+
+  function handleDrawer() {
+    switch (navDrawer!.getAttribute('data-active')) {
+      case 'true':
+        closeDrawer();
+        break;
+      case 'false':
+        openDrawer();
+        break;
+      default:
+        openDrawer();
+        break;
+    }
+  }
+
+  btnOpenMenu?.addEventListener('click', handleDrawer);
 });
