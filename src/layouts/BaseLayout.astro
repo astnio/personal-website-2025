@@ -8,7 +8,7 @@ import CommonHead from '../components/CommonHead.astro';
 import NavDrawer from '../components/NavDrawer.astro';
 import Navigation from '../components/AppBar.astro';
 import Footer from '../components/Footer.astro';
-import OpenDrawerButton from '../components/OpenDrawerButton.astro';
+import DrawerToggle from '../components/DrawerToggle.astro';
 
 const { title, description } = Astro.props;
 ---
@@ -20,7 +20,7 @@ const { title, description } = Astro.props;
   />
   <body data-font='sans-serif'>
     <NavDrawer />
-    <OpenDrawerButton />
+    <DrawerToggle />
     <Navigation />
     <main transition:animate='slide'>
       <slot />
