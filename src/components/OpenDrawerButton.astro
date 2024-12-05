@@ -4,6 +4,10 @@
 
 <style>
   button.menu-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,11 +20,12 @@
     height: 18px;
 
     padding: 0;
-    margin: 0;
+    margin-inline: 1rem;
+    margin-block: 1.4rem;
 
     cursor: pointer;
 
-    z-index: 1500;
+    z-index: 100;
   }
 
   .menu-btn:hover > .menu-btn-line {
@@ -38,6 +43,13 @@
     transition-property: background-color;
     transition-duration: 0.15s;
     transition-timing-function: easo;
+  }
+
+  @media screen and (min-width: 768px) {
+    .menu-btn,
+    #btn-open-nav-drawer {
+      display: none;
+    }
   }
 </style>
 
