@@ -93,14 +93,16 @@ export function initDrawerTouch() {
 
       console.log('Normalized Touch Distance: ', normalizedTouchDistance);
 
-      if (navDrawer!.style.transform !== 'translateX(0%)') {
-        navDrawer!.style.transform = `translateX(${normalizedTouchDistance}%)`;
+      if (touchMoveRight() && normalizedTouchDistance > 0) {
+        normalizedTouchDistance;
       }
 
-      if (touchMoveRight()) {
-        //todo
-      } else if (touchMoveLeft()) {
-        //todo
+      if (touchMoveLeft() && normalizedTouchDistance < 0) {
+        normalizedTouchDistance *= -1;
+      }
+
+      if (navDrawer!.style.transform !== 'translateX(0%)') {
+        navDrawer!.style.transform = `translateX(${normalizedTouchDistance}%)`;
       }
     }
 
