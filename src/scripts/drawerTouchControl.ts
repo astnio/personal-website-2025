@@ -36,82 +36,119 @@ export function initDrawerTouch() {
     const navDrawer = document.getElementById('nav-drawer');
     const navDrawerToggle = document.getElementById('btn-open-nav-drawer');
 
-    let prevPageX = 0;
-    let currPageX = 0;
+    const touchDirection = {
+      left: -1,
+      right: 1,
+    };
+
+    // let prevPageX = 0;
+    // let currPageX = 0;
+
+    let prevTouchX = 0;
+    let currTouchX = 0;
+
     let totalTouchDistance = 0;
     let movement = 0;
 
-    let touchDirection = 0;
+    let currTouchDirection = 0;
+
+    const openThreshold = -60;
 
     function normalizeNumbers(val: number, max: number, min: number) {
       return Math.round(((val - min) / (max - min)) * 100);
     }
 
-    function reverseNormalizeNumbers(val: number, min: number, max: number) {
-      return Math.round(((val - max) / (min - max)) * 100);
+    function openDrawer() {
+      navDrawer!.setAttribute('data-active', 'true');
+      navDrawer!.style.transform = 'translateX(0%)';
+      navDrawerToggle!.setAttribute('data-action', 'close');
     }
 
+    function closeDrawer() {
+      navDrawer!.setAttribute('data-active', 'false');
+      navDrawer!.style.transform = 'translateX(-100%)';
+      navDrawerToggle!.setAttribute('data-action', 'open');
+    }
+
+    function touchMoveLeft(): boolean {
+      return currTouchDirection <= touchDirection.left;
+    }
+
+    function touchMoveRight(): boolean {
+      return currTouchDirection >= touchDirection.right;
+    }
+
+    // function moveDrawer() {
+    //   if (touchMoveLeft()) {
+    //     movement = -normalizeNumbers(totalTouchDistance, window.innerWidth, 0);
+
+    //     if (movement >= openThreshold) {
+    //       console.log('HIT OPEN THRESHOLD!');
+    //     }
+
+    //     if (movement >= 0) {
+    //       return;
+    //     } else {
+    //       navDrawer!.style.transform = `translateX(${movement}%)`;
+    //     }
+    //   } else if (touchMoveRight()) {
+    //     //todo
+    //   }
+    // }
+
     function moveDrawer() {
-      if (touchDirection >= 1) {
-        movement = -reverseNormalizeNumbers(
-          totalTouchDistance,
-          window.innerWidth,
-          0
-        );
-
-        console.log('Touch Move: ', movement);
-        console.log('Nav Drawer Transform: ', navDrawer!.style.transform);
-
-        if (movement >= -60) {
-          console.log('HIT OPEN THRESHOLD!');
-        }
-
-        if (movement >= 0) {
-          return;
-        } else {
-          navDrawer!.style.transform = `translateX(${movement}%)`;
-        }
+      if (touchMoveRight()) {
+        console.log('moved right');
+        //todo
+      } else if (touchMoveLeft()) {
+        console.log('moved left');
+        //todo
       }
     }
 
     document.addEventListener('touchstart', (event) => {
       const touch = event.changedTouches[0];
-      currPageX = 0;
-      movement = 0;
-      totalTouchDistance = 0;
+      // currPageX = 0;
+      // movement = 0;
+      // totalTouchDistance = 0;
     });
 
     document.addEventListener('touchmove', (event) => {
+      // const touch = event.changedTouches[0];
+      // currPageX = touch.pageX;
+      // currTouchDirection = currPageX - prevPageX;
+      // // let touchDistance = Math.abs(currPageX - prevPageX);
+      // let touchDistance = currTouchDirection;
+      // console.log('Touch Direction: ', currTouchDirection);
+      // totalTouchDistance += touchDistance;
+      // moveDrawer();
+      // prevPageX = currPageX;
+
       const touch = event.changedTouches[0];
-      currPageX = touch.pageX;
 
-      touchDirection = currPageX - prevPageX;
-      let touchDistance = Math.abs(currPageX - prevPageX);
+      currTouchX = touch.pageX;
 
-      console.log('Touch Direction: ', touchDirection);
+      currTouchDirection = currTouchX - prevTouchX;
 
-      totalTouchDistance += touchDistance;
+      let currTouchDistance = Math.abs(currTouchDirection);
+
+      totalTouchDistance += currTouchDistance;
 
       moveDrawer();
 
-      prevPageX = currPageX;
+      prevTouchX = currTouchX;
     });
 
     document.addEventListener('touchend', (event) => {
-      const touch = event.changedTouches[0];
-
-      if (movement >= -60) {
-        navDrawer!.setAttribute('data-active', 'true');
-        navDrawer!.style.transform = 'translateX(0%)';
-        navDrawerToggle!.setAttribute('data-action', 'close');
-        return;
-      } else {
-        navDrawer!.style.transform = `translateX(-100%)`;
-      }
-
-      currPageX = 0;
-      movement = 0;
-      totalTouchDistance = 0;
+      // const touch = event.changedTouches[0];
+      // if (movement <= -60) {
+      //   openDrawer();
+      // } else {
+      //   closeDrawer();
+      //   currPageX = 0;
+      //   movement = 0;
+      //   totalTouchDistance = 0;
+      // }
     });
   });
 }
