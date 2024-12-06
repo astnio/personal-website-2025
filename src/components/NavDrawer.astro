@@ -39,14 +39,14 @@ import NavLinks from './NavLinks.astro';
   }
 
   #nav-drawer[data-active='true'] {
-    transform: translateY(0%);
+    transform: translateX(0%);
     pointer-events: all;
     opacity: 1;
     visibility: visible;
   }
 
   #nav-drawer[data-active='false'] {
-    transform: translateY(-100%);
+    transform: translateX(-100%);
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
