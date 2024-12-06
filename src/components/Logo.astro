@@ -45,10 +45,11 @@ const { mobileView } = Astro.props;
     margin: 1rem;
 
     z-index: 20;
+    display: none;
   }
 
   a[data-mobile-view='false'] {
-    display: none;
+    /* display: none; */
   }
 
   @media screen and (min-width: 768px) {
