@@ -63,12 +63,12 @@ const navLinks = links.internalLinks;
     width: 100%;
   }
 
-  a::before {
+  a::before {    
     content: '\203A';
 
     position: absolute;
-    left: 0;
-    top: -0.1rem;
+    left: 0.1rem;
+    top: -0.05rem;
 
     transform: translateX(0);
     opacity: 0;
@@ -149,8 +149,6 @@ const navLinks = links.internalLinks;
       outline: 1px solid var(--clr-surface-1);
     }
 
-
-
     a::after {
       display: none;
     }
@@ -161,7 +159,14 @@ const navLinks = links.internalLinks;
     }
 
     a::before {
-      font-size: 2.6rem;
+      content: '\2039';
+
+      position: absolute;
+      left: auto;
+      right: -2.8rem;
+      top: -0.6rem;
+
+      font-size: 3.4rem;
     }
 
     a[data-is-current-page='true']::before {
