@@ -33,7 +33,7 @@ export function initDrawerTouch() {
     // });
 
     /*** Actual Logic  ***/
-    const navDrawer = document.getElementById('nav-drawer');
+    const navDrawer = document.getElementById('nav-drawer') as HTMLElement;
     const navDrawerToggle = document.getElementById('btn-open-nav-drawer');
 
     const touchDirection = {
@@ -93,7 +93,7 @@ export function initDrawerTouch() {
 
       console.log('Normalized Touch Distance: ', normalizedTouchDistance);
 
-      if (normalizedTouchDistance < 100) {
+      if (navDrawer!.style.transform !== 'translateX(0%)') {
         navDrawer!.style.transform = `translateX(${normalizedTouchDistance}%)`;
       }
 
@@ -123,6 +123,24 @@ export function initDrawerTouch() {
 
     document.addEventListener('touchend', (event) => {
       resetTouchValues();
+
+      const navDrawerTransformX = new DOMMatrix(
+        window.getComputedStyle(navDrawer).transform
+      ).e;
+
+      const navDrawerTransformXPercent = normalizeRange(
+        navDrawerTransformX,
+        window.innerWidth,
+        0
+      );
+
+      console.log(navDrawerTransformXPercent);
+
+      if (navDrawerTransformXPercent >= openThreshold) {
+        openDrawer();
+      } else {
+        closeDrawer();
+      }
     });
 
     document.addEventListener('touchcancel', (event) => {
