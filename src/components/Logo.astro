@@ -1,5 +1,5 @@
 ---
-const { inDrawer } = Astro.props;
+const { mobileView } = Astro.props;
 ---
 
 <style>
@@ -37,18 +37,33 @@ const { inDrawer } = Astro.props;
     outline: 1px solid var(--clr-subtext-0);
   }
 
-  a[data-in-drawer='true'] {
-    padding-block: 1.4rem;
+  a[data-mobile-view='true'] {
+    position: absolute;
+    top: 0;
+    left: 0;
 
-    width: 100%;
-    max-width: 100%;
+    margin: 1rem;
 
-    font-size: 1.8rem;
+    z-index: 20;
+  }
+
+  a[data-mobile-view='false'] {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    a[data-mobile-view='true'] {
+      display: none;
+    }
+
+    a[data-mobile-view='false'] {
+      display: flex;
+    }
   }
 </style>
 
 <a
-  data-in-drawer={inDrawer}
+  data-mobile-view={mobileView}
   href='/'
   ><span id='logo'><span class='label-domain'>astn</span></span>
 </a>
