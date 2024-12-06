@@ -41,17 +41,11 @@ export function initDrawerTouch() {
       right: 1,
     };
 
-    // let prevPageX = 0;
-    // let currPageX = 0;
-
+    let startTouchX = 0;
     let prevTouchX = 0;
-    let currTouchX = 0;
-
     let totalTouchDistance = 0;
-    let movement = 0;
-
+    let normalizedTouchDistance = 0;
     let currTouchDirection = 0;
-
     const openThreshold = -60;
 
     function normalizeRange(val: number, max: number, min: number) {
@@ -70,6 +64,12 @@ export function initDrawerTouch() {
       navDrawerToggle!.setAttribute('data-action', 'open');
     }
 
+    function resetTouchValues() {
+      totalTouchDistance = 0;
+      normalizedTouchDistance = 0;
+      currTouchDirection = 0;
+    }
+
     function touchMoveLeft(): boolean {
       return currTouchDirection <= touchDirection.left;
     }
@@ -78,89 +78,55 @@ export function initDrawerTouch() {
       return currTouchDirection >= touchDirection.right;
     }
 
-    // function moveDrawer() {
-    //   if (touchMoveLeft()) {
-    //     movement = -normalizeNumbers(totalTouchDistance, window.innerWidth, 0);
-
-    //     if (movement >= openThreshold) {
-    //       console.log('HIT OPEN THRESHOLD!');
-    //     }
-
-    //     if (movement >= 0) {
-    //       return;
-    //     } else {
-    //       navDrawer!.style.transform = `translateX(${movement}%)`;
-    //     }
-    //   } else if (touchMoveRight()) {
-    //     //todo
-    //   }
-    // }
+    function drawerTransform(normalizedDistance: number): number {
+      return -100 + normalizedDistance;
+    }
 
     function moveDrawer() {
-      console.log('Total Touch Distance: ', totalTouchDistance);
-
-      let normalizedTouchDistance = normalizeRange(
-        totalTouchDistance,
+      normalizedTouchDistance = normalizeRange(
+        Math.abs(totalTouchDistance),
         window.innerWidth,
         0
       );
 
+      normalizedTouchDistance = drawerTransform(normalizedTouchDistance);
+
       console.log('Normalized Touch Distance: ', normalizedTouchDistance);
 
+      if (normalizedTouchDistance < 100) {
+        navDrawer!.style.transform = `translateX(${normalizedTouchDistance}%)`;
+      }
+
       if (touchMoveRight()) {
-        console.log('moved right');
         //todo
       } else if (touchMoveLeft()) {
-        console.log('moved left');
         //todo
       }
     }
 
     document.addEventListener('touchstart', (event) => {
       const touch = event.changedTouches[0];
-      // currPageX = 0;
-      // movement = 0;
-      // totalTouchDistance = 0;
+
+      startTouchX = touch.clientX;
+      prevTouchX = touch.clientX;
+      resetTouchValues();
     });
 
     document.addEventListener('touchmove', (event) => {
-      // const touch = event.changedTouches[0];
-      // currPageX = touch.pageX;
-      // currTouchDirection = currPageX - prevPageX;
-      // // let touchDistance = Math.abs(currPageX - prevPageX);
-      // let touchDistance = currTouchDirection;
-      // console.log('Touch Direction: ', currTouchDirection);
-      // totalTouchDistance += touchDistance;
-      // moveDrawer();
-      // prevPageX = currPageX;
-
       const touch = event.changedTouches[0];
 
-      currTouchX = touch.pageX;
-
-      currTouchDirection = currTouchX - prevTouchX;
-
-      let currTouchDistance = Math.abs(currTouchDirection);
-
-      totalTouchDistance += currTouchDirection;
-
+      totalTouchDistance = touch.clientX - startTouchX;
+      currTouchDirection = touch.clientX - prevTouchX;
       moveDrawer();
-
-      prevTouchX = currTouchX;
+      prevTouchX = touch.clientX;
     });
 
     document.addEventListener('touchend', (event) => {
-      // const touch = event.changedTouches[0];
-      // if (movement <= -60) {
-      //   openDrawer();
-      // } else {
-      //   closeDrawer();
-      //   currPageX = 0;
-      //   movement = 0;
-      //   totalTouchDistance = 0;
-      // }
+      resetTouchValues();
+    });
 
-      totalTouchDistance = 0;
+    document.addEventListener('touchcancel', (event) => {
+      resetTouchValues();
     });
   });
 }
