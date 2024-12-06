@@ -6,6 +6,7 @@ document.addEventListener('astro:page-load', () => {
   function openDrawer() {
     overlay!.setAttribute('data-active', 'true');
     navDrawer!.setAttribute('data-active', 'true');
+    navDrawer!.style.transform = 'translateX(0%)';
     btnOpenMenu!.setAttribute('data-action', 'close');
     document.body.setAttribute('data-scroll-active', 'false');
   }
@@ -13,6 +14,7 @@ document.addEventListener('astro:page-load', () => {
   function closeDrawer() {
     overlay!.setAttribute('data-active', 'false');
     navDrawer!.setAttribute('data-active', 'false');
+    navDrawer!.style.transform = 'translateX(-100%)';
     btnOpenMenu!.setAttribute('data-action', 'open');
     document.body.setAttribute('data-scroll-active', 'true');
   }
