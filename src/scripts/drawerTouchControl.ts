@@ -54,7 +54,7 @@ export function initDrawerTouch() {
 
     const openThreshold = -60;
 
-    function normalizeNumbers(val: number, max: number, min: number) {
+    function normalizeRange(val: number, max: number, min: number) {
       return Math.round(((val - min) / (max - min)) * 100);
     }
 
@@ -97,6 +97,16 @@ export function initDrawerTouch() {
     // }
 
     function moveDrawer() {
+      console.log('Total Touch Distance: ', totalTouchDistance);
+
+      let normalizedTouchDistance = normalizeRange(
+        totalTouchDistance,
+        window.innerWidth,
+        0
+      );
+
+      console.log('Normalized Touch Distance: ', normalizedTouchDistance);
+
       if (touchMoveRight()) {
         console.log('moved right');
         //todo
@@ -132,7 +142,7 @@ export function initDrawerTouch() {
 
       let currTouchDistance = Math.abs(currTouchDirection);
 
-      totalTouchDistance += currTouchDistance;
+      totalTouchDistance += currTouchDirection;
 
       moveDrawer();
 
@@ -149,6 +159,8 @@ export function initDrawerTouch() {
       //   movement = 0;
       //   totalTouchDistance = 0;
       // }
+
+      totalTouchDistance = 0;
     });
   });
 }
