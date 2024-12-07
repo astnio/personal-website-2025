@@ -43,6 +43,11 @@ export function initDrawerTouch() {
       right: 1,
     };
 
+    let startTouchDirection = {
+      initiated: false,
+      direction: 0,
+    };
+
     let startTouchX: number = 0;
     let prevTouchX: number = 0;
     let totalTouchDistance: number = 0;
@@ -71,6 +76,7 @@ export function initDrawerTouch() {
       totalTouchDistance = 0;
       normalizedTouchDistance = 0;
       currTouchDirection = 0;
+      startTouchDirection.initiated = false;
     }
 
     function touchMoveLeft(): boolean {
@@ -79,6 +85,14 @@ export function initDrawerTouch() {
 
     function touchMoveRight(): boolean {
       return currTouchDirection >= touchDirection.right;
+    }
+
+    function startTouchLeft(): boolean {
+      return startTouchDirection.direction <= touchDirection.left;
+    }
+
+    function startTouchRight(): boolean {
+      return startTouchDirection.direction >= touchDirection.right;
     }
 
     function drawerTransform(normalizedDistance: number): number {
@@ -94,20 +108,7 @@ export function initDrawerTouch() {
 
       normalizedTouchDistance = drawerTransform(normalizedTouchDistance);
 
-      console.log('Normalized Touch Distance: ', normalizedTouchDistance);
-
-      // if (touchMoveRight() && normalizedTouchDistance > 0) {
-      //   normalizedTouchDistance;
-      // }
-
-      // if (touchMoveLeft() && normalizedTouchDistance < 0) {
-      //   normalizedTouchDistance *= -1;
-      // }
-
-      console.log('NORMALIZED TOUCH DISTANCE: ', normalizedTouchDistance);
-      console.log('REMINDER THRESHOLD: ', openThreshold);
-
-      if (navDrawer!.style.transform !== 'translateX(0%)') {
+      if (touchDirection.right) {
         navDrawer!.style.transform = `translateX(${normalizedTouchDistance}%)`;
       }
     }
@@ -127,6 +128,13 @@ export function initDrawerTouch() {
 
       totalTouchDistance = touch.clientX - startTouchX;
       currTouchDirection = touch.clientX - prevTouchX;
+
+      if (!startTouchDirection.initiated) {
+        startTouchDirection.direction = currTouchDirection;
+      }
+
+      startTouchDirection.initiated = true;
+
       moveDrawer();
       prevTouchX = touch.clientX;
     });
@@ -134,27 +142,12 @@ export function initDrawerTouch() {
     document.addEventListener('touchend', (event) => {
       navDrawer!.style.transitionDuration = navDrawerTransitionDuration;
 
-      const navDrawerTransformX = new DOMMatrix(
-        window.getComputedStyle(navDrawer).transform
-      ).e;
-
-      const navDrawerTransformXPercent = normalizeRange(
-        navDrawerTransformX,
-        window.innerWidth,
-        0
-      );
-
-      console.log('NORMALIZED TOUCH DISTANCE: ', normalizedTouchDistance);
-      console.log('REMINDER THRESHOLD: ', openThreshold);
-
       if (
         normalizedTouchDistance !== 0 &&
         Math.abs(normalizedTouchDistance) < Math.abs(openThreshold)
       ) {
-        console.log('REACHED THE OPEN THRESHOLD!');
         openDrawer();
       } else {
-        console.log('did NOT reach the open threshold :(');
         closeDrawer();
       }
 
