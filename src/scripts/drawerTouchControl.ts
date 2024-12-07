@@ -36,17 +36,19 @@ export function initDrawerTouch() {
     const navDrawer = document.getElementById('nav-drawer') as HTMLElement;
     const navDrawerToggle = document.getElementById('btn-open-nav-drawer');
 
+    const navDrawerTransitionDuration = '0.35s';
+
     const touchDirection = {
       left: -1,
       right: 1,
     };
 
-    let startTouchX = 0;
-    let prevTouchX = 0;
-    let totalTouchDistance = 0;
-    let normalizedTouchDistance = 0;
-    let currTouchDirection = 0;
-    const openThreshold = -60;
+    let startTouchX: number = 0;
+    let prevTouchX: number = 0;
+    let totalTouchDistance: number = 0;
+    let normalizedTouchDistance: number = 0;
+    let currTouchDirection: number = 0;
+    const openThreshold: number = -75;
 
     function normalizeRange(val: number, max: number, min: number) {
       return Math.round(((val - min) / (max - min)) * 100);
@@ -59,6 +61,7 @@ export function initDrawerTouch() {
     }
 
     function closeDrawer() {
+      console.log('closing lol');
       navDrawer!.setAttribute('data-active', 'false');
       navDrawer!.style.transform = 'translateX(-100%)';
       navDrawerToggle!.setAttribute('data-action', 'open');
@@ -93,13 +96,16 @@ export function initDrawerTouch() {
 
       console.log('Normalized Touch Distance: ', normalizedTouchDistance);
 
-      if (touchMoveRight() && normalizedTouchDistance > 0) {
-        normalizedTouchDistance;
-      }
+      // if (touchMoveRight() && normalizedTouchDistance > 0) {
+      //   normalizedTouchDistance;
+      // }
 
-      if (touchMoveLeft() && normalizedTouchDistance < 0) {
-        normalizedTouchDistance *= -1;
-      }
+      // if (touchMoveLeft() && normalizedTouchDistance < 0) {
+      //   normalizedTouchDistance *= -1;
+      // }
+
+      console.log('NORMALIZED TOUCH DISTANCE: ', normalizedTouchDistance);
+      console.log('REMINDER THRESHOLD: ', openThreshold);
 
       if (navDrawer!.style.transform !== 'translateX(0%)') {
         navDrawer!.style.transform = `translateX(${normalizedTouchDistance}%)`;
@@ -107,6 +113,8 @@ export function initDrawerTouch() {
     }
 
     document.addEventListener('touchstart', (event) => {
+      navDrawer!.style.transitionDuration = '0.0s';
+
       const touch = event.changedTouches[0];
 
       startTouchX = touch.clientX;
@@ -124,7 +132,7 @@ export function initDrawerTouch() {
     });
 
     document.addEventListener('touchend', (event) => {
-      resetTouchValues();
+      navDrawer!.style.transitionDuration = navDrawerTransitionDuration;
 
       const navDrawerTransformX = new DOMMatrix(
         window.getComputedStyle(navDrawer).transform
@@ -136,13 +144,21 @@ export function initDrawerTouch() {
         0
       );
 
-      console.log(navDrawerTransformXPercent);
+      console.log('NORMALIZED TOUCH DISTANCE: ', normalizedTouchDistance);
+      console.log('REMINDER THRESHOLD: ', openThreshold);
 
-      if (navDrawerTransformXPercent >= openThreshold) {
+      if (
+        normalizedTouchDistance !== 0 &&
+        Math.abs(normalizedTouchDistance) < Math.abs(openThreshold)
+      ) {
+        console.log('REACHED THE OPEN THRESHOLD!');
         openDrawer();
       } else {
+        console.log('did NOT reach the open threshold :(');
         closeDrawer();
       }
+
+      resetTouchValues();
     });
 
     document.addEventListener('touchcancel', (event) => {

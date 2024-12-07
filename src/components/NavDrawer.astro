@@ -18,9 +18,6 @@ import NavLinks from './NavLinks.astro';
     align-items: start;
     justify-content: center;
 
-    /* width: 16rem;
-    max-width: 80vw; */
-
     width: 100%;
 
     height: 100dvh;
@@ -33,11 +30,18 @@ import NavLinks from './NavLinks.astro';
 
     visibility: visible;
 
-    transition-property: transform, visibility, opacity, pointer-events;
     transition-duration: 0.35s;
     transition-timing-function: ease-in-out;
 
     z-index: 10;
+  }
+
+  #nav-drawer[data-user-touch-active='true'] {
+    transition-property: visibility, opacity, pointer-events;
+  }
+
+  #nav-drawer[data-user-touch-active='false'] {
+    transition-property: transform, visibility, opacity, pointer-events;
   }
 
   #nav-drawer[data-active='true'] {
@@ -150,11 +154,9 @@ import NavLinks from './NavLinks.astro';
 
 <aside
   data-active='false'
+  data-touch-active='true'
   id='nav-drawer'
   transition:animate='none'>
-  <!-- <div class='logo-wrapper'>
-    <Logo inDrawer='true' />
-  </div> -->
   <div class='nav-drawer-content'>
     <NavLinks />
     <ContactButton inDrawer='true' />
