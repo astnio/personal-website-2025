@@ -17,9 +17,9 @@ export function initDrawerTouch() {
 
     let startTouchX: number = 0;
     let startTouchY: number = 0;
-    // let prevTouchX: number = 0;
 
     let touchMoving: boolean = false;
+    let touchStartRight: boolean = false;
 
     let totalTouchDistance: number = 0;
     let normalizedTouchDistance: number = 0;
@@ -90,19 +90,22 @@ export function initDrawerTouch() {
           deltaX = Math.abs(touch.clientX - startTouchX);
         }
 
-        // prevTouchX = touch.clientX;
-
         touchDirectionX = touch.clientX - startTouchX;
 
-        console.log(touchMoveRight());
+        touchStartRight = touchMoveRight();
 
-        const userTouchOpenDrawer = deltaX > deltaY && event.cancelable;
-        if (userTouchOpenDrawer) {
-          event.preventDefault();
-          touchOpenDrawer();
+        if (touchStartRight) {
+          const userTouchOpenDrawer = deltaX > deltaY && event.cancelable;
+          if (userTouchOpenDrawer) {
+            event.preventDefault();
+            touchOpenDrawer();
+          } else {
+            return;
+          }
         } else {
-          return;
+          closeDrawer();
         }
+
         touchMoving = true;
       },
       { passive: false }
