@@ -13,11 +13,10 @@ export function initDrawerTouch() {
     let startTouchY: number = 0;
     let prevTouchX: number = 0;
 
-    let currentlyTouching: boolean = false;
+    let touchMoving: boolean = false;
 
     let totalTouchDistance: number = 0;
     let normalizedTouchDistance: number = 0;
-    let currTouchDirection: number = 0;
 
     function normalizeRange(val: number, max: number, min: number) {
       return Math.round(((val - min) / (max - min)) * 100);
@@ -38,14 +37,13 @@ export function initDrawerTouch() {
     function resetTouchValues() {
       totalTouchDistance = 0;
       normalizedTouchDistance = 0;
-      currTouchDirection = 0;
-    }
-
-    function drawerTransform(normalizedDistance: number): number {
-      return -100 + normalizedDistance;
     }
 
     function touchOpenDrawer() {
+      const drawerTransform = (normalizedDistance: number): number => {
+        return -100 + normalizedDistance;
+      };
+
       normalizedTouchDistance = normalizeRange(
         Math.abs(totalTouchDistance),
         window.innerWidth,
@@ -68,7 +66,6 @@ export function initDrawerTouch() {
         startTouchY = touch.clientY;
 
         prevTouchX = touch.clientX;
-        resetTouchValues();
       },
       { passive: false }
     );
@@ -79,9 +76,8 @@ export function initDrawerTouch() {
         const touch = event.changedTouches[0];
 
         totalTouchDistance = touch.clientX - startTouchX;
-        currTouchDirection = touch.clientX - prevTouchX;
 
-        if (!currentlyTouching) {
+        if (!touchMoving) {
           deltaY = Math.abs(touch.clientY - startTouchY);
           deltaX = Math.abs(touch.clientX - startTouchX);
         }
@@ -93,7 +89,7 @@ export function initDrawerTouch() {
         } else {
           return;
         }
-        currentlyTouching = true;
+        touchMoving = true;
 
         prevTouchX = touch.clientX;
       },
@@ -113,7 +109,7 @@ export function initDrawerTouch() {
       }
 
       resetTouchValues();
-      currentlyTouching = false;
+      touchMoving = false;
     });
 
     document.addEventListener('touchcancel', (event) => {
