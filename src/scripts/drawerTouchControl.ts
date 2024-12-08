@@ -48,8 +48,15 @@ export function initDrawerTouch() {
       direction: 0,
     };
 
+    let deltaY = 0;
+    let deltaX = 0;
+
     let startTouchX: number = 0;
+    let startTouchY: number = 0;
     let prevTouchX: number = 0;
+
+    let currentlyTouching: boolean = false;
+
     let totalTouchDistance: number = 0;
     let normalizedTouchDistance: number = 0;
     let currTouchDirection: number = 0;
@@ -113,31 +120,56 @@ export function initDrawerTouch() {
       }
     }
 
-    document.addEventListener('touchstart', (event) => {
-      navDrawer!.style.transitionDuration = '0.0s';
+    document.addEventListener(
+      'touchstart',
+      (event) => {
+        navDrawer!.style.transitionDuration = '0.0s';
 
-      const touch = event.changedTouches[0];
+        const touch = event.changedTouches[0];
 
-      startTouchX = touch.clientX;
-      prevTouchX = touch.clientX;
-      resetTouchValues();
-    });
+        startTouchX = touch.clientX;
+        startTouchY = touch.clientY;
 
-    document.addEventListener('touchmove', (event) => {
-      const touch = event.changedTouches[0];
+        prevTouchX = touch.clientX;
+        resetTouchValues();
+      },
+      { passive: false }
+    );
 
-      totalTouchDistance = touch.clientX - startTouchX;
-      currTouchDirection = touch.clientX - prevTouchX;
+    document.addEventListener(
+      'touchmove',
+      (event) => {
+        const touch = event.changedTouches[0];
 
-      if (!startTouchDirection.initiated) {
-        startTouchDirection.direction = currTouchDirection;
-      }
+        if (!currentlyTouching) {
+          deltaY = Math.abs(touch.clientY - startTouchY);
+          deltaX = Math.abs(touch.clientX - startTouchX);
+        }
 
-      startTouchDirection.initiated = true;
+        totalTouchDistance = touch.clientX - startTouchX;
+        currTouchDirection = touch.clientX - prevTouchX;
 
-      moveDrawer();
-      prevTouchX = touch.clientX;
-    });
+        if (!startTouchDirection.initiated) {
+          startTouchDirection.direction = currTouchDirection;
+        }
+
+        startTouchDirection.initiated = true;
+
+        if (deltaX > deltaY && event.cancelable) {
+          // No page scrolling, can open drawer
+          event.preventDefault();
+          moveDrawer();
+        } else {
+          // Cannot open drawer, allowed page scrolling
+          return;
+        }
+
+        prevTouchX = touch.clientX;
+
+        currentlyTouching = true;
+      },
+      { passive: false }
+    );
 
     document.addEventListener('touchend', (event) => {
       navDrawer!.style.transitionDuration = navDrawerTransitionDuration;
@@ -152,6 +184,7 @@ export function initDrawerTouch() {
       }
 
       resetTouchValues();
+      currentlyTouching = false;
     });
 
     document.addEventListener('touchcancel', (event) => {
