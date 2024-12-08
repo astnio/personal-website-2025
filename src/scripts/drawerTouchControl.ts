@@ -5,13 +5,19 @@ export function initDrawerTouch() {
 
     const navDrawerTransitionDuration = '0.35s';
     const openThreshold: number = -75;
+    const direction = {
+      left: -1,
+      right: 1,
+    };
+
+    let touchDirectionX = 0;
 
     let deltaY = 0;
     let deltaX = 0;
 
     let startTouchX: number = 0;
     let startTouchY: number = 0;
-    let prevTouchX: number = 0;
+    // let prevTouchX: number = 0;
 
     let touchMoving: boolean = false;
 
@@ -55,6 +61,10 @@ export function initDrawerTouch() {
       navDrawer!.style.transform = `translateX(${normalizedTouchDistance}%)`;
     }
 
+    function touchMoveRight(): boolean {
+      return touchDirectionX >= direction.right;
+    }
+
     document.addEventListener(
       'touchstart',
       (event) => {
@@ -64,8 +74,6 @@ export function initDrawerTouch() {
 
         startTouchX = touch.clientX;
         startTouchY = touch.clientY;
-
-        prevTouchX = touch.clientX;
       },
       { passive: false }
     );
@@ -82,6 +90,12 @@ export function initDrawerTouch() {
           deltaX = Math.abs(touch.clientX - startTouchX);
         }
 
+        // prevTouchX = touch.clientX;
+
+        touchDirectionX = touch.clientX - startTouchX;
+
+        console.log(touchMoveRight());
+
         const userTouchOpenDrawer = deltaX > deltaY && event.cancelable;
         if (userTouchOpenDrawer) {
           event.preventDefault();
@@ -90,8 +104,6 @@ export function initDrawerTouch() {
           return;
         }
         touchMoving = true;
-
-        prevTouchX = touch.clientX;
       },
       { passive: false }
     );
