@@ -65,53 +65,45 @@ export function initDrawerTouch() {
       return touchDirectionX >= direction.right;
     }
 
-    document.addEventListener(
-      'touchstart',
-      (event) => {
-        navDrawer!.style.transitionDuration = '0.0s';
+    const handleTouchStart = (event: TouchEvent): void => {
+      navDrawer!.style.transitionDuration = '0.0s';
 
-        const touch = event.changedTouches[0];
+      const touch = event.changedTouches[0];
 
-        startTouchX = touch.clientX;
-        startTouchY = touch.clientY;
-      },
-      { passive: false }
-    );
+      startTouchX = touch.clientX;
+      startTouchY = touch.clientY;
+    };
 
-    document.addEventListener(
-      'touchmove',
-      (event) => {
-        const touch = event.changedTouches[0];
+    const handleTouchMove = (event: TouchEvent): void => {
+      const touch = event.changedTouches[0];
 
-        totalTouchDistance = touch.clientX - startTouchX;
+      totalTouchDistance = touch.clientX - startTouchX;
 
-        if (!touchMoving) {
-          deltaY = Math.abs(touch.clientY - startTouchY);
-          deltaX = Math.abs(touch.clientX - startTouchX);
-        }
+      if (!touchMoving) {
+        deltaY = Math.abs(touch.clientY - startTouchY);
+        deltaX = Math.abs(touch.clientX - startTouchX);
+      }
 
-        touchDirectionX = touch.clientX - startTouchX;
+      touchDirectionX = touch.clientX - startTouchX;
 
-        touchStartRight = touchMoveRight();
+      touchStartRight = touchMoveRight();
 
-        if (touchStartRight) {
-          const userTouchOpenDrawer = deltaX > deltaY && event.cancelable;
-          if (userTouchOpenDrawer) {
-            event.preventDefault();
-            touchOpenDrawer();
-          } else {
-            return;
-          }
+      if (touchStartRight) {
+        const userTouchOpenDrawer = deltaX > deltaY && event.cancelable;
+        if (userTouchOpenDrawer) {
+          event.preventDefault();
+          touchOpenDrawer();
         } else {
-          closeDrawer();
+          return;
         }
+      } else {
+        closeDrawer();
+      }
 
-        touchMoving = true;
-      },
-      { passive: false }
-    );
+      touchMoving = true;
+    };
 
-    document.addEventListener('touchend', (event) => {
+    const handleTouchEnd = (event: TouchEvent): void => {
       navDrawer!.style.transitionDuration = navDrawerTransitionDuration;
 
       if (
@@ -125,8 +117,13 @@ export function initDrawerTouch() {
 
       resetTouchValues();
       touchMoving = false;
-    });
+    };
 
+    document.addEventListener('touchstart', handleTouchStart, {
+      passive: false,
+    });
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('touchend', handleTouchEnd);
     document.addEventListener('touchcancel', (event) => {
       resetTouchValues();
     });
