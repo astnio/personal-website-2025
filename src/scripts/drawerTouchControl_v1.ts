@@ -10,21 +10,19 @@ export function initDrawerTouch() {
       right: 1,
     };
 
+    let touchDirectionX = 0;
+
     let deltaY = 0;
     let deltaX = 0;
-
-    let initTouchMoveDeltaY = 0;
-    let initTouchMoveDeltaX = 0;
 
     let startTouchX: number = 0;
     let startTouchY: number = 0;
 
-    let touchMovePositionX: number = 0;
-    let touchMovePositionY: number = 0;
-    let drawerTransformPercent: number = 0;
-
     let touchMoving: boolean = false;
     let touchStartRight: boolean = false;
+
+    let totalTouchDistance: number = 0;
+    let normalizedTouchDistance: number = 0;
 
     function normalizeRange(val: number, max: number, min: number) {
       return Math.round(((val - min) / (max - min)) * 100);
@@ -43,30 +41,28 @@ export function initDrawerTouch() {
     }
 
     function resetTouchValues() {
-      touchMovePositionX = 0;
-      drawerTransformPercent = 0;
-    }
-
-    function getDrawerTransformPercent(normalizedDistance: number): number {
-      return -100 + normalizedDistance;
+      totalTouchDistance = 0;
+      normalizedTouchDistance = 0;
     }
 
     function touchOpenDrawer() {
-      drawerTransformPercent = normalizeRange(
-        Math.abs(touchMovePositionX),
+      const drawerTransform = (normalizedDistance: number): number => {
+        return -100 + normalizedDistance;
+      };
+
+      normalizedTouchDistance = normalizeRange(
+        Math.abs(totalTouchDistance),
         window.innerWidth,
         0
       );
 
-      drawerTransformPercent = getDrawerTransformPercent(
-        drawerTransformPercent
-      );
+      normalizedTouchDistance = drawerTransform(normalizedTouchDistance);
 
-      navDrawer!.style.transform = `translateX(${drawerTransformPercent}%)`;
+      navDrawer!.style.transform = `translateX(${normalizedTouchDistance}%)`;
     }
 
     function touchMoveRight(): boolean {
-      return touchMovePositionX >= direction.right;
+      return touchDirectionX >= direction.right;
     }
 
     const handleTouchStart = (event: TouchEvent): void => {
@@ -81,26 +77,24 @@ export function initDrawerTouch() {
     const handleTouchMove = (event: TouchEvent): void => {
       const touch = event.changedTouches[0];
 
-      touchMovePositionX = touch.clientX - startTouchX;
-      touchMovePositionY = touch.clientY - startTouchY;
-
-      deltaX = Math.abs(touchMovePositionX);
-      deltaY = Math.abs(touchMovePositionY);
+      totalTouchDistance = touch.clientX - startTouchX;
 
       if (!touchMoving) {
-        initTouchMoveDeltaX = deltaX;
-        initTouchMoveDeltaY = deltaY;
+        deltaY = Math.abs(touch.clientY - startTouchY);
+        deltaX = Math.abs(touch.clientX - startTouchX);
       }
+
+      touchDirectionX = touch.clientX - startTouchX;
 
       touchStartRight = touchMoveRight();
 
       if (touchStartRight) {
-        const drawerOpenMode =
-          initTouchMoveDeltaX > initTouchMoveDeltaY && event.cancelable;
-
-        if (drawerOpenMode) {
+        const userTouchOpenDrawer = deltaX > deltaY && event.cancelable;
+        if (userTouchOpenDrawer) {
           event.preventDefault();
           touchOpenDrawer();
+        } else {
+          return;
         }
       } else {
         closeDrawer();
@@ -113,15 +107,15 @@ export function initDrawerTouch() {
       navDrawer!.style.transitionDuration = navDrawerTransitionDuration;
 
       if (
-        drawerTransformPercent !== 0 &&
-        Math.abs(drawerTransformPercent) < Math.abs(openThreshold)
+        normalizedTouchDistance !== 0 &&
+        Math.abs(normalizedTouchDistance) < Math.abs(openThreshold)
       ) {
         openDrawer();
       } else {
         closeDrawer();
       }
 
-      // resetTouchValues();
+      resetTouchValues();
       touchMoving = false;
     };
 
@@ -131,7 +125,7 @@ export function initDrawerTouch() {
     document.addEventListener('touchmove', handleTouchMove, { passive: false });
     document.addEventListener('touchend', handleTouchEnd);
     document.addEventListener('touchcancel', (event) => {
-      // resetTouchValues();
+      resetTouchValues();
     });
   });
 }
