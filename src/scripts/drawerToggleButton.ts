@@ -14,7 +14,7 @@ document.addEventListener('astro:page-load', () => {
   function closeDrawer() {
     overlay!.setAttribute('data-active', 'false');
     navDrawer!.setAttribute('data-active', 'false');
-    navDrawer!.style.transform = 'translateX(-100%)';
+    navDrawer!.style.transform = 'translateX(100%)';
     btnOpenMenu!.setAttribute('data-action', 'open');
     document.body.setAttribute('data-scroll-active', 'true');
   }

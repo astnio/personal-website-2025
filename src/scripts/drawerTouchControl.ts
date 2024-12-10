@@ -5,7 +5,6 @@ export function initDrawerTouch() {
     const overlay = document.getElementById('overlay');
 
     const navDrawerTransitionDuration = '0.35s';
-
     const openThreshold: number = 75;
     const closeThreshold: number = 25;
 
@@ -21,7 +20,7 @@ export function initDrawerTouch() {
     let touchMovePositionX: number = 0;
     let touchMovePositionY: number = 0;
 
-    let drawerTransformPercent: number = -100;
+    let drawerTransformPercent: number = 100;
     let touchMoving: boolean = false;
     let isDrawerOpen: boolean = false;
 
@@ -49,9 +48,9 @@ export function initDrawerTouch() {
     function closeDrawer() {
       overlay!.setAttribute('data-active', 'false');
       navDrawer!.setAttribute('data-active', 'false');
-      navDrawer!.style.transform = 'translateX(-100%)';
+      navDrawer!.style.transform = 'translateX(100%)';
       navDrawerToggle!.setAttribute('data-action', 'open');
-      drawerTransformPercent = -100;
+      drawerTransformPercent = 100;
       isDrawerOpen = false;
     }
 
@@ -60,9 +59,9 @@ export function initDrawerTouch() {
       isClosingGesture: boolean
     ): number {
       if (isClosingGesture) {
-        return Math.max(-100, Math.min(0, -normalizedDistance));
+        return Math.min(100, Math.max(0, normalizedDistance));
       } else {
-        return Math.max(-100, Math.min(0, -100 + normalizedDistance));
+        return Math.min(100, Math.max(0, 100 - normalizedDistance));
       }
     }
 
@@ -76,7 +75,7 @@ export function initDrawerTouch() {
       );
 
       const isClosingGesture =
-        (isDrawerOpen && moveX < 0) || (!isDrawerOpen && moveX < 0);
+        (isDrawerOpen && moveX > 0) || (!isDrawerOpen && moveX > 0);
       drawerTransformPercent = getDrawerTransformPercent(
         normalizedDistance,
         isClosingGesture
@@ -107,8 +106,11 @@ export function initDrawerTouch() {
       }
 
       const isHorizontalMove = initTouchMoveDeltaX > initTouchMoveDeltaY;
+      const isCorrectDirection = isDrawerOpen
+        ? touchMovePositionX > 0
+        : touchMovePositionX < 0;
 
-      if (isHorizontalMove && event.cancelable) {
+      if (isHorizontalMove && isCorrectDirection && event.cancelable) {
         event.preventDefault();
         updateDrawerPosition(touchMovePositionX);
       }
@@ -120,13 +122,13 @@ export function initDrawerTouch() {
       navDrawer!.style.transitionDuration = navDrawerTransitionDuration;
 
       if (isDrawerOpen) {
-        if (drawerTransformPercent < -closeThreshold) {
+        if (drawerTransformPercent > closeThreshold) {
           closeDrawer();
         } else {
           openDrawer();
         }
       } else {
-        if (drawerTransformPercent > -openThreshold) {
+        if (drawerTransformPercent < openThreshold) {
           openDrawer();
         } else {
           closeDrawer();
