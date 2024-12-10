@@ -3,10 +3,25 @@ import ColorThemeSelect from './ColorThemeSelect.astro';
 import FontSelect from './FontSelect.astro';
 import LightSwitch from './LightSwitch.astro';
 
-const { inDrawer } = Astro.props;
+const { inDrawer, customizationMenuId, lightSwitchId } = Astro.props;
 ---
 
 <style>
+  .customization-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 1rem;
+
+    background-color: var(--clr-crust);
+
+    padding: 1rem;
+
+    border-radius: var(--radius-surface);
+    outline: 1px solid var(--clr-base);
+  }
+
   .customization-menu[data-in-drawer='false'] {
     display: none;
   }
@@ -21,7 +36,7 @@ const { inDrawer } = Astro.props;
 <div
   class='customization-menu'
   data-in-drawer={inDrawer}>
-  <LightSwitch id='customization-menu' />
+  <LightSwitch id={lightSwitchId} />
   <FontSelect />
   <ColorThemeSelect />
 </div>
