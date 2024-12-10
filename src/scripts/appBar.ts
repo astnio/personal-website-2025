@@ -1,5 +1,6 @@
 document.addEventListener('astro:page-load', () => {
   const navbar = document.getElementById('app-bar');
+  const drawerToggle = document.getElementById('btn-open-nav-drawer');
 
   const scrollActivationDistance = 150;
 
@@ -10,10 +11,12 @@ document.addEventListener('astro:page-load', () => {
 
   function hideAppBar() {
     navbar!.style.transform = 'translateY(-100%)';
+    drawerToggle!.style.transform = 'translateY(-100%)';
   }
 
   function revealAppBar() {
     navbar!.style.transform = 'translateY(0%)';
+    drawerToggle!.style.transform = 'translateY(0%)';
   }
 
   function updateScrollDireciton(scrollDir: number) {
