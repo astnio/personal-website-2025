@@ -4,6 +4,7 @@ import ContactButton from './ContactButton.astro';
 import NavLinks from './NavLinks.astro';
 import LightSwitch from './LightSwitch.astro';
 import CustomizationMenu from './CustomizationMenu.astro';
+import CustomizationMenuOverlay from './CustomizationMenuOverlay.astro';
 ---
 
 <style>
@@ -83,13 +84,15 @@ import CustomizationMenu from './CustomizationMenu.astro';
   id='app-bar'
   transition:animate='fade'>
   <div class='nav-content-wrapper max-width'>
+    <CustomizationMenuOverlay />
+
     <Logo mobileView='false' />
     <div class='nav-links-wrapper'>
       <NavLinks />
     </div>
     <div class='contact-btn-wrapper'>
       <!-- <LightSwitch id='appbar' /> -->
-      <CustomizationMenu />
+      <CustomizationMenu inDrawer='false' />
 
       <ContactButton />
     </div>

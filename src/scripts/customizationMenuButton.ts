@@ -31,7 +31,9 @@ document.addEventListener('astro:page-load', () => {
 
         menu?.setAttribute('data-active', 'false');
       });
-      overlay.setAttribute('data-active', 'false');
+      customizationOverlays.forEach((overlay) => {
+        overlay.setAttribute('data-active', 'false');
+      });
     });
   });
 });

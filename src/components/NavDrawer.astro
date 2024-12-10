@@ -1,6 +1,7 @@
 ---
 import ContactButton from './ContactButton.astro';
 import CustomizationMenu from './CustomizationMenu.astro';
+import CustomizationMenuOverlay from './CustomizationMenuOverlay.astro';
 import LightSwitch from './LightSwitch.astro';
 import Logo from './Logo.astro';
 import NavLinks from './NavLinks.astro';
@@ -131,7 +132,7 @@ import NavLinks from './NavLinks.astro';
     background-color: var(--clr-base);
   }
 
-  .light-toggle-wrapper {
+  .customization-button-wrapper {
     display: block;
 
     scale: 1.2;
@@ -140,6 +141,12 @@ import NavLinks from './NavLinks.astro';
     margin-right: auto;
 
     margin-bottom: 2rem;
+
+    z-index: 110;
+  }
+
+  .customization-menu-overlay-wrapper {
+    z-index: 100;
   }
 
   @media screen and (min-width: 768px) {
@@ -158,13 +165,16 @@ import NavLinks from './NavLinks.astro';
   data-touch-active='true'
   id='nav-drawer'
   transition:animate='none'>
+  <div class='customization-menu-overlay-wrapper'>
+    <CustomizationMenuOverlay />
+  </div>
+
   <div class='nav-drawer-content'>
     <NavLinks />
     <ContactButton inDrawer='true' />
   </div>
-  <div class='light-toggle-wrapper'>
-    <!-- <LightSwitch id='drawer' /> -->
-    <CustomizationMenu />
+  <div class='customization-button-wrapper'>
+    <CustomizationMenu inDrawer='true' />
   </div>
 </aside>
 
