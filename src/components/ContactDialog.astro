@@ -12,10 +12,28 @@
     border: none;
     border-radius: var(--radius-surface);
     outline: 1px solid var(--clr-surface-0);
+
+    opacity: 0;
+
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
   }
 
   dialog::backdrop {
     background: var(--clr-crust);
+    opacity: 0;
+
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+  }
+
+  dialog[open] {
+    opacity: 1;
+  }
+
+  dialog[open]::backdrop {
     opacity: 0.9;
   }
 </style>
