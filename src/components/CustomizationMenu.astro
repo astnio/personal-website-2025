@@ -12,13 +12,70 @@ const { inDrawer, lightSwitchId } = Astro.props;
     z-index: 510;
   }
 
-  .btn-show-customization-options {
-    background-color: var(--clr-base);
-    padding: 1rem;
+  button.btn-show-customization-options {
+    display: flex;
+    align-items: center;
+    justify-content: start;
 
-    border-radius: var(--radius-input);
     border: none;
+    border-radius: var(--radius-input);
     outline: 1px solid var(--clr-surface-0);
+
+    padding: 0;
+
+    background-color: var(--clr-base);
+
+    height: 2.4rem;
+    width: fit-content;
+
+    font-size: 1rem;
+    color: var(--clr-text);
+    text-decoration: none;
+    text-align: left;
+
+    transition-property: color, background-color, outline;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  button.btn-show-customization-options:hover {
+    background-color: var(--clr-surface-0);
+    cursor: pointer;
+    outline: 1px solid var(--clr-surface-1);
+    color: var(--clr-primary);
+  }
+
+  button.btn-show-customization-options:hover > .icon-wrapper {
+    background-color: var(--clr-base);
+    color: var(--clr-primary);
+  }
+
+  span.btn-label {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    padding-block: 0;
+    padding-inline: 0.8rem;
+
+    font-weight: 500;
+  }
+
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    aspect-ratio: 1;
+
+    background-color: var(--clr-mantle);
+
+    height: 100%;
+
+    transition: color, 0.15s, ease-out;
   }
 
   .customization-menu {
@@ -100,8 +157,10 @@ const { inDrawer, lightSwitchId } = Astro.props;
   <button
     id='btn-show-customization-options'
     class='btn-show-customization-options'>
-    <span class='bx bxs-customize'></span>
-    <span>Customize</span>
+    <div class='icon-wrapper'>
+      <span class='bx bxs-customize'></span>
+    </div>
+    <span class='btn-label'>Customize</span>
   </button>
   <div
     class='customization-menu'
