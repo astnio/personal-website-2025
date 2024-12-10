@@ -88,16 +88,15 @@ const { inDrawer, lightSwitchId } = Astro.props;
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    gap: 1rem;
 
     background-color: var(--clr-crust);
-
-    padding: 1rem;
 
     border-radius: var(--radius-surface);
     outline: 1px solid var(--clr-base);
 
     min-width: 14.6rem;
+
+    overflow: hidden;
 
     transition-property: opacity, visibility;
     transition-duration: 0.15s;
@@ -124,6 +123,58 @@ const { inDrawer, lightSwitchId } = Astro.props;
 
     left: -0.5rem;
     right: auto;
+  }
+
+  .menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    background-color: var(--clr-surface-0);
+
+    padding-inline: 1rem;
+  }
+
+  .menu-header-title {
+    font-size: 1rem;
+    color: var(--clr-subtext-0);
+    padding: 0;
+  }
+
+  button.btn-close-customization-menu {
+    border: none;
+
+    height: 1.5rem;
+    width: 1.5rem;
+
+    padding: 0;
+
+    font-size: 1.5rem;
+    color: var(--clr-subtext-0);
+
+    cursor: pointer;
+
+    background-color: transparent;
+
+    transition: color 0.15s ease-out;
+  }
+
+  button.btn-close-customization-menu:hover {
+    color: var(--clr-error);
+  }
+
+  .menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 1rem;
+
+    padding: 1rem;
+
+    width: 100%;
   }
 
   .lightswitch-wrapper {
@@ -158,11 +209,19 @@ const { inDrawer, lightSwitchId } = Astro.props;
     class='customization-menu'
     data-in-drawer={inDrawer}
     data-active='false'>
-    <div class='lightswitch-wrapper'>
-      <LightSwitch id={lightSwitchId} />
+    <div class='menu-header'>
+      <p class='menu-header-title'>Customization</p>
+      <button class='btn-close-customization-menu'
+        ><span class='bx bx-x-circle'></span></button
+      >
     </div>
-    <FontSelect />
-    <ColorThemeSelect />
+    <div class='menu-content'>
+      <div class='lightswitch-wrapper'>
+        <LightSwitch id={lightSwitchId} />
+      </div>
+      <FontSelect />
+      <ColorThemeSelect />
+    </div>
   </div>
 </div>
 
