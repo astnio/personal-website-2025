@@ -1,5 +1,5 @@
 ---
-
+const { id } = Astro.props;
 ---
 
 <style>
@@ -48,11 +48,12 @@
 <div class='select-wrapper'>
   <label for='color-theme'>Color Theme</label>
   <select
+    class='color-theme-select'
     name='color-theme'
-    id='color-theme-select'>
+    id=`color-theme-select-${id}`>
     <option value='catppuccin'>Catppuccin</option>
-    <option value='dracula'>Dracula [TBD]</option>
-    <option value='high-contrast'>High Contrast [TBD]</option>
+    <option value='test'>Test</option>
+    <option value='high-contrast'>High Contrast</option>
   </select>
 </div>
 

@@ -1,5 +1,5 @@
 ---
-
+const { id } = Astro.props;
 ---
 
 <style>
@@ -48,8 +48,9 @@
 <div class='select-wrapper'>
   <label for='user-font'>Font</label>
   <select
+    class='user-font-select'
     name='user-font'
-    id='user-font-select'>
+    id=`user-font-select-${id}`>
     <option value='sans-serif'>Sans Serif</option>
     <option value='serif'>Serif</option>
     <option value='hyperlegible'>Hyperlegible</option>

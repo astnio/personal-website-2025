@@ -3,7 +3,7 @@ import ColorThemeSelect from './ColorThemeSelect.astro';
 import FontSelect from './FontSelect.astro';
 import LightSwitch from './LightSwitch.astro';
 
-const { inDrawer, lightSwitchId } = Astro.props;
+const { inDrawer, id } = Astro.props;
 ---
 
 <style>
@@ -215,10 +215,10 @@ const { inDrawer, lightSwitchId } = Astro.props;
     </div>
     <div class='menu-content'>
       <div class='lightswitch-wrapper'>
-        <LightSwitch id={lightSwitchId} />
+        <LightSwitch id={id} />
       </div>
-      <FontSelect />
-      <ColorThemeSelect />
+      <FontSelect id={id} />
+      <ColorThemeSelect id={id} />
     </div>
   </div>
 </div>

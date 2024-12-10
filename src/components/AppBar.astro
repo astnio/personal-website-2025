@@ -2,7 +2,6 @@
 import Logo from '../components/Logo.astro';
 import ContactButton from './ContactButton.astro';
 import NavLinks from './NavLinks.astro';
-import LightSwitch from './LightSwitch.astro';
 import CustomizationMenu from './CustomizationMenu.astro';
 import CustomizationMenuOverlay from './CustomizationMenuOverlay.astro';
 ---
@@ -91,9 +90,10 @@ import CustomizationMenuOverlay from './CustomizationMenuOverlay.astro';
       <NavLinks />
     </div>
     <div class='contact-btn-wrapper'>
-      <!-- <LightSwitch id='appbar' /> -->
-      <CustomizationMenu inDrawer='false' />
-
+      <CustomizationMenu
+        id='appbar'
+        inDrawer='false'
+      />
       <ContactButton />
     </div>
   </div>

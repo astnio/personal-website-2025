@@ -1,7 +1,7 @@
 export default function initColorSchemeDetector() {
-  const themeSelect = document.getElementById(
-    'color-theme-select'
-  ) as HTMLInputElement;
+  const themeSelects: NodeListOf<HTMLInputElement> = document.querySelectorAll(
+    '.color-theme-select'
+  );
   const documentRoot = document.querySelector(':root');
 
   const defaultTheme = 'catppuccin';
@@ -17,7 +17,9 @@ export default function initColorSchemeDetector() {
   function setTheme(themeName: string) {
     localStorage.setItem('theme', themeName);
     documentRoot!.setAttribute('data-theme', themeName);
-    themeSelect!.value = themeName;
+    themeSelects!.forEach((themeSelect) => {
+      themeSelect!.value = themeName;
+    });
   }
 
   function initSavedTheme() {
