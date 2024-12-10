@@ -9,6 +9,20 @@ const title = 'Projects';
 ---
 
 <style>
+  /* *** General *** */
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+
+    list-style: none;
+  }
+
   section {
     width: 100%;
     padding-inline: 1rem;
@@ -27,6 +41,32 @@ const title = 'Projects';
 
     padding: 0;
     margin: 0;
+  }
+
+  /* *** Blog Topics Navigation *** */
+
+  .project-areas-nav {
+    grid-column: span 2;
+    margin-bottom: 4rem;
+  }
+
+  ul.project-areas-list {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+    background-color: var(--clr-base);
+
+    padding: 1rem;
+
+    border: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-base);
+  }
+
+  li.project-area-list-item {
+    display: flex;
+
+    padding: 0;
   }
 
   @media screen and (min-width: 1024px) {
@@ -52,6 +92,57 @@ const title = 'Projects';
   <section class='max-width'>
     <h2>Featured</h2>
     <p>My featured projects</p>
+    <ul class='feature-projects-list'>
+      {
+        allProjects.map((project) => (
+          <li>
+            <ProjectCard
+              url={`/projects/${project.slug}`}
+              title={project.data.title}
+              description={project.data.description}
+              tags={project.data.tags}
+              githubUrl={project.data.github_url}
+              demoUrl={project.data.demo_url}
+              projectPageUrl={project.data.project_page_url}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class='max-width'>
+    <h2>
+      [PH] Other Projects <span
+        style='font-size: 1rem; font-weight: 400; font-style: italic; color: var(--clr-subtext-0)'
+        >(think of a better title for this section!)</span
+      >
+    </h2>
+    <p>[PH] Projects sorted by area and stuff I guess</p>
+    <nav class='project-areas-nav'>
+      <p>Areas</p>
+      <ul class='project-areas-list'>
+        <li class='project-area-list-item'>
+          <button class='blog-topics-link'>Area 1</button>
+        </li>
+
+        <li class='project-area-list-item'>
+          <button class='blog-topics-link'>Area 2</button>
+        </li>
+
+        <li class='project-area-list-item'>
+          <button class='blog-topics-link'>Area 3</button>
+        </li>
+
+        <li class='project-area-list-item'>
+          <button class='blog-topics-link'>Area 4</button>
+        </li>
+
+        <li class='project-area-list-item'>
+          <button class='blog-topics-link'>Area 5</button>
+        </li>
+      </ul>
+    </nav>
     <ul class='feature-projects-list'>
       {
         allProjects.map((project) => (
