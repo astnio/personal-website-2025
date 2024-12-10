@@ -29,6 +29,10 @@ export function initDrawerTouch() {
     }
 
     function openDrawer() {
+      const navbar = document.getElementById('app-bar');
+
+      navbar!.style.transform = 'translateY(0%)';
+      navDrawerToggle!.style.transform = 'translateY(0%)';
       overlay!.setAttribute('data-active', 'true');
       navDrawer!.setAttribute('data-active', 'true');
       navDrawer!.style.transform = 'translateX(0%)';
