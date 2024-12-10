@@ -2,13 +2,12 @@ export function initDrawerTouch() {
   document.addEventListener('astro:page-load', () => {
     const navDrawer = document.getElementById('nav-drawer') as HTMLElement;
     const navDrawerToggle = document.getElementById('btn-open-nav-drawer');
+    const overlay = document.getElementById('overlay');
 
     const navDrawerTransitionDuration = '0.35s';
-    const openThreshold: number = -75;
-    const direction = {
-      left: -1,
-      right: 1,
-    };
+
+    const openThreshold: number = 75;
+    const closeThreshold: number = 25;
 
     let deltaY = 0;
     let deltaX = 0;
@@ -21,66 +20,81 @@ export function initDrawerTouch() {
 
     let touchMovePositionX: number = 0;
     let touchMovePositionY: number = 0;
-    let drawerTransformPercent: number = 0;
 
+    let drawerTransformPercent: number = -100;
     let touchMoving: boolean = false;
-    let touchStartRight: boolean = false;
+    let isDrawerOpen: boolean = false;
+
+    navDrawerToggle?.addEventListener('click', () => {
+      if (isDrawerOpen) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    });
 
     function normalizeRange(val: number, max: number, min: number) {
       return Math.round(((val - min) / (max - min)) * 100);
     }
 
     function openDrawer() {
+      overlay!.setAttribute('data-active', 'true');
       navDrawer!.setAttribute('data-active', 'true');
       navDrawer!.style.transform = 'translateX(0%)';
       navDrawerToggle!.setAttribute('data-action', 'close');
+      drawerTransformPercent = 0;
+      isDrawerOpen = true;
     }
 
     function closeDrawer() {
+      overlay!.setAttribute('data-active', 'false');
       navDrawer!.setAttribute('data-active', 'false');
       navDrawer!.style.transform = 'translateX(-100%)';
       navDrawerToggle!.setAttribute('data-action', 'open');
+      drawerTransformPercent = -100;
+      isDrawerOpen = false;
     }
 
-    function resetTouchValues() {
-      touchMovePositionX = 0;
-      drawerTransformPercent = 0;
+    function getDrawerTransformPercent(
+      normalizedDistance: number,
+      isClosingGesture: boolean
+    ): number {
+      if (isClosingGesture) {
+        return Math.max(-100, Math.min(0, -normalizedDistance));
+      } else {
+        return Math.max(-100, Math.min(0, -100 + normalizedDistance));
+      }
     }
 
-    function getDrawerTransformPercent(normalizedDistance: number): number {
-      return -100 + normalizedDistance;
-    }
+    function updateDrawerPosition(moveX: number) {
+      navDrawer!.style.transitionDuration = '0.0s';
 
-    function touchOpenDrawer() {
-      drawerTransformPercent = normalizeRange(
-        Math.abs(touchMovePositionX),
+      const normalizedDistance = normalizeRange(
+        Math.abs(moveX),
         window.innerWidth,
         0
       );
 
+      const isClosingGesture =
+        (isDrawerOpen && moveX < 0) || (!isDrawerOpen && moveX < 0);
       drawerTransformPercent = getDrawerTransformPercent(
-        drawerTransformPercent
+        normalizedDistance,
+        isClosingGesture
       );
 
       navDrawer!.style.transform = `translateX(${drawerTransformPercent}%)`;
     }
 
-    function touchMoveRight(): boolean {
-      return touchMovePositionX >= direction.right;
-    }
-
     const handleTouchStart = (event: TouchEvent): void => {
       navDrawer!.style.transitionDuration = '0.0s';
-
       const touch = event.changedTouches[0];
-
       startTouchX = touch.clientX;
       startTouchY = touch.clientY;
+      touchMoving = false;
     };
 
     const handleTouchMove = (event: TouchEvent): void => {
       const touch = event.changedTouches[0];
-
       touchMovePositionX = touch.clientX - startTouchX;
       touchMovePositionY = touch.clientY - startTouchY;
 
@@ -92,18 +106,11 @@ export function initDrawerTouch() {
         initTouchMoveDeltaY = deltaY;
       }
 
-      touchStartRight = touchMoveRight();
+      const isHorizontalMove = initTouchMoveDeltaX > initTouchMoveDeltaY;
 
-      if (touchStartRight) {
-        const drawerOpenMode =
-          initTouchMoveDeltaX > initTouchMoveDeltaY && event.cancelable;
-
-        if (drawerOpenMode) {
-          event.preventDefault();
-          touchOpenDrawer();
-        }
-      } else {
-        closeDrawer();
+      if (isHorizontalMove && event.cancelable) {
+        event.preventDefault();
+        updateDrawerPosition(touchMovePositionX);
       }
 
       touchMoving = true;
@@ -112,16 +119,20 @@ export function initDrawerTouch() {
     const handleTouchEnd = (event: TouchEvent): void => {
       navDrawer!.style.transitionDuration = navDrawerTransitionDuration;
 
-      if (
-        drawerTransformPercent !== 0 &&
-        Math.abs(drawerTransformPercent) < Math.abs(openThreshold)
-      ) {
-        openDrawer();
+      if (isDrawerOpen) {
+        if (drawerTransformPercent < -closeThreshold) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
       } else {
-        closeDrawer();
+        if (drawerTransformPercent > -openThreshold) {
+          openDrawer();
+        } else {
+          closeDrawer();
+        }
       }
 
-      // resetTouchValues();
       touchMoving = false;
     };
 
@@ -131,7 +142,13 @@ export function initDrawerTouch() {
     document.addEventListener('touchmove', handleTouchMove, { passive: false });
     document.addEventListener('touchend', handleTouchEnd);
     document.addEventListener('touchcancel', (event) => {
-      // resetTouchValues();
+      navDrawer!.style.transitionDuration = navDrawerTransitionDuration;
+      if (isDrawerOpen) {
+        openDrawer();
+      } else {
+        closeDrawer();
+      }
+      touchMoving = false;
     });
   });
 }
