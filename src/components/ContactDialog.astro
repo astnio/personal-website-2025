@@ -1,0 +1,30 @@
+---
+
+---
+
+<style>
+  dialog {
+    z-index: 900;
+
+    background-color: var(--clr-base);
+    color: var(--clr-text);
+
+    border: none;
+    border-radius: var(--radius-surface);
+    outline: 1px solid var(--clr-surface-0);
+  }
+
+  dialog::backdrop {
+    background: var(--clr-crust);
+    opacity: 0.9;
+  }
+</style>
+
+<dialog id='contact-dialog'>
+  <p>Hello, world</p>
+  <form
+    method='dialog'
+    action=''>
+    <button>Okay</button>
+  </form>
+</dialog>

@@ -88,3 +88,18 @@ const { inDrawer } = Astro.props;
   </div>
   <span class='btn-label'>Contact</span>
 </button>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const contactButtons = document.querySelectorAll('.btn-contact');
+    const contactModal = document.getElementById(
+      'contact-dialog'
+    ) as HTMLDialogElement;
+
+    contactButtons.forEach((btnContact) => {
+      btnContact.addEventListener('click', () => {
+        contactModal.showModal();
+      });
+    });
+  });
+</script>
