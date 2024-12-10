@@ -187,12 +187,12 @@
   --clr-overlay-1: rgb(0, 0, 0);
   --clr-overlay-0: rgb(0, 0, 0);
 
-  --clr-surface-2: #000000;
-  --clr-surface-1: #000000;
-  --clr-surface-0: #000000;
+  --clr-surface-2: #7a7a7a;
+  --clr-surface-1: #7a7a7a;
+  --clr-surface-0: #7a7a7a;
 
-  --clr-base: #000000;
-  --clr-mantle: #000000;
+  --clr-base: #0f0f0f;
+  --clr-mantle: #0a0a0a;
   --clr-crust: #000000;
 
   --clr-text-trans-60: rgba(202, 211, 245, 0.6);
@@ -245,21 +245,21 @@
   --clr-error: var(--clr-red);
   --clr-warning: var(--clr-yellow);
 
-  --clr-text: rgb(76, 79, 105);
-  --clr-subtext-1: rgb(92, 95, 119);
-  --clr-subtext-0: rgb(108, 111, 133);
+  --clr-text: rgb(0, 0, 0);
+  --clr-subtext-1: rgb(0, 0, 0);
+  --clr-subtext-0: rgb(0, 0, 0);
 
   --clr-overlay-2: rgb(124, 127, 147);
   --clr-overlay-1: rgb(140, 143, 161);
   --clr-overlay-0: rgb(156, 160, 176);
 
-  --clr-surface-2: rgb(172, 176, 190);
-  --clr-surface-1: rgb(188, 192, 204);
-  --clr-surface-0: rgb(204, 208, 218);
+  --clr-surface-2: rgb(255, 255, 255);
+  --clr-surface-1: rgb(230, 230, 230);
+  --clr-surface-0: rgb(212, 212, 212);
 
-  --clr-base: rgb(239, 241, 245);
-  --clr-mantle: rgb(230, 233, 239);
-  --clr-crust: rgb(220, 224, 232);
+  --clr-base: rgb(255, 255, 255);
+  --clr-mantle: rgb(255, 255, 255);
+  --clr-crust: rgb(255, 255, 255);
 
   --clr-text-trans-60: rgba(76, 79, 105, 0.6);
   --clr-subtext-1-trans-60: rgba(92, 95, 119, 0.6);
