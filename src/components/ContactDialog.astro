@@ -12,29 +12,63 @@
     border: none;
     border-radius: var(--radius-surface);
     outline: 1px solid var(--clr-surface-0);
-
-    opacity: 0;
-
-    transition-property: opacity;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-out;
   }
 
   dialog::backdrop {
     background: var(--clr-crust);
-    opacity: 0;
-
-    transition-property: opacity;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-out;
-  }
-
-  dialog[open] {
-    opacity: 1;
-  }
-
-  dialog[open]::backdrop {
     opacity: 0.9;
+  }
+
+  dialog.dialog-fade-in {
+    animation: dialogFadeIn 0.5s ease-in-out;
+  }
+
+  dialog.backdrop-fade-in::backdrop {
+    animation: backdropFadeIn 0.5s ease-in-out;
+  }
+
+  dialog.dialog-fade-out {
+    animation: dialogFadeOut 0.5s ease-in-out;
+  }
+
+  dialog.backdrop-fade-out::backdrop {
+    animation: backdropFadeOut 0.5s ease-in-out;
+  }
+
+  @keyframes dialogFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes backdropFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes dialogFadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes backdropFadeOut {
+    from {
+      opacity: 0.9;
+    }
+    to {
+      opacity: 0;
+    }
   }
 </style>
 
@@ -42,7 +76,8 @@
   <p>Hello, world</p>
   <form
     method='dialog'
-    action=''>
-    <button>Okay</button>
+    action=''
+    id='contact-form'>
+    <button id='btn-contact-dialog-close'>Okay</button>
   </form>
 </dialog>
