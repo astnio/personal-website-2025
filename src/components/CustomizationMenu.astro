@@ -3,11 +3,28 @@ import ColorThemeSelect from './ColorThemeSelect.astro';
 import FontSelect from './FontSelect.astro';
 import LightSwitch from './LightSwitch.astro';
 
-const { inDrawer, customizationMenuId, lightSwitchId } = Astro.props;
+const { inDrawer, lightSwitchId } = Astro.props;
 ---
 
 <style>
+  .customization-menu-wrapper {
+    position: relative;
+  }
+
+  .btn-show-customization-options {
+    background-color: var(--clr-base);
+    padding: 1rem;
+
+    border-radius: var(--radius-input);
+    border: none;
+    outline: 1px solid var(--clr-surface-0);
+  }
+
   .customization-menu {
+    position: absolute;
+    right: 0;
+    bottom: 2rem;
+
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -20,10 +37,28 @@ const { inDrawer, customizationMenuId, lightSwitchId } = Astro.props;
 
     border-radius: var(--radius-surface);
     outline: 1px solid var(--clr-base);
+
+    min-width: 14.6rem;
+  }
+
+  .customization-menu[data-active='false'] {
+    visibility: hidden;
   }
 
   .customization-menu[data-in-drawer='false'] {
     display: none;
+  }
+
+  .lightswitch-wrapper {
+    background-color: var(--clr-base);
+
+    width: 100%;
+    padding-block: 0.4rem;
+    padding-inline: 1rem;
+
+    border: none;
+    border-radius: var(--radius-surface);
+    outline: 1px solid var(--clr-surface-0);
   }
 
   @media screen and (min-width: 768px) {
@@ -33,10 +68,23 @@ const { inDrawer, customizationMenuId, lightSwitchId } = Astro.props;
   }
 </style>
 
-<div
-  class='customization-menu'
-  data-in-drawer={inDrawer}>
-  <LightSwitch id={lightSwitchId} />
-  <FontSelect />
-  <ColorThemeSelect />
+<div class='customization-menu-wrapper'>
+  <button
+    id='btn-show-customization-options'
+    class='btn-show-customization-options'>
+    <span class='bx bxs-customize'></span>
+    <span>Customization</span>
+  </button>
+  <div
+    class='customization-menu'
+    data-in-drawer={inDrawer}
+    data-active='false'>
+    <div class='lightswitch-wrapper'>
+      <LightSwitch id={lightSwitchId} />
+    </div>
+    <FontSelect />
+    <ColorThemeSelect />
+  </div>
 </div>
+
+<script src='../scripts/customizationMenuButton.ts'></script>

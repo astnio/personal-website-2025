@@ -151,6 +151,9 @@ const { id } = Astro.props;
 </style>
 
 <div class='light-switch-container'>
+  <p class=''>
+    <span class='light-switch-label'></span> Theme
+  </p>
   <label
     class='switch'
     for=`light-switch-toggle-${id}`
@@ -169,9 +172,6 @@ const { id } = Astro.props;
       <span class='light-switch-toggle-icon-dark bx bxs-moon'></span>
     </div>
   </label>
-  <p class=''>
-    <span class='light-switch-label'></span> Theme
-  </p>
 </div>
 
 <script src='../scripts/lightSwitch.ts'></script>
