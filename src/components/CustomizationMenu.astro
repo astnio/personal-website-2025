@@ -9,6 +9,7 @@ const { inDrawer, lightSwitchId } = Astro.props;
 <style>
   .customization-menu-wrapper {
     position: relative;
+    z-index: 510;
   }
 
   .btn-show-customization-options {
@@ -61,12 +62,39 @@ const { inDrawer, lightSwitchId } = Astro.props;
     outline: 1px solid var(--clr-surface-0);
   }
 
+  .customization-menu-overlay {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 500;
+  }
+
+  .customization-menu-overlay[data-active='false'] {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .customization-menu-overlay[data-active='true'] {
+    visibility: visible;
+    pointer-events: all;
+  }
+
   @media screen and (min-width: 768px) {
     .customization-menu[data-in-drawer='true'] {
       display: flex;
     }
   }
 </style>
+
+<div
+  class='customization-menu-overlay'
+  data-active='false'>
+</div>
 
 <div class='customization-menu-wrapper'>
   <button
