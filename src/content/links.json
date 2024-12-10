@@ -1,0 +1,42 @@
+{
+  "internalLinks": [
+    {
+      "url": "/",
+      "label": "Home",
+      "iconClass": "bx bxs-home"
+    },
+    {
+      "url": "/about",
+      "label": "About",
+      "iconClass": "bx bxs-user"
+    },
+    {
+      "url": "/blog",
+      "label": "Blog",
+      "iconClass": "bx bxs-message-square-dots"
+    },
+    {
+      "url": "/projects",
+      "label": "Projects",
+      "iconClass": "bx bxs-collection"
+    }
+  ],
+
+  "externalLinks": [
+    {
+      "url": "https://astn.sh/linkedin",
+      "label": "LinkedIn",
+      "iconClass": "bx bxl-linkedin"
+    },
+    {
+      "url": "https://astn.sh/frontend-mentor",
+      "label": "Frontend Mentor",
+      "iconClass": "bx bxs-widget"
+    },
+    {
+      "url": "https://astn.sh/github",
+      "label": "Github",
+      "iconClass": "bx bxl-github"
+    }
+  ]
+}

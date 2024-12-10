@@ -1,6 +1,6 @@
 ---
 import LinkListItem from './HeroLink.astro';
-import links from '../scripts/data.json';
+import links from '../content/links.json';
 
 const internalLinks = links.internalLinks.filter((link) => {
   if (link.url === '/') return false;
