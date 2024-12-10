@@ -7,33 +7,57 @@ document.addEventListener('astro:page-load', () => {
     '.customization-menu-overlay'
   );
 
-  function handleOnClick(event: Event) {
-    const btn = event.target as HTMLElement;
-    const menuWrapper = btn.closest('.customization-menu-wrapper');
-    const menu = menuWrapper!.querySelector('.customization-menu');
+  const customizationMenus = document.querySelectorAll('.customization-menu');
 
-    menu?.setAttribute('data-active', 'true');
+  const menuCloseButtons = document.querySelectorAll(
+    '.btn-close-customization-menu'
+  );
 
+  let menusOpen: boolean = false;
+
+  function closeMenus() {
+    customizationOverlays.forEach((overlay) => {
+      overlay.setAttribute('data-active', 'false');
+    });
+
+    customizationMenus.forEach((menu) => {
+      menu.setAttribute('data-active', 'false');
+    });
+
+    menusOpen = false;
+  }
+
+  function openMenus() {
     customizationOverlays.forEach((overlay) => {
       overlay.setAttribute('data-active', 'true');
     });
+
+    customizationMenus.forEach((menu) => {
+      menu.setAttribute('data-active', 'true');
+    });
+
+    menusOpen = true;
+  }
+
+  function toggleMenus() {
+    if (menusOpen) {
+      closeMenus();
+    } else if (!menusOpen) {
+      openMenus();
+    }
   }
 
   customizationButtons.forEach((button) => {
-    button.addEventListener('click', handleOnClick);
+    button.addEventListener('click', toggleMenus);
   });
 
   customizationOverlays.forEach((overlay) => {
-    overlay.addEventListener('click', () => {
-      customizationButtons.forEach((button) => {
-        const menuWrapper = button.closest('.customization-menu-wrapper');
-        const menu = menuWrapper!.querySelector('.customization-menu');
-
-        menu?.setAttribute('data-active', 'false');
-      });
-      customizationOverlays.forEach((overlay) => {
-        overlay.setAttribute('data-active', 'false');
-      });
-    });
+    overlay.addEventListener('click', closeMenus);
   });
+
+  menuCloseButtons.forEach((button) => {
+    button.addEventListener('click', closeMenus);
+  });
+
+  closeMenus();
 });
