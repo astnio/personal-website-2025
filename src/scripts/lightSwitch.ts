@@ -42,7 +42,6 @@ document.addEventListener('astro:page-load', () => {
   }
 
   function toggleColorScheme() {
-    console.log(getSavedColorScheme());
     if (getSavedColorScheme() === 'dark') {
       setColorScheme('light');
       saveColorScheme('light');
