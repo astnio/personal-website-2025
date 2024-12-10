@@ -20,7 +20,11 @@ document.addEventListener('astro:page-load', () => {
   const iconClosedClass = 'bx bxs-customize';
   const iconOpenedlass = 'bx bx-customize';
 
-  let menusOpen: boolean = false;
+  function menusOpen(): boolean {
+    return Array.from(customizationMenus).some((menu) => {
+      menu.getAttribute('data-active') === 'true';
+    });
+  }
 
   function closeMenus() {
     customizationOverlays.forEach((overlay) => {
@@ -34,8 +38,6 @@ document.addEventListener('astro:page-load', () => {
     customizationButtonsIcons!.forEach((icon) => {
       icon.className = `btn-show-customization-options-icon ${iconClosedClass}`;
     });
-
-    menusOpen = false;
   }
 
   function openMenus() {
@@ -50,14 +52,12 @@ document.addEventListener('astro:page-load', () => {
     customizationButtonsIcons!.forEach((icon) => {
       icon.className = `btn-show-customization-options-icon ${iconOpenedlass}`;
     });
-
-    menusOpen = true;
   }
 
   function toggleMenus() {
-    if (menusOpen) {
+    if (menusOpen()) {
       closeMenus();
-    } else if (!menusOpen) {
+    } else if (!menusOpen()) {
       openMenus();
     }
   }

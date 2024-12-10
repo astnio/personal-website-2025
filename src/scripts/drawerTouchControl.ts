@@ -24,14 +24,6 @@ export function initDrawerTouch() {
     let touchMoving: boolean = false;
     let isDrawerOpen: boolean = false;
 
-    navDrawerToggle?.addEventListener('click', () => {
-      if (isDrawerOpen) {
-        closeDrawer();
-      } else {
-        openDrawer();
-      }
-    });
-
     function normalizeRange(val: number, max: number, min: number) {
       return Math.round(((val - min) / (max - min)) * 100);
     }
@@ -46,6 +38,33 @@ export function initDrawerTouch() {
     }
 
     function closeDrawer() {
+      function closeCustomizationMenus() {
+        const customizationOverlays = document.querySelectorAll(
+          '.customization-menu-overlay'
+        );
+        const customizationMenus = document.querySelectorAll(
+          '.customization-menu'
+        );
+        const customizationButtonsIcons = document.querySelectorAll(
+          '.btn-show-customization-options-icon'
+        );
+
+        const iconClosedClass = 'bx bxs-customize';
+
+        customizationOverlays.forEach((overlay) => {
+          overlay.setAttribute('data-active', 'false');
+        });
+
+        customizationMenus.forEach((menu) => {
+          menu.setAttribute('data-active', 'false');
+        });
+
+        customizationButtonsIcons!.forEach((icon) => {
+          icon.className = `btn-show-customization-options-icon ${iconClosedClass}`;
+        });
+      }
+      closeCustomizationMenus();
+
       overlay!.setAttribute('data-active', 'false');
       navDrawer!.setAttribute('data-active', 'false');
       navDrawer!.style.transform = 'translateX(100%)';
@@ -151,6 +170,14 @@ export function initDrawerTouch() {
         closeDrawer();
       }
       touchMoving = false;
+    });
+
+    navDrawerToggle?.addEventListener('click', () => {
+      if (isDrawerOpen) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
     });
   });
 }
