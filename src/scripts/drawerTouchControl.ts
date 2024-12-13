@@ -1,5 +1,6 @@
 export function initDrawerTouch() {
   document.addEventListener('astro:page-load', () => {
+    const body = document.querySelector('body');
     const navDrawer = document.getElementById('nav-drawer') as HTMLElement;
     const navDrawerToggle = document.getElementById('btn-open-nav-drawer');
     const overlay = document.getElementById('overlay');
@@ -31,6 +32,7 @@ export function initDrawerTouch() {
     function openDrawer() {
       const navbar = document.getElementById('app-bar');
 
+      body!.setAttribute('data-scroll-active', 'false');
       navbar!.style.transform = 'translateY(0%)';
       navDrawerToggle!.style.transform = 'translateY(0%)';
       overlay!.setAttribute('data-active', 'true');
@@ -69,6 +71,7 @@ export function initDrawerTouch() {
       }
       closeCustomizationMenus();
 
+      body!.setAttribute('data-scroll-active', 'true');
       overlay!.setAttribute('data-active', 'false');
       navDrawer!.setAttribute('data-active', 'false');
       navDrawer!.style.transform = 'translateX(100%)';
