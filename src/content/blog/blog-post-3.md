@@ -1,5 +1,7 @@
 ---
-title: 'Coding Example Thing'
+title: 'Coding Example Post'
+topic: 'Test Topic'
+category: 'Test Category'
 tags: ['example', 'blog']
 summary: 'An example of a post!'
 ---
