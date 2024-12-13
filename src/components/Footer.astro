@@ -3,10 +3,58 @@ import ColorThemeSelect from './ColorThemeSelect.astro';
 import CustomizationMenu from './CustomizationMenu.astro';
 import FontSelect from './FontSelect.astro';
 
+function formatDateTime(date: Date): string {
+  const months: string[] = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  const month: string = months[date.getMonth()];
+  const day: number = date.getDate();
+  const year: number = date.getFullYear();
+  const hours: number = date.getHours();
+  const minutes: string = String(date.getMinutes()).padStart(2, '0');
+  const period: string = hours >= 12 ? 'pm' : 'am';
+  const hour12: number = hours % 12 || 12;
+
+  const ordinal = (day: number): string => {
+    if (day > 3 && day < 21) return 'th';
+    switch (day % 10) {
+      case 1:
+        return 'st';
+      case 2:
+        return 'nd';
+      case 3:
+        return 'rd';
+      default:
+        return 'th';
+    }
+  };
+
+  return `${month} ${day}${ordinal(day)}, ${year} at ${hour12}:${minutes}${period}`;
+}
+
 const currentYear = new Date().getFullYear();
+const lastBuildDate = formatDateTime(new Date());
 ---
 
 <style>
+  p,
+  a {
+    padding: 0;
+    margin: 0;
+  }
+
   footer {
     width: 100%;
 
@@ -18,16 +66,16 @@ const currentYear = new Date().getFullYear();
     border-top: 1px solid var(--clr-surface-0);
   }
 
-  .footer-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: end;
-    justify-content: end;
+  footer section {
+    flex-direction: column;
+  }
 
-    width: 100%;
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
     padding-inline: 1rem;
-    padding-block: 2rem;
   }
 
   .copyright-paragraph {
@@ -36,68 +84,86 @@ const currentYear = new Date().getFullYear();
     gap: 0.6ch;
   }
 
-  .footer-credit-wrapper {
-    grid-row-start: 2;
-
-    display: flex;
-    flex-direction: column;
-    align-items: end;
+  .build-date-paragraph {
+    color: var(--clr-subtext-1);
+    font-size: 0.85rem;
+    font-style: italic;
   }
 
-  .customization-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
+  .credits-link {
+    font-weight: 600;
+    color: var(--clr-primary);
     max-width: fit-content;
+    opacity: 1;
 
-    margin-left: auto;
-    margin-bottom: 2rem;
+    transition-property: opacity;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  .credits-link:hover {
+    opacity: 0.9;
   }
 
   @media screen and (min-width: 768px) {
     .footer-content {
+      display: grid;
       grid-template-columns: 1fr 1fr;
-      align-items: start;
+      align-items: end;
       justify-content: space-between;
+      gap: 1rem;
+
       padding-block: 1rem;
     }
 
-    .customization-wrapper {
+    .customization-menu-wrapper {
       grid-column-start: 2;
-      grid-row: 1;
-
-      flex-direction: row;
-
-      margin-bottom: 0;
+      justify-self: end;
+      align-self: flex-start;
     }
 
-    .footer-credit-wrapper {
-      grid-column-start: 1;
-      grid-row: 1;
+    .credits-link {
+      justify-self: end;
+    }
 
-      align-items: start;
+    .copyright-paragraph {
+      grid-column-start: 1;
+      grid-row-start: 1;
+
+      align-self: flex-start;
     }
   }
 </style>
 
 <footer>
   <div class='footer-content max-width'>
-    <section class='footer-credit-wrapper'>
-      <p class='copyright-paragraph'>
-        <span class='visually-hidden'>&#169;</span>
-        <span class='bx bxs-copyright'></span>
-        <span>2021 &#45;</span>
-        <span id='footer-copyright-current-year'>
-          {currentYear}
-        </span>
-        <span>Austin Hagel</span>
-      </p>
-      <a href='/credits'>Credits</a>
-    </section>
-    <!-- <section class='customization-wrapper'>
-      <CustomizationMenu />
-    </section> -->
+    <div class='customization-menu-wrapper'>
+      <CustomizationMenu
+        id='footer'
+        inDrawer='false'
+      />
+    </div>
+
+    <p class='copyright-paragraph'>
+      <span class='visually-hidden'>&#169;</span>
+      <span class='bx bxs-copyright'></span>
+      <span>2021 &#45;</span>
+      <span id='footer-copyright-current-year'>
+        {currentYear}
+      </span>
+      <span>Austin Hagel</span>
+    </p>
+
+    <p class='build-date-paragraph'>
+      <span class='build-date-title'>Last build - </span>
+      <span class='build-date'>{lastBuildDate}</span>
+    </p>
+
+    <a
+      class='credits-link'
+      href='/credits'
+      >Credits</a
+    >
   </div>
 </footer>
 

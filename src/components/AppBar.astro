@@ -2,8 +2,6 @@
 import Logo from '../components/Logo.astro';
 import ContactButton from './ContactButton.astro';
 import NavLinks from './NavLinks.astro';
-import CustomizationMenu from './CustomizationMenu.astro';
-import CustomizationMenuOverlay from './CustomizationMenuOverlay.astro';
 ---
 
 <style>
@@ -83,17 +81,15 @@ import CustomizationMenuOverlay from './CustomizationMenuOverlay.astro';
   id='app-bar'
   transition:animate='fade'>
   <div class='nav-content-wrapper max-width'>
-    <CustomizationMenuOverlay />
-
     <Logo mobileView='false' />
     <div class='nav-links-wrapper'>
       <NavLinks />
     </div>
     <div class='contact-btn-wrapper'>
-      <CustomizationMenu
+      <!-- <CustomizationMenu
         id='appbar'
         inDrawer='false'
-      />
+      /> -->
       <ContactButton />
     </div>
   </div>

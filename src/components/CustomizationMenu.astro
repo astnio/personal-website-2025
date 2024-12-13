@@ -12,6 +12,10 @@ const { inDrawer, id } = Astro.props;
     z-index: 910;
   }
 
+  .customization-menu-wrapper[data-in-drawer='false'] {
+    display: none;
+  }
+
   button.btn-show-customization-options {
     display: flex;
     align-items: center;
@@ -94,7 +98,8 @@ const { inDrawer, id } = Astro.props;
     border-radius: var(--radius-surface);
     outline: 1px solid var(--clr-base);
 
-    min-width: 14.6rem;
+    min-width: 14.8rem;
+    width: fit-content;
 
     overflow: hidden;
 
@@ -114,7 +119,11 @@ const { inDrawer, id } = Astro.props;
   }
 
   .customization-menu[data-in-drawer='false'] {
-    top: 3rem;
+    top: auto;
+    bottom: 3.5rem;
+
+    left: auto;
+    right: 0;
   }
 
   .customization-menu[data-in-drawer='true'] {
@@ -190,13 +199,19 @@ const { inDrawer, id } = Astro.props;
   }
 
   @media screen and (min-width: 768px) {
+    .customization-menu-wrapper[data-in-drawer='false'] {
+      display: flex;
+    }
+
     .customization-menu[data-in-drawer='true'] {
       display: flex;
     }
   }
 </style>
 
-<div class='customization-menu-wrapper'>
+<div
+  class='customization-menu-wrapper'
+  data-in-drawer={inDrawer}>
   <button class='btn-show-customization-options'>
     <div class='icon-wrapper'>
       <span class='btn-show-customization-options-icon bx bxs-customize'></span>

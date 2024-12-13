@@ -11,6 +11,8 @@ document.addEventListener('astro:page-load', () => {
     '.customization-menu-overlay'
   );
 
+  console.log(customizationOverlays);
+
   const customizationMenus = document.querySelectorAll('.customization-menu');
 
   const menuCloseButtons = document.querySelectorAll(
