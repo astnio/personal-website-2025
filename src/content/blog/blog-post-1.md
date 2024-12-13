@@ -2,7 +2,7 @@
 title: 'Example Post'
 topic: 'Test Topic'
 category: 'Test Category'
-tags: ['example', 'blog']
+tags: ['example', 'test']
 summary: 'An example of a post!'
 ---
 

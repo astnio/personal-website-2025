@@ -1,7 +1,8 @@
 ---
-import BaseLayout from './BaseLayout.astro';
 import '../styles/codeBlockCopyButton.css';
 import '../styles/markdownPostStyles.css';
+
+const { frontmatter } = Astro.props;
 ---
 
 <style>
@@ -32,9 +33,18 @@ import '../styles/markdownPostStyles.css';
 </style>
 
 <div class='post-wrapper-spacer max-width'>
-  <div class='post-wrapper'>
+  <article class='post-wrapper'>
     <slot />
-  </div>
+  </article>
+  <footer class='tags'>
+    {
+      frontmatter.tags.map((tag: string) => (
+        <p class='tag'>
+          <a href={`/blog/tags/${tag}`}>{tag}</a>
+        </p>
+      ))
+    }
+  </footer>
 </div>
 
 <script src='../scripts/codeBlockCopy.ts'></script>
