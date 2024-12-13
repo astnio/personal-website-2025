@@ -1,7 +1,7 @@
 ---
 title: 'Coding Example Post'
 topic: 'Test Topic'
-category: 'Test Category'
+category: 'Test Category 3'
 tags: ['example', 'code', 'javascript']
 summary: 'An example of a post!'
 ---

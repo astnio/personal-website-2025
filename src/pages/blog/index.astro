@@ -10,6 +10,9 @@ import { Picture } from 'astro:assets';
 const allPosts = await getCollection('blog');
 
 const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+const categories = [
+  ...new Set(allPosts.map((post: any) => post.data.category).flat()),
+];
 
 const title = 'Blog';
 ---
@@ -381,9 +384,13 @@ const title = 'Blog';
               <span>Categories</span>
             </a>
             <ul class='blog-nav-sublist category-list'>
-              <li>Category 1</li>
-              <li>Category 2</li>
-              <li>Category 3</li>
+              {
+                categories.map((category) => (
+                  <li>
+                    <a href={`/blog/categories/${category}`}>{category}</a>
+                  </li>
+                ))
+              }
             </ul>
           </li>
           <li class='blog-nav-sublist-wrapper'>
