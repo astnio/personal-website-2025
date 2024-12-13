@@ -20,9 +20,9 @@ document.addEventListener('astro:page-load', () => {
   const iconClosedClass = 'bx bxs-customize';
   const iconOpenedlass = 'bx bx-customize';
 
-  function menusOpen(): boolean {
+  function menuIsOpen(): boolean {
     return Array.from(customizationMenus).some((menu) => {
-      menu.getAttribute('data-active') === 'true';
+      return menu.getAttribute('data-active') === 'true';
     });
   }
 
@@ -55,9 +55,9 @@ document.addEventListener('astro:page-load', () => {
   }
 
   function toggleMenus() {
-    if (menusOpen()) {
+    if (menuIsOpen()) {
       closeMenus();
-    } else if (!menusOpen()) {
+    } else if (!menuIsOpen()) {
       openMenus();
     }
   }
