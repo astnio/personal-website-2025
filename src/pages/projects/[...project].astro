@@ -17,7 +17,9 @@ const { Content } = await entry.render();
 ---
 
 <BaseLayout title={entry.data.title}>
-  <MarkdownPostLayout frontmatter={entry.data}>
+  <MarkdownPostLayout
+    postTarget='projects'
+    frontmatter={entry.data}>
     <Content />
   </MarkdownPostLayout>
 </BaseLayout>

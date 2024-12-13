@@ -2,7 +2,12 @@
 import '../styles/codeBlockCopyButton.css';
 import '../styles/markdownPostStyles.css';
 
-const { frontmatter } = Astro.props;
+interface Props {
+  frontmatter: any;
+  postTarget: 'blog' | 'projects';
+}
+
+const { frontmatter, postTarget } = Astro.props;
 ---
 
 <style>
@@ -40,7 +45,7 @@ const { frontmatter } = Astro.props;
     {
       frontmatter.tags.map((tag: string) => (
         <p class='tag'>
-          <a href={`/blog/tags/${tag}`}>{tag}</a>
+          <a href={`/${postTarget}/tags/${tag}`}>{tag}</a>
         </p>
       ))
     }

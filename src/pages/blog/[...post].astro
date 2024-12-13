@@ -18,7 +18,9 @@ const { Content } = await entry.render();
 ---
 
 <BaseLayout title={entry.data.title}>
-  <MarkdownPostLayout frontmatter={entry.data}>
+  <MarkdownPostLayout
+    postTarget='blog'
+    frontmatter={entry.data}>
     <Content components={{ Aside: Aside }} />
   </MarkdownPostLayout>
 </BaseLayout>
