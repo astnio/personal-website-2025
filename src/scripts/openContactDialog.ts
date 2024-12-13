@@ -3,7 +3,6 @@ document.addEventListener('astro:page-load', () => {
   const contactModal = document.getElementById(
     'contact-dialog'
   ) as HTMLDialogElement;
-  const btnCloseModal = document.getElementById('btn-contact-dialog-close');
   const contactForm = document.getElementById('contact-form');
 
   const animationBufferMs = -5;
@@ -24,10 +23,10 @@ document.addEventListener('astro:page-load', () => {
     contactModal.showModal();
   }
 
-  function closeModal() {
-    setFadeOut();
-    contactModal.close();
-  }
+  // function closeModal() {
+  //   setFadeOut();
+  //   contactModal.close();
+  // }
 
   function timeoutClose() {
     setFadeOut();

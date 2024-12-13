@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title?: string;
@@ -57,5 +57,5 @@ const {
 
   <title>{title}</title>
 
-  <ViewTransitions fallback='swap' />
+  <ClientRouter fallback='swap' />
 </head>

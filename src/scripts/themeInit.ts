@@ -6,9 +6,9 @@ export default function initColorSchemeDetector() {
 
   const defaultTheme = 'catppuccin';
 
-  function saveTheme(themeName: string) {
-    localStorage.setItem('theme', themeName);
-  }
+  // function saveTheme(themeName: string) {
+  //   localStorage.setItem('theme', themeName);
+  // }
 
   function getSavedTheme() {
     return localStorage.getItem('theme') as string;

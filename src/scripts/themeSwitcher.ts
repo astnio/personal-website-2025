@@ -13,9 +13,9 @@ document.addEventListener('astro:page-load', () => {
     docRoot!.setAttribute('data-theme', themeName);
   }
 
-  function getTheme() {
-    return localStorage.getItem('theme');
-  }
+  // function getTheme() {
+  //   return localStorage.getItem('theme');
+  // }
 
   themeSelects.forEach((themeSelect) => {
     themeSelect.addEventListener('change', () => {

@@ -144,7 +144,7 @@ export function initDrawerTouch() {
       touchMoving = true;
     };
 
-    const handleTouchEnd = (event: TouchEvent): void => {
+    const handleTouchEnd = (): void => {
       navDrawer!.style.transitionDuration = navDrawerTransitionDuration;
 
       if (isDrawerOpen) {
@@ -169,7 +169,7 @@ export function initDrawerTouch() {
     });
     document.addEventListener('touchmove', handleTouchMove, { passive: false });
     document.addEventListener('touchend', handleTouchEnd);
-    document.addEventListener('touchcancel', (event) => {
+    document.addEventListener('touchcancel', () => {
       navDrawer!.style.transitionDuration = navDrawerTransitionDuration;
       if (isDrawerOpen) {
         openDrawer();

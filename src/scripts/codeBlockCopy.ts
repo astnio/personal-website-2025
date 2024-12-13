@@ -52,12 +52,12 @@ document.addEventListener('astro:page-load', () => {
     codeBlock.style.position = 'relative';
 
     copyButton.addEventListener('click', async () => {
-      await copyCode(codeBlock, copyButton);
+      await copyCode(codeBlock);
       startAnimation(copyLabel);
     });
   }
 
-  async function copyCode(block: any, button: any) {
+  async function copyCode(block: any) {
     let code = block.querySelector('code');
     let text = code.innerText;
 
