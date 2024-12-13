@@ -9,6 +9,8 @@ import { Picture } from 'astro:assets';
 
 const allPosts = await getCollection('blog');
 
+const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+
 const title = 'Blog';
 ---
 
@@ -392,9 +394,13 @@ const title = 'Blog';
               <span>Tags</span>
             </a>
             <ul class='blog-nav-sublist tags-list'>
-              <li class='blog-tag'>Tag 1</li>
-              <li class='blog-tag'>Tag 2</li>
-              <li class='blog-tag'>Tag 3</li>
+              {
+                tags.map((tag) => (
+                  <li class='blog-tag'>
+                    <a href={`/blog/tags/${tag}`}>{tag}</a>
+                  </li>
+                ))
+              }
             </ul>
           </li>
         </ul>
