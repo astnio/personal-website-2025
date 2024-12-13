@@ -1,6 +1,6 @@
 ---
 title: 'Example Post'
-topic: 'Test Topic'
+topic: 'Lorem Ipsum'
 category: 'Test Category 1'
 tags: ['example', 'test']
 summary: 'An example of a post!'

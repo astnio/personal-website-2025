@@ -9,6 +9,9 @@ import { Picture } from 'astro:assets';
 
 const allPosts = await getCollection('blog');
 
+const topics = [
+  ...new Set(allPosts.map((post: any) => post.data.topic).flat()),
+];
 const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
 const categories = [
   ...new Set(allPosts.map((post: any) => post.data.category).flat()),
@@ -320,41 +323,13 @@ const title = 'Blog';
   <div class='wrapper max-width'>
     <nav class='blog-topics-nav'>
       <ul class='blog-topics-list'>
-        <li class='blog-topics-list-item'>
-          <a
-            class='blog-topics-link'
-            href='#'
-            >Topic 1</a
-          >
-        </li>
-        <li class='blog-topics-list-item'>
-          <a
-            class='blog-topics-link'
-            href='#'
-            >Topic 2</a
-          >
-        </li>
-        <li class='blog-topics-list-item'>
-          <a
-            class='blog-topics-link'
-            href='#'
-            >Topic 3</a
-          >
-        </li>
-        <li class='blog-topics-list-item'>
-          <a
-            class='blog-topics-link'
-            href='#'
-            >Topic 4</a
-          >
-        </li>
-        <li class='blog-topics-list-item'>
-          <a
-            class='blog-topics-link'
-            href='#'
-            >Topic 5</a
-          >
-        </li>
+        {
+          topics.map((topic) => (
+            <li class='blog-topics-list-item'>
+              <a href={`/blog/topics/${topic}`}>{topic}</a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
     <section class='blog-post-cards-wrapper'>
