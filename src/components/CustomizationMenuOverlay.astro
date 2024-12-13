@@ -1,3 +1,7 @@
+---
+const { inDrawer } = Astro.props;
+---
+
 <style>
   .customization-menu-overlay {
     content: '';
@@ -28,9 +32,20 @@
     pointer-events: all;
     opacity: 1;
   }
+
+  .customization-menu-overlay[data-in-drawer='false'] {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .customization-menu-overlay[data-in-drawer='false'] {
+      display: inline-block;
+    }
+  }
 </style>
 
 <div
   class='customization-menu-overlay'
-  data-active='false'>
+  data-active='false'
+  data-in-drawer={inDrawer}>
 </div>

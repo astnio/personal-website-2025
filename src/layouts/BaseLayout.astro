@@ -27,7 +27,7 @@ const { title, description } = Astro.props;
     <DrawerToggleButton />
     <Logo mobileView='true' />
     <Navigation />
-    <CustomizationMenuOverlay />
+    <CustomizationMenuOverlay inDrawer='false' />
     <main transition:animate='slide'>
       <slot />
     </main>
