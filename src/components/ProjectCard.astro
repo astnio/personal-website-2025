@@ -117,6 +117,12 @@ const { url, title, description, tags, githubUrl, demoUrl, projectPageUrl } =
     }
   </ul>
   <ul class='tags-list'>
-    {tags.map((tag: string) => <li class='tag'>{tag}</li>)}
+    {
+      tags.map((tag: string) => (
+        <li class='tag'>
+          <a href={`/projects/tags/${tag}`}>{tag}</a>
+        </li>
+      ))
+    }
   </ul>
 </div>

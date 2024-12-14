@@ -1,12 +1,14 @@
 ---
+image: ''
 title: Project One
-date_completed: 2024-02-01
 description: 'An example project!'
+tags: ['Typescript', 'Vite']
+status: 'completed'
+date_completed: 2024-02-01
+featured: true
 github_url: https://astn.sh/gh-ts-simple-e-com
 demo_url: https://astn.sh/ts-simple-e-com
 project_page_url: https://example.com
-tags: ['Typescript', 'Vite']
-image: ''
 ---
 
 # Heading 1
