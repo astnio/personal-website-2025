@@ -1,5 +1,5 @@
 document.addEventListener('astro:page-load', () => {
-  const overlay = document.getElementById('overlay');
+  const overlay = document.getElementById('drawer-overlay');
   const navDrawer = document.getElementById('nav-drawer');
   const navLinks = document.querySelectorAll('.nav-link');
 

@@ -1,0 +1,50 @@
+---
+
+---
+
+<style>
+  #drawer-overlay {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--clr-crust-trans-60);
+    /* backdrop-filter: blur(6px); */
+
+    z-index: 9;
+
+    transition-property: opacity, visibility, pointer-events;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
+  }
+
+  #drawer-overlay[data-active='false'] {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  #drawer-overlay[data-active='true'] {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+
+  @media screen and (min-width: 768px) {
+    #drawer-overlay {
+      display: none;
+    }
+  }
+</style>
+
+<div
+  data-active='false'
+  id='drawer-overlay'
+  aria-label='Close Navigation Menu'
+  role='button'
+  tabindex='0'>
+</div>

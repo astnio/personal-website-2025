@@ -89,37 +89,6 @@ import NavLinks from './NavLinks.astro';
     padding-left: 1rem;
   }
 
-  #overlay {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background-color: var(--clr-crust-trans-60);
-    /* backdrop-filter: blur(6px); */
-
-    z-index: 9;
-
-    transition-property: opacity, visibility, pointer-events;
-    transition-duration: 0.25s;
-    transition-timing-function: ease-out;
-  }
-
-  #overlay[data-active='false'] {
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
-  }
-
-  #overlay[data-active='true'] {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-  }
-
   .logo-wrapper {
     display: flex;
     align-items: center;
@@ -151,10 +120,6 @@ import NavLinks from './NavLinks.astro';
     #nav-drawer {
       display: none;
     }
-
-    #overlay {
-      display: none;
-    }
   }
 </style>
 
@@ -178,13 +143,5 @@ import NavLinks from './NavLinks.astro';
     />
   </div>
 </aside>
-
-<div
-  data-active='false'
-  id='overlay'
-  aria-label='Close Navigation Menu'
-  role='button'
-  tabindex='0'>
-</div>
 
 <script src='../scripts/navDrawer.ts'></script>

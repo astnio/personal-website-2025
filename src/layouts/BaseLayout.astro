@@ -12,6 +12,7 @@ import DrawerToggleButton from '../components/DrawerToggleButton.astro';
 import Logo from '../components/Logo.astro';
 import CustomizationMenuOverlay from '../components/CustomizationMenuOverlay.astro';
 import ContactDialog from '../components/ContactDialog.astro';
+import NavDrawerOverlay from '../components/NavDrawerOverlay.astro';
 
 const { title, description } = Astro.props;
 ---
@@ -24,6 +25,7 @@ const { title, description } = Astro.props;
   <body data-font='sans-serif'>
     <ContactDialog />
     <NavDrawer />
+    <NavDrawerOverlay />
     <DrawerToggleButton />
     <Logo mobileView='true' />
     <Navigation />

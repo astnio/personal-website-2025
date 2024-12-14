@@ -3,7 +3,7 @@ export function initDrawerTouch() {
     const body = document.querySelector('body');
     const navDrawer = document.getElementById('nav-drawer') as HTMLElement;
     const navDrawerToggle = document.getElementById('btn-open-nav-drawer');
-    const overlay = document.getElementById('overlay');
+    const overlay = document.getElementById('drawer-overlay');
 
     const navDrawerTransitionDuration = '0.15s';
     const openThreshold: number = 90;
