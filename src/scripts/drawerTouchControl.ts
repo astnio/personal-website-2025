@@ -6,8 +6,8 @@ export function initDrawerTouch() {
     const overlay = document.getElementById('overlay');
 
     const navDrawerTransitionDuration = '0.15s';
-    const openThreshold: number = 75;
-    const closeThreshold: number = 25;
+    const openThreshold: number = 90;
+    const closeThreshold: number = 10;
 
     let deltaY = 0;
     let deltaX = 0;
