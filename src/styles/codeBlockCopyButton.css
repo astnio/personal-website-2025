@@ -1,51 +1,49 @@
 .btn-copy-wrapper {
   position: absolute;
+
   top: 0.5rem;
   right: 0.5rem;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
 
-  width: calc(24px + 1rem);
-  height: calc(24px + 1rem);
+  --size: 2.5rem;
 
-  aspect-ratio: 1;
+  width: var(--size);
+  height: var(--size);
 
   margin: 0;
   padding: 0;
 }
 
 .btn-copy {
-  position: absolute;
-  left: 50%;
-  top: 2px;
+  position: relative;
+  top: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 24px;
-  height: 24px;
+  width: 100%;
+  height: 100%;
 
   aspect-ratio: 1;
 
   border: none;
   border-radius: var(--radius-circle);
 
-  padding: 1rem;
+  padding: 0;
   margin: 0;
 
   background: none;
-
-  transform: translate(-50%);
 
   transition: top 0.15s ease-in-out;
 }
 
 .btn-copy:hover {
   cursor: pointer;
-  top: -1px;
+  top: -3px;
 }
 
 .btn-copy:active {
@@ -56,9 +54,10 @@
 .btn-copied-label {
   position: absolute;
   right: 2.5rem;
-  top: 0.15rem;
+  top: 1rem;
 
-  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
 
   text-transform: uppercase;
   font-size: 0.8rem;
