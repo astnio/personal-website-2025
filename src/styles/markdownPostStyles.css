@@ -66,6 +66,9 @@ html.light .astro-code span {
 }
 
 .astro-code {
+  position: relative;
+  overflow: auto;
+
   padding-inline: 0.5rem;
   padding-block: 0.5rem;
   background-color: var(--clr-mantle);

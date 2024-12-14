@@ -39,7 +39,7 @@ document.addEventListener('astro:page-load', () => {
     copyButton.title = 'Copy';
 
     let copyButtonIcon = document.createElement('span');
-    copyButtonIcon.className = 'copy-code-icon bx bxs-copy-alt';
+    copyButtonIcon.className = 'copy-code-icon bx bxs-copy';
 
     wrapper.appendChild(copyLabel);
     wrapper.appendChild(copyButton);
