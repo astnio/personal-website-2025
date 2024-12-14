@@ -78,21 +78,20 @@ html.light .astro-code span {
   counter-reset: step;
   counter-increment: step calc(var(--code-line-start, 1) - 1);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
 }
 
 .astro-code > code .line::before {
   content: counter(step);
   counter-increment: step;
 
-  width: 1.5rem;
-
-  padding-right: 0.75rem;
-  padding-block: 0.2rem;
-
-  margin-right: 0.75rem;
-
   display: inline-block;
+
+  width: 3ch;
+
+  height: 100%;
+
+  padding-right: 0.5rem;
+  margin-right: 0.75rem;
 
   text-align: right;
   color: var(--clr-surface-1);
