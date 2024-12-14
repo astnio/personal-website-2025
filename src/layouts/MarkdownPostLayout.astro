@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import '../styles/codeBlockCopyButton.css';
 import '../styles/markdownPostStyles.css';
 
@@ -39,6 +40,11 @@ const { frontmatter, postTarget } = Astro.props;
 
 <div class='post-wrapper-spacer max-width'>
   <article class='post-wrapper'>
+    <!-- <Image
+      alt={'hi'}
+      src={frontmatter.image}
+    /> -->
+    <h1>hello</h1>
     <slot />
   </article>
   <footer class='tags'>
