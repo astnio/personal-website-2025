@@ -46,15 +46,15 @@ const { id } = Astro.props;
 </style>
 
 <div class='select-wrapper'>
-  <label for='user-font'>Font</label>
+  <label for='color-theme'>Color Theme</label>
   <select
-    class='user-font-select'
-    name='user-font'
-    id=`user-font-select-${id}`>
-    <option value='sans-serif'>Sans Serif</option>
-    <option value='serif'>Serif</option>
-    <option value='hyperlegible'>Hyperlegible</option>
+    class='color-theme-select'
+    name='color-theme'
+    id=`color-theme-select-${id}`>
+    <option value='catppuccin'>Catppuccin</option>
+    <option value='test'>Test</option>
+    <option value='high-contrast'>High Contrast</option>
   </select>
 </div>
 
-<script src='../scripts/fontSelect.ts'></script>
+<script src='../scripts/selectTheme.ts'></script>
