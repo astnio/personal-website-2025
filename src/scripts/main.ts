@@ -1,7 +1,7 @@
 import 'boxicons';
 import initColorSchemeDetector from './colorSchemeDetector';
 import initSavedTheme from './themeInit';
-import { initDrawerTouch } from './drawerTouchControl';
+import { initDrawerTouch } from './navDrawerTouchControl';
 
 initColorSchemeDetector();
 initSavedTheme();
