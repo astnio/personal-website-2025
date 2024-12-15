@@ -186,5 +186,7 @@ export function initDrawerTouch() {
         openDrawer();
       }
     });
+
+    overlay!.addEventListener('click', closeDrawer);
   });
 }

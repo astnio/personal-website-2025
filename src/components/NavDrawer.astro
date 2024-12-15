@@ -18,7 +18,10 @@ import NavLinks from './NavLinks.astro';
     align-items: start;
     justify-content: center;
 
-    width: 100%;
+    /* width: 100%; */
+    /* max-width: 90%; */
+    width: 90vw;
+    margin-left: 10.5vw;
 
     height: 100dvh;
 
@@ -127,7 +130,7 @@ import NavLinks from './NavLinks.astro';
   data-active='false'
   data-touch-active='true'
   id='nav-drawer'
-  transition:animate='none'>
+  transition:animate='fade'>
   <div class='customization-menu-overlay-wrapper'>
     <CustomizationMenuOverlay />
   </div>

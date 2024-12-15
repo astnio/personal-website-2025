@@ -6,8 +6,9 @@ import { initDrawerTouch } from './navDrawerTouchControl';
 initColorSchemeDetector();
 initSavedTheme();
 
+initDrawerTouch();
+
 document.addEventListener('astro:page-load', () => {
   initSavedTheme();
   initColorSchemeDetector();
-  initDrawerTouch();
 });
