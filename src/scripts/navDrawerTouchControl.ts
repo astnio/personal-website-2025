@@ -108,6 +108,8 @@ export function initDrawerTouch() {
       );
 
       navDrawer!.style.transform = `translateX(${drawerTransformPercent}%)`;
+
+      // overlay!.style.opacity = `${100 - drawerTransformPercent}%`;
     }
 
     const handleTouchStart = (event: TouchEvent): void => {
