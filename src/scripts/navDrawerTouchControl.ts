@@ -92,8 +92,6 @@ export function initDrawerTouch() {
     }
 
     function updateDrawerPosition(moveX: number) {
-      navDrawer!.style.transitionDuration = '0.0s';
-
       const normalizedDistance = normalizeRange(
         Math.abs(moveX),
         window.innerWidth,
@@ -114,6 +112,7 @@ export function initDrawerTouch() {
 
     const handleTouchStart = (event: TouchEvent): void => {
       navDrawer!.style.transitionDuration = '0.0s';
+
       const touch = event.changedTouches[0];
       startTouchX = touch.clientX;
       startTouchY = touch.clientY;
