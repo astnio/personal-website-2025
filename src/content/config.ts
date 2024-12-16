@@ -21,12 +21,11 @@ const projectCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     tags: z.array(z.string()),
-    status: z.enum(['in-progress', 'completed', 'incomplete']).optional(),
+    status: z.enum(['in-progress', 'complete', 'incomplete']).optional(),
     date_completed: z.date().optional(),
     featured: z.boolean().optional(),
-    github_url: z.string(),
-    demo_url: z.string(),
-    project_page_url: z.string(),
+    github_url: z.string().optional(),
+    demo_url: z.string().optional(),
   }),
 });
 
@@ -38,7 +37,6 @@ const femProjectCollection = defineCollection({
     description: z.string(),
     github_url: z.string(),
     demo_url: z.string(),
-    project_page_url: z.string(),
     fem_page_url: z.string(),
     tags: z.array(z.string()),
     image: z.string().optional(),
