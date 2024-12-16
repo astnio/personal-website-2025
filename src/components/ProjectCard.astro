@@ -1,6 +1,31 @@
 ---
-const { url, title, description, tags, githubUrl, demoUrl, projectPageUrl } =
-  Astro.props;
+import { Picture } from 'astro:assets';
+
+const {
+  url,
+  image,
+  title,
+  description,
+  tags,
+  githubUrl,
+  demoUrl,
+  projectPageUrl,
+} = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/content/projects/**/*.{png,jpg,jpeg,gif,webp}'
+);
+
+let imageSource: ImageMetadata | null = null;
+
+if (image) {
+  const projectSlug = url.split('/').pop();
+  const fullPath = `/src/content/projects/${projectSlug}/${image.replace('./', '')}`;
+  const imageModule = await images[fullPath]();
+  imageSource = imageModule.default;
+} else {
+  imageSource = null;
+}
 ---
 
 <style>
@@ -20,6 +45,12 @@ const { url, title, description, tags, githubUrl, demoUrl, projectPageUrl } =
     outline: 1px solid var(--clr-surface-0);
 
     padding: 2rem;
+  }
+
+  .project-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-base);
   }
 
   ul.tags-list {
@@ -77,6 +108,17 @@ const { url, title, description, tags, githubUrl, demoUrl, projectPageUrl } =
 </style>
 
 <div class='project-card'>
+  {
+    imageSource && (
+      <Picture
+        src={imageSource}
+        widths={[400, 800]}
+        sizes='(max-width: 800px) 100vw, 800px'
+        alt={title}
+        class='project-image'
+      />
+    )
+  }
   <a href={url}>{title}</a>
   <p>{description}</p>
   <ul class='links-list'>
