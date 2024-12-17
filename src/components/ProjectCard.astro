@@ -50,19 +50,22 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     flex-direction: column;
 
     height: 100%;
+    max-height: 38rem;
 
     background-color: var(--clr-base);
 
     border-radius: var(--radius-surface);
 
     outline: 1px solid var(--clr-surface-0);
+
+    overflow: hidden;
   }
 
   .project-info-wrapper {
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: start;
+
     gap: 1rem;
 
     padding: 1rem;
@@ -70,17 +73,45 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     height: 100%;
   }
 
-  .project-image {
+  .picture-wrapper {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    aspect-ratio: 16/9;
+    aspect-ratio: 10/9;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid var(--clr-surface-0);
+  }
+
+  .project-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     object-fit: cover;
 
-    max-width: 100%;
+    width: 100%;
     height: 100%;
+
+    cursor: pointer;
+
+    scale: 1;
+
+    transition-property: scale;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .project-image:hover {
+    scale: 1.075;
   }
 
   .card-title > a {
@@ -108,6 +139,8 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 
   .card-description {
     line-height: 150%;
+
+    margin-top: auto;
     margin-bottom: 1rem;
   }
 
@@ -119,10 +152,10 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 
     list-style: none;
     padding: 0;
-    margin-top: 2rem;
+    margin: auto 0 0 0;
   }
 
-  li.tag {
+  a.tag-link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,6 +168,20 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     border-radius: 999px;
 
     background-color: var(--clr-surface-0);
+
+    outline: 1px solid var(--clr-surface-1);
+
+    text-decoration: none;
+
+    transition-property: background-color, color, outline;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a.tag-link:hover {
+    color: var(--clr-primary);
+    background-color: var(--clr-surface-1);
+    outline: 1px solid var(--clr-surface-2);
   }
 
   ul.links-list {
@@ -146,7 +193,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 
     padding: 0;
     margin: 0;
-    margin-block: auto;
+    margin-bottom: auto;
   }
 
   a.link {
@@ -213,13 +260,15 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 <div class='project-card'>
   {
     imageSource && (
-      <Picture
-        src={imageSource}
-        widths={[400, 800]}
-        sizes='(max-width: 800px) 100vw, 800px'
-        alt={title}
-        class='project-image'
-      />
+      <div class='picture-wrapper'>
+        <Picture
+          src={imageSource}
+          widths={[400, 800]}
+          sizes='(max-width: 800px) 100vw, 800px'
+          alt={title}
+          class='project-image'
+        />
+      </div>
     )
   }
   <div class='project-info-wrapper'>
@@ -272,8 +321,12 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     <ul class='tags-list'>
       {
         tags.map((tag: string) => (
-          <li class='tag'>
-            <a href={`/projects/tags/${tag}`}>{tag}</a>
+          <li>
+            <a
+              class='tag-link'
+              href={`/projects/tags/${tag}`}>
+              {tag}
+            </a>
           </li>
         ))
       }
