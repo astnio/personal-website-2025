@@ -2,7 +2,7 @@
 image: './personal_website.png'
 title: Personal Website (2024)
 description: 'The version of my personal website that I used through 2024.'
-tags: ['TypeScript', 'Vite']
+tags: ['SvelteKit', 'TypeScript', 'Tailwind', 'Skeleton', 'Vite']
 status: 'complete'
 date_completed: 2023-12-01
 featured: true

@@ -2,7 +2,7 @@
 image: './js-wordguess1.png'
 title: WordGuess Game (JavaScript)
 description: 'A basic game to guess the word, made in just HTML and JavaScript. Just uses a small list of words from a local JSON file.'
-tags: ['JavaScript']
+tags: ['JavaScript', 'HTML', 'CSS']
 status: 'incomplete'
 date_completed: 2023-07-01
 featured: true

@@ -2,7 +2,7 @@
 image: './simple_ecom.png'
 title: JavaScript E-Commerce Frontend
 description: 'The frontend mockup of an e-commerce site. Made with just JavaScript and CSS/HTML.'
-tags: ['JavaScript']
+tags: ['JavaScript', 'HTML', 'CSS']
 status: 'incomplete'
 date_completed: 2023-08-01
 featured: true
