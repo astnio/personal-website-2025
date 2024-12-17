@@ -3,7 +3,14 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 
-const allProjects = await getCollection('projects');
+// const allProjects = await getCollection('projects');
+const featuredProjects = await getCollection('projects', ({ data }) => {
+  return data.featured === true;
+});
+
+const otherProjects = await getCollection('projects', ({ data }) => {
+  return data.featured === false;
+});
 
 const title = 'Projects';
 ---
@@ -94,7 +101,7 @@ const title = 'Projects';
     <p>My featured projects</p>
     <ul class='feature-projects-list'>
       {
-        allProjects.map((project) => (
+        featuredProjects.map((project) => (
           <li>
             <ProjectCard
               url={`/projects/${project.slug}`}
@@ -145,16 +152,16 @@ const title = 'Projects';
     </nav>
     <ul class='feature-projects-list'>
       {
-        allProjects.map((project) => (
+        otherProjects.map((project) => (
           <li>
             <ProjectCard
               url={`/projects/${project.slug}`}
+              image={project.data.image}
               title={project.data.title}
               description={project.data.description}
               tags={project.data.tags}
               githubUrl={project.data.github_url}
               demoUrl={project.data.demo_url}
-              projectPageUrl={project.data.project_page_url}
             />
           </li>
         ))
