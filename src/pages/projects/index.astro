@@ -55,6 +55,7 @@ const title = 'Projects';
   .project-areas-nav {
     grid-column: span 2;
     margin-bottom: 4rem;
+    width: 100%;
   }
 
   ul.project-areas-list {
@@ -96,12 +97,41 @@ const title = 'Projects';
 </style>
 
 <BaseLayout title={title}>
+  <nav class='project-areas-nav max-width'>
+    <ul class='project-areas-list'>
+      <li class='project-area-list-item'>
+        <a
+          href='#featured'
+          class='blog-topics-link'
+          >Featured</a
+        >
+      </li>
+
+      <li class='project-area-list-item'>
+        <a
+          href='#other'
+          class='blog-topics-link'
+          >Other</a
+        >
+      </li>
+
+      <li class='project-area-list-item'>
+        <a
+          href='#archive'
+          class='blog-topics-link'
+          >Archived</a
+        >
+      </li>
+    </ul>
+  </nav>
   <section class='max-width'>
     <h1>Projects</h1>
     <hr />
   </section>
 
-  <section class='max-width'>
+  <section
+    id='featured'
+    class='max-width'>
     <h2>Featured</h2>
     <p>My featured projects</p>
     <ul class='projects-list'>
@@ -124,7 +154,9 @@ const title = 'Projects';
     </ul>
   </section>
 
-  <section class='max-width'>
+  <section
+    id='other'
+    class='max-width'>
     <h2>
       [PH] Other Projects <span
         style='font-size: 1rem; font-weight: 400; font-style: italic; color: var(--clr-subtext-0)'
@@ -175,7 +207,9 @@ const title = 'Projects';
     </ul>
   </section>
 
-  <section class='max-width'>
+  <section
+    id='archive'
+    class='max-width'>
     <h2>Archive</h2>
     <p>My archived projects</p>
     <a href='/projects/archive'>Archived Projects</a>
