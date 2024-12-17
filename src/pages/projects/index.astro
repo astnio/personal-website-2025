@@ -17,6 +17,7 @@ const title = 'Projects';
 
 <style>
   /* *** General *** */
+
   a {
     text-decoration: none;
   }
@@ -54,7 +55,10 @@ const title = 'Projects';
 
   .project-areas-nav {
     grid-column: span 2;
+
     margin-bottom: 4rem;
+    padding-inline: 1rem;
+
     width: 100%;
   }
 
@@ -97,6 +101,10 @@ const title = 'Projects';
 </style>
 
 <BaseLayout title={title}>
+  <section class='max-width'>
+    <h1>Projects</h1>
+  </section>
+
   <nav class='project-areas-nav max-width'>
     <ul class='project-areas-list'>
       <li class='project-area-list-item'>
@@ -124,10 +132,6 @@ const title = 'Projects';
       </li>
     </ul>
   </nav>
-  <section class='max-width'>
-    <h1>Projects</h1>
-    <hr />
-  </section>
 
   <section
     id='featured'
@@ -164,30 +168,6 @@ const title = 'Projects';
       >
     </h2>
     <p>[PH] Projects sorted by area and stuff I guess</p>
-    <nav class='project-areas-nav'>
-      <p>Areas</p>
-      <ul class='project-areas-list'>
-        <li class='project-area-list-item'>
-          <button class='blog-topics-link'>Area 1</button>
-        </li>
-
-        <li class='project-area-list-item'>
-          <button class='blog-topics-link'>Area 2</button>
-        </li>
-
-        <li class='project-area-list-item'>
-          <button class='blog-topics-link'>Area 3</button>
-        </li>
-
-        <li class='project-area-list-item'>
-          <button class='blog-topics-link'>Area 4</button>
-        </li>
-
-        <li class='project-area-list-item'>
-          <button class='blog-topics-link'>Area 5</button>
-        </li>
-      </ul>
-    </nav>
     <ul class='projects-list'>
       {
         otherProjects.map((project) => (
