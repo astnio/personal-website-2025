@@ -1,4 +1,10 @@
 ---
+interface Props {
+  url: string;
+  label: string;
+  iconClass: string;
+  newTab: null | 'true' | boolean;
+}
 const { url, label, iconClass, newTab = 'true' } = Astro.props;
 ---
 
@@ -155,12 +161,8 @@ const { url, label, iconClass, newTab = 'true' } = Astro.props;
   class='hero-link'
   href={url}
   target={newTab ? `_blank` : ''}>
-  {
-    iconClass && (
-      <div class='link-icon-wrapper'>
-        <span class={`link-icon ${iconClass}`} />
-      </div>
-    )
-  }
+  <div class='link-icon-wrapper'>
+    <span class={`link-icon ${iconClass}`}></span>
+  </div>
   <span class='link-label'>{label}</span>
 </a>

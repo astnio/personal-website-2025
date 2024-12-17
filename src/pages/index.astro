@@ -4,9 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 import profilePicture from '../assets/images/site/index/lorelei-2-removebg.png';
 import LinkList from '../components/HeroLinks.astro';
-// import data from '../content/aboutMe.json';
-
-// const aboutMeParagraph = data.aboutMeSentence;
+import IconLink from '../components/IconLink.astro';
 
 const title = 'Austin Hagel';
 ---
@@ -160,6 +158,12 @@ const title = 'Austin Hagel';
 
 <BaseLayout title={title}>
   <section class='hero-wrapper max-width'>
+    <IconLink
+      url='https://example.com'
+      label='Example'
+      newTab={true}
+      iconClass='bx bxs-bulb'
+    />
     <div class='hero-content-wrapper'>
       <div class='image-frame'>
         <Picture
