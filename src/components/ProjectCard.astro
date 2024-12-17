@@ -150,21 +150,63 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
   }
 
   a.link {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    color: var(--clr-text);
+    text-decoration: none;
+
+    border-radius: var(--radius-input);
+    outline: 1px solid var(--clr-surface-0);
+
+    height: 2.4rem;
+
+    transition-property: color, background-color, outline;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  a.link:hover {
+    outline: 1px solid var(--clr-surface-1);
+    color: var(--clr-primary);
+    background-color: var(--clr-mantle);
+  }
+
+  .link-label {
+    margin-right: auto;
+    padding-right: 2rem;
+    padding-left: 1rem;
+  }
+
+  .link-icon-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    text-decoration: none;
+    margin-right: auto;
 
-    padding-block: 0.8rem;
-    padding-inline: 1.4rem;
+    aspect-ratio: 1;
 
-    background-color: var(--clr-surface-0);
-    outline: 1px solid var(--clr-surface-1);
+    background-color: var(--clr-mantle);
 
-    border-radius: var(--radius-input);
+    height: 100%;
 
-    cursor: pointer;
+    transition-property: background-color, color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a:hover > .link-icon-wrapper {
+    background-color: var(--clr-base);
+    color: var(--clr-primary);
+  }
+
+  .link-icon {
+    font-size: 1.4rem;
   }
 </style>
 
@@ -192,7 +234,10 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
               class='link'
               href={githubUrl}
               target='_blank'>
-              Github
+              <div class='link-icon-wrapper'>
+                <span class='link-icon bx bxl-github' />
+              </div>
+              <span class='link-label'>Github</span>
             </a>
           </li>
         )
@@ -204,7 +249,10 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
               class='link'
               href={demoUrl}
               target='_blank'>
-              Demo
+              <div class='link-icon-wrapper'>
+                <span class='link-icon bx bxs-show' />
+              </div>
+              <span class='link-label'>Demo</span>
             </a>
           </li>
         )
