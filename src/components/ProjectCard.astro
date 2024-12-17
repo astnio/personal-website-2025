@@ -5,6 +5,7 @@ const {
   url,
   image,
   title,
+  date,
   description,
   tags,
   githubUrl,
@@ -26,31 +27,85 @@ if (image) {
 } else {
   imageSource = null;
 }
+
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  month: 'long',
+  year: 'numeric',
+});
 ---
 
 <style>
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin: 0;
+  }
+
   .project-card {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    justify-content: space-between;
-    gap: 1rem;
 
-    min-height: 40rem;
+    height: 100%;
 
     background-color: var(--clr-base);
 
     border-radius: var(--radius-surface);
 
     outline: 1px solid var(--clr-surface-0);
+  }
 
-    padding: 2rem;
+  .project-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 1rem;
+
+    padding: 1rem;
   }
 
   .project-image {
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    aspect-ratio: 16/9;
+
+    object-fit: cover;
+
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .card-title > a {
+    text-decoration: none;
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 1.4rem;
+
+    margin-top: 1rem;
+  }
+
+  .card-date {
+    color: var(--clr-subtext-1);
+    background-color: var(--clr-mantle);
+
+    padding-inline: 0.8rem;
+    padding-block: 0.4rem;
+
+    border-radius: var(--radius-input);
+
+    margin-bottom: 1rem;
+  }
+
+  .card-description {
+    line-height: 150%;
   }
 
   ul.tags-list {
@@ -60,6 +115,7 @@ if (image) {
 
     list-style: none;
     padding: 0;
+    margin-top: 2rem;
   }
 
   li.tag {
@@ -119,52 +175,55 @@ if (image) {
       />
     )
   }
-  <a href={url}>{title}</a>
-  <p>{description}</p>
-  <ul class='links-list'>
-    {
-      githubUrl && (
-        <li>
-          <a
-            class='link'
-            href={githubUrl}
-            target='_blank'>
-            Github
-          </a>
-        </li>
-      )
-    }
-    {
-      demoUrl && (
-        <li>
-          <a
-            class='link'
-            href={demoUrl}
-            target='_blank'>
-            Demo
-          </a>
-        </li>
-      )
-    }
-    {
-      projectPageUrl && (
-        <li>
-          <a
-            class='link'
-            href={projectPageUrl}>
-            Project
-          </a>
-        </li>
-      )
-    }
-  </ul>
-  <ul class='tags-list'>
-    {
-      tags.map((tag: string) => (
-        <li class='tag'>
-          <a href={`/projects/tags/${tag}`}>{tag}</a>
-        </li>
-      ))
-    }
-  </ul>
+  <div class='project-info-wrapper'>
+    <h4 class='card-title'><a href={url}>{title}</a></h4>
+    <p class='card-date'>{formattedDate}</p>
+    <p class='card-description'>{description}</p>
+    <ul class='links-list'>
+      {
+        githubUrl && (
+          <li>
+            <a
+              class='link'
+              href={githubUrl}
+              target='_blank'>
+              Github
+            </a>
+          </li>
+        )
+      }
+      {
+        demoUrl && (
+          <li>
+            <a
+              class='link'
+              href={demoUrl}
+              target='_blank'>
+              Demo
+            </a>
+          </li>
+        )
+      }
+      {
+        projectPageUrl && (
+          <li>
+            <a
+              class='link'
+              href={projectPageUrl}>
+              Project
+            </a>
+          </li>
+        )
+      }
+    </ul>
+    <ul class='tags-list'>
+      {
+        tags.map((tag: string) => (
+          <li class='tag'>
+            <a href={`/projects/tags/${tag}`}>{tag}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </div>

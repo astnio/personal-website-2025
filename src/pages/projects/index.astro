@@ -39,7 +39,7 @@ const title = 'Projects';
     font-size: 2.4rem;
   }
 
-  ul.feature-projects-list {
+  ul.projects-list {
     display: grid;
     grid-template-columns: auto;
     gap: 2rem;
@@ -77,15 +77,20 @@ const title = 'Projects';
   }
 
   @media screen and (min-width: 1024px) {
-    ul.feature-projects-list {
+    ul.projects-list {
       display: grid;
-      grid-template-columns: auto auto;
-      gap: 2rem;
+      align-items: stretch;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
 
       list-style: none;
 
       padding: 0;
       margin: 0;
+    }
+
+    li.projects-list-item {
+      /* min-height: 100%; */
     }
   }
 </style>
@@ -99,14 +104,15 @@ const title = 'Projects';
   <section class='max-width'>
     <h2>Featured</h2>
     <p>My featured projects</p>
-    <ul class='feature-projects-list'>
+    <ul class='projects-list'>
       {
         featuredProjects.map((project) => (
-          <li>
+          <li class='projects-list-item'>
             <ProjectCard
               url={`/projects/${project.slug}`}
               image={project.data.image}
               title={project.data.title}
+              date={project.data.date_completed}
               description={project.data.description}
               tags={project.data.tags}
               githubUrl={project.data.github_url}
@@ -150,7 +156,7 @@ const title = 'Projects';
         </li>
       </ul>
     </nav>
-    <ul class='feature-projects-list'>
+    <ul class='projects-list'>
       {
         otherProjects.map((project) => (
           <li>
