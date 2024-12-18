@@ -3,6 +3,7 @@ import ContactButton from './ContactButton.astro';
 import CustomizationMenu from './CustomizationMenu.astro';
 import CustomizationMenuOverlay from './CustomizationMenuOverlay.astro';
 import NavLinks from './NavLinks.astro';
+import SearchInput from './SearchInput.astro';
 ---
 
 <style>
@@ -88,7 +89,7 @@ import NavLinks from './NavLinks.astro';
     width: 100%;
     max-width: 16rem;
 
-    padding-bottom: 4rem;
+    padding-block: 4rem;
     padding-left: 1rem;
   }
 
@@ -136,6 +137,7 @@ import NavLinks from './NavLinks.astro';
   </div>
 
   <div class='nav-drawer-content'>
+    <SearchInput inDrawer='true' />
     <NavLinks />
     <ContactButton inDrawer='true' />
   </div>
