@@ -10,19 +10,21 @@ const { inDrawer } = Astro.props;
 
     border: none;
     border-radius: var(--radius-input);
-    outline: 1px solid var(--clr-surface-0);
+    outline: 1px solid var(--clr-surface-2);
 
     padding: 0;
 
-    background-color: var(--clr-base);
+    background-color: var(--clr-text);
 
     height: 2.4rem;
     min-width: 8rem;
 
     font-size: 1rem;
-    color: var(--clr-text);
+    color: var(--clr-base);
     text-decoration: none;
     text-align: left;
+
+    overflow: hidden;
 
     transition-property: color, background-color, outline;
     transition-duration: 0.1s;
@@ -30,15 +32,15 @@ const { inDrawer } = Astro.props;
   }
 
   button.btn-contact:hover {
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-secondary);
     cursor: pointer;
     outline: 1px solid var(--clr-surface-1);
-    color: var(--clr-primary);
+    color: var(--clr-mantle);
   }
 
   button.btn-contact:hover > .icon-wrapper {
-    background-color: var(--clr-base);
-    color: var(--clr-primary);
+    background-color: var(--clr-text);
+    color: var(--clr-base);
   }
 
   button.btn-contact[data-in-drawer='true'] {
@@ -72,7 +74,7 @@ const { inDrawer } = Astro.props;
 
     aspect-ratio: 1;
 
-    background-color: var(--clr-mantle);
+    background-color: var(--clr-secondary);
 
     height: 100%;
 
