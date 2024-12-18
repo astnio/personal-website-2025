@@ -28,7 +28,7 @@ const { inDrawer } = Astro.props;
     width: 4rem;
     height: 2rem;
 
-    transition-property: color, background-color;
+    transition-property: color, background-color, width;
     transition-duration: 0.1s;
     transition-timing-function: ease-in-out;
   }
@@ -36,11 +36,34 @@ const { inDrawer } = Astro.props;
   input::placeholder {
     color: var(--clr-primary);
     font-size: 1.8rem;
+
+    visibility: visible;
+    opacity: 1;
+
+    transition-property: visiblity, opacity;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
   }
 
   input:hover {
     background-color: var(--clr-surface-0);
     outline: 1px solid var(--clr-surface-1);
+  }
+
+  input:hover::placeholder {
+    color: var(--clr-text);
+  }
+
+  input:active,
+  input:focus,
+  input:not(:placeholder-shown) {
+    width: 8rem;
+  }
+
+  input:active::placeholder,
+  input:focus::placeholder {
+    opacity: 0;
+    visibility: hidden;
   }
 
   button {
