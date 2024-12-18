@@ -10,17 +10,18 @@ const { inDrawer } = Astro.props;
 
     border: none;
     border-radius: var(--radius-input);
-    outline: 1px solid var(--clr-surface-2);
+    outline: 1px solid var(--clr-primary);
 
     padding: 0;
 
-    background-color: var(--clr-text);
+    background-color: var(--clr-base);
 
     height: 2.4rem;
     min-width: 8rem;
 
     font-size: 1rem;
-    color: var(--clr-base);
+    font-weight: 700;
+    color: var(--clr-text);
     text-decoration: none;
     text-align: left;
 
@@ -32,37 +33,14 @@ const { inDrawer } = Astro.props;
   }
 
   button.btn-contact:hover {
-    background-color: var(--clr-secondary);
-    cursor: pointer;
-    outline: 1px solid var(--clr-surface-1);
-    color: var(--clr-mantle);
-  }
-
-  button.btn-contact:hover > .icon-wrapper {
     background-color: var(--clr-text);
+    cursor: pointer;
     color: var(--clr-base);
   }
 
   button.btn-contact[data-in-drawer='true'] {
     min-height: 3.6rem;
     font-size: 1.4rem;
-  }
-
-  button.btn-contact[data-in-drawer='true'] > .icon-wrapper {
-    font-size: 1.8rem;
-  }
-
-  .btn-label {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    padding: 0;
-
-    font-weight: 500;
   }
 
   .icon-wrapper {
@@ -74,11 +52,24 @@ const { inDrawer } = Astro.props;
 
     aspect-ratio: 1;
 
-    background-color: var(--clr-secondary);
+    background-color: var(--clr-primary);
 
     height: 100%;
 
-    transition: color, 0.15s, ease-out;
+    color: var(--clr-base);
+
+    transition-property: color, background-color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+  }
+
+  button.btn-contact:hover > .icon-wrapper {
+    background-color: var(--clr-base);
+    color: var(--clr-text);
+  }
+
+  button.btn-contact[data-in-drawer='true'] > .icon-wrapper {
+    font-size: 1.8rem;
   }
 </style>
 
