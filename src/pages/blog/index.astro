@@ -9,8 +9,6 @@ import { Picture } from 'astro:assets';
 
 const allPosts = await getCollection('blog');
 
-console.log(allPosts);
-
 const topics = [
   ...new Set(allPosts.map((post: any) => post.data.topic).flat()),
 ];

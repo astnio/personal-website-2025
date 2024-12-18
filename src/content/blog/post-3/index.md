@@ -1,6 +1,6 @@
 ---
 title: 'Coding Example Post'
-summary: 'An example of a post!'
+summary: 'An example of code in a post!'
 date_published: 2022-04-20
 topic: 'Test Topic 2'
 category: 'Test Category 3'
