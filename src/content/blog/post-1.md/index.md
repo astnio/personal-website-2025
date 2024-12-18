@@ -1,9 +1,10 @@
 ---
-title: 'Example Post'
+title: 'Markdown Example'
+summary: 'An example of markdown in a post!'
+date_published: 2024-11-03
 topic: 'Lorem Ipsum'
 category: 'Test Category 1'
 tags: ['example', 'test']
-summary: 'An example of a post!'
 ---
 
 # Heading 1

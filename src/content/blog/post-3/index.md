@@ -1,9 +1,10 @@
 ---
 title: 'Coding Example Post'
+summary: 'An example of a post!'
+date_published: 2022-04-20
 topic: 'Test Topic 2'
 category: 'Test Category 3'
-tags: ['example', 'code', 'javascript']
-summary: 'An example of a post!'
+tags: ['example', 'code', 'javascript', 'code example']
 ---
 
 # Code Block Example

@@ -1,5 +1,12 @@
 ---
+import { Picture } from 'astro:assets';
+
 const { title, url, image, imageAlt, summary, tags, date } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  month: 'long',
+  year: 'numeric',
+});
 ---
 
 <style>
@@ -12,14 +19,79 @@ const { title, url, image, imageAlt, summary, tags, date } = Astro.props;
     padding: 0;
   }
 
-  article {
-    background-color: var(--clr-base);
-    padding: 1rem;
+  .blog-card-wrapper {
     width: 100%;
+  }
 
+  header,
+  footer,
+  .blog-card-content {
+    padding-inline: 1rem;
+  }
+
+  .blog-card {
+    background-color: var(--clr-base);
     border-radius: var(--radius-surface);
+    outline: 1px solid var(--clr-surface-0);
+    overflow: hidden;
+  }
 
-    border: 1px solid var(--clr-surface-0);
+  .picture-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    aspect-ratio: 4/2;
+
+    overflow: hidden;
+  }
+
+  .header-meta-details {
+    display: flex;
+    gap: 1rem;
+
+    font-size: 0.9rem;
+  }
+
+  .header-meta-detail-category {
+    background-color: var(--clr-mantle);
+
+    color: var(--clr-subtext-0);
+
+    padding-inline: 0.8rem;
+    padding-block: 0.4rem;
+
+    border-radius: var(--radius-chip);
+  }
+
+  .header-meta-detail-time-read {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2ch;
+
+    color: var(--clr-subtext-0);
+  }
+
+  .header-title {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .header-title > a {
+    text-decoration: none;
+  }
+
+  .blog-picture {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 
   .post-tags {
@@ -36,46 +108,62 @@ const { title, url, image, imageAlt, summary, tags, date } = Astro.props;
   }
 </style>
 
-<article class='blog-card'>
-  <header>
-    <h3>
-      <a href={url}>{title}</a>
-    </h3>
-    <time datetime={date}>{date}</time>
-  </header>
+<div class='blog-card-wrapper'>
+  <article class='blog-card'>
+    <div class='picture-wrapper'>
+      <Picture
+        width={400}
+        height={200}
+        src={'https://placehold.co/400x200'}
+        alt={'Placeholder image'}
+        class='blog-picture'
+      />
+    </div>
 
-  <div class='blog-card-content'>
-    <img
-      src={image}
-      alt={imageAlt}
-      loading='lazy'
-    />
+    <header>
+      <div class='header-meta-details'>
+        <p class='header-meta-detail-category'>Category</p>
+        <p class='header-meta-detail-time-read'><span>0</span> min Read</p>
+      </div>
+      <h3 class='header-title'>
+        <a href={url}>{title}</a>
+      </h3>
+      <time datetime={date}>{formattedDate}</time>
+    </header>
 
-    <p>
-      {summary}
-    </p>
-  </div>
+    <div class='blog-card-content'>
+      <img
+        src={image}
+        alt={imageAlt}
+        loading='lazy'
+      />
 
-  <footer>
-    <ul class='post-tags'>
-      {
-        tags.map((tag: string) => (
-          <li>
-            <p class='tag'>{tag}</p>
-          </li>
-        ))
-      }
-    </ul>
-    <!-- <div class='blog-card-meta'>
-      <span>By Jane Doe</span>
-      <a
-        href='/blog/post-1#comments'
-        aria-label='Comments for Revolutionary AI Breakthrough'>
-        <span aria-hidden='true'>💬</span>
-        <span class='sr-only'>Comments</span>
-        <span>24</span>
-      </a>
-      <span>5 min read</span>
-    </div> -->
-  </footer>
-</article>
+      <p>
+        {summary}
+      </p>
+    </div>
+
+    <footer>
+      <ul class='post-tags'>
+        {
+          tags.map((tag: string) => (
+            <li>
+              <p class='tag'>{tag}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <!-- <div class='blog-card-meta'>
+        <span>By Jane Doe</span>
+        <a
+          href='/blog/post-1#comments'
+          aria-label='Comments for Revolutionary AI Breakthrough'>
+          <span aria-hidden='true'>💬</span>
+          <span class='sr-only'>Comments</span>
+          <span>24</span>
+        </a>
+        <span>5 min read</span>
+      </div> -->
+    </footer>
+  </article>
+</div>

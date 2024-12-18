@@ -5,12 +5,13 @@ import { z, defineCollection } from 'astro:content';
 const blogCollection = defineCollection({
   type: 'content', // v2.5.0 and later
   schema: z.object({
+    image: z.string().optional(),
     title: z.string(),
+    summary: z.string(),
+    date_published: z.date(),
     topic: z.string(),
     category: z.string(),
     tags: z.array(z.string()),
-    summary: z.string(),
-    image: z.string().optional(),
   }),
 });
 

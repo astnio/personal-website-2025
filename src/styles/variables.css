@@ -1,5 +1,6 @@
 :root {
   --radius-input: 6pt;
+  --radius-chip: 3pt;
   --radius-surface: 6pt;
   --radius-base: 6pt;
 
@@ -9,12 +10,14 @@
 
 :root:has(body[data-font='serif']) {
   --radius-input: 0pt;
+  --radius-chip: 0pt;
   --radius-surface: 0pt;
   --radius-base: 0pt;
 }
 
 :root:has(body[data-font='sans-serif']) {
   --radius-input: 6pt;
+  --radius-chip: 3pt;
   --radius-surface: 6pt;
   --radius-base: 6pt;
 }

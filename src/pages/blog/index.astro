@@ -9,6 +9,8 @@ import { Picture } from 'astro:assets';
 
 const allPosts = await getCollection('blog');
 
+console.log(allPosts);
+
 const topics = [
   ...new Set(allPosts.map((post: any) => post.data.topic).flat()),
 ];
@@ -338,10 +340,11 @@ const title = 'Blog';
           allPosts.map((post: any) => (
             <li>
               <BlogPostCard
-                url={`/blog/${post.slug}`}
                 title={post.data.title}
+                url={`/blog/${post.slug}`}
                 summary={post.data.summary}
                 tags={post.data.tags}
+                date={post.data.date_published}
               />
             </li>
           ))
