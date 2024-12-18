@@ -2,6 +2,7 @@
 import Logo from '../components/Logo.astro';
 import ContactButton from './ContactButton.astro';
 import NavLinks from './NavLinks.astro';
+import SearchInput from './SearchInput.astro';
 ---
 
 <style>
@@ -66,7 +67,16 @@ import NavLinks from './NavLinks.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 4rem;
+  }
+
+  .nav-links-wrapper {
+    margin-left: 4rem;
+  }
+
+  .search-input-wrapper {
+    margin-left: auto;
+    margin-right: 2rem;
   }
 
   @media screen and (max-width: 768px) {
@@ -85,11 +95,10 @@ import NavLinks from './NavLinks.astro';
     <div class='nav-links-wrapper'>
       <NavLinks />
     </div>
+    <div class='search-input-wrapper'>
+      <SearchInput inDrawer='false' />
+    </div>
     <div class='contact-btn-wrapper'>
-      <!-- <CustomizationMenu
-        id='appbar'
-        inDrawer='false'
-      /> -->
       <ContactButton />
     </div>
   </div>

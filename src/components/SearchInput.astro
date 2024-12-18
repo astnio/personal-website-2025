@@ -1,0 +1,121 @@
+---
+const { inDrawer } = Astro.props;
+---
+
+<style>
+  fieldset {
+    display: flex;
+
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  input {
+    border: none;
+
+    padding-inline: 0.4rem;
+    padding-block: 0.4rem;
+
+    border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+
+    background-color: var(--clr-base);
+
+    outline: 1px solid var(--clr-surface-0);
+
+    text-align: right;
+
+    width: 4rem;
+    height: 2rem;
+
+    transition-property: color, background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+  }
+
+  input::placeholder {
+    color: var(--clr-primary);
+    font-size: 1.8rem;
+  }
+
+  input:hover {
+    background-color: var(--clr-surface-0);
+    outline: 1px solid var(--clr-surface-1);
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: var(--radius-pill) 0 0 var(--radius-pill);
+
+    background-color: var(--clr-mantle);
+
+    outline: 1px solid var(--clr-surface-0);
+
+    cursor: pointer;
+
+    transition-property: color, background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+  }
+
+  button:hover {
+    background-color: var(--clr-surface-0);
+    color: var(--clr-primary);
+  }
+
+  .btn-icon {
+    position: relative;
+    top: 2px;
+    left: 1px;
+
+    font-size: 1.2rem;
+
+    padding-inline: 0.2rem;
+  }
+
+  .search-wrapper[data-in-drawer='false'] {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .search-wrapper[data-in-drawer='false'] {
+      display: flex;
+    }
+
+    .btn-icon {
+      top: 1px;
+    }
+  }
+</style>
+
+<section
+  class='search-wrapper'
+  role='search'
+  data-in-drawer={inDrawer}>
+  <form
+    action='#'
+    method='get'>
+    <fieldset>
+      <legend class='visually-hidden'>Search this website:</legend>
+      <button
+        type='submit'
+        title='Search this website now'>
+        <span class='btn-icon bx bx-search'></span>
+      </button>
+      <label for='s'>
+        <input
+          type='search'
+          name='s'
+          id='s'
+          placeholder='_'
+          maxlength='200'
+        />
+      </label>
+    </fieldset>
+  </form>
+</section>
