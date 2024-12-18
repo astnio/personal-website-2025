@@ -14,18 +14,18 @@ const { inDrawer } = Astro.props;
   input {
     border: none;
 
-    padding-inline: 0.4rem;
+    padding-right: 0.1rem;
+    padding-left: 1rem;
     padding-block: 0.4rem;
-
-    border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
 
     background-color: var(--clr-base);
 
     outline: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-pill) 0 0 var(--radius-pill);
 
-    text-align: right;
+    text-align: left;
 
-    width: 4rem;
+    width: 3.2rem;
     height: 2rem;
 
     transition-property: color, background-color, width;
@@ -58,6 +58,13 @@ const { inDrawer } = Astro.props;
   input:focus,
   input:not(:placeholder-shown) {
     width: 8rem;
+    outline: 1px solid var(--clr-primary);
+  }
+
+  label:has(input:active) ~ button,
+  label:has(input:focus) ~ button,
+  label:has(input:not(:placeholder-shown)) ~ button {
+    outline: 1px solid var(--clr-primary);
   }
 
   input:active::placeholder,
@@ -73,7 +80,7 @@ const { inDrawer } = Astro.props;
 
     border: none;
 
-    border-radius: var(--radius-pill) 0 0 var(--radius-pill);
+    border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
 
     background-color: var(--clr-mantle);
 
@@ -94,7 +101,7 @@ const { inDrawer } = Astro.props;
   .btn-icon {
     position: relative;
     top: 2px;
-    left: 1px;
+    left: -1px;
 
     font-size: 1.2rem;
 
@@ -125,11 +132,6 @@ const { inDrawer } = Astro.props;
     method='get'>
     <fieldset>
       <legend class='visually-hidden'>Search this website:</legend>
-      <button
-        type='submit'
-        title='Search this website now'>
-        <span class='btn-icon bx bx-search'></span>
-      </button>
       <label for='s'>
         <input
           type='search'
@@ -139,6 +141,11 @@ const { inDrawer } = Astro.props;
           maxlength='200'
         />
       </label>
+      <button
+        type='submit'
+        title='Search this website now'>
+        <span class='btn-icon bx bx-search'></span>
+      </button>
     </fieldset>
   </form>
 </section>
