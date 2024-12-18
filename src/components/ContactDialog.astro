@@ -3,15 +3,28 @@
 ---
 
 <style>
-  dialog {
+  dialog.contact-dialog-wrapper {
     z-index: 900;
 
+    border: none;
+
+    min-width: min-content;
+    width: 100%;
+    max-width: 50rem;
+
+    padding: 1rem;
+
+    background-color: transparent;
+  }
+
+  .contact-dialog-content {
     background-color: var(--clr-base);
-    color: var(--clr-text);
 
     border: none;
     border-radius: var(--radius-surface);
     outline: 1px solid var(--clr-surface-0);
+
+    padding: 1rem;
   }
 
   dialog::backdrop {
@@ -70,14 +83,179 @@
       opacity: 0;
     }
   }
+
+  /*** Contact Form ***/
+  input,
+  textarea {
+    background-color: var(--clr-mantle);
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .form-paragraph {
+    margin-bottom: 2rem;
+  }
+
+  .contact-container {
+    border-radius: var(--radius-surface);
+    color: var(--clr-text);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-weight: 500;
+    color: var(--clr-subtext-0);
+    font-size: 0.8rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding-inline: 0.4rem;
+    padding-block: 0.6rem;
+
+    border: none;
+    outline: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-input);
+
+    font-size: 1rem;
+
+    transition: outline 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border: none;
+    outline: 1px solid var(--clr-surface-1);
+  }
+
+  .submit-btn {
+    background: var(--clr-primary);
+
+    padding: 12px 24px;
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--clr-base);
+
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .submit-btn:hover {
+    background: var(--clr-primary);
+  }
+
+  @media (min-width: 768px) {
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .name-group {
+      grid-column-start: 1;
+    }
+
+    .email-group {
+      grid-column-start: 2;
+    }
+
+    .subject-group {
+      grid-column: span 2;
+    }
+
+    .message-group {
+      grid-column: span 2;
+    }
+
+    .submit-btn {
+      grid-column: span 2;
+      max-width: fit-content;
+      align-self: center;
+      justify-self: end;
+    }
+  }
 </style>
 
-<dialog id='contact-dialog'>
-  <p>Hello, world</p>
-  <form
-    method='dialog'
-    action=''
-    id='contact-form'>
-    <button id='btn-contact-dialog-close'>Okay</button>
-  </form>
+<dialog
+  class='contact-dialog-wrapper'
+  id='contact-dialog'>
+  <div class='contact-dialog-content'>
+    <p class='form-paragraph'>
+      <span>Questions, comments, or just want to say hi?</span>
+      <br />
+      <span>Just enter the info below and you can send me a message!</span>
+    </p>
+    <!-- <form
+      method='dialog'
+      action=''
+      id='contact-form'>
+      <button id='btn-contact-dialog-close'>Okay</button>
+    </form> -->
+
+    <div class='contact-container'>
+      <form class='contact-form'>
+        <div class='form-group name-group'>
+          <label for='name'>Name</label>
+          <input
+            type='text'
+            id='name'
+            name='name'
+            required
+          />
+        </div>
+
+        <div class='form-group email-group'>
+          <label for='email'>Email</label>
+          <input
+            type='email'
+            id='email'
+            name='email'
+            required
+          />
+        </div>
+
+        <div class='form-group subject-group'>
+          <label for='subject'>Subject</label>
+          <input
+            type='text'
+            id='subject'
+            name='subject'
+            required
+          />
+        </div>
+
+        <div class='form-group message-group'>
+          <label for='message'>Message</label>
+          <textarea
+            id='message'
+            name='message'
+            rows='5'
+            required
+          ></textarea>
+        </div>
+
+        <button
+          type='submit'
+          class='submit-btn'
+          >Send Message</button
+        >
+      </form>
+    </div>
+  </div>
 </dialog>
