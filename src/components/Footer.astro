@@ -1,49 +1,8 @@
 ---
+import BuildDateMessage from './BuildDateMessage.astro';
 import CustomizationMenu from './CustomizationMenu.astro';
 
-function formatDateTime(date: Date): string {
-  const months: string[] = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-
-  const month: string = months[date.getMonth()];
-  const day: number = date.getDate();
-  const year: number = date.getFullYear();
-  const hours: number = date.getHours();
-  const minutes: string = String(date.getMinutes()).padStart(2, '0');
-  const period: string = hours >= 12 ? 'pm' : 'am';
-  const hour12: number = hours % 12 || 12;
-
-  const ordinal = (day: number): string => {
-    if (day > 3 && day < 21) return 'th';
-    switch (day % 10) {
-      case 1:
-        return 'st';
-      case 2:
-        return 'nd';
-      case 3:
-        return 'rd';
-      default:
-        return 'th';
-    }
-  };
-
-  return `${month} ${day}${ordinal(day)}, ${year} at ${hour12}:${minutes}${period}`;
-}
-
 const currentYear = new Date().getFullYear();
-const lastBuildDate = formatDateTime(new Date());
 ---
 
 <style>
@@ -152,10 +111,12 @@ const lastBuildDate = formatDateTime(new Date());
       <span>Austin Hagel</span>
     </p>
 
-    <p class='build-date-paragraph'>
+    <!-- <p class='build-date-paragraph'>
       <span class='build-date-title'>Last build - </span>
       <span class='build-date'>{lastBuildDate}</span>
-    </p>
+    </p> -->
+
+    <BuildDateMessage />
 
     <a
       class='credits-link'
