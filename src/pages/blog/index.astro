@@ -161,6 +161,8 @@ const title = 'Blog';
   .blog-nav-sublist {
     padding-inline: 1rem;
     padding-block: 1rem;
+
+    font-size: 1rem;
   }
 
   .blog-nav-list {
@@ -189,7 +191,8 @@ const title = 'Blog';
     align-items: center;
     justify-content: center;
 
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-mantle);
+    outline: 1px solid var(--clr-surface-0);
 
     padding-inline: 1em;
     padding-block: 0.2rem;
@@ -197,6 +200,11 @@ const title = 'Blog';
     border-radius: var(--radius-pill);
 
     text-transform: lowercase;
+    font-size: 0.9rem;
+  }
+
+  .blog-tag:hover > a {
+    color: var(--clr-primary);
   }
 
   /* *** Blog Post Cards *** */
