@@ -19,6 +19,10 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     padding: 0;
   }
 
+  p {
+    margin: 0;
+  }
+
   .blog-card-wrapper {
     width: 100%;
   }
@@ -49,10 +53,15 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
   }
 
   .header-meta-details {
-    display: flex;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-content: space-between;
+    gap: 0.4rem 1rem;
 
     font-size: 0.9rem;
+
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .header-meta-detail-category {
@@ -72,6 +81,13 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     justify-content: center;
     gap: 0.2ch;
 
+    justify-self: start;
+
+    color: var(--clr-subtext-0);
+  }
+
+  .date-published {
+    font-size: 0.9rem;
     color: var(--clr-subtext-0);
   }
 
@@ -86,6 +102,8 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 
   .blog-card-summary {
     color: var(--clr-subtext-0);
+    margin-top: 0.8rem;
+    margin-bottom: 1.5rem;
   }
 
   .blog-picture {
@@ -99,13 +117,22 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
   }
 
   footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr;
+    gap: 1rem;
+
+    width: 100%;
+
+    margin-bottom: 1rem;
   }
 
   .post-tags {
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
+
+    grid-column-start: 1;
   }
 
   .tag {
@@ -115,13 +142,75 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 
     padding-inline: 0.6rem;
     padding-block: 0.1rem;
+    margin: 0;
 
     font-size: 0.9rem;
   }
 
-  .date-published {
-    font-size: 0.9rem;
-    color: var(--clr-subtext-0);
+  .read-more-link {
+    position: relative;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.1rem;
+
+    grid-column: span 2;
+    justify-self: start;
+
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--clr-primary);
+
+    margin-top: 1rem;
+
+    transition-property: left;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .read-more-link-icon {
+    position: relative;
+    top: 1px;
+
+    font-size: 1.6rem;
+
+    transform: rotate(-45deg);
+
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+  }
+
+  a.read-more-link:hover {
+    left: 3px;
+  }
+
+  a.read-more-link:hover > .read-more-link-icon {
+    transform: rotate(0);
+  }
+
+  @media screen and (min-width: 786px) {
+    .header-meta-details {
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      align-items: center;
+    }
+
+    .header-meta-detail-category {
+      grid-column-start: 1;
+      max-width: fit-content;
+    }
+
+    .header-meta-detail-time-read {
+      grid-column-start: 2;
+    }
+
+    .date-published {
+      grid-column-start: 3;
+      margin-left: auto;
+    }
   }
 </style>
 
@@ -141,7 +230,13 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
       <div class='header-meta-details'>
         <p class='header-meta-detail-category'>Category</p>
         <p class='header-meta-detail-time-read'><span>0</span> min Read</p>
+        <time
+          class='date-published'
+          datetime={date}
+          >{formattedDate}</time
+        >
       </div>
+
       <h3 class='header-title'>
         <a href={url}>{title}</a>
       </h3>
@@ -161,23 +256,13 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
           ))
         }
       </ul>
-      <time
-        class='date-published'
-        datetime={date}
-        >{formattedDate}</time
-      >
 
-      <!-- <div class='blog-card-meta'>
-        <span>By Jane Doe</span>
-        <a
-          href='/blog/post-1#comments'
-          aria-label='Comments for Revolutionary AI Breakthrough'>
-          <span aria-hidden='true'>💬</span>
-          <span class='sr-only'>Comments</span>
-          <span>24</span>
-        </a>
-        <span>5 min read</span>
-      </div> -->
+      <a
+        class='read-more-link'
+        href='#'>
+        <span>Read Post</span>
+        <span class='read-more-link-icon bx bx-right-arrow-alt'></span>
+      </a>
     </footer>
   </article>
 </div>
