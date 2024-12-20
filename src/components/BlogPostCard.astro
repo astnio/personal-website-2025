@@ -3,6 +3,12 @@ import { Picture } from 'astro:assets';
 
 const { title, url, image, imageAlt, summary, tags, date } = Astro.props;
 
+const maxImages = 1084;
+
+const imageId = Math.floor(Math.random() * maxImages);
+
+const phImage = `https://picsum.photos/id/${imageId}/800/400`;
+
 const formattedDate = new Date(date).toLocaleDateString('en-US', {
   month: 'long',
   year: 'numeric',
@@ -10,6 +16,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 ---
 
 <style>
+  /*** General ***/
   ul {
     padding: 0;
     list-style: none;
@@ -23,15 +30,15 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     margin: 0;
   }
 
-  .blog-card-wrapper {
-    isolation: isolate;
-    width: 100%;
-  }
-
   header,
   footer,
   .blog-card-summary {
     padding-inline: 1rem;
+  }
+
+  .blog-card-wrapper {
+    isolation: isolate;
+    width: 100%;
   }
 
   .blog-card {
@@ -40,6 +47,8 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     outline: 1px solid var(--clr-surface-0);
     overflow: hidden;
   }
+
+  /*** Picture ***/
 
   .picture-wrapper {
     position: relative;
@@ -51,6 +60,47 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     aspect-ratio: 4/2;
 
     overflow: hidden;
+  }
+
+  .blog-picture {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  /*** Picture Overlay Info ***/
+
+  .header-meta-details-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding-inline: 1rem;
+
+    border-top: 1px sold var(--clr-surface-0);
+
+    z-index: 10;
+  }
+
+  .header-meta-details-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--clr-base);
+    opacity: 0.9;
+
+    z-index: -1;
   }
 
   .header-meta-details {
@@ -92,6 +142,8 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     color: var(--clr-subtext-0);
   }
 
+  /*** Card Body ***/
+
   .header-title {
     font-size: 1.2rem;
     margin: 0;
@@ -109,118 +161,11 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     margin-bottom: 1.5rem;
   }
 
-  .blog-picture {
-    position: absolute;
-    left: 0;
-    top: 0;
+  .read-more-link-2 {
+    height: 100px;
+    width: 10px;
 
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-
-  footer {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr;
-    gap: 1rem;
-
-    width: 100%;
-
-    margin-bottom: 1rem;
-  }
-
-  .post-tags {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-
-    grid-column-start: 1;
-  }
-
-  .tag {
-    background-color: var(--clr-base);
-    outline: 1px solid var(--clr-surface-0);
-    border-radius: var(--radius-pill);
-
-    padding-inline: 0.6rem;
-    padding-block: 0.1rem;
-    margin: 0;
-
-    font-size: 0.9rem;
-  }
-
-  .read-more-link {
-    position: relative;
-    left: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.1rem;
-
-    grid-column: span 2;
-    justify-self: start;
-
-    text-decoration: none;
-    font-weight: 600;
-    color: var(--clr-primary);
-
-    /* margin-top: 1rem; */
-
-    transition-property: left;
-    transition-duration: 0.15s;
-    transition-timing-function: ease-in-out;
-  }
-
-  .read-more-link-icon {
-    position: relative;
-    top: 1px;
-
-    font-size: 1.6rem;
-
-    transform: rotate(-45deg);
-
-    transition-property: transform;
-    transition-duration: 0.15s;
-    transition-timing-function: ease-in-out;
-  }
-
-  a.read-more-link:hover {
-    left: 3px;
-  }
-
-  a.read-more-link:hover > .read-more-link-icon {
-    transform: rotate(0);
-  }
-
-  .header-meta-details-wrapper {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-
-    padding-inline: 1rem;
-
-    border-top: 1px sold var(--clr-surface-0);
-
-    z-index: 10;
-  }
-
-  .header-meta-details-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background-color: var(--clr-mantle);
-    opacity: 0.9;
-
-    z-index: -1;
+    background-color: red;
   }
 
   @media screen and (min-width: 786px) {
@@ -263,53 +208,25 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
       <Picture
         width={400}
         height={200}
-        src={'https://placehold.co/400x200'}
+        src={phImage}
         alt={'Placeholder image'}
         class='blog-picture'
       />
     </div>
 
-    <!-- <header>
-      <div class='header-meta-details'>
-        <p class='header-meta-detail-category'>Category</p>
-        <p class='header-meta-detail-time-read'><span>0</span> min Read</p>
-        <time
-          class='date-published'
-          datetime={date}
-          >{formattedDate}</time
-        >
-      </div>
-
+    <div class='content-wrapper'>
       <h3 class='header-title'>
         <a href={url}>{title}</a>
       </h3>
-    </header> -->
 
-    <h3 class='header-title'>
-      <a href={url}>{title}</a>
-    </h3>
-
-    <p class='blog-card-summary'>
-      {summary}
-    </p>
-
-    <footer>
-      <!-- <ul class='post-tags'>
-        {
-          tags.map((tag: string) => (
-            <li>
-              <p class='tag'>{tag}</p>
-            </li>
-          ))
-        }
-      </ul> -->
+      <p class='blog-card-summary'>
+        {summary}
+      </p>
 
       <a
-        class='read-more-link'
+        class='read-more-link-2'
         href='#'>
-        <span>Read Post</span>
-        <span class='read-more-link-icon bx bx-right-arrow-alt'></span>
       </a>
-    </footer>
+    </div>
   </article>
 </div>

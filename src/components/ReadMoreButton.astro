@@ -1,0 +1,56 @@
+---
+
+---
+
+<style>
+  .read-more-link {
+    position: relative;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.1rem;
+
+    grid-column: span 2;
+    justify-self: start;
+
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--clr-primary);
+
+    /* margin-top: 1rem; */
+
+    transition-property: left;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .read-more-link-icon {
+    position: relative;
+    top: 1px;
+
+    font-size: 1.6rem;
+
+    transform: rotate(-45deg);
+
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+  }
+
+  a.read-more-link:hover {
+    left: 3px;
+  }
+
+  a.read-more-link:hover > .read-more-link-icon {
+    transform: rotate(0);
+  }
+</style>
+
+<a
+  class='read-more-link'
+  href='#'>
+  <span>Read Post</span>
+  <span class='read-more-link-icon bx bx-right-arrow-alt'></span>
+</a>
