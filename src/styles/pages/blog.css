@@ -1,0 +1,172 @@
+/* *** General *** */
+a {
+  text-decoration: none;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+li {
+  display: flex;
+
+  padding: 0;
+}
+
+/* *** Blog Topics Navigation *** */
+
+.blog-topics-nav {
+  grid-column: span 2;
+  margin-bottom: 4rem;
+}
+
+.blog-topics-list {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+
+  background-color: var(--clr-base);
+
+  padding: 1rem;
+
+  border: 1px solid var(--clr-surface-0);
+  border-radius: var(--radius-base);
+}
+
+/* *** Blog Side Navigation *** */
+
+.blog-nav-list-title {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  gap: 0.6rem;
+
+  font-weight: 500;
+
+  background-color: var(--clr-mantle);
+
+  width: 100%;
+  padding: 1rem;
+}
+
+.blog-nav-sublist-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  background-color: var(--clr-base);
+  width: 100%;
+
+  border-radius: var(--radius-surface);
+  outline: 1px solid var(--clr-surface-0);
+}
+
+.blog-nav-sublist {
+  padding-inline: 1rem;
+  padding-block: 1rem;
+
+  font-size: 1rem;
+}
+
+.blog-nav-list {
+  display: flex;
+  gap: 1rem;
+}
+
+/*** Side Nav - Categories ***/
+
+.category-list {
+  display: flex;
+  gap: 0.6rem;
+}
+
+/*** Side Nav - Tags ***/
+
+.tags-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.5rem;
+}
+
+.blog-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--clr-mantle);
+  outline: 1px solid var(--clr-surface-0);
+
+  padding-inline: 1em;
+  padding-block: 0.2rem;
+
+  border-radius: var(--radius-pill);
+
+  text-transform: lowercase;
+  font-size: 0.9rem;
+}
+
+.blog-tag:hover > a {
+  color: var(--clr-primary);
+}
+
+/* *** Blog Post Cards *** */
+
+.blog-post-cards-wrapper {
+  width: 100%;
+}
+
+.blog-post-cards-list {
+  display: flex;
+  gap: 4rem;
+
+  width: 100%;
+}
+
+/* *** Utility *** */
+
+.wrapper {
+  margin-top: 14rem;
+
+  padding-inline: 1rem;
+
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .page-title {
+    grid-column: span 2;
+  }
+
+  /* *** Blog Post Cards *** */
+
+  .blog-post-cards-list {
+    padding-right: 1rem;
+  }
+
+  .blog-nav-list {
+    flex-direction: column;
+    align-items: start;
+
+    font-size: 1.2rem;
+
+    margin-left: auto;
+
+    max-width: 18rem;
+  }
+
+  /* *** Utility *** */
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    margin-top: 20rem;
+  }
+}
