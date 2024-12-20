@@ -52,6 +52,12 @@ footer,
   object-fit: cover;
   width: 100%;
   height: 100%;
+
+  transition: scale 0.25s ease-in-out;
+}
+
+.blog-picture:hover {
+  scale: 1.025;
 }
 
 /*** Picture Overlay Info ***/

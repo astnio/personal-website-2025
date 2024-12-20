@@ -23,7 +23,7 @@ const formattedDate = new Date(data.date_published).toLocaleDateString(
       <div class='header-meta-details-wrapper'>
         <div class='header-meta-details'>
           <a
-            href={data.url}
+            href={`/blog/categories/${data.category}`}
             class='header-meta-detail-category'>
             <span>{data.category}</span>
           </a>
