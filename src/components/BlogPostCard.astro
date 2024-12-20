@@ -3,18 +3,19 @@ import { Picture } from 'astro:assets';
 
 const { data } = Astro.props;
 
-console.log(data);
-
 const maxImages = 1084;
 
 const imageId = Math.floor(Math.random() * maxImages);
 
 const phImage = `https://picsum.photos/id/${imageId}/800/400`;
 
-const formattedDate = new Date(data.date).toLocaleDateString('en-US', {
-  month: 'long',
-  year: 'numeric',
-});
+const formattedDate = new Date(data.date_published).toLocaleDateString(
+  'en-US',
+  {
+    month: 'long',
+    year: 'numeric',
+  }
+);
 ---
 
 <style>
@@ -208,7 +209,7 @@ const formattedDate = new Date(data.date).toLocaleDateString('en-US', {
           <p class='header-meta-detail-time-read'><span>0</span> min Read</p>
           <time
             class='date-published'
-            datetime={data.date}
+            datetime={data.date_published}
             >{formattedDate}</time
           >
         </div>
