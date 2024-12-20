@@ -345,13 +345,7 @@ const title = 'Blog';
         {
           allPosts.map((post: any) => (
             <li>
-              <BlogPostCard
-                title={post.data.title}
-                url={`/blog/${post.slug}`}
-                summary={post.data.summary}
-                tags={post.data.tags}
-                date={post.data.date_published}
-              />
+              <BlogPostCard data={post.data} />
             </li>
           ))
         }

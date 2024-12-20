@@ -1,7 +1,9 @@
 ---
 import { Picture } from 'astro:assets';
 
-const { title, url, image, imageAlt, summary, tags, date } = Astro.props;
+const { data } = Astro.props;
+
+console.log(data);
 
 const maxImages = 1084;
 
@@ -9,7 +11,7 @@ const imageId = Math.floor(Math.random() * maxImages);
 
 const phImage = `https://picsum.photos/id/${imageId}/800/400`;
 
-const formattedDate = new Date(date).toLocaleDateString('en-US', {
+const formattedDate = new Date(data.date).toLocaleDateString('en-US', {
   month: 'long',
   year: 'numeric',
 });
@@ -83,7 +85,9 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 
     padding-inline: 1rem;
 
-    border-top: 1px sold var(--clr-surface-0);
+    backdrop-filter: blur(10px);
+
+    border-top: 1px solid var(--clr-surface-0);
 
     z-index: 10;
   }
@@ -98,7 +102,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     height: 100%;
 
     background-color: var(--clr-base);
-    opacity: 0.9;
+    opacity: 0.8;
 
     z-index: -1;
   }
@@ -196,11 +200,15 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
     <div class='picture-wrapper'>
       <div class='header-meta-details-wrapper'>
         <div class='header-meta-details'>
-          <p class='header-meta-detail-category'>Category</p>
+          <a
+            href={data.url}
+            class='header-meta-detail-category'>
+            <span>{data.category}</span>
+          </a>
           <p class='header-meta-detail-time-read'><span>0</span> min Read</p>
           <time
             class='date-published'
-            datetime={date}
+            datetime={data.date}
             >{formattedDate}</time
           >
         </div>
@@ -216,11 +224,11 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 
     <div class='content-wrapper'>
       <h3 class='header-title'>
-        <a href={url}>{title}</a>
+        <a href={data.url}>{data.title}</a>
       </h3>
 
       <p class='blog-card-summary'>
-        {summary}
+        {data.summary}
       </p>
 
       <a
