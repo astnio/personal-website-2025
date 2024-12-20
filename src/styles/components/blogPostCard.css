@@ -121,9 +121,24 @@ footer,
   color: var(--clr-subtext-0);
 }
 
+.time-read-icon {
+  font-size: 1.2rem;
+  margin-right: 0.25rem;
+}
+
 .date-published {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
   font-size: 0.9rem;
   color: var(--clr-subtext-0);
+}
+
+.date-published-icon {
+  font-size: 1.2rem;
+  margin-right: 0.25rem;
 }
 
 /*** Card Body ***/

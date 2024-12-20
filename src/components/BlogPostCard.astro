@@ -26,12 +26,16 @@ const formattedDate = new Date(data.date_published).toLocaleDateString(
             class='header-meta-detail-category'>
             <span>{data.category}</span>
           </a>
-          <p class='header-meta-detail-time-read'><span>0</span> min Read</p>
+          <p class='header-meta-detail-time-read'>
+            <i class='time-read-icon bx bxs-timer'></i>
+            <span>0<span> minute read</span></span>
+          </p>
           <time
             class='date-published'
-            datetime={data.date_published}
-            >{formattedDate}</time
-          >
+            datetime={data.date_published}>
+            <span class='date-published-icon bx bxs-calendar'></span>
+            <span>{formattedDate}</span>
+          </time>
         </div>
       </div>
       <Picture
