@@ -2,10 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPostCard from '../../components/BlogPostCard.astro';
-
-import lightBgImage from '../../assets/images/site/blog/pexels-eberhardgross.jpg';
-import darkBgImage from '../../assets/images/site/blog/pexels-therato.jpg';
-import { Picture } from 'astro:assets';
+import BlogPageImage from '../../components/BlogPageImage.astro';
 
 const allPosts = await getCollection('blog');
 
@@ -39,78 +36,6 @@ const title = 'Blog';
     display: flex;
 
     padding: 0;
-  }
-
-  /*** Blog Image  ***/
-
-  .blog-bg-image-wrapper {
-    position: absolute;
-    top: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    z-index: -1;
-
-    overflow: hidden;
-
-    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-  }
-
-  .blog-bg-image {
-    position: relative;
-    top: 0;
-    left: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    max-height: 34rem;
-
-    /* object-position: top center; */
-    object-fit: cover;
-  }
-
-  .blog-bg-img-dark,
-  .blog-bg-img-light {
-    isolation: isolate;
-
-    opacity: 1;
-    display: flex;
-
-    transition-property: opacity, visibility;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-out;
-  }
-
-  .blog-bg-img-dark::before,
-  .blog-bg-img-light::before {
-    content: '';
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    z-index: 1;
-  }
-
-  .blog-bg-img-dark::before {
-    background-color: var(--clr-overlay-2);
-    opacity: 80%;
-    mix-blend-mode: color;
-  }
-
-  .blog-bg-img-light::before {
-    background-color: var(--clr-base);
-    opacity: 40%;
-    mix-blend-mode: lighten;
   }
 
   /* *** Blog Topics Navigation *** */
@@ -234,42 +159,7 @@ const title = 'Blog';
     width: 100%;
   }
 
-  .blog-bg-img-dark[data-active='true'] {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .blog-bg-img-dark[data-active='false'] {
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  .blog-bg-img-light[data-active='true'] {
-    visibility: visible;
-
-    opacity: 1;
-  }
-
-  .blog-bg-img-light[data-active='false'] {
-    visibility: hidden;
-
-    opacity: 0;
-  }
   @media screen and (min-width: 768px) {
-    .blog-bg-image-wrapper {
-      margin: 0;
-      padding: 0;
-
-      height: fit-content;
-      max-height: 60vh;
-    }
-
-    .blog-bg-image {
-      min-width: 100%;
-      height: auto;
-      max-height: 100%;
-    }
-
     .page-title {
       grid-column: span 2;
     }
@@ -303,35 +193,7 @@ const title = 'Blog';
 </style>
 
 <BaseLayout title={title}>
-  <div
-    data-active='true'
-    class='blog-bg-image-wrapper blog-bg-img-dark'>
-    <Picture
-      formats={['avif', 'webp', 'jpg']}
-      src={darkBgImage}
-      alt='Landscape'
-      class='blog-bg-image'
-      decoding='async'
-      loading='lazy'
-      width={2560}
-      height={2560}
-    />
-  </div>
-
-  <div
-    data-active='false'
-    class='blog-bg-image-wrapper blog-bg-img-light'>
-    <Picture
-      formats={['avif', 'webp', 'jpg']}
-      src={lightBgImage}
-      alt='Landscape'
-      class='blog-bg-image'
-      decoding='async'
-      loading='lazy'
-      width={2560}
-      height={2560}
-    />
-  </div>
+  <BlogPageImage />
   <div class='wrapper max-width'>
     <nav class='blog-topics-nav'>
       <ul class='blog-topics-list'>
