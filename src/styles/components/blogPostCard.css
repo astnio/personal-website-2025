@@ -182,7 +182,7 @@ footer,
 @media screen and (min-width: 786px) {
   .header-meta-details {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto 1fr 1fr;
     grid-template-rows: 1fr;
   }
 
@@ -195,7 +195,7 @@ footer,
   .header-meta-detail-time-read {
     grid-column-start: 2;
     grid-row-start: 1;
-    justify-self: center;
+    justify-self: start;
   }
 
   .date-published {
