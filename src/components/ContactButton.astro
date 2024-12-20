@@ -40,7 +40,7 @@ const { inDrawer } = Astro.props;
   }
 
   button.btn-contact[data-in-drawer='true'] {
-    min-height: 3.6rem;
+    min-height: 2.6rem;
     font-size: 1.4rem;
   }
 
@@ -49,7 +49,7 @@ const { inDrawer } = Astro.props;
     align-items: center;
     justify-content: center;
 
-    margin-right: 0.8rem;
+    margin-right: 0.2rem;
 
     aspect-ratio: 1;
 
@@ -71,6 +71,16 @@ const { inDrawer } = Astro.props;
 
   button.btn-contact[data-in-drawer='true'] > .icon-wrapper {
     font-size: 1.8rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .btn-label {
+      font-size: 1rem;
+    }
+
+    .contact-icon {
+      font-size: 1.2rem;
+    }
   }
 </style>
 

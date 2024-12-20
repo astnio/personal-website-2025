@@ -189,6 +189,12 @@ button.btn-close-customization-menu:hover {
   outline: 1px solid var(--clr-surface-0);
 }
 
+@media screen and (max-width: 768px) {
+  span.btn-label {
+    font-size: 1rem;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .customization-menu-wrapper[data-in-drawer='false'] {
     display: flex;
