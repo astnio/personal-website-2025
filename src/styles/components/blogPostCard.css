@@ -24,9 +24,14 @@ footer,
 }
 
 .blog-card {
+  position: relative;
+
   background-color: var(--clr-base);
   border-radius: var(--radius-surface);
   outline: 1px solid var(--clr-surface-0);
+
+  width: 100%;
+
   overflow: hidden;
 }
 
@@ -155,28 +160,63 @@ footer,
 
 /*** Card Body ***/
 
-.header-title {
-  font-size: 1.2rem;
-  margin: 0;
-  padding-inline: 1rem;
-  margin-top: 1rem;
+.content-wrapper {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr 4rem;
+
+  width: 100%;
+  min-height: 10rem;
 }
 
-.header-title > a {
+.card-title {
+  grid-column-start: 1;
+
+  font-size: 1.6rem;
+  padding-inline: 1rem;
+  margin: 0;
+  margin-top: 1rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-title > a {
   text-decoration: none;
 }
 
 .blog-card-summary {
+  grid-column-start: 1;
+
   color: var(--clr-subtext-0);
+
   margin-top: 0.8rem;
   margin-bottom: 1.5rem;
+
+  height: fit-content;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }
 
 .btn-read-more-wrapper {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 2;
+
   display: flex;
-  justify-content: end;
-  padding-inline: 1rem;
-  margin-bottom: 1rem;
+
+  height: 100%;
+  flex-shrink: 0;
+
+  padding: 1rem;
 }
 
 @media screen and (min-width: 786px) {

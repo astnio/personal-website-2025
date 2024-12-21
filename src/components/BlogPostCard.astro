@@ -53,16 +53,17 @@ const formattedDate = new Date(data.date_published).toLocaleDateString(
     </div>
 
     <div class='content-wrapper'>
-      <h3 class='header-title'>
+      <h3 class='card-title'>
         <a href={url}>{data.title}</a>
       </h3>
 
       <p class='blog-card-summary'>
         {data.summary}
       </p>
-    </div>
-    <div class='btn-read-more-wrapper'>
-      <ReadMoreButton />
+
+      <div class='btn-read-more-wrapper'>
+        <ReadMoreButton />
+      </div>
     </div>
   </article>
 </div>
