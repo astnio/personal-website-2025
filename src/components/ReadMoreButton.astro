@@ -29,14 +29,23 @@
     height: 100%;
 
     font-size: 4rem;
-    color: var(--clr-primary);
+    color: var(--clr-subtext-0);
     text-decoration: none;
     font-weight: 400;
 
-    background-color: var(--clr-mantle);
-
     border-radius: var(--radius-input);
     outline: 1px solid var(--clr-surface-0);
+    background-color: var(--clr-mantle);
+
+    transition-property: background-color, color, outline;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .read-more-link:hover::before {
+    color: var(--clr-primary);
+    background-color: var(--clr-surface-0);
+    outline: 1px solid var(--clr-primary);
   }
 </style>
 
