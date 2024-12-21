@@ -21,8 +21,13 @@ li {
 /* *** Blog Topics Navigation *** */
 
 .blog-topics-nav {
+  /* position: sticky;
+  top: 3.5rem; */
+
   grid-column: span 2;
   margin-bottom: 4rem;
+
+  z-index: 10;
 }
 
 .blog-topics-list {
@@ -39,6 +44,11 @@ li {
 }
 
 /* *** Blog Side Navigation *** */
+
+.blog-nav-wrapper {
+  position: sticky;
+  top: 3.5rem;
+}
 
 .blog-nav-list-title {
   display: flex;
