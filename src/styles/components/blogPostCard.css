@@ -143,8 +143,9 @@ footer,
   justify-content: start;
   gap: 0.4rem;
 
-  font-size: 0.9rem;
-  color: var(--clr-subtext-0);
+  font-size: 1rem;
+  color: var(--clr-text);
+  font-weight: 600;
 }
 
 .meta-detail-published-date-icon {
