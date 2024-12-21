@@ -148,6 +148,11 @@ li {
   width: 100%;
 }
 
+.blog-nav-wrapper[data-appbar-revealed='false'],
+.blog-nav-wrapper[data-appbar-revealed='true'] {
+  top: 0;
+}
+
 @media screen and (min-width: 768px) {
   .page-title {
     grid-column: span 2;
