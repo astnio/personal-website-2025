@@ -1,5 +1,5 @@
 ---
-
+const { url } = Astro.props;
 ---
 
 <style>
@@ -52,6 +52,6 @@
 <a
   title='Read Post'
   class='read-more-link'
-  href='#'>
+  href={url}>
   <span class='visually-hidden'>Read Post</span>
 </a>
