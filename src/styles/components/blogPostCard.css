@@ -172,11 +172,11 @@ footer,
   margin-bottom: 1.5rem;
 }
 
-.read-more-link-2 {
-  height: 100px;
-  width: 10px;
-
-  background-color: red;
+.btn-read-more-wrapper {
+  display: flex;
+  justify-content: end;
+  padding-inline: 1rem;
+  margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 786px) {

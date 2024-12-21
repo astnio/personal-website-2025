@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import '../styles/components/blogPostCard.css';
+import ReadMoreButton from './ReadMoreButton.astro';
 
 const { data, url } = Astro.props;
 const maxImages = 1084;
@@ -59,11 +60,9 @@ const formattedDate = new Date(data.date_published).toLocaleDateString(
       <p class='blog-card-summary'>
         {data.summary}
       </p>
-
-      <a
-        class='read-more-link-2'
-        href='#'>
-      </a>
+    </div>
+    <div class='btn-read-more-wrapper'>
+      <ReadMoreButton />
     </div>
   </article>
 </div>
