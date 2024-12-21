@@ -46,10 +46,7 @@ li {
 /* *** Blog Side Navigation *** */
 
 .blog-nav-wrapper {
-  position: sticky;
-  top: 4rem;
-
-  transition: top 0.4s ease-in-out;
+  position: relative;
 }
 
 .blog-nav-list-title {
@@ -171,6 +168,13 @@ li {
     margin-left: auto;
 
     max-width: 18rem;
+  }
+
+  .blog-nav-wrapper {
+    position: sticky;
+    top: 4rem;
+
+    transition: top 0.4s ease-in-out;
   }
 
   /* *** Utility *** */
