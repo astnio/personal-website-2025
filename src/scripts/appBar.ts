@@ -7,9 +7,6 @@ document.addEventListener('astro:page-load', () => {
 
   const scrollActivationDistance = 150;
 
-  // const blogNavWrapperTopRemAppBarOn = 4;
-  // const blogNavWrapperTopRemAppBarOff = 0;
-
   let totalScrollDistance = 0;
   let prevScrollPos = window.scrollY;
   let isScrollingDown = true;
@@ -20,7 +17,6 @@ document.addEventListener('astro:page-load', () => {
     drawerToggle!.style.transform = 'translateY(-100%)';
 
     if (blogNavWrapper) {
-      // blogNavWrapper!.style.top = `${blogNavWrapperTopRemAppBarOff}rem`;
       blogNavWrapper!.setAttribute('data-appbar-revealed', 'false');
     }
   }
@@ -30,7 +26,6 @@ document.addEventListener('astro:page-load', () => {
     drawerToggle!.style.transform = 'translateY(0%)';
 
     if (blogNavWrapper) {
-      // blogNavWrapper!.style.top = `${blogNavWrapperTopRemAppBarOn}rem`;
       blogNavWrapper!.setAttribute('data-appbar-revealed', 'true');
     }
   }
