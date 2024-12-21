@@ -172,9 +172,16 @@ li {
 
   .blog-nav-wrapper {
     position: sticky;
-    top: 4rem;
 
     transition: top 0.4s ease-in-out;
+  }
+
+  .blog-nav-wrapper[data-appbar-revealed='true'] {
+    top: 4rem;
+  }
+
+  .blog-nav-wrapper[data-appbar-revealed='false'] {
+    top: 0;
   }
 
   /* *** Utility *** */
