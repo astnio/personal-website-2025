@@ -24,17 +24,18 @@ const formattedDate = new Date(data.date_published).toLocaleDateString(
         <div class='header-meta-details'>
           <a
             href={`/blog/categories/${data.category}`}
-            class='header-meta-detail-category'>
+            class='header-detail-category'>
             <span>{data.category}</span>
           </a>
-          <p class='header-meta-detail-time-read'>
+          <p class='header-detail-read-minutes'>
             <i class='time-read-icon bx bxs-timer'></i>
             <span>0<span> minute read</span></span>
           </p>
           <time
-            class='date-published'
+            class='meta-detail-published-date'
             datetime={data.date_published}>
-            <span class='date-published-icon bx bxs-calendar'></span>
+            <span class='meta-detail-published-date-icon bx bxs-calendar'
+            ></span>
             <span>{formattedDate}</span>
           </time>
         </div>
