@@ -1,17 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 
-const {
-  url,
-  image,
-  title,
-  date,
-  description,
-  tags,
-  githubUrl,
-  demoUrl,
-  projectPageUrl,
-} = Astro.props;
+const { url, data } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/content/projects/**/*.{png,jpg,jpeg,gif,webp}'
@@ -19,19 +9,22 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
 let imageSource: ImageMetadata | null = null;
 
-if (image) {
+if (data.image_source) {
   const projectSlug = url.split('/').pop();
-  const fullPath = `/src/content/projects/${projectSlug}/${image.replace('./', '')}`;
+  const fullPath = `/src/content/projects/${projectSlug}/${data.image_source.replace('./', '')}`;
   const imageModule = await images[fullPath]();
   imageSource = imageModule.default;
 } else {
   imageSource = null;
 }
 
-const formattedDate = new Date(date).toLocaleDateString('en-US', {
-  month: 'long',
-  year: 'numeric',
-});
+const formattedDate = new Date(data.date_completed).toLocaleDateString(
+  'en-US',
+  {
+    month: 'long',
+    year: 'numeric',
+  }
+);
 ---
 
 <style>
@@ -265,23 +258,23 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
           src={imageSource}
           widths={[400, 800]}
           sizes='(max-width: 800px) 100vw, 800px'
-          alt={title}
+          alt={data.title}
           class='project-image'
         />
       </div>
     )
   }
   <div class='project-info-wrapper'>
-    <h4 class='card-title'><a href={url}>{title}</a></h4>
+    <h4 class='card-title'><a href={url}>{data.title}</a></h4>
     <p class='card-date'>{formattedDate}</p>
-    <p class='card-description'>{description}</p>
+    <p class='card-description'>{data.description}</p>
     <ul class='links-list'>
       {
-        githubUrl && (
+        data.github_url && (
           <li>
             <a
               class='link'
-              href={githubUrl}
+              href={data.github_url}
               target='_blank'>
               <div class='link-icon-wrapper'>
                 <span class='link-icon bx bxl-github' />
@@ -292,11 +285,11 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
         )
       }
       {
-        demoUrl && (
+        data.demo_url && (
           <li>
             <a
               class='link'
-              href={demoUrl}
+              href={data.demo_url}
               target='_blank'>
               <div class='link-icon-wrapper'>
                 <span class='link-icon bx bxs-show' />
@@ -306,21 +299,10 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
           </li>
         )
       }
-      {
-        projectPageUrl && (
-          <li>
-            <a
-              class='link'
-              href={projectPageUrl}>
-              Project
-            </a>
-          </li>
-        )
-      }
     </ul>
     <ul class='tags-list'>
       {
-        tags.map((tag: string) => (
+        data.tags.map((tag: string) => (
           <li>
             <a
               class='tag-link'

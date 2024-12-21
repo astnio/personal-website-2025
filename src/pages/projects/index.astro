@@ -144,13 +144,7 @@ const title = 'Projects';
           <li class='projects-list-item'>
             <ProjectCard
               url={`/projects/${project.slug}`}
-              image={project.data.image}
-              title={project.data.title}
-              date={project.data.date_completed}
-              description={project.data.description}
-              tags={project.data.tags}
-              githubUrl={project.data.github_url}
-              demoUrl={project.data.demo_url}
+              data={project.data}
             />
           </li>
         ))
@@ -174,12 +168,7 @@ const title = 'Projects';
           <li>
             <ProjectCard
               url={`/projects/${project.slug}`}
-              image={project.data.image}
-              title={project.data.title}
-              description={project.data.description}
-              tags={project.data.tags}
-              githubUrl={project.data.github_url}
-              demoUrl={project.data.demo_url}
+              data={project.data}
             />
           </li>
         ))
