@@ -3,13 +3,16 @@ import { Image } from 'astro:assets';
 import Tag from '../components/interface/Tag.astro';
 import '../styles/posts/codeBlockCopyButton.css';
 import '../styles/posts/markdownPostStyles.css';
+import PostInfo from '../components/PostInfo.astro';
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   frontmatter: any;
   postTarget: 'blog' | 'projects';
+  post: CollectionEntry<'blog'>;
 }
 
-const { frontmatter, postTarget } = Astro.props;
+const { frontmatter, postTarget, post } = Astro.props;
 ---
 
 <style>
@@ -21,6 +24,10 @@ const { frontmatter, postTarget } = Astro.props;
   .post-wrapper {
     background-color: var(--clr-base);
     overflow: hidden;
+  }
+
+  .post-header {
+    padding-inline: 1rem;
   }
 
   .post-content {
@@ -71,6 +78,10 @@ const { frontmatter, postTarget } = Astro.props;
       border-radius: var(--radius-base);
     }
 
+    .post-header {
+      padding-inline: 4rem;
+    }
+
     .post-content {
       padding-inline: 4rem;
     }
@@ -86,8 +97,11 @@ const { frontmatter, postTarget } = Astro.props;
       src={frontmatter.cover}
       class={'picture'}
     />
-    <div class='post-content'>
+    <header class='post-header'>
+      <PostInfo post={post} />
       <h1>{frontmatter.title}</h1>
+    </header>
+    <div class='post-content'>
       <slot />
     </div>
   </article>
