@@ -39,7 +39,7 @@ li {
 
   padding: 1rem;
 
-  border: 1px solid var(--clr-surface-0);
+  /* border: 1px solid var(--clr-surface-0); */
   border-radius: var(--radius-base);
 }
 
@@ -73,7 +73,7 @@ li {
   width: 100%;
 
   border-radius: var(--radius-surface);
-  outline: 1px solid var(--clr-surface-0);
+  /* outline: 1px solid var(--clr-surface-0); */
 }
 
 .blog-nav-sublist {
