@@ -1,17 +1,17 @@
 ---
-import { Image } from 'astro:assets';
-import Tag from '../components/interface/Tag.astro';
 import '../styles/posts/codeBlockCopyButton.css';
 import '../styles/posts/markdownPostStyles.css';
-import PostInfo from '../components/PostInfo.astro';
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Tag from '../components/interface/Tag.astro';
+import PostInfo from '../components/PostInfo.astro';
 import Heading from '../components/typgraphy/Heading.astro';
 
-interface Props {
+type Props = {
   frontmatter: any;
   postTarget: 'blog' | 'projects';
   post: CollectionEntry<'blog'>;
-}
+};
 
 const { frontmatter, postTarget, post } = Astro.props;
 ---
@@ -120,7 +120,7 @@ const { frontmatter, postTarget, post } = Astro.props;
         level={3}
         >{frontmatter.summary}</Heading
       >
-      <PostInfo post={post} />
+      {postTarget == 'blog' && <PostInfo post={post} />}
       <hr />
     </header>
     <div class='post-content'>
