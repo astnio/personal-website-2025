@@ -9,18 +9,41 @@ const { url, label } = Astro.props;
     justify-content: center;
 
     background-color: var(--clr-mantle);
-    outline: 1px solid var(--clr-surface-0);
 
     padding-inline: 1em;
     padding-block: 0.2rem;
 
     border-radius: var(--radius-pill);
 
+    color: var(--clr-subtext-1);
     text-transform: lowercase;
     font-size: 0.9rem;
+    font-weight: 500;
+
+    transition-property: color, background-color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
   }
 
-  .tag:hover > a {
+  .tag::before {
+    content: '#';
+    color: var(--clr-subtext-0);
+    opacity: 0.4;
+    font-size: 1rem;
+    margin-right: 0.15ch;
+
+    transition-property: opacity, color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  .tag:hover {
+    color: var(--clr-text);
+    background-color: var(--clr-crust);
+  }
+
+  .tag:hover::before {
+    opacity: 0.8;
     color: var(--clr-primary);
   }
 </style>
