@@ -5,14 +5,130 @@ type Props = {
   className: string;
 };
 
-const { type, level, className } = Astro.props;
+const { type = 'heading', level, className } = Astro.props;
 
 const HeadingElement =
   `h${level}` as const satisfies keyof HTMLElementTagNameMap;
 ---
 
+<style>
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
+  /*** Heading ***/
+
+  h1.heading,
+  h2.heading,
+  h3.heading,
+  h4.heading,
+  h5.heading,
+  h6.heading {
+    color: var(--clr-text);
+  }
+
+  h1[data-type='heading'] {
+    font-size: 1.8rem;
+  }
+
+  h2[data-type='heading'] {
+    font-size: 1.6rem;
+  }
+
+  h3[data-type='heading'] {
+    font-size: 1.4rem;
+  }
+
+  h4[data-type='heading'] {
+    font-size: 1rem;
+  }
+
+  h5[data-type='heading'] {
+    font-size: 0.8rem;
+  }
+
+  h6[data-type='heading'] {
+    font-size: 0.7rem;
+  }
+
+  /*** Title ***/
+
+  h1.title,
+  h2.title,
+  h3.title,
+  h4.title,
+  h5.title,
+  h6.title {
+    color: var(--clr-text);
+  }
+
+  h1[data-type='title'] {
+    font-size: 2.4rem;
+  }
+
+  h2[data-type='title'] {
+    font-size: 2.4rem;
+  }
+
+  h3[data-type='title'] {
+    font-size: 2.4rem;
+  }
+
+  h4[data-type='title'] {
+    font-size: 2.4rem;
+  }
+
+  h5[data-type='title'] {
+    font-size: 2.4rem;
+  }
+
+  h6[data-type='title'] {
+    font-size: 2.4rem;
+  }
+
+  /*** Subtitle ***/
+
+  h1.subtitle,
+  h2.subtitle,
+  h3.subtitle,
+  h4.subtitle,
+  h5.subtitle,
+  h6.subtitle {
+    color: var(--clr-subtext-1);
+  }
+
+  h1[data-type='subtitle'] {
+    font-size: 1.8rem;
+  }
+
+  h2[data-type='subtitle'] {
+    font-size: 1.8rem;
+  }
+
+  h3[data-type='subtitle'] {
+    font-size: 1.8rem;
+  }
+
+  h4[data-type='subtitle'] {
+    font-size: 1.8rem;
+  }
+
+  h5[data-type='subtitle'] {
+    font-size: 1.8rem;
+  }
+
+  h6[data-type='subtitle'] {
+    font-size: 1.8rem;
+  }
+</style>
+
 <HeadingElement
-  class={`${className} test`}
+  class={`${className} ${type}`}
   data-type={type}>
   <slot />
 </HeadingElement>
