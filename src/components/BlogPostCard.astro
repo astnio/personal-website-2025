@@ -33,7 +33,10 @@ const { data, url, image } = Astro.props;
                   0<span> minute read</span>
                 </span>
               </p>
-              <DateLabel date={data.date_published} />
+              <DateLabel
+                className='meta-detail-published-date'
+                date={data.date_published}
+              />
             </div>
           </div>
           <a href={`${url}`}>
@@ -60,7 +63,10 @@ const { data, url, image } = Astro.props;
                 0<span> minute read</span>
               </span>
             </p>
-            <DateLabel date={data.date_published} />
+            <DateLabel
+              className='meta-detail-published-date'
+              date={data.date_published}
+            />
           </div>
         </div>
       )

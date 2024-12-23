@@ -139,20 +139,6 @@ footer,
 .meta-detail-published-date {
   grid-row-start: 2;
   justify-self: end;
-
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 0.4rem;
-
-  font-size: 1rem;
-  color: var(--clr-text);
-  font-weight: 600;
-}
-
-.meta-detail-published-date-icon {
-  font-size: 1.2rem;
-  margin-right: 0.25rem;
 }
 
 /*** Card Body ***/
