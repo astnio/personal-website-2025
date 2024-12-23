@@ -5,6 +5,7 @@ import BlogPostCard from '../../components/BlogPostCard.astro';
 import BlogPageImage from '../../components/BlogPageImage.astro';
 import '../../styles/pages/blog.css';
 import Tag from '../../components/interface/Tag.astro';
+import Chip from '../../components/interface/Chip.astro';
 
 const allPosts = await getCollection('blog');
 
@@ -62,7 +63,7 @@ const title = 'Blog';
               {
                 categories.map((category) => (
                   <li>
-                    <a href={`/blog/categories/${category}`}>{category}</a>
+                    <Chip url={`/blog/categories/${category}`}>{category}</Chip>
                   </li>
                 ))
               }
