@@ -1,5 +1,5 @@
 ---
-title: 'Coding Example Post'
+title: 'Coding Example Post (Post 3)'
 summary: 'An example of code in a post!'
 date_published: 2022-04-20
 topic: 'Test Topic 2'

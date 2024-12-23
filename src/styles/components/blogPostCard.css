@@ -98,6 +98,15 @@ footer,
   z-index: -1;
 }
 
+.header-meta-details-wrapper[data-has-picture='false'] {
+  position: relative;
+  backdrop-filter: none;
+}
+
+.header-meta-details-wrapper[data-has-picture='false']::before {
+  background-color: transparent;
+}
+
 .header-meta-details {
   display: grid;
   grid-template-columns: auto 1fr;

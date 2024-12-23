@@ -1,5 +1,5 @@
 ---
-title: 'Markdown Example'
+title: 'Markdown Example (Post 1)'
 summary: 'An example of markdown in a post!'
 date_published: 2024-11-03
 topic: 'Lorem Ipsum'
