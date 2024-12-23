@@ -1,0 +1,40 @@
+---
+const { url, label } = Astro.props;
+---
+
+<style>
+  .tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--clr-mantle);
+    outline: 1px solid var(--clr-surface-0);
+
+    padding-inline: 1em;
+    padding-block: 0.2rem;
+
+    border-radius: var(--radius-pill);
+
+    text-transform: lowercase;
+    font-size: 0.9rem;
+  }
+
+  .tag:hover > a {
+    color: var(--clr-primary);
+  }
+</style>
+
+{
+  url ? (
+    <a
+      class='tag'
+      href={url}>
+      <slot />
+    </a>
+  ) : (
+    <div class='tag'>
+      <slot />
+    </div>
+  )
+}

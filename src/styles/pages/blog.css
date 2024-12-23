@@ -104,27 +104,6 @@ li {
   gap: 0.6rem 0.5rem;
 }
 
-.blog-tag {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: var(--clr-mantle);
-  outline: 1px solid var(--clr-surface-0);
-
-  padding-inline: 1em;
-  padding-block: 0.2rem;
-
-  border-radius: var(--radius-pill);
-
-  text-transform: lowercase;
-  font-size: 0.9rem;
-}
-
-.blog-tag:hover > a {
-  color: var(--clr-primary);
-}
-
 /* *** Blog Post Cards *** */
 
 .blog-post-cards-wrapper {
