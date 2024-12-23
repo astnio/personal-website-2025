@@ -19,12 +19,14 @@ const { url } = Astro.props;
     padding-block: 0.2rem;
 
     border-radius: var(--radius-pill);
-    outline: 1px solid var(--clr-base);
 
     color: var(--clr-subtext-1);
     text-transform: lowercase;
     font-size: 0.9rem;
     font-weight: 500;
+
+    max-width: fit-content;
+    max-height: fit-content;
 
     transition-property: color, background-color, outline;
     transition-duration: 0.15s;
@@ -43,13 +45,13 @@ const { url } = Astro.props;
     transition-timing-function: ease-out;
   }
 
-  .tag:hover {
+  a.tag:hover {
     color: var(--clr-text);
     background-color: var(--clr-crust);
     outline: 1px solid var(--clr-primary);
   }
 
-  .tag:hover::before {
+  a.tag:hover::before {
     opacity: 0.8;
     color: var(--clr-primary);
   }
