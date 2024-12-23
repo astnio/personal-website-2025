@@ -105,11 +105,15 @@ const { frontmatter, postTarget, post } = Astro.props;
     />
     <header class='post-header'>
       <Heading
+        type='title'
         level={1}
-        type={'title'}
         >{frontmatter.title}</Heading
       >
-      <p>{frontmatter.summary}</p>
+      <Heading
+        type='subtitle'
+        level={3}
+        >{frontmatter.summary}</Heading
+      >
       <PostInfo post={post} />
       <hr />
     </header>

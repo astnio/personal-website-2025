@@ -5,10 +5,12 @@ type Props = {
   className?: string;
 };
 
-const { type = 'heading', level = 2, className } = Astro.props;
+const { type = 'heading', level = 2, className = '' } = Astro.props;
 
 const HeadingElement =
-  `h${level}` as const satisfies keyof HTMLElementTagNameMap;
+  type != 'subtitle'
+    ? (`h${level}` as const satisfies keyof HTMLElementTagNameMap)
+    : `p`;
 ---
 
 <style>
@@ -93,42 +95,43 @@ const HeadingElement =
 
   /*** Subtitle ***/
 
-  h1.subtitle,
-  h2.subtitle,
-  h3.subtitle,
-  h4.subtitle,
-  h5.subtitle,
-  h6.subtitle {
+  p.subtitle,
+  p.subtitle,
+  p.subtitle,
+  p.subtitle,
+  p.subtitle,
+  p.subtitle {
     color: var(--clr-subtext-1);
   }
 
-  h1[data-type='subtitle'] {
+  p[data-type='subtitle'][data-level='1'] {
     font-size: 1.8rem;
   }
 
-  h2[data-type='subtitle'] {
-    font-size: 1.8rem;
+  p[data-type='subtitle'][data-level='2'] {
+    font-size: 1.4rem;
   }
 
-  h3[data-type='subtitle'] {
-    font-size: 1.8rem;
+  p[data-type='subtitle'][data-level='3'] {
+    font-size: 1.2rem;
   }
 
-  h4[data-type='subtitle'] {
-    font-size: 1.8rem;
+  p[data-type='subtitle'][data-level='4'] {
+    font-size: 1rem;
   }
 
-  h5[data-type='subtitle'] {
-    font-size: 1.8rem;
+  p[data-type='subtitle'][data-level='5'] {
+    font-size: 0.85rem;
   }
 
-  h6[data-type='subtitle'] {
-    font-size: 1.8rem;
+  p[data-type='subtitle'][data-level='6'] {
+    font-size: 0.75rem;
   }
 </style>
 
 <HeadingElement
   class={`${className} ${type}`}
-  data-type={type}>
+  data-type={type}
+  data-level={level}>
   <slot />
 </HeadingElement>
