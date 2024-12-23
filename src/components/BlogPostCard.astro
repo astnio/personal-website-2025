@@ -4,8 +4,6 @@ import '../styles/components/blogPostCard.css';
 import ReadMoreButton from './ReadMoreButton.astro';
 
 const { data, url, image } = Astro.props;
-console.log('image');
-console.log(image);
 
 const formattedDate = new Date(data.date_published).toLocaleDateString(
   'en-US',
