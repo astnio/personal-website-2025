@@ -2,18 +2,14 @@
 import { Picture } from 'astro:assets';
 import '../styles/components/blogPostCard.css';
 import ReadMoreButton from './ReadMoreButton.astro';
-import Chip from './interface/Chip.astro';
-import DateLabel from './interface/DateLabel.astro';
 import type { CollectionEntry } from 'astro:content';
-import { calculateReadingTime } from '../scripts/utils/readingTime';
+import PostInfo from './PostInfo.astro';
 
 type Props = {
   post: CollectionEntry<'blog'>;
 };
 
 const { post } = Astro.props;
-
-const timeRead = calculateReadingTime(post.body);
 ---
 
 <div class='blog-card-wrapper'>
@@ -21,23 +17,8 @@ const timeRead = calculateReadingTime(post.body);
     {
       post.data.cover ? (
         <div class='picture-wrapper'>
-          <div class='header-meta-details-wrapper'>
-            <div class='header-meta-details'>
-              <Chip url={`/blog/categories/${post.data.category}`}>
-                {post.data.category}
-              </Chip>
-              <p class='header-detail-read-minutes'>
-                <span class='time-read-icon bx bxs-timer' />
-                <span>
-                  <span>{timeRead}</span>
-                  <span> minute read</span>
-                </span>
-              </p>
-              <DateLabel
-                className='meta-detail-published-date'
-                date={post.data.date_published}
-              />
-            </div>
+          <div class='post-info-wrapper'>
+            <PostInfo post={post} />
           </div>
           <a href={`/blog/${post.slug}`}>
             <Picture
@@ -51,24 +32,9 @@ const timeRead = calculateReadingTime(post.body);
         </div>
       ) : (
         <div
-          class='header-meta-details-wrapper'
+          class='post-info-wrapper'
           data-has-picture='false'>
-          <div class='header-meta-details'>
-            <Chip url={`/blog/categories/${post.data.category}`}>
-              {post.data.category}
-            </Chip>
-            <p class='header-detail-read-minutes'>
-              <span class='time-read-icon bx bxs-timer' />
-              <span>
-                <span>{timeRead}</span>
-                <span> minute read</span>
-              </span>
-            </p>
-            <DateLabel
-              className='meta-detail-published-date'
-              date={post.data.date_published}
-            />
-          </div>
+          <PostInfo post={post} />
         </div>
       )
     }

@@ -7,11 +7,65 @@ const { post } = Astro.props;
 const timeRead = calculateReadingTime(post.body);
 ---
 
-<div class='header-meta-details'>
+<style>
+  .post-info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-content: space-between;
+    gap: 1rem 1rem;
+
+    font-size: 0.9rem;
+
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .read-minutes {
+    grid-row-start: 2;
+
+    justify-self: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2ch;
+
+    color: var(--clr-subtext-0);
+  }
+
+  .time-read-icon {
+    font-size: 1.2rem;
+    margin-right: 0.25rem;
+  }
+
+  .published-date {
+    grid-row-start: 2;
+  }
+
+  @media screen and (min-width: 786px) {
+    .post-info {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+
+    .read-minutes {
+      grid-column-start: 2;
+      grid-row-start: 1;
+      justify-self: start;
+    }
+
+    .published-date {
+      grid-column-start: 3;
+      grid-row-start: 1;
+    }
+  }
+</style>
+
+<div class='post-info'>
   <Chip url={`/blog/categories/${post.data.category}`}>
     {post.data.category}
   </Chip>
-  <p class='header-detail-read-minutes'>
+  <p class='read-minutes'>
     <span class='time-read-icon bx bxs-timer'></span>
     <span>
       <span>{timeRead}</span>
@@ -19,7 +73,7 @@ const timeRead = calculateReadingTime(post.body);
     </span>
   </p>
   <DateLabel
-    className='meta-detail-published-date'
+    className='published-date'
     date={post.data.date_published}
   />
 </div>
