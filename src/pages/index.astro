@@ -5,16 +5,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import profilePicture from '../assets/images/site/index/lorelei-2-removebg.png';
 import HeroLinks from '../components/HeroLinks.astro';
 import IconLink from '../components/IconLink.astro';
+import Heading from '../components/typgraphy/Heading.astro';
 
 const title = 'Austin Hagel';
 ---
 
 <style>
-  h1 {
-    margin: 0;
-    padding: 0;
-  }
-
   .hero-wrapper {
     display: flex;
     flex-direction: column;
@@ -57,17 +53,6 @@ const title = 'Austin Hagel';
 
     width: var(--image-size);
     height: var(--image-size);
-  }
-
-  h1.hero-title {
-    font-size: 2.4rem;
-    font-weight: 500;
-    letter-spacing: 0.02ch;
-
-    padding: 0;
-    margin: 0;
-
-    text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.2);
   }
 
   .hero-paragraph {
@@ -125,10 +110,6 @@ const title = 'Austin Hagel';
       width: 100%;
     }
 
-    h1.hero-title {
-      font-size: 2.8rem;
-    }
-
     .hero-content-wrapper {
       grid-row: 1;
       justify-self: end;
@@ -177,7 +158,11 @@ const title = 'Austin Hagel';
         />
       </div>
 
-      <h1 class='hero-title'>Austin Hagel</h1>
+      <Heading
+        type='title'
+        level={1}
+        >Austin Hagel</Heading
+      >
     </div>
 
     <div class='hero-info-wrapper'>
