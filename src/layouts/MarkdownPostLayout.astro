@@ -44,6 +44,16 @@ const { frontmatter, postTarget, post } = Astro.props;
 
   /*** Post Picture ***/
 
+  .picture-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    aspect-ratio: 2/1;
+  }
+
   .picture {
     width: 100%;
     height: 100%;
@@ -99,13 +109,15 @@ const { frontmatter, postTarget, post } = Astro.props;
   <article class='post-wrapper'>
     {
       frontmatter.cover && (
-        <Image
-          alt={'hi'}
-          width={1200}
-          height={800}
-          src={frontmatter.cover}
-          class={'picture'}
-        />
+        <div class='picture-wrapper'>
+          <Image
+            alt={'hi'}
+            width={1200}
+            height={800}
+            src={frontmatter.cover}
+            class={'picture'}
+          />
+        </div>
       )
     }
 
