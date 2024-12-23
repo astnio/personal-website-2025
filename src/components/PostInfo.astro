@@ -1,0 +1,25 @@
+---
+import { calculateReadingTime } from '../scripts/utils/readingTime';
+import Chip from './interface/Chip.astro';
+import DateLabel from './interface/DateLabel.astro';
+
+const { post } = Astro.props;
+const timeRead = calculateReadingTime(post.body);
+---
+
+<div class='header-meta-details'>
+  <Chip url={`/blog/categories/${post.data.category}`}>
+    {post.data.category}
+  </Chip>
+  <p class='header-detail-read-minutes'>
+    <span class='time-read-icon bx bxs-timer'></span>
+    <span>
+      <span>{timeRead}</span>
+      <span> minute read</span>
+    </span>
+  </p>
+  <DateLabel
+    className='meta-detail-published-date'
+    date={post.data.date_published}
+  />
+</div>
