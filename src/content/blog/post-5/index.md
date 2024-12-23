@@ -3,7 +3,7 @@ title: 'An Especially Long Title that Is Very Long Wow This Sure Is A Long Title
 summary: 'An example of a long title!'
 date_published: 1983-04-20
 topic: 'Test Topic 2'
-category: 'Test Category 3'
+category: 'Lorem Ipsum'
 tags: ['example', 'code', 'javascript', 'code example']
 ---
 
