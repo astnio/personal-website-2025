@@ -18,6 +18,12 @@ const { frontmatter, postTarget, post } = Astro.props;
 <style>
   h1 {
     font-size: 2.4rem;
+    margin-block: 1rem;
+  }
+
+  p {
+    color: var(--clr-subtext-1);
+    font-size: 1.2rem;
   }
 
   .post-wrapper-spacer {
@@ -103,6 +109,7 @@ const { frontmatter, postTarget, post } = Astro.props;
     />
     <header class='post-header'>
       <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.summary}</p>
       <PostInfo post={post} />
       <hr />
     </header>
