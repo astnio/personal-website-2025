@@ -34,6 +34,7 @@ const { frontmatter, postTarget, post } = Astro.props;
 
   .post-header {
     padding-inline: 1rem;
+    margin-top: 2.5rem;
   }
 
   .post-content {
@@ -96,13 +97,18 @@ const { frontmatter, postTarget, post } = Astro.props;
 
 <div class='post-wrapper-spacer max-width'>
   <article class='post-wrapper'>
-    <Image
-      alt={'hi'}
-      width={1200}
-      height={800}
-      src={frontmatter.cover}
-      class={'picture'}
-    />
+    {
+      frontmatter.cover && (
+        <Image
+          alt={'hi'}
+          width={1200}
+          height={800}
+          src={frontmatter.cover}
+          class={'picture'}
+        />
+      )
+    }
+
     <header class='post-header'>
       <Heading
         type='title'
