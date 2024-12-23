@@ -28,7 +28,7 @@ footer,
 
   background-color: var(--clr-base);
   border-radius: var(--radius-surface);
-  outline: 1px solid var(--clr-surface-0);
+  /* outline: 1px solid var(--clr-surface-0); */
 
   width: 100%;
 
@@ -78,7 +78,7 @@ footer,
 
   backdrop-filter: blur(10px);
 
-  border-top: 1px solid var(--clr-surface-0);
+  /* border-top: 1px solid var(--clr-surface-0); */
 
   z-index: 10;
 }
@@ -101,6 +101,7 @@ footer,
 .header-meta-details-wrapper[data-has-picture='false'] {
   position: relative;
   backdrop-filter: none;
+  border-top: none;
 }
 
 .header-meta-details-wrapper[data-has-picture='false']::before {
