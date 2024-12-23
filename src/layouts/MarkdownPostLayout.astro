@@ -16,6 +16,10 @@ const { frontmatter, postTarget, post } = Astro.props;
 ---
 
 <style>
+  h1 {
+    font-size: 2.4rem;
+  }
+
   .post-wrapper-spacer {
     padding-inline: 0;
     width: 100%;
@@ -98,8 +102,9 @@ const { frontmatter, postTarget, post } = Astro.props;
       class={'picture'}
     />
     <header class='post-header'>
-      <PostInfo post={post} />
       <h1>{frontmatter.title}</h1>
+      <PostInfo post={post} />
+      <hr />
     </header>
     <div class='post-content'>
       <slot />
