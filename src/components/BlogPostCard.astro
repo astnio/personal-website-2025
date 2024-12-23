@@ -2,6 +2,7 @@
 import { Picture } from 'astro:assets';
 import '../styles/components/blogPostCard.css';
 import ReadMoreButton from './ReadMoreButton.astro';
+import Chip from './interface/Chip.astro';
 
 const { data, url, image } = Astro.props;
 
@@ -22,11 +23,9 @@ const formattedDate = new Date(data.date_published).toLocaleDateString(
         <div class='picture-wrapper'>
           <div class='header-meta-details-wrapper'>
             <div class='header-meta-details'>
-              <a
-                href={`/blog/categories/${data.category}`}
-                class='header-detail-category'>
-                <span>{data.category}</span>
-              </a>
+              <Chip url={`/blog/categories/${data.category}`}>
+                {data.category}
+              </Chip>
               <p class='header-detail-read-minutes'>
                 <i class='time-read-icon bx bxs-timer' />
                 <span>
@@ -56,11 +55,9 @@ const formattedDate = new Date(data.date_published).toLocaleDateString(
           class='header-meta-details-wrapper'
           data-has-picture='false'>
           <div class='header-meta-details'>
-            <a
-              href={`/blog/categories/${data.category}`}
-              class='header-detail-category'>
-              <span>{data.category}</span>
-            </a>
+            <Chip url={`/blog/categories/${data.category}`}>
+              {data.category}
+            </Chip>
             <p class='header-detail-read-minutes'>
               <i class='time-read-icon bx bxs-timer' />
               <span>

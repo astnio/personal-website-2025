@@ -1,0 +1,41 @@
+---
+const { url } = Astro.props;
+---
+
+<style>
+  .chip {
+    background-color: var(--clr-mantle);
+
+    color: var(--clr-subtext-0);
+
+    padding-inline: 0.8rem;
+    padding-block: 0.4rem;
+
+    border-radius: var(--radius-chip);
+    outline: 1px solid var(--clr-base);
+
+    transition-property: color, background-color, outline;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  .chip:hover {
+    color: var(--clr-text);
+    background-color: var(--clr-crust);
+    outline: 1px solid var(--clr-primary);
+  }
+</style>
+
+{
+  url ? (
+    <a
+      href={url}
+      class='chip'>
+      <slot />
+    </a>
+  ) : (
+    <div class='chip'>
+      <slot />
+    </div>
+  )
+}

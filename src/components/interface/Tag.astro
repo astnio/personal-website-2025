@@ -1,5 +1,5 @@
 ---
-const { url, label } = Astro.props;
+const { url } = Astro.props;
 ---
 
 <style>
@@ -14,13 +14,14 @@ const { url, label } = Astro.props;
     padding-block: 0.2rem;
 
     border-radius: var(--radius-pill);
+    outline: 1px solid var(--clr-base);
 
     color: var(--clr-subtext-1);
     text-transform: lowercase;
     font-size: 0.9rem;
     font-weight: 500;
 
-    transition-property: color, background-color;
+    transition-property: color, background-color, outline;
     transition-duration: 0.15s;
     transition-timing-function: ease-out;
   }
@@ -40,6 +41,7 @@ const { url, label } = Astro.props;
   .tag:hover {
     color: var(--clr-text);
     background-color: var(--clr-crust);
+    outline: 1px solid var(--clr-primary);
   }
 
   .tag:hover::before {

@@ -119,18 +119,6 @@ footer,
   margin-bottom: 1rem;
 }
 
-.header-detail-category {
-  background-color: var(--clr-mantle);
-
-  color: var(--clr-subtext-0);
-
-  padding-inline: 0.8rem;
-  padding-block: 0.4rem;
-
-  border-radius: var(--radius-chip);
-  outline: 1px solid var(--clr-surface-0);
-}
-
 .header-detail-read-minutes {
   grid-row-start: 2;
 
