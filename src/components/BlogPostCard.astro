@@ -3,17 +3,18 @@ import { Picture } from 'astro:assets';
 import '../styles/components/blogPostCard.css';
 import ReadMoreButton from './ReadMoreButton.astro';
 import Chip from './interface/Chip.astro';
+import DateLabel from './interface/DateLabel.astro';
 
 const { data, url, image } = Astro.props;
 
-const formattedDate = new Date(data.date_published).toLocaleDateString(
-  'en-US',
-  {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }
-);
+// const formattedDate = new Date(data.date_published).toLocaleDateString(
+//   'en-US',
+//   {
+//     month: 'short',
+//     day: 'numeric',
+//     year: 'numeric',
+//   }
+// );
 ---
 
 <div class='blog-card-wrapper'>
@@ -27,17 +28,12 @@ const formattedDate = new Date(data.date_published).toLocaleDateString(
                 {data.category}
               </Chip>
               <p class='header-detail-read-minutes'>
-                <i class='time-read-icon bx bxs-timer' />
+                <span class='time-read-icon bx bxs-timer' />
                 <span>
                   0<span> minute read</span>
                 </span>
               </p>
-              <time
-                class='meta-detail-published-date'
-                datetime={data.date_published}>
-                <span class='meta-detail-published-date-icon bx bxs-calendar' />
-                <span>{formattedDate}</span>
-              </time>
+              <DateLabel date={data.date_published} />
             </div>
           </div>
           <a href={`${url}`}>
@@ -59,17 +55,12 @@ const formattedDate = new Date(data.date_published).toLocaleDateString(
               {data.category}
             </Chip>
             <p class='header-detail-read-minutes'>
-              <i class='time-read-icon bx bxs-timer' />
+              <span class='time-read-icon bx bxs-timer' />
               <span>
                 0<span> minute read</span>
               </span>
             </p>
-            <time
-              class='meta-detail-published-date'
-              datetime={data.date_published}>
-              <span class='meta-detail-published-date-icon bx bxs-calendar' />
-              <span>{formattedDate}</span>
-            </time>
+            <DateLabel date={data.date_published} />
           </div>
         </div>
       )
