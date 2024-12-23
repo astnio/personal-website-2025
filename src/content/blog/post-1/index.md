@@ -5,6 +5,7 @@ date_published: 2024-11-03
 topic: 'Lorem Ipsum'
 category: 'Test Category 1'
 tags: ['example', 'test']
+cover: 'https://picsum.photos/id/16/800/400'
 ---
 
 # Heading 1

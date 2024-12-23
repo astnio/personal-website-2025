@@ -3,12 +3,9 @@ import { Picture } from 'astro:assets';
 import '../styles/components/blogPostCard.css';
 import ReadMoreButton from './ReadMoreButton.astro';
 
-const { data, url } = Astro.props;
-console.log('COVER?');
-console.log(data.cover);
-const maxImages = 1084;
-const imageId = Math.floor(Math.random() * maxImages);
-const phImage = `https://picsum.photos/id/${imageId}/800/400`;
+const { data, url, image } = Astro.props;
+console.log('image');
+console.log(image);
 
 const formattedDate = new Date(data.date_published).toLocaleDateString(
   'en-US',
@@ -50,7 +47,7 @@ const formattedDate = new Date(data.date_published).toLocaleDateString(
             <Picture
               width={400}
               height={200}
-              src={data.cover}
+              src={image}
               alt={'Placeholder image'}
               class='blog-picture'
             />

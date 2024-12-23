@@ -41,6 +41,7 @@ const title = 'Blog';
               <BlogPostCard
                 data={post.data}
                 url={`/blog/${post.slug}`}
+                image={post.data.cover}
               />
             </li>
           ))

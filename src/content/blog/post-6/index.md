@@ -5,6 +5,7 @@ date_published: 2024-12-18
 topic: 'Example Topic'
 category: 'Example Category'
 tags: ['lorem', 'ipsum', 'example', 'latin']
+cover: 'https://picsum.photos/id/83/800/400'
 ---
 
 ## Hello, world
