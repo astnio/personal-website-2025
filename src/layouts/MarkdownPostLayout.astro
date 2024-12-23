@@ -1,5 +1,5 @@
 ---
-// import { Image } from 'astro:assets';
+import { Image } from 'astro:assets';
 import Tag from '../components/interface/Tag.astro';
 import '../styles/posts/codeBlockCopyButton.css';
 import '../styles/posts/markdownPostStyles.css';
@@ -19,12 +19,21 @@ const { frontmatter, postTarget } = Astro.props;
   }
 
   .post-wrapper {
+    background-color: var(--clr-base);
+    overflow: hidden;
+  }
+
+  .post-content {
     padding-block: 1rem;
     padding-inline: 1rem;
+  }
 
-    /* outline: 1px solid var(--clr-surface-0); */
+  /*** Post Picture ***/
 
-    background-color: var(--clr-base);
+  .picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   /*** Footer ***/
@@ -59,20 +68,28 @@ const { frontmatter, postTarget } = Astro.props;
     }
 
     .post-wrapper {
-      padding-inline: 4rem;
       border-radius: var(--radius-base);
+    }
+
+    .post-content {
+      padding-inline: 4rem;
     }
   }
 </style>
 
 <div class='post-wrapper-spacer max-width'>
   <article class='post-wrapper'>
-    <!-- <Image
+    <Image
       alt={'hi'}
-      src={frontmatter.image}
-    /> -->
-    <h1>hello</h1>
-    <slot />
+      width={1200}
+      height={800}
+      src={frontmatter.cover}
+      class={'picture'}
+    />
+    <div class='post-content'>
+      <h1>{frontmatter.title}</h1>
+      <slot />
+    </div>
   </article>
   <footer class='max-width'>
     <div class='footer-content'>
