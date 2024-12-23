@@ -2,6 +2,7 @@
 import { Picture } from 'astro:assets';
 import Tag from './interface/Tag.astro';
 import DateLabel from './interface/DateLabel.astro';
+import Heading from './typgraphy/Heading.astro';
 
 const { url, data } = Astro.props;
 
@@ -218,7 +219,11 @@ if (data.image_source) {
     )
   }
   <div class='project-info-wrapper'>
-    <h4 class='card-title'><a href={url}>{data.title}</a></h4>
+    <Heading
+      level={3}
+      url={url}>
+      {data.title}
+    </Heading>
     <DateLabel date={data.date_completed} />
     <p class='card-description'>{data.description}</p>
     <ul class='links-list'>
