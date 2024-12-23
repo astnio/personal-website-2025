@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
 
@@ -11,6 +11,10 @@ export async function getStaticPaths() {
     props: { entry },
   }));
 }
+
+type Props = {
+  entry: CollectionEntry<'projects'>;
+};
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();

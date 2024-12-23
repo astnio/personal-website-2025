@@ -10,7 +10,7 @@ import Heading from '../components/typgraphy/Heading.astro';
 type Props = {
   frontmatter: any;
   postTarget: 'blog' | 'projects';
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<'blog' | 'projects'>;
 };
 
 const { frontmatter, postTarget, post } = Astro.props;
