@@ -1,7 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import Tag from './interface/Tag.astro';
-import Chip from './interface/Chip.astro';
+import DateLabel from './interface/DateLabel.astro';
 
 const { url, data } = Astro.props;
 
@@ -19,14 +19,6 @@ if (data.image_source) {
 } else {
   imageSource = null;
 }
-
-const formattedDate = new Date(data.date_completed).toLocaleDateString(
-  'en-US',
-  {
-    month: 'long',
-    year: 'numeric',
-  }
-);
 ---
 
 <style>
@@ -268,7 +260,7 @@ const formattedDate = new Date(data.date_completed).toLocaleDateString(
   }
   <div class='project-info-wrapper'>
     <h4 class='card-title'><a href={url}>{data.title}</a></h4>
-    <Chip>{formattedDate}</Chip>
+    <DateLabel date={data.date_completed} />
     <p class='card-description'>{data.description}</p>
     <ul class='links-list'>
       {
