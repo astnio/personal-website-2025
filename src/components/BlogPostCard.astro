@@ -4,6 +4,7 @@ import '../styles/components/blogPostCard.css';
 import ReadMoreButton from './ReadMoreButton.astro';
 import type { CollectionEntry } from 'astro:content';
 import PostInfo from './PostInfo.astro';
+import Heading from './typgraphy/Heading.astro';
 
 type Props = {
   post: CollectionEntry<'blog'>;
@@ -40,9 +41,13 @@ const { post } = Astro.props;
     }
 
     <div class='content-wrapper'>
-      <h3 class='card-title'>
-        <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-      </h3>
+      <div class='card-title'>
+        <Heading
+          level={3}
+          url={`/blog/${post.slug}`}>
+          {post.data.title}
+        </Heading>
+      </div>
 
       <p class='blog-card-summary'>
         {post.data.summary}

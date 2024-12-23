@@ -3,9 +3,10 @@ type Props = {
   type?: 'heading' | 'title' | 'subtitle';
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   className?: string;
+  url?: string;
 };
 
-const { type = 'heading', level = 2, className = '' } = Astro.props;
+const { type = 'heading', level = 2, className = '', url } = Astro.props;
 
 const HeadingElement =
   type != 'subtitle'
@@ -14,6 +15,24 @@ const HeadingElement =
 ---
 
 <style>
+  a > .heading,
+  a > .title,
+  a > .subtitle {
+    text-decoration: none;
+
+    width: fit-content;
+
+    transition-property: color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a:hover > .heading,
+  a:hover > .title,
+  a:hover > .subtitle {
+    color: var(--clr-primary);
+  }
+
   h1,
   h2,
   h3,
@@ -129,9 +148,22 @@ const HeadingElement =
   }
 </style>
 
-<HeadingElement
-  class={`${className} ${type}`}
-  data-type={type}
-  data-level={level}>
-  <slot />
-</HeadingElement>
+{
+  url ? (
+    <a href={url}>
+      <HeadingElement
+        class={`${className} ${type}`}
+        data-type={type}
+        data-level={level}>
+        <slot />
+      </HeadingElement>
+    </a>
+  ) : (
+    <HeadingElement
+      class={`${className} ${type}`}
+      data-type={type}
+      data-level={level}>
+      <slot />
+    </HeadingElement>
+  )
+}
