@@ -6,15 +6,27 @@ import BlogPageImage from '../../components/BlogPageImage.astro';
 import '../../styles/pages/blog.css';
 import Tag from '../../components/interface/Tag.astro';
 import Chip from '../../components/interface/Chip.astro';
+import { calculateReadingTime } from '../../scripts/utils/readingTime.ts';
 
 const allPosts = await getCollection('blog');
 
+const sortedPosts = allPosts
+  .sort(
+    (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
+  )
+  .map((post) => ({
+    ...post,
+    readingTime: calculateReadingTime(post.body),
+  }));
+
 const topics = [
-  ...new Set(allPosts.map((post: any) => post.data.topic).flat()),
+  ...new Set(sortedPosts.map((post: any) => post.data.topic).flat()),
 ];
-const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+const tags = [
+  ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
+];
 const categories = [
-  ...new Set(allPosts.map((post: any) => post.data.category).flat()),
+  ...new Set(sortedPosts.map((post: any) => post.data.category).flat()),
 ];
 
 const title = 'Blog';
@@ -37,13 +49,9 @@ const title = 'Blog';
     <section class='blog-post-cards-wrapper'>
       <ul class='blog-post-cards-list'>
         {
-          allPosts.map((post: any) => (
+          sortedPosts.map((post: any) => (
             <li>
-              <BlogPostCard
-                data={post.data}
-                url={`/blog/${post.slug}`}
-                image={post.data.cover}
-              />
+              <BlogPostCard post={post} />
             </li>
           ))
         }

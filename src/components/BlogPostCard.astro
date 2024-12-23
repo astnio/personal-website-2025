@@ -4,37 +4,46 @@ import '../styles/components/blogPostCard.css';
 import ReadMoreButton from './ReadMoreButton.astro';
 import Chip from './interface/Chip.astro';
 import DateLabel from './interface/DateLabel.astro';
+import type { CollectionEntry } from 'astro:content';
+import { calculateReadingTime } from '../scripts/utils/readingTime';
 
-const { data, url, image } = Astro.props;
+type Props = {
+  post: CollectionEntry<'blog'>;
+};
+
+const { post } = Astro.props;
+
+const timeRead = calculateReadingTime(post.body);
 ---
 
 <div class='blog-card-wrapper'>
   <article class='blog-card'>
     {
-      data.cover ? (
+      post.data.cover ? (
         <div class='picture-wrapper'>
           <div class='header-meta-details-wrapper'>
             <div class='header-meta-details'>
-              <Chip url={`/blog/categories/${data.category}`}>
-                {data.category}
+              <Chip url={`/blog/categories/${post.data.category}`}>
+                {post.data.category}
               </Chip>
               <p class='header-detail-read-minutes'>
                 <span class='time-read-icon bx bxs-timer' />
                 <span>
-                  0<span> minute read</span>
+                  <span>{timeRead}</span>
+                  <span> minute read</span>
                 </span>
               </p>
               <DateLabel
                 className='meta-detail-published-date'
-                date={data.date_published}
+                date={post.data.date_published}
               />
             </div>
           </div>
-          <a href={`${url}`}>
+          <a href={`/blog/${post.slug}`}>
             <Picture
               width={400}
               height={200}
-              src={image}
+              src={post.data.cover}
               alt={'Placeholder image'}
               class='blog-picture'
             />
@@ -45,18 +54,19 @@ const { data, url, image } = Astro.props;
           class='header-meta-details-wrapper'
           data-has-picture='false'>
           <div class='header-meta-details'>
-            <Chip url={`/blog/categories/${data.category}`}>
-              {data.category}
+            <Chip url={`/blog/categories/${post.data.category}`}>
+              {post.data.category}
             </Chip>
             <p class='header-detail-read-minutes'>
               <span class='time-read-icon bx bxs-timer' />
               <span>
-                0<span> minute read</span>
+                <span>{timeRead}</span>
+                <span> minute read</span>
               </span>
             </p>
             <DateLabel
               className='meta-detail-published-date'
-              date={data.date_published}
+              date={post.data.date_published}
             />
           </div>
         </div>
@@ -65,15 +75,15 @@ const { data, url, image } = Astro.props;
 
     <div class='content-wrapper'>
       <h3 class='card-title'>
-        <a href={url}>{data.title}</a>
+        <a href={`/blog/${post.slug}`}>{post.data.title}</a>
       </h3>
 
       <p class='blog-card-summary'>
-        {data.summary}
+        {post.data.summary}
       </p>
 
       <div class='btn-read-more-wrapper'>
-        <ReadMoreButton url={url} />
+        <ReadMoreButton url={`/blog/${post.slug}`} />
       </div>
     </div>
   </article>
