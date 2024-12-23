@@ -1,5 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
+import Tag from './interface/Tag.astro';
+import Chip from './interface/Chip.astro';
 
 const { url, data } = Astro.props;
 
@@ -141,7 +143,7 @@ const formattedDate = new Date(data.date_completed).toLocaleDateString(
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.45rem;
 
     list-style: none;
     padding: 0;
@@ -266,7 +268,7 @@ const formattedDate = new Date(data.date_completed).toLocaleDateString(
   }
   <div class='project-info-wrapper'>
     <h4 class='card-title'><a href={url}>{data.title}</a></h4>
-    <p class='card-date'>{formattedDate}</p>
+    <Chip>{formattedDate}</Chip>
     <p class='card-description'>{data.description}</p>
     <ul class='links-list'>
       {
@@ -304,11 +306,7 @@ const formattedDate = new Date(data.date_completed).toLocaleDateString(
       {
         data.tags.map((tag: string) => (
           <li>
-            <a
-              class='tag-link'
-              href={`/projects/tags/${tag}`}>
-              {tag}
-            </a>
+            <Tag url={`/projects/tags/${tag}`}>{tag}</Tag>
           </li>
         ))
       }
