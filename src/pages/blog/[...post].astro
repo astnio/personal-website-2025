@@ -21,7 +21,9 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<BaseLayout title={entry.data.title}>
+<BaseLayout
+  title={`${entry.data.title} | Blog`}
+  description={entry.data.summary}>
   <MarkdownPostLayout
     postTarget='blog'
     frontmatter={entry.data}
