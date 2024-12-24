@@ -28,6 +28,8 @@ const { post } = Astro.props;
               src={post.data.cover}
               alt={'Placeholder image'}
               class='blog-picture'
+              loading={'eager'}
+              transition:name={post.data.title}
             />
           </a>
         </div>

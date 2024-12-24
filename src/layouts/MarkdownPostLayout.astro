@@ -116,6 +116,7 @@ const { frontmatter, postTarget, post } = Astro.props;
             height={800}
             src={frontmatter.cover}
             class={'picture'}
+            transition:name={post.data.title}
           />
         </div>
       )
