@@ -29,7 +29,7 @@ const { post } = Astro.props;
               alt={'Placeholder image'}
               class='blog-picture'
               loading={'eager'}
-              transition:name={post.data.title}
+              transition:name={`blog-cover-${post.data.title}`}
             />
           </a>
         </div>
@@ -46,7 +46,8 @@ const { post } = Astro.props;
       <div class='card-title'>
         <Heading
           level={3}
-          url={`/blog/${post.slug}`}>
+          url={`/blog/${post.slug}`}
+          transition:name={`blog-title-${post.data.title}`}>
           {post.data.title}
         </Heading>
       </div>
