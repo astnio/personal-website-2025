@@ -5,6 +5,7 @@ import ReadMoreButton from './ReadMoreButton.astro';
 import type { CollectionEntry } from 'astro:content';
 import PostInfo from './PostInfo.astro';
 import Heading from './typgraphy/Heading.astro';
+import { fade } from 'astro:transitions';
 
 type Props = {
   post: CollectionEntry<'blog'>;
@@ -13,13 +14,33 @@ type Props = {
 const { post } = Astro.props;
 ---
 
+<style>
+  .post-info-wrapper {
+    animation: fadeIn 0.15s ease-in forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
 <div class='blog-card-wrapper'>
   <article class='blog-card'>
     {
       post.data.cover ? (
         <div class='picture-wrapper'>
           <div class='post-info-wrapper'>
-            <PostInfo post={post} />
+            <PostInfo
+              post={post}
+              transition:animate={fade({ duration: '2s' })}
+            />
           </div>
           <a href={`/blog/${post.slug}`}>
             <Picture
