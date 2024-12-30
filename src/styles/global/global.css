@@ -157,11 +157,11 @@ ol {
   padding-left: 1rem;
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   main {
-    padding-top: 8rem;
+    padding-top: 0;
   }
-}
+} */
 
 .max-width {
   max-width: 1024px;

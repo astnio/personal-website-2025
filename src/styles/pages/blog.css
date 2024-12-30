@@ -25,7 +25,7 @@ li {
   top: 3.5rem; */
 
   grid-column: span 2;
-  margin-bottom: 4rem;
+  /* margin-bottom: 4rem; */
 
   /* z-index: 10; */
 }
@@ -122,7 +122,7 @@ li {
 /* *** Utility *** */
 
 .wrapper {
-  margin-top: 14rem;
+  /* margin-top: 14rem; */
 
   padding-inline: 1rem;
 
@@ -176,6 +176,6 @@ li {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: start;
-    margin-top: 20rem;
+    /* margin-top: 20rem; */
   }
 }
