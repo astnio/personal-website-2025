@@ -17,8 +17,8 @@ document.addEventListener('astro:page-load', () => {
     '.btn-close-customization-menu'
   );
 
-  const iconClosedClass = 'bx bxs-customize';
-  const iconOpenedlass = 'bx bx-customize';
+  const iconClosedClass = 'bx bxs-palette';
+  const iconOpenedlass = 'bx bx-palette';
 
   function menuIsOpen(): boolean {
     return Array.from(customizationMenus).some((menu) => {

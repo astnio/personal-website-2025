@@ -1,11 +1,10 @@
 ---
-import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-import profilePicture from '../assets/images/site/index/lorelei-2-removebg.png';
 import HeroLinks from '../components/HeroLinks.astro';
 import IconLink from '../components/IconLink.astro';
 import Heading from '../components/typgraphy/Heading.astro';
+import ProfilePicture from '../components/ProfilePicture.astro';
 
 const title = 'Austin Hagel';
 ---
@@ -146,17 +145,7 @@ const title = 'Austin Hagel';
       iconClass='bx bxs-bulb'
     /> -->
     <div class='hero-content-wrapper'>
-      <div class='image-frame'>
-        <Picture
-          src={profilePicture}
-          formats={['webp', 'png']}
-          alt='Austin Hagel'
-          loading='eager'
-          decoding='async'
-          width='256'
-          class='profile-image'
-        />
-      </div>
+      <ProfilePicture />
 
       <Heading
         type='title'

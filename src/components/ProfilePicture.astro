@@ -1,0 +1,41 @@
+---
+import { Picture } from 'astro:assets';
+
+import profilePicture from '../assets/images/site/index/lorelei-2-removebg.png';
+---
+
+<style>
+  .image-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 10px solid var(--clr-base);
+    border-radius: var(--radius-circle);
+
+    background-color: var(--clr-surface-0);
+
+    overflow: hidden;
+
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .profile-image {
+    --image-size: 256px;
+
+    width: var(--image-size);
+    height: var(--image-size);
+  }
+</style>
+
+<div class='image-frame'>
+  <Picture
+    src={profilePicture}
+    formats={['webp', 'png']}
+    alt='Austin Hagel'
+    loading='eager'
+    decoding='async'
+    width='256'
+    class='profile-image'
+  />
+</div>
