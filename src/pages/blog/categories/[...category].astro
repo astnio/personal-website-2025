@@ -26,6 +26,7 @@ const { posts } = Astro.props;
 <style>
   ol,
   ul {
+    display: flex;
     padding: 0;
     list-style: none;
   }
@@ -52,12 +53,14 @@ const { posts } = Astro.props;
   /*** Timeline List ***/
 
   ol.timeline-list {
+    display: flex;
+    gap: 2.5rem;
     min-width: 24rem;
   }
 
   li.timeline-list-item {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
 
@@ -67,8 +70,11 @@ const { posts } = Astro.props;
   }
 
   p.timeline-list-post-count {
-    font-size: 1.4rem;
     align-self: center;
+
+    color: var(--clr-subtext-1);
+    font-size: 1rem;
+    font-weight: 400;
   }
 
   /*** Date List ***/
@@ -76,18 +82,19 @@ const { posts } = Astro.props;
   ol.date-list {
     display: flex;
     grid-column: span 2;
+    gap: 2rem;
   }
 
   li.date-list-item {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
 
   /*** Post List ***/
 
   p.post-list-title {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--clr-subtext-0);
   }
@@ -100,6 +107,8 @@ const { posts } = Astro.props;
   }
 
   a.post-list-item-link {
+    font-size: 1.2rem;
+    font-weight: 600;
   }
 </style>
 
@@ -150,7 +159,7 @@ const { posts } = Astro.props;
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
-                    class='post-list-link'
+                    class='post-list-item-link'
                     href='#'
                     >Post 1</a
                   >
@@ -220,7 +229,7 @@ const { posts } = Astro.props;
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
-                    class='post-list-link'
+                    class='post-list-item-link'
                     href='#'
                     >Post 1</a
                   >
@@ -290,7 +299,7 @@ const { posts } = Astro.props;
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
-                    class='post-list-link'
+                    class='post-list-item-link'
                     href='#'
                     >Post 1</a
                   >
