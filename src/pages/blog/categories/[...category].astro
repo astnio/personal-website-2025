@@ -29,6 +29,7 @@ const { posts } = Astro.props;
     display: flex;
     padding: 0;
     list-style: none;
+    gap: 0;
   }
 
   p {
@@ -55,19 +56,41 @@ const { posts } = Astro.props;
 
   ol.timeline-list {
     display: flex;
-    gap: 2.5rem;
+    /* gap: 2.5rem; */
     min-width: 24rem;
   }
 
   li.timeline-list-item {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    /* gap: 1rem; */
   }
 
   p.timeline-list-title {
+    position: relative;
+
     font-size: 2rem;
     font-weight: 700;
+
+    padding-bottom: 1rem;
+  }
+
+  p.timeline-list-title::after,
+  p.post-list-title::after {
+    content: '';
+
+    position: absolute;
+    right: 0;
+    /* top: 50%; */
+
+    width: 5px;
+    height: 100%;
+
+    margin-right: 2.5rem;
+
+    /* background-color: red; */
+
+    border-right: 2.5px dashed var(--clr-surface-2);
   }
 
   p.timeline-list-post-count {
@@ -83,18 +106,20 @@ const { posts } = Astro.props;
   ol.date-list {
     display: flex;
     grid-column: span 2;
-    gap: 2rem;
+    /* gap: 2rem; */
   }
 
   li.date-list-item {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    /* gap: 1rem; */
   }
 
   /*** Post List ***/
 
   p.post-list-title {
+    position: relative;
+
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--clr-subtext-0);
@@ -105,6 +130,13 @@ const { posts } = Astro.props;
   }
 
   li.post-list-item {
+    padding-bottom: 0.8rem;
+  }
+
+  li.post-list-item:last-child {
+    color: red;
+
+    padding-bottom: 1.4rem;
   }
 
   a.post-list-item-link {
