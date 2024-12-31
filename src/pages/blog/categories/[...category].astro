@@ -63,12 +63,14 @@ const { posts } = Astro.props;
 
   li.timeline-list-item {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     /* gap: 1rem; */
   }
 
   p.timeline-list-title {
     position: relative;
+
+    justify-self: end;
 
     font-size: 2rem;
     font-weight: 700;
@@ -88,13 +90,13 @@ const { posts } = Astro.props;
 
   ol.date-list {
     display: flex;
-    grid-column: span 2;
+    grid-column: span 3;
     /* gap: 2rem; */
   }
 
   li.date-list-item {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     /* gap: 1rem; */
   }
 
@@ -102,6 +104,8 @@ const { posts } = Astro.props;
 
   p.post-list-title {
     position: relative;
+
+    justify-self: end;
 
     font-size: 0.9rem;
     font-weight: 600;
@@ -129,25 +133,26 @@ const { posts } = Astro.props;
 
   /*** Seperator ***/
 
-  p.timeline-list-title::after,
-  p.post-list-title::after {
+  div.timeline-seperator {
     content: '';
 
-    position: absolute;
-    right: 0;
+    /* position: absolute; */
+    /* right: 0; */
     /* top: 50%; */
 
     width: 5px;
     height: 100%;
 
-    margin-right: 2.5rem;
+    justify-self: center;
+
+    /* margin-right: 2.5rem; */
 
     /* background-color: red; */
 
     border-right: 2.5px dashed var(--clr-surface-2);
   }
 
-  p.timeline-list-title::before {
+  /* p.timeline-list-title::before {
     content: '';
 
     position: absolute;
@@ -185,7 +190,7 @@ const { posts } = Astro.props;
     outline: 5px solid var(--clr-base);
 
     z-index: 1;
-  }
+  } */
 </style>
 
 <BaseLayout pageTitle={category}>
@@ -200,12 +205,16 @@ const { posts } = Astro.props;
       <ol class='timeline-list'>
         <li class='timeline-list-item'>
           <p class='timeline-list-title'>2024</p>
+          <div class='timeline-seperator'></div>
+
           <p class='timeline-list-post-count'>
             <span class='post-count-label'>0</span><span> Posts</span>
           </p>
           <ol class='date-list'>
             <li class='date-list-item'>
               <p class='post-list-title'>12/01</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
@@ -232,6 +241,8 @@ const { posts } = Astro.props;
             </li>
             <li class='date-list-item'>
               <p class='post-list-title'>11/04</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
@@ -244,6 +255,8 @@ const { posts } = Astro.props;
             </li>
             <li class='date-list-item'>
               <p class='post-list-title'>09/23</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
@@ -256,6 +269,8 @@ const { posts } = Astro.props;
             </li>
             <li class='date-list-item'>
               <p class='post-list-title'>02/19</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
@@ -270,12 +285,16 @@ const { posts } = Astro.props;
         </li>
         <li class='timeline-list-item'>
           <p class='timeline-list-title'>2023</p>
+          <div class='timeline-seperator'></div>
+
           <p class='timeline-list-post-count'>
             <span class='post-count-label'>0</span><span> Posts</span>
           </p>
           <ol class='date-list'>
             <li class='date-list-item'>
               <p class='post-list-title'>12/01</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
@@ -302,6 +321,8 @@ const { posts } = Astro.props;
             </li>
             <li class='date-list-item'>
               <p class='post-list-title'>11/04</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
@@ -314,6 +335,8 @@ const { posts } = Astro.props;
             </li>
             <li class='date-list-item'>
               <p class='post-list-title'>09/23</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
@@ -326,6 +349,8 @@ const { posts } = Astro.props;
             </li>
             <li class='date-list-item'>
               <p class='post-list-title'>02/19</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
@@ -340,12 +365,16 @@ const { posts } = Astro.props;
         </li>
         <li class='timeline-list-item'>
           <p class='timeline-list-title'>2022</p>
+          <div class='timeline-seperator'></div>
+
           <p class='timeline-list-post-count'>
             <span class='post-count-label'>0</span><span> Posts</span>
           </p>
           <ol class='date-list'>
             <li class='date-list-item'>
               <p class='post-list-title'>12/01</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
@@ -372,6 +401,8 @@ const { posts } = Astro.props;
             </li>
             <li class='date-list-item'>
               <p class='post-list-title'>11/04</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
@@ -384,6 +415,8 @@ const { posts } = Astro.props;
             </li>
             <li class='date-list-item'>
               <p class='post-list-title'>09/23</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
@@ -396,6 +429,8 @@ const { posts } = Astro.props;
             </li>
             <li class='date-list-item'>
               <p class='post-list-title'>02/19</p>
+              <div class='timeline-seperator'></div>
+
               <ol class='post-list'>
                 <li class='post-list-item'>
                   <a
