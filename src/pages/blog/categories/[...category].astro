@@ -24,6 +24,16 @@ const { posts } = Astro.props;
 ---
 
 <style>
+  ol,
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  p {
+    margin: 0;
+  }
+
   section {
     width: 100%;
   }
@@ -42,25 +52,48 @@ const { posts } = Astro.props;
   /*** Timeline List ***/
 
   ol.timeline-list {
+    min-width: 24rem;
+  }
+
+  li.timeline-list-item {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
   }
 
   p.timeline-list-title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  p.timeline-list-post-count {
+    font-size: 1.4rem;
+    align-self: center;
   }
 
   /*** Date List ***/
 
   ol.date-list {
+    display: flex;
+    grid-column: span 2;
   }
 
   li.date-list-item {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
   }
 
   /*** Post List ***/
 
   p.post-list-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--clr-subtext-0);
   }
 
   ol.post-list {
+    width: 100%;
   }
 
   li.post-list-item {
