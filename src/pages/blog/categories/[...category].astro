@@ -136,6 +136,8 @@ const { posts } = Astro.props;
   div.timeline-seperator {
     content: '';
 
+    position: relative;
+
     width: 5px;
     height: 100%;
 
@@ -145,29 +147,30 @@ const { posts } = Astro.props;
   }
 
   .timeline-list > li:first-child > .timeline-seperator {
-    height: 50%;
+    height: 70%;
     margin-top: auto;
+  }
+
+  .timeline-list > li:first-child > .timeline-seperator::before {
+    margin-top: 0;
   }
 
   .timeline-list
     > li:last-child
     .date-list-item:last-child
     > .timeline-seperator {
-    height: 25%;
+    height: 30%;
     margin-bottom: auto;
   }
 
-  /* p.timeline-list-title::before {
+  .timeline-list-title ~ .timeline-seperator::before {
     content: '';
 
     position: absolute;
-    right: 0;
+    right: calc(-0.24rem - 5px);
 
     width: 1rem;
     height: 1rem;
-
-    margin-right: 2.05rem;
-    margin-top: 0.5rem;
 
     border-radius: 50%;
 
@@ -176,26 +179,28 @@ const { posts } = Astro.props;
     outline: 5px solid var(--clr-base);
 
     z-index: 1;
+
+    margin-top: 0.75rem;
   }
 
-  p.post-list-title::before {
+  .post-list-title ~ .timeline-seperator::before {
     content: '';
 
     position: absolute;
-    right: 0;
+    right: calc(0.05rem - 5px);
 
     width: 0.4rem;
     height: 0.4rem;
 
-    margin-right: 2.35rem;
-
     border-radius: 50%;
 
     background-color: var(--clr-text);
-    outline: 5px solid var(--clr-base);
+    outline: 6px solid var(--clr-base);
 
     z-index: 1;
-  } */
+
+    margin-top: 0.25rem;
+  }
 </style>
 
 <BaseLayout pageTitle={category}>
