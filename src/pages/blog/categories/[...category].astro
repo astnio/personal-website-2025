@@ -33,6 +33,7 @@ const { posts } = Astro.props;
   }
 
   p {
+    isolation: isolate;
     margin: 0;
   }
 
@@ -73,24 +74,6 @@ const { posts } = Astro.props;
     font-weight: 700;
 
     padding-bottom: 1rem;
-  }
-
-  p.timeline-list-title::after,
-  p.post-list-title::after {
-    content: '';
-
-    position: absolute;
-    right: 0;
-    /* top: 50%; */
-
-    width: 5px;
-    height: 100%;
-
-    margin-right: 2.5rem;
-
-    /* background-color: red; */
-
-    border-right: 2.5px dashed var(--clr-surface-2);
   }
 
   p.timeline-list-post-count {
@@ -142,6 +125,66 @@ const { posts } = Astro.props;
   a.post-list-item-link {
     font-size: 1.2rem;
     font-weight: 600;
+  }
+
+  /*** Seperator ***/
+
+  p.timeline-list-title::after,
+  p.post-list-title::after {
+    content: '';
+
+    position: absolute;
+    right: 0;
+    /* top: 50%; */
+
+    width: 5px;
+    height: 100%;
+
+    margin-right: 2.5rem;
+
+    /* background-color: red; */
+
+    border-right: 2.5px dashed var(--clr-surface-2);
+  }
+
+  p.timeline-list-title::before {
+    content: '';
+
+    position: absolute;
+    right: 0;
+
+    width: 1rem;
+    height: 1rem;
+
+    margin-right: 2.05rem;
+    margin-top: 0.5rem;
+
+    border-radius: 50%;
+
+    background-color: var(--clr-base);
+    border: 3px solid var(--clr-primary);
+    outline: 5px solid var(--clr-base);
+
+    z-index: 1;
+  }
+
+  p.post-list-title::before {
+    content: '';
+
+    position: absolute;
+    right: 0;
+
+    width: 0.4rem;
+    height: 0.4rem;
+
+    margin-right: 2.35rem;
+
+    border-radius: 50%;
+
+    background-color: var(--clr-text);
+    outline: 5px solid var(--clr-base);
+
+    z-index: 1;
   }
 </style>
 
