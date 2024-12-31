@@ -23,104 +23,260 @@ const { category } = Astro.params;
 const { posts } = Astro.props;
 ---
 
+<style>
+  section {
+    width: 100%;
+  }
+
+  div.timeline-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    background-color: var(--clr-base);
+  }
+
+  /*** Timeline List ***/
+
+  ol.timeline-list {
+  }
+
+  p.timeline-list-title {
+  }
+
+  /*** Date List ***/
+
+  ol.date-list {
+  }
+
+  li.date-list-item {
+  }
+
+  /*** Post List ***/
+
+  p.post-list-title {
+  }
+
+  ol.post-list {
+  }
+
+  li.post-list-item {
+  }
+
+  a.post-list-item-link {
+  }
+</style>
+
 <BaseLayout pageTitle={category}>
   <!-- <p>Posts within {category}</p>
   <ul>
     {posts.map((post) => <a href={`/blog/${post.slug}/`}>{post.data.title}</a>)}
   </ul> -->
 
-  <section>
+  <section class='max-width'>
     <h1>{category}</h1>
-    <div>
-      <ol>
-        <li>
-          <p>2024</p>
-          <ol>
-            <li>
-              <p>12/01</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
-                <li><a href='#'>Post 2</a></li>
-                <li><a href='#'>Post 3</a></li>
+    <div class='timeline-list-wrapper'>
+      <ol class='timeline-list'>
+        <li class='timeline-list-item'>
+          <p class='timeline-list-title'>2024</p>
+          <ol class='date-list'>
+            <li class='date-list-item'>
+              <p class='post-list-title'>12/01</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 2</a
+                  >
+                </li>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 3</a
+                  >
+                </li>
               </ol>
             </li>
-            <li>
-              <p>11/04</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
+            <li class='date-list-item'>
+              <p class='post-list-title'>11/04</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
               </ol>
             </li>
-            <li>
-              <p>09/23</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
+            <li class='date-list-item'>
+              <p class='post-list-title'>09/23</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
               </ol>
             </li>
-            <li>
-              <p>02/19</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
+            <li class='date-list-item'>
+              <p class='post-list-title'>02/19</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
               </ol>
             </li>
           </ol>
         </li>
-        <li>
-          <p>2023</p>
-          <ol>
-            <li>
-              <p>12/01</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
+        <li class='timeline-list-item'>
+          <p class='timeline-list-title'>2023</p>
+          <ol class='date-list'>
+            <li class='date-list-item'>
+              <p class='post-list-title'>12/01</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 2</a
+                  >
+                </li>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 3</a
+                  >
+                </li>
               </ol>
             </li>
-            <li>
-              <p>11/04</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
-                <li><a href='#'>Post 2</a></li>
+            <li class='date-list-item'>
+              <p class='post-list-title'>11/04</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
               </ol>
             </li>
-            <li>
-              <p>09/23</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
+            <li class='date-list-item'>
+              <p class='post-list-title'>09/23</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
               </ol>
             </li>
-            <li>
-              <p>02/19</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
+            <li class='date-list-item'>
+              <p class='post-list-title'>02/19</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
               </ol>
             </li>
           </ol>
         </li>
-        <li>
-          <p>2022</p>
-          <ol>
-            <li>
-              <p>12/01</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
+        <li class='timeline-list-item'>
+          <p class='timeline-list-title'>2022</p>
+          <ol class='date-list'>
+            <li class='date-list-item'>
+              <p class='post-list-title'>12/01</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 2</a
+                  >
+                </li>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 3</a
+                  >
+                </li>
               </ol>
             </li>
-            <li>
-              <p>11/04</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
+            <li class='date-list-item'>
+              <p class='post-list-title'>11/04</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
               </ol>
             </li>
-            <li>
-              <p>09/23</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
+            <li class='date-list-item'>
+              <p class='post-list-title'>09/23</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
               </ol>
             </li>
-            <li>
-              <p>02/19</p>
-              <ol>
-                <li><a href='#'>Post 1</a></li>
-                <li><a href='#'>Post 2</a></li>
-                <li><a href='#'>Post 3</a></li>
+            <li class='date-list-item'>
+              <p class='post-list-title'>02/19</p>
+              <ol class='post-list'>
+                <li class='post-list-item'>
+                  <a
+                    class='post-list-item-link'
+                    href='#'
+                    >Post 1</a
+                  >
+                </li>
               </ol>
             </li>
           </ol>
