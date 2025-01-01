@@ -1,4 +1,13 @@
 ---
+/*
+
+Take inspiration from these examples:
+https://fuwari.vercel.app/archive/category/Examples/
+https://yukina-blog.vercel.app/en/categories/e68ee04d
+https://shoka.lostyu.me/archives/
+
+*/
+
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
@@ -45,7 +54,7 @@ const { posts } = Astro.props;
   div.timeline-list-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 
     width: 100%;
@@ -123,8 +132,6 @@ const { posts } = Astro.props;
   }
 
   li.post-list-item:last-child {
-    color: red;
-
     padding-bottom: 1.4rem;
   }
 
@@ -190,14 +197,14 @@ const { posts } = Astro.props;
     content: '';
 
     position: absolute;
-    right: -0.24rem;
+    right: -0.28rem;
 
-    width: 0.3rem;
-    height: 0.3rem;
+    width: 0.4rem;
+    height: 0.4rem;
 
     aspect-ratio: 1;
 
-    border-radius: 50%;
+    border-radius: 999px;
 
     background-color: var(--clr-text);
     outline: 6px solid var(--clr-base);
