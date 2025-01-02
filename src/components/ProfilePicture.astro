@@ -16,7 +16,19 @@ import profilePicture from '../assets/images/site/index/lorelei-2-removebg.png';
     background-color: var(--clr-surface-0);
 
     overflow: hidden;
+  }
 
+  a {
+    border-radius: 999px;
+
+    transition-property: scale, filter, box-shadow;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+  }
+
+  a:hover {
+    filter: brightness(110%);
+    scale: 1.02;
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25);
   }
 
@@ -28,14 +40,16 @@ import profilePicture from '../assets/images/site/index/lorelei-2-removebg.png';
   }
 </style>
 
-<div class='image-frame'>
-  <Picture
-    src={profilePicture}
-    formats={['webp', 'png']}
-    alt='Austin Hagel'
-    loading='eager'
-    decoding='async'
-    width='256'
-    class='profile-image'
-  />
-</div>
+<a href='/about'>
+  <div class='image-frame'>
+    <Picture
+      src={profilePicture}
+      formats={['webp', 'png']}
+      alt='Austin Hagel'
+      loading='eager'
+      decoding='async'
+      width='256'
+      class='profile-image'
+    />
+  </div>
+</a>
