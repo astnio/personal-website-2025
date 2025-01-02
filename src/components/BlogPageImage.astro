@@ -5,6 +5,8 @@ import darkBgImage from '../assets/images/site/blog/pexels-therato.jpg';
 
 const imageWidth = 2560;
 const imageHeight = 2560;
+
+const { imageLabel } = Astro.props;
 ---
 
 <style>
@@ -123,6 +125,40 @@ const imageHeight = 2560;
     opacity: 0;
   }
 
+  .image-label {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: 1rem;
+
+    width: 100%;
+    height: 100%;
+
+    font-size: 4rem;
+    font-weight: 700;
+
+    z-index: 10;
+  }
+
+  .image-label::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--clr-crust);
+
+    opacity: 0.6;
+
+    z-index: -1;
+  }
+
   @media screen and (min-width: 768px) {
     .bg-padding-wrapper {
       padding-inline: 1rem;
@@ -145,6 +181,7 @@ const imageHeight = 2560;
 
 <div class='max-width bg-padding-wrapper'>
   <div class='blog-background-wrapper'>
+    {imageLabel && <p class='image-label'>{imageLabel}</p>}
     <div
       data-active='true'
       class='themed-background-wrapper blog-bg-img-dark'>

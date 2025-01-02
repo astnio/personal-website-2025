@@ -24,10 +24,13 @@ const { category } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<BaseLayout pageTitle={category}>
+<BaseLayout title={`Blog | Category ${category}`}>
   <!-- <p>Posts within {category}</p>
   <ul>
     {posts.map((post) => <a href={`/blog/${post.slug}/`}>{post.data.title}</a>)}
   </ul> -->
-  <PostDirectory pagePosts={posts} />
+  <PostDirectory
+    pagePosts={posts}
+    title={category}
+  />
 </BaseLayout>

@@ -29,12 +29,10 @@ const categories = [
   ...new Set(sortedPosts.map((post: any) => post.data.category).flat()),
 ];
 
-const title = 'Blog';
-
-const { pagePosts } = Astro.props;
+const { pagePosts, title } = Astro.props;
 ---
 
-<BlogPageImage />
+<BlogPageImage imageLabel={title} />
 <div class='wrapper max-width'>
   <nav class='blog-topics-nav'>
     <ul class='blog-topics-list'>
