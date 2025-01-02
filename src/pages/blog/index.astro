@@ -33,10 +33,15 @@ const title = 'Blog';
 ---
 
 <BaseLayout title={title}>
-  <BlogPageImage imageLabel={title} />
+  <BlogPageImage
+    imageLabel={title}
+    transition:name='post-directory-image'
+  />
   <div class='wrapper max-width'>
     <nav class='blog-topics-nav'>
-      <ul class='blog-topics-list'>
+      <ul
+        class='blog-topics-list'
+        transition:name='post-directory-topics'>
         {
           topics.map((topic) => (
             <li class='blog-topics-list-item'>
@@ -51,13 +56,18 @@ const title = 'Blog';
         {
           sortedPosts.map((post: any) => (
             <li>
-              <BlogPostCard post={post} />
+              <BlogPostCard
+                post={post}
+                transition:name={`post-card-${post.id}`}
+              />
             </li>
           ))
         }
       </ul>
     </section>
-    <aside class='blog-nav-wrapper'>
+    <aside
+      class='blog-nav-wrapper'
+      transition:name='post-direcotry-nav'>
       <nav class='blog-nav'>
         <ul class='blog-nav-list'>
           <li class='blog-nav-sublist-wrapper'>
