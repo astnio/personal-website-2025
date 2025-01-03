@@ -220,7 +220,7 @@ const { post } = Astro.props;
               alt={'Placeholder image'}
               class='blog-picture'
               loading={'eager'}
-              transition:name={`blog-cover-${post.data.title}`}
+              transition:name={`featured-blog-cover-${post.data.title}`}
             />
           </a>
         </div>
@@ -239,7 +239,7 @@ const { post } = Astro.props;
           level={3}
           textOverflow='ellipsis'
           url={`/blog/${post.slug}`}
-          transition:name={`blog-title-${post.data.title}`}>
+          transition:name={`featured-blog-title-${post.data.title}`}>
           {post.data.title}
         </Heading>
       </div>
