@@ -1,12 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from './BaseLayout.astro';
 import BlogPostCard from '@components/BlogPostCard.astro';
 import BlogPageImage from '@components/BlogPageImage.astro';
 import '@styles/pages/blog.css';
 import Tag from '@components/interface/Tag.astro';
 import Chip from '@components/interface/Chip.astro';
 import { calculateReadingTime } from '@scripts/utils/readingTime';
+import PostDirectoryTopicNav from '@components/PostDirectoryTopicNav.astro';
 
 const allPosts = await getCollection('blog');
 
@@ -19,9 +19,6 @@ const sortedPosts = allPosts
     readingTime: calculateReadingTime(post.body),
   }));
 
-const topics = [
-  ...new Set(sortedPosts.map((post: any) => post.data.topic).flat()),
-];
 const tags = [
   ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
 ];
@@ -37,19 +34,7 @@ const { posts, imageLabel } = Astro.props;
   transition:name='post-directory-image'
 />
 <div class='wrapper max-width'>
-  <nav class='blog-topics-nav'>
-    <ul
-      class='blog-topics-list'
-      transition:name='post-directory-topics'>
-      {
-        topics.map((topic) => (
-          <li class='blog-topics-list-item'>
-            <a href={`/blog/topics/${topic}`}>{topic}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+  <PostDirectoryTopicNav />
   <section class='blog-post-cards-wrapper'>
     <ul class='blog-post-cards-list'>
       {
