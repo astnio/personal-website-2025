@@ -4,8 +4,9 @@ import BlogPageImage from '@components/BlogPageImage.astro';
 import '@styles/pages/blog.css';
 import PostDirectoryTopicNav from '@components/PostDirectoryTopicNav.astro';
 import PostDirectorySideNav from '@components/PostDirectorySideNav.astro';
+import BlogPostCardFeatured from '@components/BlogPostCardFeatured.astro';
 
-const { posts, imageLabel } = Astro.props;
+const { posts, imageLabel, featured } = Astro.props;
 ---
 
 <BlogPageImage
@@ -14,6 +15,14 @@ const { posts, imageLabel } = Astro.props;
 />
 <div class='wrapper max-width'>
   <PostDirectoryTopicNav />
+  {
+    featured && (
+      <BlogPostCardFeatured
+        post={featured}
+        transition:name={`post-card-featured-${featured.id}`}
+      />
+    )
+  }
   <section class='blog-post-cards-wrapper'>
     <ul class='blog-post-cards-list'>
       {
