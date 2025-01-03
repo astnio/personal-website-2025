@@ -6,18 +6,20 @@ import PostDirectory from '@layouts/PostDirectory.astro';
 
 const allPosts = await getCollection('blog');
 
-const sortedPosts = allPosts
-  .sort(
-    (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
-  )
-  .map((post) => ({
-    ...post,
-    readingTime: calculateReadingTime(post.body),
-  }));
+const readTimeCalculatedPosts = allPosts.map((post) => ({
+  ...post,
+  readingTime: calculateReadingTime(post.body),
+}));
 
-const featuredPost = sortedPosts.find((post) => {
-  return post.data.featured;
-});
+const sortedProcessedPosts = readTimeCalculatedPosts.sort(
+  (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
+);
+
+const featuredPost = sortedProcessedPosts.find((post) => post.data.featured);
+
+const sortedPosts = sortedProcessedPosts.filter(
+  (post) => post !== featuredPost
+);
 
 const title = 'Blog';
 ---
