@@ -1,11 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BlogPostCard from '../../components/BlogPostCard.astro';
-import BlogPageImage from '../../components/BlogPageImage.astro';
-import '../../styles/pages/blog.css';
-import Tag from '../../components/interface/Tag.astro';
-import Chip from '../../components/interface/Chip.astro';
 import { calculateReadingTime } from '../../scripts/utils/readingTime';
 import PostDirectory from '@layouts/PostDirectory.astro';
 
@@ -20,6 +15,10 @@ const sortedPosts = allPosts
     readingTime: calculateReadingTime(post.body),
   }));
 
+const featuredPost = sortedPosts.find((post) => {
+  return post.data.featured;
+});
+
 const title = 'Blog';
 ---
 
@@ -27,5 +26,6 @@ const title = 'Blog';
   <PostDirectory
     posts={sortedPosts}
     imageLabel={title}
+    featured={featuredPost}
   />
 </BaseLayout>
