@@ -29,8 +29,6 @@ const HeadingElement =
   a > .heading,
   a > .title,
   a > .subtitle {
-    /* width: fit-content; */
-
     transition-property: color;
     transition-duration: 0.15s;
     transition-timing-function: ease-out;
@@ -52,6 +50,7 @@ const HeadingElement =
   }
 
   a[data-text-overflow='ellipsis'],
+  p[data-text-overflow='ellipsis'],
   h1[data-text-overflow='ellipsis'],
   h2[data-text-overflow='ellipsis'],
   h3[data-text-overflow='ellipsis'],
@@ -61,41 +60,6 @@ const HeadingElement =
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  /*** Heading ***/
-
-  h1.heading,
-  h2.heading,
-  h3.heading,
-  h4.heading,
-  h5.heading,
-  h6.heading {
-    color: var(--clr-text);
-  }
-
-  h1[data-type='heading'] {
-    font-size: 1.8rem;
-  }
-
-  h2[data-type='heading'] {
-    font-size: 1.6rem;
-  }
-
-  h3[data-type='heading'] {
-    font-size: 1.4rem;
-  }
-
-  h4[data-type='heading'] {
-    font-size: 1rem;
-  }
-
-  h5[data-type='heading'] {
-    font-size: 0.8rem;
-  }
-
-  h6[data-type='heading'] {
-    font-size: 0.7rem;
   }
 
   /*** Title ***/
@@ -109,28 +73,63 @@ const HeadingElement =
     color: var(--clr-text);
   }
 
-  h1[data-type='title'] {
+  h1.title {
     font-size: 2.4rem;
   }
 
-  h2[data-type='title'] {
+  h2.title {
     font-size: 2.4rem;
   }
 
-  h3[data-type='title'] {
+  h3.title {
     font-size: 2.4rem;
   }
 
-  h4[data-type='title'] {
+  h4.title {
     font-size: 2.4rem;
   }
 
-  h5[data-type='title'] {
+  h5.title {
     font-size: 2.4rem;
   }
 
-  h6[data-type='title'] {
+  h6.title {
     font-size: 2.4rem;
+  }
+
+  /*** Heading ***/
+
+  h1.heading,
+  h2.heading,
+  h3.heading,
+  h4.heading,
+  h5.heading,
+  h6.heading {
+    color: var(--clr-text);
+  }
+
+  h1.heading {
+    font-size: 1.8rem;
+  }
+
+  h2.heading {
+    font-size: 1.6rem;
+  }
+
+  h3.heading {
+    font-size: 1.4rem;
+  }
+
+  h4.heading {
+    font-size: 1rem;
+  }
+
+  h5.heading {
+    font-size: 0.8rem;
+  }
+
+  h6.heading {
+    font-size: 0.7rem;
   }
 
   /*** Subtitle ***/
@@ -144,27 +143,27 @@ const HeadingElement =
     color: var(--clr-subtext-1);
   }
 
-  p[data-type='subtitle'][data-level='1'] {
+  p.subtitle[data-level='1'] {
     font-size: 1.8rem;
   }
 
-  p[data-type='subtitle'][data-level='2'] {
+  p.subtitle[data-level='2'] {
     font-size: 1.4rem;
   }
 
-  p[data-type='subtitle'][data-level='3'] {
+  p.subtitle[data-level='3'] {
     font-size: 1.2rem;
   }
 
-  p[data-type='subtitle'][data-level='4'] {
+  p.subtitle[data-level='4'] {
     font-size: 1rem;
   }
 
-  p[data-type='subtitle'][data-level='5'] {
+  p.subtitle[data-level='5'] {
     font-size: 0.85rem;
   }
 
-  p[data-type='subtitle'][data-level='6'] {
+  p.subtitle[data-level='6'] {
     font-size: 0.75rem;
   }
 </style>
@@ -174,7 +173,6 @@ const HeadingElement =
     <a href={url}>
       <HeadingElement
         class={`${className} ${type}`}
-        data-type={type}
         data-text-overflow={textOverflow}
         data-level={level}>
         <slot />
@@ -183,7 +181,6 @@ const HeadingElement =
   ) : (
     <HeadingElement
       class={`${className} ${type}`}
-      data-type={type}
       data-text-overflow={textOverflow}
       data-level={level}>
       <slot />
