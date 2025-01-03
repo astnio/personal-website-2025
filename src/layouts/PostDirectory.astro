@@ -29,11 +29,19 @@ const { posts, imageLabel, featured } = Astro.props;
     padding: 0;
   }
 
-  /*** Featured Post Wrapper ***/
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    padding-inline: 1rem;
+  }
 
   .featured-post-wrapper {
     grid-column: span 2;
-    padding-inline: 1rem;
+    /* padding-inline: 1rem; */
+  }
+
+  .side-nav-wrapper {
   }
 
   @media screen and (min-width: 768px) {
@@ -49,7 +57,7 @@ const { posts, imageLabel, featured } = Astro.props;
   imageLabel={imageLabel}
   transition:name='post-directory-image'
 />
-<div class='wrapper max-width'>
+<div class='content-wrapper max-width'>
   <PostDirectoryTopicNav />
   {
     featured && (
@@ -75,5 +83,7 @@ const { posts, imageLabel, featured } = Astro.props;
       }
     </ul>
   </section>
-  <PostDirectorySideNav />
+  <div class='side-nav-wrapper'>
+    <PostDirectorySideNav />
+  </div>
 </div>
