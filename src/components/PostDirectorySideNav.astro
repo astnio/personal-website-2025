@@ -1,0 +1,70 @@
+---
+import { calculateReadingTime } from '@scripts/utils/readingTime';
+import { getCollection } from 'astro:content';
+import Chip from './interface/Chip.astro';
+import Tag from './interface/Tag.astro';
+
+const allPosts = await getCollection('blog');
+
+const sortedPosts = allPosts
+  .sort(
+    (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
+  )
+  .map((post) => ({
+    ...post,
+    readingTime: calculateReadingTime(post.body),
+  }));
+
+const tags = [
+  ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
+];
+const categories = [
+  ...new Set(sortedPosts.map((post: any) => post.data.category).flat()),
+];
+---
+
+<aside
+  class='blog-nav-wrapper'
+  transition:name='post-direcotry-nav'>
+  <nav class='blog-nav'>
+    <ul class='blog-nav-list'>
+      <li class='blog-nav-sublist-wrapper'>
+        <a
+          href='/blog/categories'
+          class='blog-nav-list-title'>
+          <span class='bx bxs-category'></span>
+          <span>Categories</span>
+        </a>
+        <ul class='blog-nav-sublist category-list'>
+          {
+            categories.map((category) => (
+              <li>
+                <Chip url={`/blog/categories/${category}`}>{category}</Chip>
+              </li>
+            ))
+          }
+        </ul>
+      </li>
+      <li class='blog-nav-sublist-wrapper'>
+        <a
+          href='/blog/tags'
+          class='blog-nav-list-title'>
+          <span class='bx bxs-tag'></span>
+          <span>Tags</span>
+        </a>
+        <ul class='blog-nav-sublist tags-list'>
+          {
+            tags.map((tag) => (
+              <li>
+                <Tag url={`/blog/tags/${tag}`}>{tag}</Tag>
+              </li>
+            ))
+          }
+        </ul>
+      </li>
+      <li>
+        <a href='/blog/archive'>Archive</a>
+      </li>
+    </ul>
+  </nav>
+</aside>
