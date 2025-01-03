@@ -32,13 +32,7 @@ const { posts, imageLabel, featured } = Astro.props;
   /* *** Blog Topics Navigation *** */
 
   .blog-topics-nav {
-    /* position: sticky;
-  top: 3.5rem; */
-
     grid-column: span 2;
-    /* margin-bottom: 4rem; */
-
-    /* z-index: 10; */
   }
 
   .blog-topics-list {
@@ -50,7 +44,6 @@ const { posts, imageLabel, featured } = Astro.props;
 
     padding: 1rem;
 
-    /* border: 1px solid var(--clr-surface-0); */
     border-radius: var(--radius-base);
   }
 
@@ -185,15 +178,6 @@ const { posts, imageLabel, featured } = Astro.props;
 
     .blog-nav-wrapper[data-appbar-revealed='false'] {
       top: 0;
-    }
-
-    /* *** Utility *** */
-
-    .wrapper {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: start;
-      /* margin-top: 20rem; */
     }
   }
 </style>
