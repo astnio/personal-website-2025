@@ -22,15 +22,13 @@ export async function getStaticPaths() {
 
 const { category } = Astro.params;
 const { posts } = Astro.props;
+
+const title = `Blog | Category ${category}`;
 ---
 
-<BaseLayout title={`Blog | Category ${category}`}>
-  <!-- <p>Posts within {category}</p>
-  <ul>
-    {posts.map((post) => <a href={`/blog/${post.slug}/`}>{post.data.title}</a>)}
-  </ul> -->
+<BaseLayout title={title}>
   <PostDirectory
-    pagePosts={posts}
-    title={category}
+    posts={posts}
+    imageLabel={category}
   />
 </BaseLayout>

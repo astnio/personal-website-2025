@@ -7,6 +7,7 @@ import '../../styles/pages/blog.css';
 import Tag from '../../components/interface/Tag.astro';
 import Chip from '../../components/interface/Chip.astro';
 import { calculateReadingTime } from '../../scripts/utils/readingTime';
+import PostDirectory from '@layouts/PostDirectory.astro';
 
 const allPosts = await getCollection('blog');
 
@@ -19,96 +20,12 @@ const sortedPosts = allPosts
     readingTime: calculateReadingTime(post.body),
   }));
 
-const topics = [
-  ...new Set(sortedPosts.map((post: any) => post.data.topic).flat()),
-];
-const tags = [
-  ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
-];
-const categories = [
-  ...new Set(sortedPosts.map((post: any) => post.data.category).flat()),
-];
-
 const title = 'Blog';
 ---
 
 <BaseLayout title={title}>
-  <BlogPageImage
+  <PostDirectory
+    posts={sortedPosts}
     imageLabel={title}
-    transition:name='post-directory-image'
   />
-  <div class='wrapper max-width'>
-    <nav class='blog-topics-nav'>
-      <ul
-        class='blog-topics-list'
-        transition:name='post-directory-topics'>
-        {
-          topics.map((topic) => (
-            <li class='blog-topics-list-item'>
-              <a href={`/blog/topics/${topic}`}>{topic}</a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
-    <section class='blog-post-cards-wrapper'>
-      <ul class='blog-post-cards-list'>
-        {
-          sortedPosts.map((post: any) => (
-            <li>
-              <BlogPostCard
-                post={post}
-                transition:name={`post-card-${post.id}`}
-              />
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-    <aside
-      class='blog-nav-wrapper'
-      transition:name='post-direcotry-nav'>
-      <nav class='blog-nav'>
-        <ul class='blog-nav-list'>
-          <li class='blog-nav-sublist-wrapper'>
-            <a
-              href='/blog/categories'
-              class='blog-nav-list-title'>
-              <span class='bx bxs-category'></span>
-              <span>Categories</span>
-            </a>
-            <ul class='blog-nav-sublist category-list'>
-              {
-                categories.map((category) => (
-                  <li>
-                    <Chip url={`/blog/categories/${category}`}>{category}</Chip>
-                  </li>
-                ))
-              }
-            </ul>
-          </li>
-          <li class='blog-nav-sublist-wrapper'>
-            <a
-              href='/blog/tags'
-              class='blog-nav-list-title'>
-              <span class='bx bxs-tag'></span>
-              <span>Tags</span>
-            </a>
-            <ul class='blog-nav-sublist tags-list'>
-              {
-                tags.map((tag) => (
-                  <li>
-                    <Tag url={`/blog/tags/${tag}`}>{tag}</Tag>
-                  </li>
-                ))
-              }
-            </ul>
-          </li>
-          <li>
-            <a href='/blog/archive'>Archive</a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-  </div>
 </BaseLayout>
