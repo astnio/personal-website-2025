@@ -70,7 +70,8 @@ const categories = [
     width: 100%;
 
     border-radius: var(--radius-surface);
-    /* outline: 1px solid var(--clr-surface-0); */
+
+    overflow: hidden;
   }
 
   .blog-nav-sublist {
@@ -120,11 +121,11 @@ const categories = [
     }
 
     .blog-nav-wrapper[data-appbar-revealed='true'] {
-      top: 4rem;
+      top: 5rem;
     }
 
     .blog-nav-wrapper[data-appbar-revealed='false'] {
-      top: 0;
+      top: 1rem;
     }
 
     .blog-nav-list {
