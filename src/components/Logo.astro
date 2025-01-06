@@ -3,25 +3,20 @@ const { mobileView } = Astro.props;
 ---
 
 <style>
-  a {
+  a.logo-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
 
     text-decoration: none;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 0.6ch;
-    font-size: 1.2rem;
 
-    color: var(--clr-text);
     background-color: var(--clr-crust);
 
     outline: 1px solid var(--clr-surface-0);
     border-radius: var(--radius-surface);
 
-    padding-inline: 0.8rem;
-    padding-block: 0.4rem;
+    padding-inline: 0.6rem;
+    padding-block: 0.2rem;
 
     max-width: 6.4rem;
 
@@ -30,14 +25,12 @@ const { mobileView } = Astro.props;
     transition-timing-function: ease-out;
   }
 
-  a:hover {
-    font-weight: 400;
-    color: var(--clr-crust);
+  a.logo-wrapper:hover {
     background-color: var(--clr-text);
     outline: 1px solid var(--clr-subtext-0);
   }
 
-  a[data-mobile-view='true'] {
+  a.logo-wrapper[data-mobile-view='true'] {
     position: fixed;
     top: 0;
     left: 0;
@@ -48,23 +41,54 @@ const { mobileView } = Astro.props;
     display: none;
   }
 
-  a[data-mobile-view='false'] {
+  a.logo-wrapper[data-mobile-view='false'] {
     /* display: none; */
   }
 
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6ch;
+    font-size: 1rem;
+    color: var(--clr-text);
+  }
+
+  a.logo-wrapper:hover > .logo {
+    /* font-weight: 400; */
+    color: var(--clr-crust);
+  }
+
+  .logo-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: -0.2em;
+  }
+
   @media screen and (min-width: 768px) {
-    a[data-mobile-view='true'] {
+    a.logo-wrapper[data-mobile-view='true'] {
       display: none;
     }
 
-    a[data-mobile-view='false'] {
+    a.logo-wrapper[data-mobile-view='false'] {
       display: flex;
     }
   }
 </style>
 
 <a
+  class='logo-wrapper'
   data-mobile-view={mobileView}
-  href='/'
-  ><span id='logo'><span class='label-domain'>astn</span></span>
+  href='/'>
+  <span class='logo'>
+    <span class='logo-text'>as</span>
+    <span class='logo-text'>tn</span>
+  </span>
 </a>
