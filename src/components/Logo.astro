@@ -15,8 +15,8 @@ const { mobileView } = Astro.props;
     outline: 1px solid var(--clr-surface-0);
     border-radius: var(--radius-surface);
 
-    padding-inline: 0.6rem;
-    padding-block: 0.2rem;
+    padding-inline: 0.8rem;
+    padding-block: 0.4rem;
 
     max-width: 6.4rem;
 
@@ -47,7 +47,7 @@ const { mobileView } = Astro.props;
 
   .logo {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 
@@ -56,7 +56,7 @@ const { mobileView } = Astro.props;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.6ch;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: var(--clr-text);
   }
 
@@ -88,7 +88,7 @@ const { mobileView } = Astro.props;
   data-mobile-view={mobileView}
   href='/'>
   <span class='logo'>
-    <span class='logo-text'>as</span>
-    <span class='logo-text'>tn</span>
+    <span class='logo-text'>astn</span>
+    <!-- <span class='logo-text'>tn</span> -->
   </span>
 </a>
