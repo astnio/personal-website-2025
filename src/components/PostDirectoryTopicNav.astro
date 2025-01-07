@@ -2,20 +2,16 @@
 import { calculateReadingTime } from '@scripts/utils/readingTime';
 import { getCollection } from 'astro:content';
 
-const allPosts = await getCollection('blog');
+// const allPosts = await getCollection('blog');
 
-const sortedPosts = allPosts
-  .sort(
-    (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
-  )
-  .map((post) => ({
-    ...post,
-    readingTime: calculateReadingTime(post.body),
-  }));
+type Props = {
+  posts: any;
+  urlPath: string | '/blog/topics/';
+};
 
-const topics = [
-  ...new Set(sortedPosts.map((post: any) => post.data.topic).flat()),
-];
+const { posts, urlPath } = Astro.props;
+
+const topics = [...new Set(posts.map((post: any) => post.data.topic).flat())];
 ---
 
 <style>
@@ -113,9 +109,9 @@ const topics = [
     class='blog-topics-list'
     transition:name='post-directory-topics'>
     {
-      topics.map((topic) => (
+      topics.map((topic: any) => (
         <li class='blog-topics-list-item'>
-          <a href={`/blog/topics/${topic}`}>{topic}</a>
+          <a href={`${urlPath}${topic}`}>{topic}</a>
         </li>
       ))
     }

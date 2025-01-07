@@ -58,7 +58,10 @@ const { posts, imageLabel, featured } = Astro.props;
   transition:name='post-directory-image'
 />
 <div class='content-wrapper max-width'>
-  <PostDirectoryTopicNav />
+  <PostDirectoryTopicNav
+    posts={posts}
+    urlPath={`/blog/topics/`}
+  />
   {
     featured && (
       <div class='featured-post-wrapper'>
