@@ -47,15 +47,26 @@ const topics = [
   }
 
   .blog-topics-list {
+    position: relative;
+
     display: flex;
     flex-direction: row;
     gap: 2rem;
+  }
 
-    background-color: var(--clr-base);
+  .blog-topics-list::after {
+    content: '';
 
-    padding: 1rem;
+    position: absolute;
+    left: 0;
+    bottom: -1rem;
 
-    border-radius: var(--radius-base);
+    width: 100%;
+    height: 3px;
+
+    border-radius: 999px;
+
+    background-color: var(--clr-text);
   }
 </style>
 
