@@ -1,7 +1,7 @@
 ---
-import { calculateReadingTime } from '../scripts/utils/readingTime';
-import Chip from './interface/Chip.astro';
-import DateLabel from './interface/DateLabel.astro';
+import Chip from '@components/interface/Chip.astro';
+import DateLabel from '@components/interface/DateLabel.astro';
+import { calculateReadingTime } from '@scripts/utils/readingTime';
 
 const { post } = Astro.props;
 const timeRead = calculateReadingTime(post.body);

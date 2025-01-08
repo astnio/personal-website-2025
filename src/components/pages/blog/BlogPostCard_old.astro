@@ -1,11 +1,11 @@
 ---
 import { Picture } from 'astro:assets';
 import '../styles/components/blogPostCard.css';
-import ReadMoreButton from './ReadMoreButton.astro';
 import type { CollectionEntry } from 'astro:content';
-import PostInfo from './PostInfo.astro';
-import Heading from './typgraphy/Heading.astro';
 import { fade } from 'astro:transitions';
+import Heading from '@components/typgraphy/Heading.astro';
+import ReadMoreButton from './ReadMoreButton.astro';
+import PostInfo from './PostInfo.astro';
 
 type Props = {
   post: CollectionEntry<'blog'>;

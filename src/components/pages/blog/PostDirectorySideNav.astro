@@ -1,8 +1,8 @@
 ---
+import Chip from '@components/interface/Chip.astro';
+import Tag from '@components/interface/Tag.astro';
 import { calculateReadingTime } from '@scripts/utils/readingTime';
 import { getCollection } from 'astro:content';
-import Chip from './interface/Chip.astro';
-import Tag from './interface/Tag.astro';
 
 const allPosts = await getCollection('blog');
 
@@ -10,7 +10,7 @@ const sortedPosts = allPosts
   .sort(
     (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
   )
-  .map((post) => ({
+  .map((post: any) => ({
     ...post,
     readingTime: calculateReadingTime(post.body),
   }));

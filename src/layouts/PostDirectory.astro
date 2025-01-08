@@ -1,9 +1,11 @@
 ---
-import BlogPostCard from '@components/BlogPostCard.astro';
-import BlogPageImage from '@components/BlogPageImage.astro';
-import PostDirectoryTopicNav from '@components/PostDirectoryTopicNav.astro';
-import PostDirectorySideNav from '@components/PostDirectorySideNav.astro';
-import BlogPostCardFeatured from '@components/BlogPostCardFeatured.astro';
+import BlogPageImage from "@components/pages/blog/BlogPageImage.astro";
+import BlogPostCard from "@components/pages/blog/BlogPostCard.astro";
+import BlogPostCardFeatured from "@components/pages/blog/BlogPostCardFeatured.astro";
+import PostDirectorySideNav from "@components/pages/blog/PostDirectorySideNav.astro";
+import PostDirectoryTopicNav from "@components/pages/blog/PostDirectoryTopicNav.astro";
+
+
 
 const { posts, imageLabel, featured } = Astro.props;
 ---

@@ -1,12 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { calculateReadingTime } from '../../scripts/utils/readingTime';
+import { calculateReadingTime } from '@scripts/utils/readingTime';
 import PostDirectory from '@layouts/PostDirectory.astro';
 
 const allPosts = await getCollection('blog');
 
-const readTimeCalculatedPosts = allPosts.map((post) => ({
+const readTimeCalculatedPosts = allPosts.map((post: any) => ({
   ...post,
   readingTime: calculateReadingTime(post.body),
 }));
@@ -15,10 +15,10 @@ const sortedProcessedPosts = readTimeCalculatedPosts.sort(
   (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
 );
 
-const featuredPost = sortedProcessedPosts.find((post) => post.data.featured);
+const featuredPost = sortedProcessedPosts.find((post: any) => post.data.featured);
 
 const sortedPosts = sortedProcessedPosts.filter(
-  (post) => post !== featuredPost
+  (post: any) => post !== featuredPost
 );
 
 const title = 'Blog';
