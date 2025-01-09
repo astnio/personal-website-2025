@@ -35,6 +35,8 @@ const { id, label, iconClass = true } = Astro.props;
 
     overflow: hidden;
 
+    cursor: pointer;
+
     transition-property: color, background-color, outline;
     transition-duration: 0.1s;
     transition-timing-function: ease-out;
@@ -59,7 +61,7 @@ const { id, label, iconClass = true } = Astro.props;
 
     margin: auto;
     margin-left: 1rem;
-    padding-right: var(--spacing);
+    /* padding-right: var(--spacing); */
 
     font-size: 1rem;
     font-weight: 500;
@@ -104,9 +106,6 @@ const { id, label, iconClass = true } = Astro.props;
 </style>
 
 <button id={id} class="icon-btn">
-  <div class="btn-icon-wrapper">
-    <span class={`btn-icon ${iconClass}`}></span>
-  </div>
   {
     label ? (
       <span class="btn-label">{label}</span>
@@ -116,4 +115,7 @@ const { id, label, iconClass = true } = Astro.props;
       </span>
     )
   }
+  <div class="btn-icon-wrapper">
+    <span class={`btn-icon ${iconClass}`}></span>
+  </div>
 </button>

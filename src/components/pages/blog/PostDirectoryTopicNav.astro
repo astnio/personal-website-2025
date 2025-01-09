@@ -1,5 +1,5 @@
 ---
-import IconButton from "@components/IconButton.astro";
+import IconButton from "@components/ShowMoreButton.astro";
 import { calculateReadingTime } from "@scripts/utils/readingTime";
 import { getCollection } from "astro:content";
 
@@ -124,3 +124,15 @@ const topics = [...new Set(posts.map((post: any) => post.data.topic).flat())];
     </li>
   </ul>
 </nav>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const btnShowMore = document.getElementById(
+      "btn-blog-topics-nav-show-more"
+    );
+
+    btnShowMore?.addEventListener("click", () => {
+      console.log("hello");
+    });
+  });
+</script>
