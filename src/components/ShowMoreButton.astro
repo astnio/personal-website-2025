@@ -2,9 +2,8 @@
 interface Props {
   id: string;
   label?: string;
-  iconClass: string;
 }
-const { id, label, iconClass = true } = Astro.props;
+const { id, label } = Astro.props;
 ---
 
 <style>
@@ -116,6 +115,6 @@ const { id, label, iconClass = true } = Astro.props;
     )
   }
   <div class="btn-icon-wrapper">
-    <span class={`btn-icon ${iconClass}`}></span>
+    <span class={`btn-icon bx bxs-chevron-down`}></span>
   </div>
 </button>

@@ -1,0 +1,61 @@
+---
+import ShowMoreButton from "./ShowMoreButton.astro";
+
+const { id } = Astro.props;
+---
+
+<style>
+  .show-more-menu-wrapper {
+    position: absolute;
+
+    left: 0;
+
+    width: 100%;
+
+    margin-top: 2rem;
+
+    background-color: var(--clr-base);
+    padding: 1rem;
+
+    border-radius: var(--radius-surface);
+  }
+
+  ul.link-list {
+    display: flex;
+    flex-direction: row;
+
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+  }
+
+  li.link-list-item {
+    padding: 0;
+    margin: 0;
+  }
+</style>
+
+<div class="show-more-wrapper">
+  <ShowMoreButton id={id}> Show More </ShowMoreButton>
+
+  <aside class="show-more-menu-wrapper">
+    <ul class="link-list">
+      <li class="link-list-item">item</li>
+      <li class="link-list-item">item</li>
+      <li class="link-list-item">item</li>
+    </ul>
+  </aside>
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const btnShowMore = document.getElementById(
+      "btn-blog-topics-nav-show-more"
+    );
+
+    btnShowMore?.addEventListener("click", () => {
+      console.log("hello");
+    });
+  });
+</script>

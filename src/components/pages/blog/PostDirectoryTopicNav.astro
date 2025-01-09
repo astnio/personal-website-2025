@@ -1,9 +1,6 @@
 ---
-import IconButton from "@components/ShowMoreButton.astro";
-import { calculateReadingTime } from "@scripts/utils/readingTime";
-import { getCollection } from "astro:content";
-
-// const allPosts = await getCollection('blog');
+import ShowMoreButton from "@components/ShowMoreButton.astro";
+import ShowMoreMenu from "@components/ShowMoreMenu.astro";
 
 type Props = {
   posts: any;
@@ -78,7 +75,8 @@ const topics = [...new Set(posts.map((post: any) => post.data.topic).flat())];
     grid-column: span 2;
     /* padding-inline: 1rem; */
 
-    margin-block: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
   }
 
   .blog-topics-list {
@@ -115,24 +113,7 @@ const topics = [...new Set(posts.map((post: any) => post.data.topic).flat())];
       ))
     }
     <li class="btn-show-more-wrapper">
-      <IconButton
-        id="btn-blog-topics-nav-show-more"
-        iconClass="bx bxs-chevron-down"
-      >
-        Show More
-      </IconButton>
+      <ShowMoreMenu id="btn-blog-topics-nav-show-more" />
     </li>
   </ul>
 </nav>
-
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const btnShowMore = document.getElementById(
-      "btn-blog-topics-nav-show-more"
-    );
-
-    btnShowMore?.addEventListener("click", () => {
-      console.log("hello");
-    });
-  });
-</script>
