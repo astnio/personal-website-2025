@@ -1,12 +1,13 @@
 ---
-import { calculateReadingTime } from '@scripts/utils/readingTime';
-import { getCollection } from 'astro:content';
+import IconButton from "@components/IconButton.astro";
+import { calculateReadingTime } from "@scripts/utils/readingTime";
+import { getCollection } from "astro:content";
 
 // const allPosts = await getCollection('blog');
 
 type Props = {
   posts: any;
-  urlPath: string | '/blog/topics/';
+  urlPath: string | "/blog/topics/";
 };
 
 const { posts, urlPath } = Astro.props;
@@ -32,7 +33,7 @@ const topics = [...new Set(posts.map((post: any) => post.data.topic).flat())];
   }
 
   a::after {
-    content: '';
+    content: "";
 
     position: absolute;
     bottom: -1rem;
@@ -89,7 +90,7 @@ const topics = [...new Set(posts.map((post: any) => post.data.topic).flat())];
   }
 
   .blog-topics-list::after {
-    content: '';
+    content: "";
 
     position: absolute;
     left: 0;
@@ -104,16 +105,22 @@ const topics = [...new Set(posts.map((post: any) => post.data.topic).flat())];
   }
 </style>
 
-<nav class='blog-topics-nav'>
-  <ul
-    class='blog-topics-list'
-    transition:name='post-directory-topics'>
+<nav class="blog-topics-nav">
+  <ul class="blog-topics-list" transition:name="post-directory-topics">
     {
       topics.map((topic: any) => (
-        <li class='blog-topics-list-item'>
+        <li class="blog-topics-list-item">
           <a href={`${urlPath}${topic}`}>{topic}</a>
         </li>
       ))
     }
+    <li class="btn-show-more-wrapper">
+      <IconButton
+        id="btn-blog-topics-nav-show-more"
+        iconClass="bx bxs-chevron-down"
+      >
+        Show More
+      </IconButton>
+    </li>
   </ul>
 </nav>
