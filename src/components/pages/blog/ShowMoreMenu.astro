@@ -18,8 +18,6 @@ const { id } = Astro.props;
     padding: 1rem;
 
     border-radius: var(--radius-surface);
-
-    z-index: 10;
   }
 
   ul.link-list {
@@ -42,11 +40,13 @@ const { id } = Astro.props;
   <ShowMoreButton id={id}> Show More </ShowMoreButton>
 
   <aside class='show-more-menu-wrapper'>
-    <ul class='link-list'>
-      <li class='link-list-item'>item</li>
-      <li class='link-list-item'>item</li>
-      <li class='link-list-item'>item</li>
-    </ul>
+    <nav>
+      <ul class='link-list'>
+        <li class='link-list-item'><a href='#'>Topic Item 1</a></li>
+        <li class='link-list-item'><a href='#'>Topic Item 2</a></li>
+        <li class='link-list-item'><a href='#'>Topic Item 3</a></li>
+      </ul>
+    </nav>
   </aside>
 </div>
 
