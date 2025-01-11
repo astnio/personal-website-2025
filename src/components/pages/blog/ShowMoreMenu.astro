@@ -56,8 +56,18 @@ const { id } = Astro.props;
       'btn-blog-topics-nav-show-more'
     );
 
+    const btnShowMoreLabel = btnShowMore!.querySelector(
+      '.btn-label'
+    ) as HTMLElement;
+
     btnShowMore?.addEventListener('click', () => {
-      console.log('hello');
+      if (btnShowMore.getAttribute('data-open') === 'true') {
+        btnShowMoreLabel!.innerText = 'Show Less';
+        btnShowMore.setAttribute('data-open', 'false');
+      } else if (btnShowMore.getAttribute('data-open') === 'false') {
+        btnShowMoreLabel!.innerText = 'Show More';
+        btnShowMore.setAttribute('data-open', 'true');
+      }
     });
   });
 </script>

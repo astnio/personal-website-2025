@@ -106,17 +106,20 @@ const { id, label } = Astro.props;
   }
 </style>
 
-<button id={id} class="icon-btn">
+<button
+  id={id}
+  class='icon-btn'
+  data-open='true'>
   {
     label ? (
-      <span class="btn-label">{label}</span>
+      <span class='btn-label'>{label}</span>
     ) : (
-      <span class="btn-label">
+      <span class='btn-label'>
         <slot />
       </span>
     )
   }
-  <div class="btn-icon-wrapper">
+  <div class='btn-icon-wrapper'>
     <span class={`btn-icon bx bxs-chevron-down`}></span>
   </div>
 </button>
