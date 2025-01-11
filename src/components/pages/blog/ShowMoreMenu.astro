@@ -1,5 +1,5 @@
 ---
-import ShowMoreButton from "./ShowMoreButton.astro";
+import ShowMoreButton from './ShowMoreButton.astro';
 
 const { id } = Astro.props;
 ---
@@ -8,9 +8,9 @@ const { id } = Astro.props;
   .show-more-menu-wrapper {
     position: absolute;
 
-    left: 0;
+    right: 0;
 
-    width: 100%;
+    width: 12rem;
 
     margin-top: 2rem;
 
@@ -18,11 +18,13 @@ const { id } = Astro.props;
     padding: 1rem;
 
     border-radius: var(--radius-surface);
+
+    z-index: 10;
   }
 
   ul.link-list {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     padding: 0;
     margin: 0;
@@ -36,26 +38,26 @@ const { id } = Astro.props;
   }
 </style>
 
-<div class="show-more-wrapper">
+<div class='show-more-wrapper'>
   <ShowMoreButton id={id}> Show More </ShowMoreButton>
 
-  <aside class="show-more-menu-wrapper">
-    <ul class="link-list">
-      <li class="link-list-item">item</li>
-      <li class="link-list-item">item</li>
-      <li class="link-list-item">item</li>
+  <aside class='show-more-menu-wrapper'>
+    <ul class='link-list'>
+      <li class='link-list-item'>item</li>
+      <li class='link-list-item'>item</li>
+      <li class='link-list-item'>item</li>
     </ul>
   </aside>
 </div>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
+  document.addEventListener('astro:page-load', () => {
     const btnShowMore = document.getElementById(
-      "btn-blog-topics-nav-show-more"
+      'btn-blog-topics-nav-show-more'
     );
 
-    btnShowMore?.addEventListener("click", () => {
-      console.log("hello");
+    btnShowMore?.addEventListener('click', () => {
+      console.log('hello');
     });
   });
 </script>
