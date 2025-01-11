@@ -21,6 +21,22 @@ const { id } = Astro.props;
     outline: 1px solid var(--clr-surface-0);
 
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+
+    transition-property: transform, visibility, opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .show-more-menu-wrapper[data-open='true'] {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  .show-more-menu-wrapper[data-open='false'] {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20%);
   }
 
   ul.link-list {
@@ -42,7 +58,10 @@ const { id } = Astro.props;
 <div class='show-more-wrapper'>
   <ShowMoreButton id={id}> Show More </ShowMoreButton>
 
-  <aside class='show-more-menu-wrapper'>
+  <aside
+    class='show-more-menu-wrapper'
+    id='show-more-menu-wrapper'
+    data-open='false'>
     <nav>
       <ul class='link-list'>
         <li class='link-list-item'><a href='#'>Topic Item 1</a></li>
@@ -55,6 +74,8 @@ const { id } = Astro.props;
 
 <script>
   document.addEventListener('astro:page-load', () => {
+    const menuShowMore = document.getElementById('show-more-menu-wrapper');
+
     const btnShowMore = document.getElementById(
       'btn-blog-topics-nav-show-more'
     );
@@ -64,13 +85,15 @@ const { id } = Astro.props;
     ) as HTMLElement;
 
     function closeMenu() {
-      btnShowMoreLabel!.innerText = 'Show Less';
+      btnShowMoreLabel!.innerText = 'Show More';
       btnShowMore!.setAttribute('data-open', 'false');
+      menuShowMore!.setAttribute('data-open', 'false');
     }
 
     function openMenu() {
-      btnShowMoreLabel!.innerText = 'Show More';
+      btnShowMoreLabel!.innerText = 'Show Less';
       btnShowMore!.setAttribute('data-open', 'true');
+      menuShowMore!.setAttribute('data-open', 'true');
     }
 
     btnShowMore?.addEventListener('click', () => {
