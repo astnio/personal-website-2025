@@ -1,10 +1,9 @@
 ---
-import ShowMoreButton from "@components/ShowMoreButton.astro";
-import ShowMoreMenu from "@components/ShowMoreMenu.astro";
+import ShowMoreMenu from './ShowMoreMenu.astro';
 
 type Props = {
   posts: any;
-  urlPath: string | "/blog/topics/";
+  urlPath: string | '/blog/topics/';
 };
 
 const { posts, urlPath } = Astro.props;
@@ -32,7 +31,7 @@ const topics = [
   }
 
   a::after {
-    content: "";
+    content: '';
 
     position: absolute;
     bottom: -1rem;
@@ -90,7 +89,7 @@ const topics = [
   }
 
   .blog-topics-list::after {
-    content: "";
+    content: '';
 
     position: absolute;
     left: 0;
@@ -117,17 +116,19 @@ const topics = [
   }
 </style>
 
-<nav class="blog-topics-nav">
-  <ul class="blog-topics-list" transition:name="post-directory-topics">
+<nav class='blog-topics-nav'>
+  <ul
+    class='blog-topics-list'
+    transition:name='post-directory-topics'>
     {
       topics.map((topic: any) => (
-        <li class="blog-topics-list-item">
+        <li class='blog-topics-list-item'>
           <a href={`${urlPath}${topic}`}>{topic}</a>
         </li>
       ))
     }
-    <li class="btn-show-more-wrapper">
-      <ShowMoreMenu id="btn-blog-topics-nav-show-more" />
+    <li class='btn-show-more-wrapper'>
+      <ShowMoreMenu id='btn-blog-topics-nav-show-more' />
     </li>
   </ul>
 </nav>
