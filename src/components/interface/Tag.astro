@@ -35,10 +35,15 @@ const { url } = Astro.props;
 
   .tag::before {
     content: '#';
+
+    position: relative;
+    top: 1px;
+    left: -1px;
+
     color: var(--clr-subtext-0);
     opacity: 0.4;
     font-size: 1rem;
-    margin-right: 0.15ch;
+    /* margin-right: 0.15ch; */
 
     transition-property: opacity, color;
     transition-duration: 0.15s;
