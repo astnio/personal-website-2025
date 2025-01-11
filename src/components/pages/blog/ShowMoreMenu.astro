@@ -60,13 +60,21 @@ const { id } = Astro.props;
       '.btn-label'
     ) as HTMLElement;
 
+    function closeMenu() {
+      btnShowMoreLabel!.innerText = 'Show Less';
+      btnShowMore!.setAttribute('data-open', 'false');
+    }
+
+    function openMenu() {
+      btnShowMoreLabel!.innerText = 'Show More';
+      btnShowMore!.setAttribute('data-open', 'true');
+    }
+
     btnShowMore?.addEventListener('click', () => {
       if (btnShowMore.getAttribute('data-open') === 'true') {
-        btnShowMoreLabel!.innerText = 'Show Less';
-        btnShowMore.setAttribute('data-open', 'false');
+        closeMenu();
       } else if (btnShowMore.getAttribute('data-open') === 'false') {
-        btnShowMoreLabel!.innerText = 'Show More';
-        btnShowMore.setAttribute('data-open', 'true');
+        openMenu();
       }
     });
   });
