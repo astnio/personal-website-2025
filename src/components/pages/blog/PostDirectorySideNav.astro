@@ -15,11 +15,16 @@ const sortedPosts = allPosts
     readingTime: calculateReadingTime(post.body),
   }));
 
-const tags = [
-  ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
+const topics = [
+  ...new Set(sortedPosts.map((post: any) => post.data.topic).flat()),
 ];
+
 const categories = [
   ...new Set(sortedPosts.map((post: any) => post.data.category).flat()),
+];
+
+const tags = [
+  ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
 ];
 ---
 
@@ -148,6 +153,24 @@ const categories = [
     <ul class='blog-nav-list'>
       <li class='blog-nav-sublist-wrapper'>
         <a
+          href='/blog/topics'
+          class='blog-nav-list-title'>
+          <span class='bx bxs-bulb'></span>
+          <span>Topics</span>
+        </a>
+        <ul class='blog-nav-sublist topics-list'>
+          {
+            topics.map((topic) => (
+              <li>
+                <a href={`/blog/categories/${topic}`}>{topic}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </li>
+
+      <li class='blog-nav-sublist-wrapper'>
+        <a
           href='/blog/categories'
           class='blog-nav-list-title'>
           <span class='bx bxs-category'></span>
@@ -163,6 +186,7 @@ const categories = [
           }
         </ul>
       </li>
+
       <li class='blog-nav-sublist-wrapper'>
         <a
           href='/blog/tags'
