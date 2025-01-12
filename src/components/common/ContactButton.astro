@@ -49,7 +49,7 @@ const { inDrawer } = Astro.props;
     align-items: center;
     justify-content: center;
 
-    margin-right: 0.2rem;
+    margin-left: auto;
 
     aspect-ratio: 1;
 
@@ -73,6 +73,11 @@ const { inDrawer } = Astro.props;
     font-size: 1.8rem;
   }
 
+  span.btn-contact-label {
+    padding-left: 1rem;
+    padding-right: 0;
+  }
+
   @media screen and (max-width: 768px) {
     .btn-label {
       font-size: 1rem;
@@ -87,10 +92,10 @@ const { inDrawer } = Astro.props;
 <button
   data-in-drawer={inDrawer}
   class='btn-contact'>
+  <span class='btn-contact-label'>Contact</span>
   <div class='icon-wrapper'>
     <span class='contact-icon bx bxs-chat'></span>
   </div>
-  <span class='btn-label'>Contact</span>
 </button>
 
 <script src='@scripts/contactDialog.ts'></script>
