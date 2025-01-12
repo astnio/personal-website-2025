@@ -2,7 +2,7 @@
 import BlogPostCard from '@components/pages/blog/BlogPostCard.astro';
 import BlogPostCardFeatured from '@components/pages/blog/BlogPostCardFeatured.astro';
 import PostDirectorySideNav from '@components/pages/blog/PostDirectorySideNav.astro';
-import PostDirectoryTopicNav from '@components/pages/blog/PostDirectoryTopicNav.astro';
+// import PostDirectoryTopicNav from '@components/pages/blog/PostDirectoryTopicNav.astro';
 import BlogPageImage from '@components/pages/blog/BlogPageImage.astro';
 
 type Props = {
@@ -26,11 +26,12 @@ const {
     text-decoration: none;
   }
 
-  ul {
+  ul.blog-post-cards-list {
     display: flex;
     flex-direction: column;
 
     padding: 0;
+    margin-right: 1rem;
 
     list-style: none;
   }

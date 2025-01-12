@@ -51,21 +51,6 @@ const tags = [
 
   /* *** Blog Side Navigation *** */
 
-  .blog-nav-list-title {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-
-    gap: 0.6rem;
-
-    font-weight: 500;
-
-    background-color: var(--clr-mantle);
-
-    width: 100%;
-    padding: 1rem;
-  }
-
   .blog-nav-sublist-wrapper {
     display: flex;
     flex-direction: column;
@@ -75,8 +60,24 @@ const tags = [
     width: 100%;
 
     border-radius: var(--radius-surface);
+    /* outline: 2px solid var(--clr-surface-0); */
 
     overflow: hidden;
+  }
+
+  .blog-nav-list-title {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    gap: 0.6rem;
+
+    font-weight: 500;
+
+    background-color: var(--clr-surface-0);
+
+    width: 100%;
+    padding: 1rem;
   }
 
   .blog-nav-sublist {
