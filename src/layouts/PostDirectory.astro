@@ -1,18 +1,23 @@
 ---
-import BlogPageImage from '@components/pages/blog/BlogPageImage.astro';
 import BlogPostCard from '@components/pages/blog/BlogPostCard.astro';
 import BlogPostCardFeatured from '@components/pages/blog/BlogPostCardFeatured.astro';
 import PostDirectorySideNav from '@components/pages/blog/PostDirectorySideNav.astro';
 import PostDirectoryTopicNav from '@components/pages/blog/PostDirectoryTopicNav.astro';
+import BlogPageImage from '@components/pages/blog/BlogPageImage.astro';
 
 type Props = {
   posts: any;
-  directoryTitle: any;
-  featured: any;
-  enableImage: boolean;
+  directoryTitle: string;
+  featuredPost: any;
+  enableImage?: boolean;
 };
 
-const { posts, directoryTitle, featured, enableImage = false } = Astro.props;
+const {
+  posts,
+  directoryTitle,
+  featuredPost,
+  enableImage = false,
+} = Astro.props;
 ---
 
 <style>
@@ -74,16 +79,16 @@ const { posts, directoryTitle, featured, enableImage = false } = Astro.props;
 }
 
 <div class='content-wrapper max-width'>
-  <PostDirectoryTopicNav
+  <!-- <PostDirectoryTopicNav
     posts={posts}
     urlPath={`/blog/topics/`}
-  />
+  /> -->
   {
-    featured && (
+    featuredPost && (
       <div class='featured-post-wrapper'>
         <BlogPostCardFeatured
-          post={featured}
-          transition:name={`post-card-featured-${featured.id}`}
+          post={featuredPost}
+          transition:name={`post-card-featured-${featuredPost.id}`}
         />
       </div>
     )
