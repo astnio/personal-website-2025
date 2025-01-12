@@ -37,6 +37,16 @@
       "url": "https://astn.sh/github",
       "label": "Github",
       "iconClass": "bx bxl-github"
+    },
+    {
+      "url": "https://discordapp.com/users/astn.io",
+      "label": "Discord",
+      "iconClass": "bx bxl-discord-alt"
+    },
+    {
+      "url": "https://www.facebook.com/profile.php?id=61563330137068",
+      "label": "Facebook",
+      "iconClass": "bx bxl-facebook-circle"
     }
   ]
 }
