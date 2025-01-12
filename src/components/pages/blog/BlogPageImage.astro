@@ -6,7 +6,7 @@ import darkBgImage from '@assets/images/site/blog/pexels-therato.jpg';
 const imageWidth = 2560;
 const imageHeight = 2560;
 
-const { imageLabel } = Astro.props;
+const { directoryTitle } = Astro.props;
 ---
 
 <style>
@@ -181,7 +181,7 @@ const { imageLabel } = Astro.props;
 
 <div class='max-width bg-padding-wrapper'>
   <div class='blog-background-wrapper'>
-    {imageLabel && <p class='image-label'>{imageLabel}</p>}
+    {directoryTitle && <p class='image-label'>{directoryTitle}</p>}
     <div
       data-active='true'
       class='themed-background-wrapper blog-bg-img-dark'>

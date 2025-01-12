@@ -15,7 +15,9 @@ const sortedProcessedPosts = readTimeCalculatedPosts.sort(
   (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
 );
 
-const featuredPost = sortedProcessedPosts.find((post: any) => post.data.featured);
+const featuredPost = sortedProcessedPosts.find(
+  (post: any) => post.data.featured
+);
 
 const sortedPosts = sortedProcessedPosts.filter(
   (post: any) => post !== featuredPost
@@ -27,7 +29,7 @@ const title = 'Blog';
 <BaseLayout title={title}>
   <PostDirectory
     posts={sortedPosts}
-    imageLabel={title}
+    directoryTitle={title}
     featured={featuredPost}
   />
 </BaseLayout>
