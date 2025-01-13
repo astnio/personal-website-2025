@@ -39,14 +39,19 @@
       "iconClass": "bx bxl-github"
     },
     {
-      "url": "https://discordapp.com/users/astn.io",
+      "url": "https://astn.sh/discord",
       "label": "Discord",
       "iconClass": "bx bxl-discord-alt"
     },
     {
-      "url": "https://www.facebook.com/profile.php?id=61563330137068",
+      "url": "https://astn.sh/facebook",
       "label": "Facebook",
       "iconClass": "bx bxl-facebook-circle"
+    },
+    {
+      "url": "https://astn.sh/bluesky",
+      "label": "Bluesky",
+      "iconClass": "bx bxs-message-square-detail"
     }
   ]
 }
