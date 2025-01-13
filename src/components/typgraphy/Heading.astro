@@ -4,6 +4,7 @@ type Props = {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   url?: string;
   textOverflow?: '' | 'ellipsis';
+  capitalize?: boolean;
   class?: string;
 };
 
@@ -12,6 +13,7 @@ const {
   level = 2,
   url,
   textOverflow = '',
+  capitalize = true,
   class: className,
   ...rest
 } = Astro.props;
@@ -61,6 +63,10 @@ const HeadingElement =
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  [data-capitalize] {
+    text-transform: capitalize;
   }
 
   /*** Title ***/
@@ -176,6 +182,7 @@ const HeadingElement =
         class={`${className} ${type}`}
         data-text-overflow={textOverflow}
         data-level={level}
+        data-capitalize={capitalize}
         {...rest}>
         <slot />
       </HeadingElement>
@@ -185,6 +192,7 @@ const HeadingElement =
       class={`${className} ${type}`}
       data-text-overflow={textOverflow}
       data-level={level}
+      data-capitalize={capitalize}
       {...rest}>
       <slot />
     </HeadingElement>

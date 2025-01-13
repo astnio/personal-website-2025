@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostDirectory from '@layouts/PostDirectory.astro';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog');
@@ -21,11 +22,13 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+
+const title = `Blog | #${tag}`;
 ---
 
-<BaseLayout pageTitle={tag}>
-  <p>Posts tagged with {tag}</p>
-  <ul>
-    {posts.map((post) => <a href={`/blog/${post.slug}/`}>{post.data.title}</a>)}
-  </ul>
+<BaseLayout title={title}>
+  <PostDirectory
+    posts={posts}
+    directoryTitle={tag}
+  />
 </BaseLayout>
