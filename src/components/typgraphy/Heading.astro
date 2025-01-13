@@ -2,17 +2,18 @@
 type Props = {
   type?: 'heading' | 'title' | 'subtitle';
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  className?: string;
   url?: string;
   textOverflow?: '' | 'ellipsis';
+  class?: string;
 };
 
 const {
   type = 'heading',
   level = 2,
-  className = '',
   url,
   textOverflow = '',
+  class: className,
+  ...rest
 } = Astro.props;
 
 const HeadingElement =
@@ -174,7 +175,8 @@ const HeadingElement =
       <HeadingElement
         class={`${className} ${type}`}
         data-text-overflow={textOverflow}
-        data-level={level}>
+        data-level={level}
+        {...rest}>
         <slot />
       </HeadingElement>
     </a>
@@ -182,7 +184,8 @@ const HeadingElement =
     <HeadingElement
       class={`${className} ${type}`}
       data-text-overflow={textOverflow}
-      data-level={level}>
+      data-level={level}
+      {...rest}>
       <slot />
     </HeadingElement>
   )

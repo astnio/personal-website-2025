@@ -4,6 +4,7 @@ import BlogPostCardFeatured from '@components/pages/blog/BlogPostCardFeatured.as
 import PostDirectorySideNav from '@components/pages/blog/PostDirectorySideNav.astro';
 // import PostDirectoryTopicNav from '@components/pages/blog/PostDirectoryTopicNav.astro';
 import BlogPageImage from '@components/pages/blog/BlogPageImage.astro';
+import Heading from '@components/typgraphy/Heading.astro';
 
 type Props = {
   posts: any;
@@ -21,6 +22,21 @@ const {
 ---
 
 <style>
+  .directory-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    width: 100%;
+    padding-inline: 1rem;
+
+    height: 14rem;
+  }
+
+  h1.directory-title {
+    font-size: 4rem;
+  }
+
   /* *** General *** */
   a {
     text-decoration: none;
@@ -77,7 +93,14 @@ const {
       transition:name='post-directory-image'
     />
   ) : (
-    <h1>{directoryTitle}</h1>
+    <div class='directory-title-wrapper max-width'>
+      <Heading
+        type='title'
+        level={1}
+        class='directory-title'>
+        {directoryTitle}
+      </Heading>
+    </div>
   )
 }
 
