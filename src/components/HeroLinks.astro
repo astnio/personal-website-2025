@@ -1,13 +1,14 @@
 ---
 import LinkListItem from './HeroLink.astro';
-import links from '@content/links.json'
+import links from '@content/links.json';
 
 const internalLinks = links.internalLinks.filter((link) => {
   if (link.url === '/') return false;
   else return true;
 });
 
-const externalLinks = links.externalLinks;
+const socialLinks = links.socialLinks;
+const workLinks = links.workLinks;
 ---
 
 <style>
@@ -97,7 +98,7 @@ const externalLinks = links.externalLinks;
   <div class='link-list-wrapper'>
     <div class='link-list-title-wrapper'>
       <div class='link-list-title-hr link-list-title-hr-left'></div>
-      <h3 class='link-list-title'>What I Do</h3>
+      <h3 class='link-list-title'>Who I Am</h3>
       <div class='link-list-title-hr'></div>
     </div>
     <ul>
@@ -119,12 +120,33 @@ const externalLinks = links.externalLinks;
   <div class='link-list-wrapper'>
     <div class='link-list-title-wrapper'>
       <div class='link-list-title-hr link-list-title-hr-left'></div>
+      <h3 class='link-list-title'>What I Do</h3>
+      <div class='link-list-title-hr'></div>
+    </div>
+    <ul>
+      {
+        workLinks.map((link) => (
+          <li>
+            <LinkListItem
+              url={link.url}
+              label={link.label}
+              iconClass={link.iconClass}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class='link-list-wrapper'>
+    <div class='link-list-title-wrapper'>
+      <div class='link-list-title-hr link-list-title-hr-left'></div>
       <h3 class='link-list-title'>Where I Am</h3>
       <div class='link-list-title-hr'></div>
     </div>
     <ul>
       {
-        externalLinks.map((link) => (
+        socialLinks.map((link) => (
           <li>
             <LinkListItem
               url={link.url}

@@ -22,21 +22,11 @@
     }
   ],
 
-  "externalLinks": [
+  "socialLinks": [
     {
       "url": "https://astn.sh/linkedin",
       "label": "LinkedIn",
       "iconClass": "bx bxl-linkedin"
-    },
-    {
-      "url": "https://astn.sh/frontend-mentor",
-      "label": "Frontend Mentor",
-      "iconClass": "bx bxs-widget"
-    },
-    {
-      "url": "https://astn.sh/github",
-      "label": "Github",
-      "iconClass": "bx bxl-github"
     },
     {
       "url": "https://astn.sh/discord",
@@ -52,6 +42,19 @@
       "url": "https://astn.sh/bluesky",
       "label": "Bluesky",
       "iconClass": "bx bxs-message-square-detail"
+    }
+  ],
+
+  "workLinks": [
+    {
+      "url": "https://astn.sh/frontend-mentor",
+      "label": "Frontend Mentor",
+      "iconClass": "bx bxs-widget"
+    },
+    {
+      "url": "https://astn.sh/github",
+      "label": "Github",
+      "iconClass": "bx bxl-github"
     }
   ]
 }
