@@ -1,0 +1,28 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import toCapitalCase from '@scripts/utils/toCapitalCase';
+
+type Props = {
+  taxonomyCollection: any;
+  page: 'tags' | 'categories' | 'topics';
+};
+
+const { taxonomyCollection, page } = Astro.props;
+
+const pageTitleLabel = toCapitalCase(page);
+
+const title = `Blog | ${pageTitleLabel}`;
+---
+
+<BaseLayout title={title}>
+  <h1>{pageTitleLabel}</h1>
+  <div>
+    {
+      taxonomyCollection.map((taxonomyItem: any) => (
+        <p>
+          <a href={`/blog/${page}/${taxonomyItem}`}>{taxonomyItem}</a>
+        </p>
+      ))
+    }
+  </div>
+</BaseLayout>
