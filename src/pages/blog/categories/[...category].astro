@@ -22,13 +22,9 @@ export async function getStaticPaths() {
 
 const { category } = Astro.params;
 const { posts } = Astro.props;
-
-const title = `Blog | Category ${category}`;
 ---
 
-<BaseLayout title={title}>
-  <PostDirectory
-    posts={posts}
-    directoryTitle={category}
-  />
-</BaseLayout>
+<PostDirectory
+  posts={posts}
+  directoryTitle={category}
+/>

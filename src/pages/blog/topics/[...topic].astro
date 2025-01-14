@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PostDirectory from '@layouts/PostDirectory.astro';
 
 export async function getStaticPaths() {
@@ -22,13 +21,9 @@ export async function getStaticPaths() {
 
 const { topic } = Astro.params;
 const { posts } = Astro.props;
-
-const title = `Blog | ${topic}`;
 ---
 
-<BaseLayout title={title}>
-  <PostDirectory
-    posts={posts}
-    directoryTitle={topic}
-  />
-</BaseLayout>
+<PostDirectory
+  posts={posts}
+  directoryTitle={topic}
+/>

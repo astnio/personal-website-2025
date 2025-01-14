@@ -4,6 +4,7 @@ import PostDirectorySideNav from '@components/pages/blog/PostDirectorySideNav.as
 // import PostDirectoryTopicNav from '@components/pages/blog/PostDirectoryTopicNav.astro';
 import BlogPageImage from '@components/pages/blog/BlogPageImage.astro';
 import Heading from '@components/typgraphy/Heading.astro';
+import BaseLayout from './BaseLayout.astro';
 
 type Props = {
   posts: any;
@@ -18,6 +19,11 @@ const {
   featuredPost,
   enableImage = false,
 } = Astro.props;
+
+const title =
+  directoryTitle === 'Blog'
+    ? 'Austin Hagel | Blog'
+    : `Blog | ${directoryTitle}`;
 ---
 
 <style>
@@ -85,55 +91,57 @@ const {
   }
 </style>
 
-{
-  enableImage ? (
-    <BlogPageImage
-      directoryTitle={directoryTitle}
-      transition:name='post-directory-image'
-    />
-  ) : (
-    <div class='directory-title-wrapper max-width'>
-      <Heading
-        type='title'
-        level={1}
-        class='directory-title'>
-        {directoryTitle}
-      </Heading>
-    </div>
-  )
-}
-
-<div class='content-wrapper max-width'>
-  <!-- <PostDirectoryTopicNav
-    posts={posts}
-    urlPath={`/blog/topics/`}
-  /> -->
+<BaseLayout title={title}>
   {
-    featuredPost && (
-      <div class='featured-post-wrapper'>
-        <BlogPostCard
-          featured={true}
-          post={featuredPost}
-          transition:name={`post-card-featured-${featuredPost.id}`}
-        />
+    enableImage ? (
+      <BlogPageImage
+        directoryTitle={directoryTitle}
+        transition:name='post-directory-image'
+      />
+    ) : (
+      <div class='directory-title-wrapper max-width'>
+        <Heading
+          type='title'
+          level={1}
+          class='directory-title'>
+          {directoryTitle}
+        </Heading>
       </div>
     )
   }
-  <section class='blog-post-cards-wrapper'>
-    <ul class='blog-post-cards-list'>
-      {
-        posts.map((post: any) => (
-          <li>
-            <BlogPostCard
-              post={post}
-              transition:name={`post-card-${post.id}`}
-            />
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-  <div class='side-nav-wrapper'>
-    <PostDirectorySideNav />
+
+  <div class='content-wrapper max-width'>
+    <!-- <PostDirectoryTopicNav
+      posts={posts}
+      urlPath={`/blog/topics/`}
+    /> -->
+    {
+      featuredPost && (
+        <div class='featured-post-wrapper'>
+          <BlogPostCard
+            featured={true}
+            post={featuredPost}
+            transition:name={`post-card-featured-${featuredPost.id}`}
+          />
+        </div>
+      )
+    }
+    <section class='blog-post-cards-wrapper'>
+      <ul class='blog-post-cards-list'>
+        {
+          posts.map((post: any) => (
+            <li>
+              <BlogPostCard
+                post={post}
+                transition:name={`post-card-${post.id}`}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <div class='side-nav-wrapper'>
+      <PostDirectorySideNav />
+    </div>
   </div>
-</div>
+</BaseLayout>

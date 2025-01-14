@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import { calculateReadingTime } from '@scripts/utils/readingTime';
 import PostDirectory from '@layouts/PostDirectory.astro';
 
@@ -26,10 +25,8 @@ const sortedPosts = sortedProcessedPosts.filter(
 const title = 'Blog';
 ---
 
-<BaseLayout title={title}>
-  <PostDirectory
-    posts={sortedPosts}
-    directoryTitle={title}
-    featuredPost={featuredPost}
-  />
-</BaseLayout>
+<PostDirectory
+  posts={sortedPosts}
+  directoryTitle={title}
+  featuredPost={featuredPost}
+/>
