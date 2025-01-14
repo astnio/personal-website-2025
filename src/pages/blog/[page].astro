@@ -1,0 +1,142 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+export async function getStaticPaths({ paginate }) {
+  const astronautPages = [
+    {
+      astronaut: 'Neil Armstrong',
+    },
+    {
+      astronaut: 'Buzz Aldrin',
+    },
+    {
+      astronaut: 'Sally Ride',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+    {
+      astronaut: 'John Glenn',
+    },
+  ];
+  // Generate pages from our array of astronauts, with 2 to a page
+  return paginate(astronautPages, { pageSize: 10 });
+}
+// All paginated data is passed on the "page" prop
+const { page } = Astro.props;
+---
+
+<style>
+  section {
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
+  .list-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+    background-color: var(--clr-base);
+    width: 100%;
+  }
+
+  .page-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+</style>
+
+<BaseLayout>
+  <section class='max-width'>
+    <div class='list-wrapper'>
+      <ul transition:animate='slide'>
+        <!--List the array of astronaut info-->
+        {page.data.map(({ astronaut }) => <li>{astronaut}</li>)}
+      </ul>
+    </div>
+    <nav
+      class='page-nav'
+      transition:animate='none'>
+      {page.url.prev && <a href={page.url.prev}>Previous</a>}
+      <p>Page {page.currentPage}/{page.lastPage}</p>
+      {page.url.next && <a href={page.url.next}>Next</a>}
+    </nav>
+  </section>
+</BaseLayout>
