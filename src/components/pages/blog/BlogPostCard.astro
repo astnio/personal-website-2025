@@ -11,6 +11,7 @@ type Props = {
 };
 
 const { post } = Astro.props;
+console.log(post.data);
 ---
 
 <style>
@@ -216,7 +217,7 @@ const { post } = Astro.props;
               width={400}
               height={200}
               src={post.data.cover}
-              alt={'Placeholder image'}
+              alt={post.data.cover_alt ? post.data.cover_alt : 'null'}
               class='blog-picture'
               loading={'eager'}
               transition:name={`blog-cover-${post.data.title}`}

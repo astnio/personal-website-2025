@@ -3,18 +3,37 @@ import { z, defineCollection } from 'astro:content';
 
 // 2. Define a `type` and `schema` for each collection
 const blogCollection = defineCollection({
-  type: 'content', // v2.5.0 and later
+  type: 'content',
   schema: ({ image }) =>
-    z.object({
-      cover: image().optional(),
-      title: z.string(),
-      summary: z.string(),
-      date_published: z.date(),
-      topic: z.string(),
-      category: z.string(),
-      tags: z.array(z.string()),
-      featured: z.boolean().optional(),
-    }),
+    z
+      .object({
+        cover: image().optional(),
+        cover_alt: z.string().optional(),
+        title: z.string(),
+        summary: z.string(),
+        date_published: z.date(),
+        topic: z.string(),
+        category: z.string(),
+        tags: z.array(z.string()),
+        featured: z.boolean().optional(),
+      })
+      .superRefine((data, ctx) => {
+        if (data.cover && !data.cover_alt) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: 'cover_alt is required when a cover image is present',
+            path: ['cover_alt'],
+          });
+        }
+        if (!data.cover && data.cover_alt) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message:
+              'cover_alt should not be present when there is no cover image',
+            path: ['cover_alt'],
+          });
+        }
+      }),
 });
 
 const projectCollection = defineCollection({

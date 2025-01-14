@@ -3,7 +3,7 @@ interface Props {
   url: string;
   label: string;
   iconClass: string;
-  newTab: null | 'true' | boolean;
+  newTab?: boolean;
 }
 const { url, label, iconClass, newTab = true } = Astro.props;
 ---

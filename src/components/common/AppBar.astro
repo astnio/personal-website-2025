@@ -1,8 +1,8 @@
 ---
-import SearchInput from "@components/interface/SearchInput.astro";
-import Logo from "./Logo.astro";
-import NavLinks from "./NavLinks.astro";
-import ContactButton from "./ContactButton.astro";
+import SearchInput from '@components/interface/SearchInput.astro';
+import Logo from './Logo.astro';
+import NavLinks from './NavLinks.astro';
+import ContactButton from './ContactButton.astro';
 ---
 
 <style>
@@ -91,12 +91,12 @@ import ContactButton from "./ContactButton.astro";
   id='app-bar'
   transition:name='app-bar'>
   <div class='nav-content-wrapper max-width'>
-    <Logo mobileView='false' />
+    <Logo mobileView={false} />
     <div class='nav-links-wrapper'>
       <NavLinks />
     </div>
     <div class='search-input-wrapper'>
-      <SearchInput inDrawer='false' />
+      <SearchInput inDrawer={false} />
     </div>
     <div class='contact-btn-wrapper'>
       <ContactButton />

@@ -6,6 +6,7 @@ topic: 'Animals'
 category: 'Cats'
 tags: ['meow', 'hiss', 'purr']
 cover: 'https://picsum.photos/id/683/800/400'
+cover_alt: 'Placeholder Cover for Post 13'
 featured: true
 ---
 

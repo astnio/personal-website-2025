@@ -6,6 +6,7 @@ topic: 'Reading Time'
 category: 'Space'
 tags: ['astrology', 'cosmos', 'read']
 cover: 'https://picsum.photos/id/106/800/400'
+cover_alt: 'Placeholder Cover for Post 7'
 ---
 
 Lorem ipsum odor amet, consectetuer adipiscing elit. Bibendum tellus proin ac senectus natoque suscipit. Ullamcorper eu porta montes risus auctor ut vulputate. Ultricies praesent mattis primis lacus auctor feugiat sagittis at. Massa tristique pretium in porta varius himenaeos natoque. Molestie blandit venenatis lacus nulla a mattis ac duis. Rhoncus dignissim sagittis parturient hendrerit scelerisque suspendisse.

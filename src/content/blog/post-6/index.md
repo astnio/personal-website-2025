@@ -6,6 +6,7 @@ topic: 'Example Topic'
 category: 'Animals'
 tags: ['lorem', 'ipsum', 'example', 'latin']
 cover: 'https://picsum.photos/id/83/800/400'
+cover_alt: 'Placeholder Cover for Post 6'
 ---
 
 ## Hello, world

@@ -6,6 +6,7 @@ topic: 'Animals'
 category: 'Cats'
 tags: ['meow', 'hiss', 'purr']
 cover: 'https://picsum.photos/id/447/800/400'
+cover_alt: 'Placeholder Cover for Post 11'
 ---
 
 I'm bored inside, let me out i'm lonely outside, let me in i can't make up my mind whether to go in or out, guess i'll just stand partway in and partway out, contemplating the universe for half an hour how dare you nudge me with your foot?!?! leap into the air in greatest offense! cough

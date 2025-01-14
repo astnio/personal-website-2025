@@ -6,6 +6,7 @@ topic: 'Lorem Ipsum'
 category: 'Nature'
 tags: ['example', 'test']
 cover: 'https://picsum.photos/id/16/800/400'
+cover_alt: 'Placeholder Cover for Post 1'
 ---
 
 # Heading 1

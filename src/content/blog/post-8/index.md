@@ -6,6 +6,7 @@ topic: 'Astrology'
 category: 'Space'
 tags: ['astrology', 'cosmos', 'read']
 cover: 'https://picsum.photos/id/461/800/400'
+cover_alt: 'Placeholder Cover for Post 8'
 ---
 
 Ah, honey, your first novel. Will you take care of that? Ah, honey, your first novel. Thank god I still got my hair. What on Earth is that thing I'm wearing? This is more serious than I thought. Apparently your mother is amorously infatuated with you instead of your father.
