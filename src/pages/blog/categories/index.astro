@@ -1,24 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TaxonomyDirectory from '@layouts/TaxonomyDirectory.astro';
 
 const allPosts = await getCollection('blog');
 const categories = [
   ...new Set(allPosts.map((post: any) => post.data.category).flat()),
 ];
-
-const title = 'Category Index';
 ---
 
-<BaseLayout title={title}>
-  <h1>Categories</h1>
-  <div>
-    {
-      categories.map((tag) => (
-        <p>
-          <a href={`/blog/categories/${tag}`}>{tag}</a>
-        </p>
-      ))
-    }
-  </div>
-</BaseLayout>
+<TaxonomyDirectory
+  taxonomyCollection={categories}
+  page='categories'
+/>
