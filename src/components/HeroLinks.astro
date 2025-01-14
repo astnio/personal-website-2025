@@ -1,5 +1,5 @@
 ---
-import LinkListItem from './HeroLink.astro';
+import HeroLink from './HeroLink.astro';
 import links from '@content/links.json';
 
 const internalLinks = links.internalLinks.filter((link) => {
@@ -105,7 +105,7 @@ const workLinks = links.workLinks;
       {
         internalLinks.map((link) => (
           <li>
-            <LinkListItem
+            <HeroLink
               url={link.url}
               label={link.label}
               iconClass={link.iconClass}
@@ -127,7 +127,7 @@ const workLinks = links.workLinks;
       {
         workLinks.map((link) => (
           <li>
-            <LinkListItem
+            <HeroLink
               url={link.url}
               label={link.label}
               iconClass={link.iconClass}
@@ -148,7 +148,7 @@ const workLinks = links.workLinks;
       {
         socialLinks.map((link) => (
           <li>
-            <LinkListItem
+            <HeroLink
               url={link.url}
               label={link.label}
               iconClass={link.iconClass}

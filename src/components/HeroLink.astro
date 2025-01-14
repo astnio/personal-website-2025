@@ -145,6 +145,13 @@ const { url, label, iconClass, newTab = true } = Astro.props;
     right: 0;
   }
 
+  .external-link-icon {
+    color: var(--clr-subtext-0);
+    opacity: 0.4;
+    font-size: 0.8rem;
+    margin-right: 0.5ch;
+  }
+
   @media screen and (min-width: 768px) {
     a {
       flex-shrink: 1;
@@ -164,5 +171,8 @@ const { url, label, iconClass, newTab = true } = Astro.props;
       </div>
     )
   }
-  <span class='link-label'>{label}</span>
+  <span class='link-label'>
+    <!-- {newTab && <span class='external-link-icon bx bx-link-external' />} -->
+    {label}
+  </span>
 </a>
