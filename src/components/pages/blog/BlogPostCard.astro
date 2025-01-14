@@ -8,10 +8,10 @@ import PostInfo from './PostInfo.astro';
 
 type Props = {
   post: CollectionEntry<'blog'>;
+  featured?: boolean;
 };
 
-const { post } = Astro.props;
-console.log(post.data);
+const { post, featured = false } = Astro.props;
 ---
 
 <style>
@@ -38,6 +38,10 @@ console.log(post.data);
   .blog-card-wrapper {
     isolation: isolate;
     width: 100%;
+  }
+
+  .blog-card-wrapper[data-featured='true'] {
+    margin-block: 1rem;
   }
 
   .blog-card {
@@ -199,6 +203,53 @@ console.log(post.data);
       opacity: 1;
     }
   }
+
+  /*** Featured Label ***/
+  div.featured-label-wrapper {
+    isolation: isolate;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.6ch;
+
+    padding-inline: 1rem;
+    padding-block: 0.4rem;
+
+    margin-top: 1.5rem;
+
+    z-index: 5;
+
+    backdrop-filter: blur(10px);
+  }
+
+  div.featured-label-wrapper::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--clr-base);
+
+    opacity: 0.6;
+
+    z-index: -1;
+  }
+
+  p.featured-label {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: capitalize;
+  }
 </style>
 
 <div class='blog-card-wrapper'>
@@ -206,6 +257,12 @@ console.log(post.data);
     {
       post.data.cover ? (
         <div class='picture-wrapper'>
+          {featured && (
+            <div class='featured-label-wrapper'>
+              <i class='bx bxs-star' />
+              <p class='featured-label'>Featured</p>
+            </div>
+          )}
           <div class='post-info-wrapper'>
             <PostInfo
               post={post}
@@ -217,7 +274,7 @@ console.log(post.data);
               width={400}
               height={200}
               src={post.data.cover}
-              alt={post.data.cover_alt ? post.data.cover_alt : 'null'}
+              alt={post.data.cover_alt ? post.data.cover_alt : ''}
               class='blog-picture'
               loading={'eager'}
               transition:name={`blog-cover-${post.data.title}`}
@@ -237,6 +294,7 @@ console.log(post.data);
       <div class='card-title-wrapper'>
         <Heading
           level={3}
+          type={featured ? 'title' : 'heading'}
           textOverflow='ellipsis'
           url={`/blog/${post.slug}`}
           transition:name={`blog-title-${post.data.title}`}>

@@ -1,6 +1,5 @@
 ---
 import BlogPostCard from '@components/pages/blog/BlogPostCard.astro';
-import BlogPostCardFeatured from '@components/pages/blog/BlogPostCardFeatured.astro';
 import PostDirectorySideNav from '@components/pages/blog/PostDirectorySideNav.astro';
 // import PostDirectoryTopicNav from '@components/pages/blog/PostDirectoryTopicNav.astro';
 import BlogPageImage from '@components/pages/blog/BlogPageImage.astro';
@@ -112,7 +111,8 @@ const {
   {
     featuredPost && (
       <div class='featured-post-wrapper'>
-        <BlogPostCardFeatured
+        <BlogPostCard
+          featured={true}
           post={featuredPost}
           transition:name={`post-card-featured-${featuredPost.id}`}
         />
