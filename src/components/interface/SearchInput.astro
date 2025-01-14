@@ -1,5 +1,10 @@
 ---
-const { inDrawer } = Astro.props;
+type Props = {
+  inDrawer: boolean;
+  expanded?: boolean;
+};
+
+const { inDrawer, expanded } = Astro.props;
 ---
 
 <style>
