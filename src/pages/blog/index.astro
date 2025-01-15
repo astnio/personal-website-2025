@@ -1,16 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
-import { calculateReadingTime } from '@scripts/utils/readingTime';
 import PostDirectory from '@layouts/PostDirectory.astro';
 
 const allPosts = await getCollection('blog');
 
-const readTimeCalculatedPosts = allPosts.map((post: any) => ({
-  ...post,
-  readingTime: calculateReadingTime(post.body),
-}));
-
-const sortedProcessedPosts = readTimeCalculatedPosts.sort(
+const sortedProcessedPosts = allPosts.sort(
   (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
 );
 
