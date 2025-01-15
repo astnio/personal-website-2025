@@ -1,0 +1,20 @@
+---
+const { prevUrl, nextUrl, currentPage, lastPage } = Astro.props;
+---
+
+<style>
+  .page-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+</style>
+
+<nav
+  class='page-nav'
+  transition:animate='none'>
+  {prevUrl ? <a href={prevUrl}>Previous</a> : <p>Previous</p>}
+  <p>Page {currentPage}/{lastPage}</p>
+  {nextUrl ? <a href={nextUrl}>Next</a> : <p>Next</p>}
+</nav>
