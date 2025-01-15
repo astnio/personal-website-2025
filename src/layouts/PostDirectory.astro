@@ -120,13 +120,13 @@ const title =
     /> -->
     {
       featuredPost && (
-        <div class='featured-post-wrapper'>
+        <section class='featured-post-wrapper'>
           <BlogPostCard
             featured={true}
             post={featuredPost}
             transition:name={`post-card-featured-${featuredPost.id}`}
           />
-        </div>
+        </section>
       )
     }
     <section class='blog-post-cards-wrapper'>
