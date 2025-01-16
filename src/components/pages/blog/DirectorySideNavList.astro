@@ -129,6 +129,44 @@ const { title, url, iconClass, listType, list } = Astro.props;
 
   /*** Taxonomy Lists ***/
 
+  .topics-list {
+    display: flex;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .topic-list-item-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+
+    position: relative;
+    width: 100%;
+  }
+
+  .topic-list-item-wrapper:hover {
+    color: var(--clr-primary);
+  }
+
+  .topic-list-item-label {
+    max-width: fit-content;
+  }
+
+  .topic-list-item-seperator {
+    content: '';
+
+    position: relative;
+    left: 0;
+
+    border-bottom: 2px dotted var(--clr-subtext-0);
+
+    margin-inline: auto;
+
+    width: 90%;
+    height: 100%;
+
+    opacity: 0.4;
+  }
+
   .categories-list {
     display: flex;
     flex-direction: row;
@@ -158,7 +196,13 @@ const { title, url, iconClass, listType, list } = Astro.props;
       list.map((item: any) => (
         <li>
           {listType === 'topics' && (
-            <a href={`/blog/${listType}/${item}`}>{item}</a>
+            <a
+              href={`/blog/${listType}/${item}`}
+              class='topic-list-item-wrapper'>
+              <span class='topic-list-item-label'>{item}</span>
+              <div class='topic-list-item-seperator' />
+              <span class='topic-list-item-count'>(0)</span>
+            </a>
           )}
           {listType === 'categories' && (
             <Chip url={`/blog/${listType}/${item}`}>{item}</Chip>
