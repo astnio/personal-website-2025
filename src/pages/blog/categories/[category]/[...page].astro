@@ -1,8 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import PostDirectoryPaginated from '@layouts/PostDirectoryPaginated.astro';
+import type { PaginateFunction } from 'astro';
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction;
+}) {
   const allPosts = await getCollection('blog');
 
   const uniqueCategories = [
