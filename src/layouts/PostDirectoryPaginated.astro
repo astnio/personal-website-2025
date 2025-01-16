@@ -126,7 +126,9 @@ const title =
       )
     }
     <section class='blog-post-cards-wrapper'>
-      <ul class='blog-post-cards-list'>
+      <ul
+        class='blog-post-cards-list'
+        transition:name='blog-post-cards-list'>
         {
           page.data.map((post: any) => (
             <li>
