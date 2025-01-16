@@ -1,7 +1,7 @@
 ---
 import { calculateReadingTime } from '@scripts/utils/readingTime';
 import { getCollection } from 'astro:content';
-import DirectorySideNav from './DirectorySideNav.astro';
+import DirectorySideNavList from './DirectorySideNavList.astro';
 
 const allPosts = await getCollection('blog');
 
@@ -95,7 +95,7 @@ const tags = [
   <nav class='blog-nav'>
     <ul class='blog-nav-list'>
       <li>
-        <DirectorySideNav
+        <DirectorySideNavList
           title='Topics'
           url='/blog/topics'
           iconClass='bx bxs-bulb'
@@ -105,7 +105,7 @@ const tags = [
       </li>
 
       <li>
-        <DirectorySideNav
+        <DirectorySideNavList
           title='Categories'
           url='/blog/categories'
           iconClass='bx bxs-category'
@@ -115,7 +115,7 @@ const tags = [
       </li>
 
       <li>
-        <DirectorySideNav
+        <DirectorySideNavList
           title='Tags'
           url='/blog/tags'
           iconClass='bx bxs-tag'
