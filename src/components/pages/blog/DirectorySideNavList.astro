@@ -71,7 +71,7 @@ const { title, url, iconClass, listType, list } = Astro.props;
 
     border: 1px solid;
     border-color: var(--clr-surface-2);
-    border-radius: var(--radius-surface);
+    border-radius: var(--radius-surface) var(--radius-surface) 0 0;
 
     transition-property: background-color, color, border-color;
     transition-duration: 0.1s;
@@ -79,14 +79,14 @@ const { title, url, iconClass, listType, list } = Astro.props;
   }
 
   .blog-nav-list-title:hover {
-    background-color: var(--clr-surface-2);
-    /* color: var(--clr-primary); */
+    background-color: var(--clr-surface-1);
+    color: var(--clr-primary);
     border-color: var(--clr-primary);
   }
 
   .blog-nav-list-title:hover > .blog-nav-list-title-icon-wrapper {
-    background-color: var(--clr-base);
-    color: var(--clr-primary);
+    background-color: var(--clr-primary);
+    color: var(--clr-base);
   }
 
   .blog-nav-list-title-icon-wrapper {
@@ -98,6 +98,10 @@ const { title, url, iconClass, listType, list } = Astro.props;
     height: 100%;
 
     background-color: var(--clr-mantle);
+
+    transition-property: background-color, color, border-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
   }
 
   .blog-nav-list-title-icon {
@@ -122,6 +126,8 @@ const { title, url, iconClass, listType, list } = Astro.props;
 
     font-size: 1rem;
   }
+
+  /*** Taxonomy Lists ***/
 
   .categories-list {
     display: flex;
