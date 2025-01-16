@@ -140,12 +140,7 @@ const title =
           ))
         }
       </ul>
-      <PostPaginator
-        nextUrl={page.url.next}
-        prevUrl={page.url.prev}
-        currentPage={page.currentPage}
-        lastPage={page.lastPage}
-      />
+      <PostPaginator page={page} />
     </section>
     <div class='side-nav-wrapper'>
       <PostDirectorySideNav />

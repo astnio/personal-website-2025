@@ -1,5 +1,5 @@
 ---
-const { prevUrl, nextUrl, currentPage, lastPage } = Astro.props;
+const { page } = Astro.props;
 ---
 
 <style>
@@ -9,12 +9,79 @@ const { prevUrl, nextUrl, currentPage, lastPage } = Astro.props;
     justify-content: center;
     gap: 1rem;
   }
+
+  .page-nav-icon-wrapper {
+    font-size: 2rem;
+    font-weight: 700;
+
+    cursor: pointer;
+  }
+
+  .page-nav-icon-wrapper:hover {
+    color: var(--clr-primary);
+  }
+
+  p.page-nav-icon-wrapper.disabled {
+    color: var(--clr-subtext-0);
+    opacity: 0.6;
+    cursor: default;
+  }
 </style>
 
 <nav
   class='page-nav'
   transition:animate='none'>
-  {prevUrl ? <a href={prevUrl}>Previous</a> : <p>Previous</p>}
-  <p>Page {currentPage}/{lastPage}</p>
-  {nextUrl ? <a href={nextUrl}>Next</a> : <p>Next</p>}
+  {
+    page.url.first ? (
+      <a
+        class='page-nav-icon-wrapper'
+        href={page.url.first}>
+        <i class='bx bx-chevrons-left' />
+      </a>
+    ) : (
+      <p class='page-nav-icon-wrapper disabled'>
+        <i class='bx bx-chevrons-left' />
+      </p>
+    )
+  }
+  {
+    page.url.prev ? (
+      <a
+        class='page-nav-icon-wrapper'
+        href={page.url.prev}>
+        <i class='bx bx-chevron-left' />
+      </a>
+    ) : (
+      <p class='page-nav-icon-wrapper disabled'>
+        <i class='bx bx-chevron-left' />
+      </p>
+    )
+  }
+  <p>Page {page.currentPage}/{page.lastPage}</p>
+  {
+    page.url.next ? (
+      <a
+        class='page-nav-icon-wrapper'
+        href={page.url.next}>
+        <i class='bx bx-chevron-right' />
+      </a>
+    ) : (
+      <p class='page-nav-icon-wrapper disabled'>
+        <i class='bx bx-chevron-right' />
+      </p>
+    )
+  }
+  {
+    page.url.last ? (
+      <a
+        class='page-nav-icon-wrapper'
+        href={page.url.last}>
+        <i class='bx bx-chevrons-right' />
+      </a>
+    ) : (
+      <p class='page-nav-icon-wrapper disabled'>
+        <i class='bx bx-chevrons-right' />
+      </p>
+    )
+  }
 </nav>
