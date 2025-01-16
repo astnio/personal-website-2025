@@ -1,7 +1,9 @@
 ---
+import { undefined } from 'astro:schema';
+
 const { page } = Astro.props;
 
-console.log(page.url);
+const hasPages = page.url.next !== undefined || page.url.prev !== undefined;
 ---
 
 <style>
@@ -54,64 +56,60 @@ console.log(page.url);
   }
 </style>
 
-<nav
-  class='page-nav'
-  transition:animate='none'>
-  {
-    page.url.first ? (
-      <a
-        class='page-nav-icon-wrapper'
-        href={page.url.first}>
-        <i class='bx bx-chevrons-left' />
-      </a>
-    ) : (
-      <p class='page-nav-icon-wrapper disabled'>
-        <i class='bx bx-chevrons-left' />
+{
+  hasPages && (
+    <nav
+      class='page-nav'
+      transition:animate='none'>
+      {page.url.first ? (
+        <a
+          class='page-nav-icon-wrapper'
+          href={page.url.first}>
+          <i class='bx bx-chevrons-left' />
+        </a>
+      ) : (
+        <p class='page-nav-icon-wrapper disabled'>
+          <i class='bx bx-chevrons-left' />
+        </p>
+      )}
+      {page.url.prev ? (
+        <a
+          class='page-nav-icon-wrapper'
+          href={page.url.prev}>
+          <i class='bx bx-chevron-left' />
+        </a>
+      ) : (
+        <p class='page-nav-icon-wrapper disabled'>
+          <i class='bx bx-chevron-left' />
+        </p>
+      )}
+      <p class='page-counter'>
+        <span class='page-counter-label'>
+          {page.currentPage}/{page.lastPage}
+        </span>
       </p>
-    )
-  }
-  {
-    page.url.prev ? (
-      <a
-        class='page-nav-icon-wrapper'
-        href={page.url.prev}>
-        <i class='bx bx-chevron-left' />
-      </a>
-    ) : (
-      <p class='page-nav-icon-wrapper disabled'>
-        <i class='bx bx-chevron-left' />
-      </p>
-    )
-  }
-  <p class='page-counter'>
-    <span class='page-counter-label'>
-      {page.currentPage}/{page.lastPage}
-    </span>
-  </p>
-  {
-    page.url.next ? (
-      <a
-        class='page-nav-icon-wrapper'
-        href={page.url.next}>
-        <i class='bx bx-chevron-right' />
-      </a>
-    ) : (
-      <p class='page-nav-icon-wrapper disabled'>
-        <i class='bx bx-chevron-right' />
-      </p>
-    )
-  }
-  {
-    page.url.last ? (
-      <a
-        class='page-nav-icon-wrapper'
-        href={page.url.last}>
-        <i class='bx bx-chevrons-right' />
-      </a>
-    ) : (
-      <p class='page-nav-icon-wrapper disabled'>
-        <i class='bx bx-chevrons-right' />
-      </p>
-    )
-  }
-</nav>
+      {page.url.next ? (
+        <a
+          class='page-nav-icon-wrapper'
+          href={page.url.next}>
+          <i class='bx bx-chevron-right' />
+        </a>
+      ) : (
+        <p class='page-nav-icon-wrapper disabled'>
+          <i class='bx bx-chevron-right' />
+        </p>
+      )}
+      {page.url.last ? (
+        <a
+          class='page-nav-icon-wrapper'
+          href={page.url.last}>
+          <i class='bx bx-chevrons-right' />
+        </a>
+      ) : (
+        <p class='page-nav-icon-wrapper disabled'>
+          <i class='bx bx-chevrons-right' />
+        </p>
+      )}
+    </nav>
+  )
+}
