@@ -1,8 +1,53 @@
 ---
-const { title, url, iconClass } = Astro.props;
+import Chip from '@components/interface/Chip.astro';
+import Tag from '@components/interface/Tag.astro';
+
+type Props = {
+  title: string;
+  url: string;
+  iconClass: string;
+  listType: 'topics' | 'categories' | 'tags';
+  list: any[];
+};
+
+const { title, url, iconClass, listType, list } = Astro.props;
 ---
 
 <style>
+  /* *** General *** */
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+
+    padding: 0;
+  }
+
+  .blog-nav-sublist-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    background-color: var(--clr-base);
+    width: 100%;
+
+    border-radius: var(--radius-surface);
+    /* outline: 2px solid var(--clr-surface-0); */
+
+    overflow: hidden;
+  }
+
   .blog-nav-list {
     display: flex;
     gap: 1rem;
@@ -77,9 +122,23 @@ const { title, url, iconClass } = Astro.props;
 
     font-size: 1rem;
   }
+
+  .categories-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.5rem;
+  }
+
+  .tags-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.4rem;
+  }
 </style>
 
-<div>
+<div class='blog-nav-sublist-wrapper'>
   <a
     href={url}
     class='blog-nav-list-title'>
@@ -88,5 +147,21 @@ const { title, url, iconClass } = Astro.props;
     </span>
     <span class='blog-nav-list-title-label'>{title}</span>
   </a>
-  <slot />
+  <ul class=`blog-nav-sublist ${listType}-list`>
+    {
+      list.map((item: any) => (
+        <li>
+          {listType === 'topics' && (
+            <a href={`/blog/${listType}/${item}`}>{item}</a>
+          )}
+          {listType === 'categories' && (
+            <Chip url={`/blog/${listType}/${item}`}>{item}</Chip>
+          )}
+          {listType === 'tags' && (
+            <Tag url={`/blog/${listType}/${item}`}>{item}</Tag>
+          )}
+        </li>
+      ))
+    }
+  </ul>
 </div>

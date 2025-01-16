@@ -1,8 +1,7 @@
 ---
-import Chip from '@components/interface/Chip.astro';
-import Tag from '@components/interface/Tag.astro';
 import { calculateReadingTime } from '@scripts/utils/readingTime';
 import { getCollection } from 'astro:content';
+import DirectorySideNav from './DirectorySideNav.astro';
 
 const allPosts = await getCollection('blog');
 
@@ -29,7 +28,6 @@ const tags = [
 ---
 
 <style>
-  /* *** General *** */
   a {
     text-decoration: none;
   }
@@ -49,115 +47,6 @@ const tags = [
     padding: 0;
   }
 
-  /* *** Blog Side Navigation *** */
-
-  .blog-nav-sublist-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-
-    background-color: var(--clr-base);
-    width: 100%;
-
-    border-radius: var(--radius-surface);
-    /* outline: 2px solid var(--clr-surface-0); */
-
-    overflow: hidden;
-  }
-
-  .blog-nav-list {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .blog-nav-list-title {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-
-    gap: 0.6rem;
-
-    font-weight: 500;
-
-    background-color: var(--clr-surface-0);
-
-    width: 100%;
-    height: 2.8rem;
-
-    overflow: hidden;
-
-    border: 1px solid;
-    border-color: var(--clr-surface-2);
-    border-radius: var(--radius-surface);
-
-    transition-property: background-color, color, border-color;
-    transition-duration: 0.1s;
-    transition-timing-function: ease-out;
-  }
-
-  .blog-nav-list-title:hover {
-    background-color: var(--clr-surface-2);
-    /* color: var(--clr-primary); */
-    border-color: var(--clr-primary);
-  }
-
-  .blog-nav-list-title:hover > .blog-nav-list-title-icon-wrapper {
-    background-color: var(--clr-base);
-    color: var(--clr-primary);
-  }
-
-  .blog-nav-list-title-icon-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    aspect-ratio: 1;
-    height: 100%;
-
-    background-color: var(--clr-mantle);
-  }
-
-  .blog-nav-list-title-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 1.4rem;
-  }
-
-  .blog-nav-list-title-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-left: 0.2rem;
-  }
-
-  .blog-nav-sublist {
-    padding-inline: 1rem;
-    padding-block: 1rem;
-
-    font-size: 1rem;
-  }
-
-  /*** Side Nav - Categories ***/
-
-  .category-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem 0.5rem;
-  }
-
-  /*** Side Nav - Tags ***/
-
-  .tags-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.45rem 0.4rem;
-  }
-
   .blog-nav-wrapper {
     position: relative;
   }
@@ -165,6 +54,10 @@ const tags = [
   .blog-nav-wrapper[data-appbar-revealed='false'],
   .blog-nav-wrapper[data-appbar-revealed='true'] {
     top: 0;
+  }
+
+  .blog-nav-list > li {
+    width: 100%;
   }
 
   @media screen and (min-width: 768px) {
@@ -191,6 +84,7 @@ const tags = [
       margin-left: auto;
 
       max-width: 18rem;
+      width: 100%;
     }
   }
 </style>
@@ -200,64 +94,34 @@ const tags = [
   transition:name='post-direcotry-nav'>
   <nav class='blog-nav'>
     <ul class='blog-nav-list'>
-      <li class='blog-nav-sublist-wrapper'>
-        <a
-          href='/blog/topics'
-          class='blog-nav-list-title'>
-          <span class='blog-nav-list-title-icon-wrapper'>
-            <span class='blog-nav-list-title-icon bx bxs-bulb'></span>
-          </span>
-          <span class='blog-nav-list-title-label'>Topics</span>
-        </a>
-        <ul class='blog-nav-sublist topics-list'>
-          {
-            topics.map((topic) => (
-              <li>
-                <a href={`/blog/topics/${topic}`}>{topic}</a>
-              </li>
-            ))
-          }
-        </ul>
+      <li>
+        <DirectorySideNav
+          title='Topics'
+          url='/blog/topics'
+          iconClass='bx bxs-bulb'
+          list={topics}
+          listType='topics'
+        />
       </li>
 
-      <li class='blog-nav-sublist-wrapper'>
-        <a
-          href='/blog/categories'
-          class='blog-nav-list-title'>
-          <span class='blog-nav-list-title-icon-wrapper'>
-            <span class='blog-nav-list-title-icon bx bxs-category'></span>
-          </span>
-          <span class='blog-nav-list-title-label'>Categories</span>
-        </a>
-        <ul class='blog-nav-sublist category-list'>
-          {
-            categories.map((category) => (
-              <li>
-                <Chip url={`/blog/categories/${category}`}>{category}</Chip>
-              </li>
-            ))
-          }
-        </ul>
+      <li>
+        <DirectorySideNav
+          title='Categories'
+          url='/blog/categories'
+          iconClass='bx bxs-category'
+          list={categories}
+          listType='categories'
+        />
       </li>
 
-      <li class='blog-nav-sublist-wrapper'>
-        <a
-          href='/blog/tags'
-          class='blog-nav-list-title'>
-          <span class='blog-nav-list-title-icon-wrapper'>
-            <span class='blog-nav-list-title-icon bx bxs-tag'></span>
-          </span>
-          <span class='blog-nav-list-title-label'>Tags</span>
-        </a>
-        <ul class='blog-nav-sublist tags-list'>
-          {
-            tags.map((tag) => (
-              <li>
-                <Tag url={`/blog/tags/${tag}`}>{tag}</Tag>
-              </li>
-            ))
-          }
-        </ul>
+      <li>
+        <DirectorySideNav
+          title='Tags'
+          url='/blog/tags'
+          iconClass='bx bxs-tag'
+          list={tags}
+          listType='tags'
+        />
       </li>
       <li>
         <a href='/blog/archive'>Archive</a>
