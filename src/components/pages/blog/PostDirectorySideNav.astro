@@ -25,6 +25,27 @@ const categories = [
 const tags = [
   ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
 ];
+
+
+const topicCounts = sortedPosts.reduce((acc, post) => {
+  const topic = post.data.topic;
+  acc[topic] = (acc[topic] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
+const categoryCounts = sortedPosts.reduce((acc, post) => {
+  const category = post.data.category;
+  acc[category] = (acc[category] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
+const tagCounts = sortedPosts.reduce((acc, post) => {
+  const tags = post.data.tags;
+  tags.forEach((tag: string) => {
+    acc[tag] = (acc[tag] || 0) + 1;
+  });
+  return acc;
+}, {} as Record<string, number>);
 ---
 
 <style>
@@ -101,6 +122,7 @@ const tags = [
           iconClass='bx bxs-bulb'
           list={topics}
           listType='topics'
+          counts={topicCounts}
         />
       </li>
 

@@ -8,9 +8,10 @@ type Props = {
   iconClass: string;
   listType: 'topics' | 'categories' | 'tags';
   list: any[];
+  counts?: Record<string, number>;
 };
 
-const { title, url, iconClass, listType, list } = Astro.props;
+const { title, url, iconClass, listType, list, counts } = Astro.props;
 ---
 
 <style>
@@ -131,7 +132,7 @@ const { title, url, iconClass, listType, list } = Astro.props;
 
   .topics-list {
     display: flex;
-    font-size: 0.9rem;
+    font-size: 1rem;
     width: 100%;
   }
 
@@ -165,6 +166,12 @@ const { title, url, iconClass, listType, list } = Astro.props;
     height: 100%;
 
     opacity: 0.4;
+  }
+
+  .topic-list-item-count {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--clr-subtext-0);
   }
 
   .categories-list {
@@ -201,7 +208,7 @@ const { title, url, iconClass, listType, list } = Astro.props;
               class='topic-list-item-wrapper'>
               <span class='topic-list-item-label'>{item}</span>
               <div class='topic-list-item-seperator' />
-              <span class='topic-list-item-count'>(0)</span>
+              <span class='topic-list-item-count'>({counts![item]})</span>
             </a>
           )}
           {listType === 'categories' && (
