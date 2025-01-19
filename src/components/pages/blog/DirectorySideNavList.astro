@@ -137,6 +137,7 @@ const { title, url, iconClass, listType, list, counts } = Astro.props;
 
   .topics-list {
     display: flex;
+    gap: 0;
     font-size: 1rem;
     width: 100%;
   }
@@ -233,7 +234,7 @@ const { title, url, iconClass, listType, list, counts } = Astro.props;
               <p class='topic-list-item-count'>
                 <span>(</span>
                 <span>{counts![item]}</span>
-                <span>)</span>                
+                <span>)</span>
               </p>
             </a>
           )}
