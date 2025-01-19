@@ -128,6 +128,11 @@ const { title, url, iconClass, listType, list, counts } = Astro.props;
     font-size: 1rem;
   }
 
+  .blog-nav-sublist.topics-list {
+    padding-inline: 0;
+    padding-block: 0.4rem;
+  }
+
   /*** Taxonomy Lists ***/
 
   .topics-list {
@@ -140,37 +145,54 @@ const { title, url, iconClass, listType, list, counts } = Astro.props;
     display: grid;
     grid-template-columns: auto 1fr auto;
 
+    padding-inline: 1rem;
+    padding-block: 0.4rem;
+
     position: relative;
     width: 100%;
+
+    transition-property: color, background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  .topic-list-item-wrapper > p {
+    margin: 0;
   }
 
   .topic-list-item-wrapper:hover {
     color: var(--clr-primary);
+    background-color: var(--clr-surface-0);
   }
 
   .topic-list-item-label {
     max-width: fit-content;
   }
 
-  .topic-list-item-seperator {
+  .topic-list-item-separator {
     content: '';
 
     position: relative;
     left: 0;
+    bottom: 0.2rem;
 
-    border-bottom: 2px dotted var(--clr-subtext-0);
+    border-bottom: 1.5px dotted var(--clr-subtext-0);
 
     margin-inline: auto;
 
-    width: 90%;
+    width: 94%;
     height: 100%;
 
-    opacity: 0.4;
+    opacity: 0.2;
+  }
+
+  .topic-list-item-wrapper:hover > .topic-list-item-count {
+    color: var(--clr-primary);
   }
 
   .topic-list-item-count {
-    font-size: 1rem;
-    font-weight: 300;
+    font-size: 0.85rem;
+    font-weight: 400;
     color: var(--clr-subtext-0);
   }
 
@@ -206,9 +228,13 @@ const { title, url, iconClass, listType, list, counts } = Astro.props;
             <a
               href={`/blog/${listType}/${item}`}
               class='topic-list-item-wrapper'>
-              <span class='topic-list-item-label'>{item}</span>
-              <div class='topic-list-item-seperator' />
-              <span class='topic-list-item-count'>({counts![item]})</span>
+              <p class='topic-list-item-label'>{item}</p>
+              <div class='topic-list-item-separator' />
+              <p class='topic-list-item-count'>
+                <span>(</span>
+                <span>{counts![item]}</span>
+                <span>)</span>                
+              </p>
             </a>
           )}
           {listType === 'categories' && (
