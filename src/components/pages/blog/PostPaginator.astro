@@ -62,7 +62,9 @@ const hasPages = page.url.next !== undefined || page.url.prev !== undefined;
       {page.url.first ? (
         <a
           class='page-nav-icon-wrapper'
-          href={page.url.first}>
+          href={page.url.first}
+          title='First Page'>
+          <p class='visually-hidden'>First Page</p>
           <i class='bx bx-chevrons-left' />
         </a>
       ) : (
@@ -73,7 +75,9 @@ const hasPages = page.url.next !== undefined || page.url.prev !== undefined;
       {page.url.prev ? (
         <a
           class='page-nav-icon-wrapper'
-          href={page.url.prev}>
+          href={page.url.prev}
+          title='Previous Page'>
+          <p class='visually-hidden'>Previous Page</p>
           <i class='bx bx-chevron-left' />
         </a>
       ) : (
@@ -89,7 +93,9 @@ const hasPages = page.url.next !== undefined || page.url.prev !== undefined;
       {page.url.next ? (
         <a
           class='page-nav-icon-wrapper'
-          href={page.url.next}>
+          href={page.url.next}
+          title='Next Page'>
+          <p class='visually-hidden'>Next Page</p>
           <i class='bx bx-chevron-right' />
         </a>
       ) : (
@@ -100,7 +106,9 @@ const hasPages = page.url.next !== undefined || page.url.prev !== undefined;
       {page.url.last ? (
         <a
           class='page-nav-icon-wrapper'
-          href={page.url.last}>
+          href={page.url.last}
+          title='Last Page'>
+          <p class='visually-hidden'>Last Page</p>
           <i class='bx bx-chevrons-right' />
         </a>
       ) : (
