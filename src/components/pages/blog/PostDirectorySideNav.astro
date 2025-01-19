@@ -26,26 +26,34 @@ const tags = [
   ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
 ];
 
+const topicCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const topic = post.data.topic;
+    acc[topic] = (acc[topic] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>
+);
 
-const topicCounts = sortedPosts.reduce((acc, post) => {
-  const topic = post.data.topic;
-  acc[topic] = (acc[topic] || 0) + 1;
-  return acc;
-}, {} as Record<string, number>);
+const categoryCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const category = post.data.category;
+    acc[category] = (acc[category] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>
+);
 
-const categoryCounts = sortedPosts.reduce((acc, post) => {
-  const category = post.data.category;
-  acc[category] = (acc[category] || 0) + 1;
-  return acc;
-}, {} as Record<string, number>);
-
-const tagCounts = sortedPosts.reduce((acc, post) => {
-  const tags = post.data.tags;
-  tags.forEach((tag: string) => {
-    acc[tag] = (acc[tag] || 0) + 1;
-  });
-  return acc;
-}, {} as Record<string, number>);
+const tagCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const tags = post.data.tags;
+    tags.forEach((tag: string) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+    });
+    return acc;
+  },
+  {} as Record<string, number>
+);
 ---
 
 <style>
@@ -69,7 +77,13 @@ const tagCounts = sortedPosts.reduce((acc, post) => {
   }
 
   .blog-nav-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
     position: relative;
+
+    background-color: var(--clr-primary);
   }
 
   .blog-nav-wrapper[data-appbar-revealed='false'],
@@ -81,9 +95,15 @@ const tagCounts = sortedPosts.reduce((acc, post) => {
     width: 100%;
   }
 
+  ul.blog-nav-list {
+    margin: 0;
+  }
+
   @media screen and (min-width: 768px) {
     .blog-nav-wrapper {
       position: sticky;
+
+      height: 100dvh;
 
       transition: top 0.4s ease-in-out;
     }
@@ -93,7 +113,8 @@ const tagCounts = sortedPosts.reduce((acc, post) => {
     }
 
     .blog-nav-wrapper[data-appbar-revealed='false'] {
-      top: 1rem;
+      top: 0rem;
+      padding-top: 1rem;
     }
 
     .blog-nav-list {
