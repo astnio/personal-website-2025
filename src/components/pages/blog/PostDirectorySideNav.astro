@@ -81,9 +81,10 @@ const tagCounts = sortedPosts.reduce(
     flex-direction: column;
     justify-content: start;
     align-items: start;
+
     position: relative;
 
-    background-color: var(--clr-primary);
+    padding-bottom: 1rem;
   }
 
   .blog-nav-wrapper[data-appbar-revealed='false'],
@@ -113,8 +114,7 @@ const tagCounts = sortedPosts.reduce(
     }
 
     .blog-nav-wrapper[data-appbar-revealed='false'] {
-      top: 0rem;
-      padding-top: 1rem;
+      top: 1rem;
     }
 
     .blog-nav-list {
@@ -133,6 +133,7 @@ const tagCounts = sortedPosts.reduce(
 
 <aside
   class='blog-nav-wrapper'
+  data-appbar-revealed='true'
   transition:name='post-direcotry-nav'>
   <nav class='blog-nav'>
     <ul class='blog-nav-list'>
