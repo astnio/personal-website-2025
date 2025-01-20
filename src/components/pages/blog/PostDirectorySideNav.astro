@@ -84,12 +84,20 @@ const tagCounts = sortedPosts.reduce(
 
     position: relative;
 
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
   }
 
   .blog-nav-wrapper[data-appbar-revealed='false'],
   .blog-nav-wrapper[data-appbar-revealed='true'] {
     top: 0;
+  }
+
+  .blog-nav {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--clr-surface-0) var(--clr-base);
+
+    padding-right: 0.5rem;
   }
 
   .blog-nav-list > li {
