@@ -6,16 +6,25 @@ const { title, postsCount, categoriesCount, tagsCount, url } = Astro.props;
 
 <style>
   .card {
-    background-color: var(--clr-base);
-    border: 1px solid var(--clr-surface-0);
+    background-color: var(--clr-mantle);
+
+    border-radius: var(--radius-surface);
+
+    padding: 1rem;
+  }
+
+  h3.card-title {
+    font-size: 2.2rem;
   }
 
   .card-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr auto;
 
     list-style-type: none;
     padding: 0;
+
+    margin-block: 2rem;
   }
 
   .card-list > li {
@@ -24,7 +33,7 @@ const { title, postsCount, categoriesCount, tagsCount, url } = Astro.props;
     justify-content: center;
     gap: 1ch;
 
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-base);
 
     border-radius: var(--radius-surface);
 
@@ -52,10 +61,49 @@ const { title, postsCount, categoriesCount, tagsCount, url } = Astro.props;
     font-size: 2.4rem;
     color: var(--clr-subtext-0);
   }
+
+  a.view-posts-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--clr-base);
+
+    padding-inline: 1rem;
+    padding-block: 0.6rem;
+
+    border-radius: var(--radius-input);
+
+    outline: 1px solid var(--clr-surface-0);
+
+    text-decoration: none;
+
+    transition-property: background-color, outline;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  a.view-posts-link:hover {
+    background-color: var(--clr-surface-0);
+    outline: 1px solid var(--clr-surface-1);
+  }
+
+  .view-posts-link-label {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .view-posts-link-icon {
+    font-size: 1.6rem;
+  }
 </style>
 
 <article class='card'>
-  <Heading level={3}>{title}</Heading>
+  <Heading
+    class='card-title'
+    level={3}
+    >{title}</Heading
+  >
   <ul class='card-list'>
     <li>
       <i class='count-icon bx bxs-spreadsheet'></i>
@@ -79,8 +127,10 @@ const { title, postsCount, categoriesCount, tagsCount, url } = Astro.props;
       </p>
     </li>
   </ul>
-  <a href={url}>
-    <span> View Posts </span>
-    <i class='bx bxs-right-arrow-alt'></i>
+  <a
+    href={url}
+    class='view-posts-link'>
+    <span class='view-posts-link-label'> View Posts </span>
+    <i class='view-posts-link-icon bx bxs-right-arrow-alt'></i>
   </a>
 </article>

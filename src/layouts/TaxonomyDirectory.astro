@@ -31,12 +31,21 @@ const title = `Blog | ${pageTitleLabel}`;
 
     border-radius: var(--radius-surface);
   }
+
+  ul.taxonomy-list {
+    display: flex;
+    gap: 1.6rem;
+
+    list-style-type: none;
+    padding: 0;
+  }
 </style>
 
 <BaseLayout title={title}>
   <section class='content-wrapper max-width'>
+    <h1 class='title max-width'>{pageTitleLabel}</h1>
     <article class='content'>
-      <ul>
+      <ul class='taxonomy-list'>
         {
           taxonomyCollection.map((taxonomyItem: any) => (
             <li>
@@ -53,5 +62,4 @@ const title = `Blog | ${pageTitleLabel}`;
       </ul>
     </article>
   </section>
-  <h1 class='title max-width'>{pageTitleLabel}</h1>
 </BaseLayout>
