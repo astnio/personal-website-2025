@@ -1,0 +1,29 @@
+---
+import Heading from '@components/typgraphy/Heading.astro';
+
+const { title, postsCount, categoriesCount, tagsCount, url } = Astro.props;
+---
+
+<style></style>
+
+<article>
+  <Heading level={3}>{title}</Heading>
+  <ul>
+    <li>
+      <i class='bx bxs-spreadsheet'></i>
+      <p><span>{postsCount}</span> <span>Posts</span></p>
+    </li>
+    <li>
+      <i class='bx bxs-category'></i>
+      <p><span>{categoriesCount}</span> <span>Categories</span></p>
+    </li>
+    <li>
+      <i class='bx bxs-tag'></i>
+      <p><span>{tagsCount}</span> <span>Tags</span></p>
+    </li>
+  </ul>
+  <a href={url}>
+    <span> View Posts </span>
+    <i class='bx bxs-right-arrow-alt'></i>
+  </a>
+</article>

@@ -1,4 +1,5 @@
 ---
+import TaxonomyCard from '@components/pages/blog/TaxonomyCard.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import toCapitalCase from '@scripts/utils/toCapitalCase';
 
@@ -14,15 +15,43 @@ const pageTitleLabel = toCapitalCase(page);
 const title = `Blog | ${pageTitleLabel}`;
 ---
 
+<style>
+  .title {
+    width: 100%;
+  }
+  .content-wrapper {
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
+  .content {
+    padding: 1rem;
+
+    background-color: var(--clr-base);
+
+    border-radius: var(--radius-surface);
+  }
+</style>
+
 <BaseLayout title={title}>
-  <h1>{pageTitleLabel}</h1>
-  <div>
-    {
-      taxonomyCollection.map((taxonomyItem: any) => (
-        <p>
-          <a href={`/blog/${page}/${taxonomyItem}`}>{taxonomyItem}</a>
-        </p>
-      ))
-    }
-  </div>
+  <section class='content-wrapper max-width'>
+    <article class='content'>
+      <ul>
+        {
+          taxonomyCollection.map((taxonomyItem: any) => (
+            <li>
+              <TaxonomyCard
+                title={taxonomyItem}
+                postsCount={0}
+                categoriesCount={0}
+                tagsCount={0}
+                url={`/blog/${page}/${taxonomyItem}`}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+  </section>
+  <h1 class='title max-width'>{pageTitleLabel}</h1>
 </BaseLayout>
