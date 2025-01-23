@@ -26,7 +26,7 @@ function getCardType() {
       return 'topic';
   }
 }
-const type = getCardType();
+const cardType = getCardType();
 
 const allPosts = await getCollection('blog');
 
@@ -183,6 +183,12 @@ function getCountsForTaxonomy(taxonomyItem: string) {
 
 <style>
   .title {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+
+    font-size: 2.4rem;
+
     width: 100%;
   }
   .content-wrapper {
@@ -216,7 +222,12 @@ function getCountsForTaxonomy(taxonomyItem: string) {
 
 <BaseLayout title={title}>
   <section class='content-wrapper max-width'>
-    <h1 class='title max-width'>{pageTitleLabel}</h1>
+    <h1 class='title max-width'>
+      {cardType === 'topic' && <span class='bx bxs-bulb' />}
+      {cardType === 'category' && <span class='bx bxs-category' />}
+      {cardType === 'tag' && <span class='bx bxs-tag' />}
+      <span>{pageTitleLabel}</span>
+    </h1>
     <article class='content'>
       <ul class='taxonomy-list'>
         {
@@ -226,7 +237,7 @@ function getCountsForTaxonomy(taxonomyItem: string) {
               <li>
                 <TaxonomyCard
                   title={taxonomyItem}
-                  cardType={type}
+                  cardType={cardType}
                   {...counts}
                   url={`/blog/${page}/${taxonomyItem}`}
                 />
