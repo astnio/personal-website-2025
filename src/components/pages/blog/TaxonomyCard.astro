@@ -21,31 +21,38 @@ const { title, postsCount, topicsCount, categoriesCount, tagsCount, url, cardTyp
 
     border-radius: var(--radius-surface);
 
-    padding: 1rem;
+    padding-inline: 0.8rem;
+    padding-block: 0.8rem;
   }
 
   h3.card-title {
     font-size: 1.4rem;
+    padding: 0;
+    margin: 0;
   }
 
   .card-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
 
     list-style-type: none;
     padding: 0;
 
-    margin-top: 1rem;
-    margin-bottom: 1.4rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
   }
 
   .card-list > li {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.4ch;
+    gap: 0.6ch;
 
-    background-color: var(--clr-mantle);
+    /* background-color: var(--clr-mantle); */
 
     border-radius: var(--radius-surface);
   }
@@ -61,7 +68,7 @@ const { title, postsCount, topicsCount, categoriesCount, tagsCount, url, cardTyp
   }
 
   .count-label {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--clr-subtext-0);
   }
 
