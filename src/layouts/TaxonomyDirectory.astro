@@ -33,11 +33,18 @@ const title = `Blog | ${pageTitleLabel}`;
   }
 
   ul.taxonomy-list {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 2.6rem;
 
     list-style-type: none;
     padding: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    ul.taxonomy-list {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 
