@@ -1,7 +1,17 @@
 ---
 import Heading from '@components/typgraphy/Heading.astro';
 
-const { title, postsCount, categoriesCount, tagsCount, url } = Astro.props;
+interface Props {
+  title: string;
+  postsCount: number;
+  categoriesCount: number;
+  tagsCount: number;
+  url: string;
+  cardType: 'topic' | 'category' | 'tag';
+}
+
+const { title, postsCount, categoriesCount, tagsCount, url, cardType } =
+  Astro.props;
 ---
 
 <style>
