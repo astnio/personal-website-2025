@@ -13,6 +13,18 @@ const { taxonomyCollection, page } = Astro.props;
 const pageTitleLabel = toCapitalCase(page);
 
 const title = `Blog | ${pageTitleLabel}`;
+
+function getCardType() {
+  switch (page) {
+    case 'tags':
+      return 'tag';
+    case 'categories':
+      return 'category';
+    case 'topics':
+      return 'topic';
+  }
+}
+const type = getCardType();
 ---
 
 <style>
@@ -58,7 +70,9 @@ const title = `Blog | ${pageTitleLabel}`;
             <li>
               <TaxonomyCard
                 title={taxonomyItem}
+                cardType={type}
                 postsCount={0}
+                topicsCount={0}
                 categoriesCount={0}
                 tagsCount={0}
                 url={`/blog/${page}/${taxonomyItem}`}

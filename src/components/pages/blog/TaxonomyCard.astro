@@ -4,13 +4,14 @@ import Heading from '@components/typgraphy/Heading.astro';
 interface Props {
   title: string;
   postsCount: number;
+  topicsCount: number;
   categoriesCount: number;
   tagsCount: number;
   url: string;
   cardType: 'topic' | 'category' | 'tag';
 }
 
-const { title, postsCount, categoriesCount, tagsCount, url, cardType } =
+const { title, postsCount, topicsCount, categoriesCount, tagsCount, url, cardType } =
   Astro.props;
 ---
 
@@ -120,20 +121,62 @@ const { title, postsCount, categoriesCount, tagsCount, url, cardType } =
         <span class='count-label'>Posts</span>
       </p>
     </li>
-    <li>
-      <i class='count-icon bx bxs-category'></i>
-      <p class='count-wrapper'>
-        <span class='count'>{categoriesCount}</span>
-        <span class='count-label'>Categories</span>
-      </p>
-    </li>
-    <li>
-      <i class='count-icon bx bxs-tag'></i>
-      <p class='count-wrapper'>
-        <span class='count'>{tagsCount}</span>
-        <span class='count-label'>Tags</span>
-      </p>
-    </li>
+    {
+      cardType === 'topic' && (
+        <li>
+          <i class='count-icon bx bxs-tag'></i>
+          <p class='count-wrapper'>
+            <span class='count'>{tagsCount}</span>
+            <span class='count-label'>Tags</span>
+          </p>
+        </li>
+        <li>
+          <i class='count-icon bx bxs-category'></i>
+          <p class='count-wrapper'>
+            <span class='count'>{categoriesCount}</span>
+            <span class='count-label'>Categories</span>
+          </p>
+        </li>
+      )
+    }
+
+  {
+    cardType === 'category' && (
+      <li>
+        <i class='count-icon bx bxs-tag'></i>
+        <p class='count-wrapper'>
+          <span class='count'>{tagsCount}</span>
+          <span class='count-label'>Tags</span>
+        </p>
+      </li>
+      <li>
+        <i class='count-icon bx bxs-category'></i>
+        <p class='count-wrapper'>
+          <span class='count'>{topicsCount}</span>
+          <span class='count-label'>Topics</span>
+        </p>
+      </li>
+    )
+  }
+
+  {
+    cardType === 'tag' && (
+      <li>
+        <i class='count-icon bx bxs-category'></i>
+        <p class='count-wrapper'>
+          <span class='count'>{categoriesCount}</span>
+          <span class='count-label'>Categories</span>
+        </p>
+      </li>
+      <li>
+        <i class='count-icon bx bxs-tag'></i>
+        <p class='count-wrapper'>
+          <span class='count'>{topicsCount}</span>
+          <span class='count-label'>Topics</span>
+        </p>
+      </li>
+    )
+  }
   </ul>
   <a
     href={url}
