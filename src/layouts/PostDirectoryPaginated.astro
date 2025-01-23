@@ -87,13 +87,31 @@ const title =
     position: relative;
     bottom: 1.2rem;
 
-    margin: 0;
-    padding-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4ch;
 
     font-size: 1.2rem;
     font-weight: 300;
     letter-spacing: 0.1ch;
     color: var(--clr-subtext-0);
+
+    background-color: var(--clr-base);
+    padding-inline: 1rem;
+    padding-block: 0.4rem;
+
+    margin: 0.6rem 0 0 0;
+
+    border-radius: var(--radius-surface);
+  }
+
+  .heading-directory-type-icon {
+    position: relative;
+    /* top: 1px; */
+  }
+
+  .heading-directory-type-label {
+    text-transform: capitalize;
   }
 
   @media screen and (min-width: 768px) {
@@ -124,7 +142,20 @@ const title =
           class='directory-title'>
           {directoryTitle}
         </Heading>
-        {directoryType && <p class='heading-directory-type'>{directoryType}</p>}
+        {directoryType && (
+          <p class='heading-directory-type'>
+            {directoryType === 'topic' && (
+              <span class='heading-directory-type-icon bx bxs-bulb' />
+            )}
+            {directoryType === 'category' && (
+              <span class='heading-directory-type-icon bx bxs-category' />
+            )}
+            {directoryType === 'tag' && (
+              <span class='heading-directory-type-icon bx bxs-tag' />
+            )}
+            <span class='heading-directory-type-label'>{directoryType}</span>
+          </p>
+        )}
       </div>
     )
   }
