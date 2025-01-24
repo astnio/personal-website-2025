@@ -43,7 +43,7 @@ const linkListWrapperId = `hero-link-wrapper-${title.toLowerCase()}`;
   <nav
     class='link-list-wrapper'
     id={linkListWrapperId}
-    data-open='false'>
+    data-open={internalLink ? 'true' : 'false'}>
     <div>
       <ul class='link-list'>
         {
