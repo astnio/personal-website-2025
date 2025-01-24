@@ -1,31 +1,35 @@
 ---
+import Heading from '@/components/typgraphy/Heading.astro';
 import HeroLink from './HeroLink.astro';
 import type { Link } from '@/types';
 
 interface Props {
   links: Link[];
-  type: 'internal' | 'external';
+  title: string;
+  internalLink: boolean;
 }
 
-const { links } = Astro.props;
+const { links, title, internalLink } = Astro.props;
 ---
 
 <style></style>
 
-<section>
-  <h3>links</h3>
-  <ul>
-    {
-      links.map((link) => (
-        <li>
-          <HeroLink
-            url={link.url}
-            label={link.label}
-            iconClass={link.iconClass}
-            newTab={false}
-          />
-        </li>
-      ))
-    }
-  </ul>
-</section>
+<article>
+  <Heading>{title}</Heading>
+  <nav>
+    <ul>
+      {
+        links.map((link) => (
+          <li>
+            <HeroLink
+              url={link.url}
+              label={link.label}
+              iconClass={link.iconClass}
+              newTab={internalLink ? false : true}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</article>

@@ -1,6 +1,7 @@
 ---
 import HeroLink from './HeroLink.astro';
 import links from '@content/links.json';
+import HeroLinkContainer from './HeroLinkContainer.astro';
 
 const internalLinks = links.internalLinks.filter((link) => {
   if (link.url === '/') return false;
@@ -157,5 +158,22 @@ const workLinks = links.workLinks;
         ))
       }
     </ul>
+    <HeroLinkContainer
+      internalLink={true}
+      links={internalLinks}
+      title='Explore My Site'
+    />
+
+    <HeroLinkContainer
+      internalLink={false}
+      links={workLinks}
+      title='Discover My Work'
+    />
+
+    <HeroLinkContainer
+      internalLink={false}
+      links={socialLinks}
+      title='Connect with Me'
+    />
   </div>
 </nav>
