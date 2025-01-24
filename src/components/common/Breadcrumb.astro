@@ -31,6 +31,9 @@ function generateBreadcrumbs(path: string) {
 }
 
 const breadcrumbs = generateBreadcrumbs(currentPath);
+
+console.log(breadcrumbs);
+console.log(breadcrumbs.length);
 ---
 
 <style>
@@ -107,7 +110,7 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
   class='breadcrumb max-width'>
   <ol class='breadcrumb-list'>
     {
-      breadcrumbs.length > 1 && (
+      breadcrumbs.length > 0 && (
         <li class='breadcrumb-item'>
           <a href='/'>
             <span class='bx bxs-home' />
@@ -118,7 +121,7 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
       )
     }
     {
-      breadcrumbs.length > 1 &&
+      breadcrumbs.length > 0 &&
         breadcrumbs.map((crumb, index) => (
           <li class='breadcrumb-item'>
             {index === breadcrumbs.length - 1 ? (
