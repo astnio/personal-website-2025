@@ -1,9 +1,9 @@
 ---
-import { calculateReadingTime } from "@scripts/utils/readingTime";
-import { getCollection } from "astro:content";
-import DirectorySideNavList from "./DirectorySideNavList.astro";
+import { calculateReadingTime } from '@scripts/utils/readingTime';
+import { getCollection } from 'astro:content';
+import DirectorySideNavList from './DirectorySideNavList.astro';
 
-const allPosts = await getCollection("blog");
+const allPosts = await getCollection('blog');
 
 const sortedPosts = allPosts
   .sort(
@@ -87,8 +87,8 @@ const tagCounts = sortedPosts.reduce(
     padding-bottom: 2rem;
   }
 
-  .blog-nav-wrapper[data-appbar-revealed="false"],
-  .blog-nav-wrapper[data-appbar-revealed="true"] {
+  .blog-nav-wrapper[data-appbar-revealed='false'],
+  .blog-nav-wrapper[data-appbar-revealed='true'] {
     top: 0;
   }
 
@@ -117,11 +117,11 @@ const tagCounts = sortedPosts.reduce(
       transition: top 0.4s ease-in-out;
     }
 
-    .blog-nav-wrapper[data-appbar-revealed="true"] {
+    .blog-nav-wrapper[data-appbar-revealed='true'] {
       top: 5rem;
     }
 
-    .blog-nav-wrapper[data-appbar-revealed="false"] {
+    .blog-nav-wrapper[data-appbar-revealed='false'] {
       top: 1rem;
     }
 
@@ -140,46 +140,45 @@ const tagCounts = sortedPosts.reduce(
 </style>
 
 <aside
-  class="blog-nav-wrapper"
-  data-appbar-revealed="true"
-  transition:name="post-direcotry-nav"
->
-  <nav class="blog-nav">
-    <ul class="blog-nav-list">
+  class='blog-nav-wrapper'
+  data-appbar-revealed='true'
+  transition:name='post-direcotry-nav'>
+  <nav class='blog-nav'>
+    <ul class='blog-nav-list'>
       <li>
         <DirectorySideNavList
-          title="Topics"
-          url="/blog/topics"
-          iconClass="bx bxs-bulb"
+          title='Topics'
+          url='/blog/topics'
+          iconClass='bx bxs-bulb'
           list={topics}
-          listType="topics"
+          listType='topics'
           counts={topicCounts}
         />
       </li>
 
       <li>
         <DirectorySideNavList
-          title="Categories"
-          url="/blog/categories"
-          iconClass="bx bxs-category"
+          title='Categories'
+          url='/blog/categories'
+          iconClass='bx bxs-category'
           list={categories}
-          listType="categories"
+          listType='categories'
         />
       </li>
 
       <li>
         <DirectorySideNavList
-          title="Tags"
-          url="/blog/tags"
-          iconClass="bx bxs-tag"
+          title='Tags'
+          url='/blog/tags'
+          iconClass='bx bxs-tag-alt'
           list={tags}
-          listType="tags"
+          listType='tags'
         />
       </li>
       <li>
-        <a href="/blog/archive">
+        <a href='/blog/archive'>
           <span>
-            <i class="bx bxs-archive"></i>
+            <i class='bx bxs-archive'></i>
           </span>
           <span>Archive</span>
         </a>
