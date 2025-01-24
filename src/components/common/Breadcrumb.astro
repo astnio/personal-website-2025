@@ -38,14 +38,14 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
     position: absolute;
     top: 6rem;
 
-    margin-bottom: 1.5rem;
-
     width: 100%;
 
     padding-inline: 1rem;
   }
 
   .breadcrumb-list {
+    position: relative;
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -56,8 +56,23 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
     padding: 0;
     margin: 0;
 
+    max-width: fit-content;
+
     /* background-color: var(--clr-base); */
   }
+
+  /* .breadcrumb-list::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    bottom: -0.4rem;
+
+    height: 1px;
+    width: 100%;
+
+    background-color: var(--clr-surface-0);
+  } */
 
   .breadcrumb-item {
     display: flex;
@@ -66,7 +81,7 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
   }
 
   .breadcrumb-item a {
-    color: var(--clr-subtext-0);
+    color: var(--clr-subtext-1);
     text-decoration: none;
     transition: color 0.2s;
   }
@@ -78,7 +93,7 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
 
   .separator {
     margin: 0 0.5rem;
-    color: var(--clr-subtext-0);
+    color: var(--clr-surface-2);
   }
 
   .current {
