@@ -94,7 +94,10 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
     {
       breadcrumbs.length > 1 && (
         <li class='breadcrumb-item'>
-          <a href='/'>Home</a>
+          <a href='/'>
+            <span class='bx bxs-home' />
+            <span class='visually-hidden'>Home</span>
+          </a>
           {breadcrumbs.length > 0 && <span class='separator'>/</span>}
         </li>
       )
