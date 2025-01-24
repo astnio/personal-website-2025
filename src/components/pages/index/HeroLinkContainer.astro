@@ -1,5 +1,13 @@
 ---
+import HeroLink from './HeroLink.astro';
+import type { Link } from '@/types';
 
+interface Props {
+  links: Link[];
+  type: 'internal' | 'external';
+}
+
+const { links } = Astro.props;
 ---
 
 <style></style>
@@ -7,6 +15,17 @@
 <section>
   <h3>links</h3>
   <ul>
-    <li>link</li>
+    {
+      links.map((link) => (
+        <li>
+          <HeroLink
+            url={link.url}
+            label={link.label}
+            iconClass={link.iconClass}
+            newTab={false}
+          />
+        </li>
+      ))
+    }
   </ul>
 </section>
