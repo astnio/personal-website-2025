@@ -35,10 +35,13 @@ const workLinks = links.workLinks;
   }
 
   .links-nav {
-    gap: 2rem;
+    /* gap: 2rem; */
   }
 
   .link-list-wrapper {
+    display: flex;
+    flex-direction: column;
+
     width: 100%;
   }
 
@@ -95,8 +98,8 @@ const workLinks = links.workLinks;
   }
 </style>
 
-<nav class='links-nav'>
-  <div class='link-list-wrapper'>
+<div class='links-nav'>
+  <!-- <div class='link-list-wrapper'>
     <div class='link-list-title-wrapper'>
       <div class='link-list-title-hr link-list-title-hr-left'></div>
       <h3 class='link-list-title'>Explore My Site</h3>
@@ -137,10 +140,10 @@ const workLinks = links.workLinks;
         ))
       }
     </ul>
-  </div>
+  </div> -->
 
   <div class='link-list-wrapper'>
-    <div class='link-list-title-wrapper'>
+    <!-- <div class='link-list-title-wrapper'>
       <div class='link-list-title-hr link-list-title-hr-left'></div>
       <h3 class='link-list-title'>Connect with Me</h3>
       <div class='link-list-title-hr'></div>
@@ -157,7 +160,7 @@ const workLinks = links.workLinks;
           </li>
         ))
       }
-    </ul>
+    </ul> -->
     <HeroLinkContainer
       internalLink={true}
       links={internalLinks}
@@ -176,4 +179,4 @@ const workLinks = links.workLinks;
       title='Connect with Me'
     />
   </div>
-</nav>
+</div>
