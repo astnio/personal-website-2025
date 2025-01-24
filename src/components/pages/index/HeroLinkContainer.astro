@@ -6,10 +6,11 @@ import type { Link } from '@/types';
 interface Props {
   links: Link[];
   title: string;
+  iconClass?: string;
   internalLink: boolean;
 }
 
-const { links, title, internalLink } = Astro.props;
+const { links, title, iconClass, internalLink } = Astro.props;
 const containerHeadingId = `hero-link-container-heading-${title.toLowerCase()}`;
 const linkListWrapperId = `hero-link-wrapper-${title.toLowerCase()}`;
 ---
@@ -92,6 +93,7 @@ const linkListWrapperId = `hero-link-wrapper-${title.toLowerCase()}`;
   <button
     class='link-group-heading-wrapper'
     id={containerHeadingId}>
+    <span class={iconClass}></span>
     <Heading
       level={3}
       class='link-group-title'
