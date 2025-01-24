@@ -1,4 +1,19 @@
 ---
+function formatPathSegment(segment: string) {
+  let decoded = decodeURIComponent(segment);
+
+  decoded = decoded.replace(/\+/g, ' ');
+
+  decoded = decoded.replace(/[-_]/g, ' ');
+
+  decoded = decoded
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+
+  return decoded;
+}
+
 const currentPath = Astro.url.pathname;
 
 function generateBreadcrumbs(path: string) {
@@ -6,10 +21,7 @@ function generateBreadcrumbs(path: string) {
 
   return segments.map((segment, index) => {
     const url = '/' + segments.slice(0, index + 1).join('/');
-    const label = segment
-      .split('-')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
+    const label = formatPathSegment(segment);
 
     return {
       label,
