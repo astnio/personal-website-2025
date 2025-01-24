@@ -10,12 +10,15 @@ interface Props {
 }
 
 const { links, title, internalLink } = Astro.props;
+const containerHeadingId = `hero-link-container-heading-${title.toLowerCase()}`;
 ---
 
 <style></style>
 
 <article>
-  <Heading>{title}</Heading>
+  <button id={containerHeadingId}>
+    <Heading>{title}</Heading>
+  </button>
   <nav>
     <ul>
       {
@@ -33,3 +36,13 @@ const { links, title, internalLink } = Astro.props;
     </ul>
   </nav>
 </article>
+
+<script define:vars={{ containerHeadingId }}>
+  document.addEventListener('astro:page-load', () => {
+    const btnHeading = document.getElementById(containerHeadingId);
+
+    btnHeading.addEventListener('click', () => {
+      window.alert('hey');
+    });
+  });
+</script>
