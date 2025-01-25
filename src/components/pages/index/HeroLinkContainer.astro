@@ -17,8 +17,6 @@ function convertSpacesToHyphens(str: string): string {
 const { links, title, iconClass, internalLink } = Astro.props;
 const containerHeadingId = `hero-link-container-heading-${convertSpacesToHyphens(title.toLowerCase())}`;
 const linkListWrapperId = `hero-link-wrapper-${convertSpacesToHyphens(title.toLowerCase())}`;
-
-console.log(containerHeadingId);
 ---
 
 <style>
