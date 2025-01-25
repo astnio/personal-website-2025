@@ -28,8 +28,10 @@ const {
 
     border-radius: var(--radius-surface);
 
-    padding-inline: 1.2rem;
-    padding-block: 1.2rem;
+    overflow: hidden;
+
+    /* padding-inline: 1.2rem; */
+    /* padding-block: 1.2rem; */
 
     box-shadow: 4px 12px 16px rgba(0, 0, 0, 0.1);
   }
@@ -46,7 +48,6 @@ const {
     gap: 2rem;
 
     width: 100%;
-    
 
     list-style-type: none;
     padding: 0;
@@ -72,6 +73,10 @@ const {
     justify-content: space-between;
 
     width: 100%;
+
+    padding-inline: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
   }
 
   .posts-count-wrapper {
@@ -80,10 +85,11 @@ const {
     align-items: center;
     gap: 0.4rem;
   }
-  
+
   .posts-count-icon {
-    font-size: 2.6rem;
+    font-size: 1.4rem;
     color: var(--clr-text);
+    margin-right: 0.25ch;
     /* opacity: 0.6; */
   }
 
@@ -100,30 +106,34 @@ const {
   .card-body-wrapper {
     display: flex;
     align-items: center;
-    /* margin-top: 0rem; */
+
+    background-color: var(--clr-mantle);
+    margin-top: 1rem;
+    padding-inline: 1rem;
+    padding-block: 0.4rem;
   }
 
   .count-label-wrapper {
     display: flex;
     flex-direction: column;
+    margin: 0;
   }
 
   .count {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 500;
   }
 
   .count-label {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--clr-subtext-0);
   }
 
   .count-icon {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     color: var(--clr-subtext-0);
     opacity: 0.6;
   }
-
 
   a.view-posts-link {
     display: flex;
@@ -155,14 +165,16 @@ const {
     outline: 1px solid var(--clr-surface-1);
   }
 
+  a.view-posts-link > p {
+    padding: 0;
+    margin: 0;
+  }
+
   .view-posts-link-label {
     font-size: 1rem;
     font-weight: 600;
   }
 
-  .view-posts-link-icon {
-    font-size: 1rem;
-  }
 </style>
 
 <article class='card'>
@@ -172,17 +184,19 @@ const {
       level={3}
       >{title}</Heading
     >
-
-    <div class='posts-count-wrapper'>
+    <a
+      href={url}
+      class='view-posts-link'>
       <span class='posts-count-icon bx bxs-spreadsheet'></span>
-      <p class='count-label-wrapper'>
-        <span class='posts-count'>{postsCount}</span>
-        <span class='posts-count-label'>Posts</span>
+      <p class='view-posts-link-label'>
+        <span>View </span><span></span>{postsCount}<span
+          >{postsCount === 1 ? ' Post' : ' Posts'}</span
+        >
       </p>
-    </div>
+    </a>
   </div>
 
-  <div class="card-body-wrapper">
+  <div class='card-body-wrapper'>
     <ul class='card-list'>
       {
         cardType === 'topic' && (
@@ -190,7 +204,7 @@ const {
             <span class='count-icon bx bxs-tag-alt'/>
             <p class='count-label-wrapper'>
               <span class='count'>{tagsCount}</span>
-              <span class='count-label'>Tags</span>
+              <span class='count-label'>{tagsCount === 1 ? ('Tag') : ('Tags')}</span>
             </p>
           </li>
   
@@ -198,7 +212,7 @@ const {
             <i class='count-icon bx bxs-category'></i>
             <p class='count-label-wrapper'>
               <span class='count'>{categoriesCount}</span>
-              <span class='count-label'>Categories</span>
+              <span class='count-label'>{categoriesCount === 1 ? ('Category') : ('Categories')}</span>
             </p>
           </li>
         )
@@ -210,14 +224,14 @@ const {
           <span class='count-icon bx bxs-tag-alt'/>
           <p class='count-label-wrapper'>
             <span class='count'>{tagsCount}</span>
-            <span class='count-label'>Tags</span>
+            <span class='count-label'>{tagsCount === 1 ? ('Tag') : ('Tags')}</span>
           </p>
         </li>
         <li>
           <span class='count-icon bx bxs-bulb'></span>
           <p class='count-label-wrapper'>
             <span class='count'>{topicsCount}</span>
-            <span class='count-label'>Topics</span>
+            <span class='count-label'>{topicsCount === 1 ? ('Topic') : ('Topics')}</span>
           </p>
         </li>
       )
@@ -229,25 +243,18 @@ const {
           <span class='count-icon bx bxs-category'/>
           <p class='count-label-wrapper'>
             <span class='count'>{categoriesCount}</span>
-            <span class='count-label'>Categories</span>
+            <span class='count-label'>{categoriesCount === 1 ? ('Category') : ('Categories')}</span>
           </p>
         </li>
         <li>
           <span class='count-icon bx bxs-bulb'/>
           <p class='count-label-wrapper'>
             <span class='count'>{topicsCount}</span>
-            <span class='count-label'>Topics</span>
+            <span class='count-label'>{topicsCount === 1 ? ('Topic') : ('Topics')}</span>
           </p>
         </li>
       )
     }
     </ul>
-
-    <a
-      href={url}
-      class='view-posts-link'>
-      <span class='view-posts-link-label'> View Posts </span>
-      <i class='view-posts-link-icon bx bxs-right-arrow-alt'></i>
-    </a>
   </div>
 </article>
