@@ -19,6 +19,12 @@ const linkListWrapperId = `hero-link-wrapper-${title.toLowerCase()}`;
   article.link-group-wrapper {
     width: 100%;
     /* margin-bottom: 1rem; */
+    background-color: var(--clr-mantle);
+    /* padding: 1rem; */
+    outline: 1px solid var(--clr-surface-0);
+
+    border-radius: var(--radius-surface);
+    overflow: hidden;
   }
 
   /*** List Wrapper for Transition ***/
@@ -57,9 +63,10 @@ const linkListWrapperId = `hero-link-wrapper-${title.toLowerCase()}`;
     background-color: var(--clr-base);
 
     width: 100%;
+    height: 100%;
 
     margin: 0;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
 
     padding-inline: 1rem;
     padding-block: 0.8rem;
@@ -82,8 +89,10 @@ const linkListWrapperId = `hero-link-wrapper-${title.toLowerCase()}`;
   }
 
   .link-list {
-    padding: 0;
+    padding-inline: 1rem;
+    padding-block: 0;
     margin: 0;
+    margin-top: 2rem;
 
     list-style-type: none;
   }
