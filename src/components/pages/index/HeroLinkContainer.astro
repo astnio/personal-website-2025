@@ -10,13 +10,7 @@ interface Props {
   internalLink: boolean;
 }
 
-function convertSpacesToHyphens(str: string): string {
-  return str.replace(/\s+/g, '-');
-} 
-
 const { links, title, iconClass, internalLink } = Astro.props;
-const containerHeadingId = `hero-link-container-heading-${convertSpacesToHyphens(title.toLowerCase())}`;
-const linkListWrapperId = `hero-link-wrapper-${convertSpacesToHyphens(title.toLowerCase())}`;
 ---
 
 <style>
@@ -110,9 +104,7 @@ const linkListWrapperId = `hero-link-wrapper-${convertSpacesToHyphens(title.toLo
 </style>
 
 <article class='link-group-wrapper'>
-  <button
-    class='link-group-heading-wrapper'
-    id={containerHeadingId}>
+  <button class='link-group-heading-wrapper'>
     <span class={iconClass}></span>
     <Heading
       level={3}
@@ -122,7 +114,6 @@ const linkListWrapperId = `hero-link-wrapper-${convertSpacesToHyphens(title.toLo
   </button>
   <nav
     class='link-list-wrapper'
-    id={linkListWrapperId}
     data-open={internalLink ? 'true' : 'false'}>
     <div>
       <ul class='link-list'>
@@ -142,20 +133,3 @@ const linkListWrapperId = `hero-link-wrapper-${convertSpacesToHyphens(title.toLo
     </div>
   </nav>
 </article>
-
-<script define:vars={{ containerHeadingId, linkListWrapperId }}>
-  document.addEventListener('astro:page-load', () => {
-    const btnHeading = document.getElementById(containerHeadingId);
-    const linkList = document.getElementById(linkListWrapperId);
-
-    btnHeading.addEventListener('click', () => {
-      const listActive = linkList.getAttribute('data-open');
-
-      if (listActive === 'true') {
-        linkList.setAttribute('data-open', 'false');
-      } else if (listActive === 'false') {
-        linkList.setAttribute('data-open', 'true');
-      }
-    });
-  });
-</script>
