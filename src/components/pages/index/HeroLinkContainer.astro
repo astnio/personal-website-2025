@@ -10,9 +10,15 @@ interface Props {
   internalLink: boolean;
 }
 
+function convertSpacesToHyphens(str: string): string {
+  return str.replace(/\s+/g, '-');
+} 
+
 const { links, title, iconClass, internalLink } = Astro.props;
-const containerHeadingId = `hero-link-container-heading-${title.toLowerCase()}`;
-const linkListWrapperId = `hero-link-wrapper-${title.toLowerCase()}`;
+const containerHeadingId = `hero-link-container-heading-${convertSpacesToHyphens(title.toLowerCase())}`;
+const linkListWrapperId = `hero-link-wrapper-${convertSpacesToHyphens(title.toLowerCase())}`;
+
+console.log(containerHeadingId);
 ---
 
 <style>
