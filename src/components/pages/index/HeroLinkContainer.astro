@@ -11,10 +11,10 @@ interface Props {
   internalLink: boolean;
 }
 
-
 const { links, title, iconClass, internalLink } = Astro.props;
 
-const navId = `link-nav-wrapper-${convertSpacesToHyphens(title).toLowerCase()}`
+const navId = `link-nav-wrapper-${convertSpacesToHyphens(title).toLowerCase()}`;
+const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase()}`;
 ---
 
 <style>
@@ -108,7 +108,9 @@ const navId = `link-nav-wrapper-${convertSpacesToHyphens(title).toLowerCase()}`
 </style>
 
 <article class='link-group-wrapper'>
-  <button class='link-group-heading-wrapper'>
+  <button
+    class='link-group-heading-wrapper'
+    id={btnId}>
     <span class={iconClass}></span>
     <Heading
       level={3}
@@ -139,10 +141,10 @@ const navId = `link-nav-wrapper-${convertSpacesToHyphens(title).toLowerCase()}`
   </nav>
 </article>
 
-<script>
+<script define:vars={{ navId, btnId }}>
   document.addEventListener('astro:page-load', () => {
-    const button = document.querySelector('.link-group-heading-wrapper')!;
-    const navList = document.querySelector('.link-nav-wrapper')!;
+    const button = document.getElementById(btnId);
+    const navList = document.getElementById(navId);
 
     button.addEventListener('click', () => {
       console.log('epic');
