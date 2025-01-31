@@ -142,17 +142,14 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
 </article>
 
 <script define:vars={{ navId, btnId }}>
-  document.addEventListener('astro:page-load', () => {
-    const button = document.getElementById(btnId);
-    const navList = document.getElementById(navId);
+  const button = document.getElementById(btnId);
+  const navList = document.getElementById(navId);
 
-    button.addEventListener('click', () => {
-      console.log('epic');
-      if (navList.getAttribute('data-open') === 'true') {
-        navList.setAttribute('data-open', 'false');
-      } else {
-        navList.setAttribute('data-open', 'true');
-      }
-    });
+  button.addEventListener('click', () => {
+    if (navList.getAttribute('data-open') === 'true') {
+      navList.setAttribute('data-open', 'false');
+    } else {
+      navList.setAttribute('data-open', 'true');
+    }
   });
 </script>
