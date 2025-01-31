@@ -2,6 +2,7 @@
 import Heading from '@/components/typgraphy/Heading.astro';
 import HeroLink from './HeroLink.astro';
 import type { Link } from '@/types';
+import convertSpacesToHyphens from '@/scripts/utils/spacesToHyphens';
 
 interface Props {
   links: Link[];
@@ -10,7 +11,10 @@ interface Props {
   internalLink: boolean;
 }
 
+
 const { links, title, iconClass, internalLink } = Astro.props;
+
+const navId = `link-nav-wrapper-${convertSpacesToHyphens(title).toLowerCase()}`
 ---
 
 <style>
@@ -114,6 +118,7 @@ const { links, title, iconClass, internalLink } = Astro.props;
   </button>
   <nav
     class='link-nav-wrapper'
+    id={navId}
     data-open={internalLink ? 'true' : 'false'}>
     <div>
       <ul class='link-list'>
