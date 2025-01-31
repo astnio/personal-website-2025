@@ -27,7 +27,7 @@ const { links, title, iconClass, internalLink } = Astro.props;
 
   /*** List Wrapper for Transition ***/
 
-  nav.link-list-wrapper {
+  nav.link-nav-wrapper {
     display: grid;
 
     transition-property: grid-template-rows;
@@ -35,15 +35,15 @@ const { links, title, iconClass, internalLink } = Astro.props;
     transition-timing-function: ease-out;
   }
 
-  nav.link-list-wrapper[data-open='false'] {
+  nav.link-nav-wrapper[data-open='false'] {
     grid-template-rows: 0fr;
   }
 
-  nav.link-list-wrapper[data-open='true'] {
+  nav.link-nav-wrapper[data-open='true'] {
     grid-template-rows: 1fr;
   }
 
-  nav.link-list-wrapper > div {
+  nav.link-nav-wrapper > div {
     overflow: hidden;
   }
 
@@ -113,7 +113,7 @@ const { links, title, iconClass, internalLink } = Astro.props;
     >
   </button>
   <nav
-    class='link-list-wrapper'
+    class='link-nav-wrapper'
     data-open={internalLink ? 'true' : 'false'}>
     <div>
       <ul class='link-list'>
@@ -133,3 +133,19 @@ const { links, title, iconClass, internalLink } = Astro.props;
     </div>
   </nav>
 </article>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const button = document.querySelector('.link-group-heading-wrapper')!;
+    const navList = document.querySelector('.link-nav-wrapper')!;
+
+    button.addEventListener('click', () => {
+      console.log('epic');
+      if (navList.getAttribute('data-open') === 'true') {
+        navList.setAttribute('data-open', 'false');
+      } else {
+        navList.setAttribute('data-open', 'true');
+      }
+    });
+  });
+</script>
