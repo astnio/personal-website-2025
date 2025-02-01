@@ -2,20 +2,19 @@
 type Props = {
   type?: 'heading' | 'title' | 'subtitle';
   level?: 1 | 2 | 3 | 4 | 5 | 6;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
   url?: string;
   textOverflow?: '' | 'ellipsis';
   capitalize?: boolean;
-  class?: string;
 };
 
 const {
   type = 'heading',
   level = 2,
+  size = 'md',
   url,
   textOverflow = '',
   capitalize = true,
-  class: className,
-  ...rest
 } = Astro.props;
 
 const HeadingElement =
@@ -25,6 +24,18 @@ const HeadingElement =
 ---
 
 <style>
+  a,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    padding: 0;
+  }
+
   a {
     text-decoration: none;
   }
@@ -41,15 +52,6 @@ const HeadingElement =
   a:hover > .title,
   a:hover > .subtitle {
     color: var(--clr-primary);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-block: 1rem;
   }
 
   a[data-text-overflow='ellipsis'],
@@ -80,28 +82,32 @@ const HeadingElement =
     color: var(--clr-text);
   }
 
-  h1.title {
+  .xs {
+    font-size: 0.7rem;
+  }
+
+  .sm {
+    font-size: 0.85rem;
+  }
+
+  .md {
+    font-size: 1rem;
+  }
+
+  .lg {
+    font-size: 1.2 rem;
+  }
+
+  .xl {
+    font-size: 1.6rem;
+  }
+
+  .xxl {
     font-size: 2.4rem;
   }
 
-  h2.title {
-    font-size: 2.4rem;
-  }
-
-  h3.title {
-    font-size: 2.4rem;
-  }
-
-  h4.title {
-    font-size: 2.4rem;
-  }
-
-  h5.title {
-    font-size: 2.4rem;
-  }
-
-  h6.title {
-    font-size: 2.4rem;
+  .xxxl {
+    font-size: 4rem;
   }
 
   /*** Heading ***/
@@ -115,30 +121,6 @@ const HeadingElement =
     color: var(--clr-text);
   }
 
-  h1.heading {
-    font-size: 1.8rem;
-  }
-
-  h2.heading {
-    font-size: 1.6rem;
-  }
-
-  h3.heading {
-    font-size: 1.4rem;
-  }
-
-  h4.heading {
-    font-size: 1rem;
-  }
-
-  h5.heading {
-    font-size: 0.8rem;
-  }
-
-  h6.heading {
-    font-size: 0.7rem;
-  }
-
   /*** Subtitle ***/
 
   p.subtitle,
@@ -149,51 +131,25 @@ const HeadingElement =
   p.subtitle {
     color: var(--clr-subtext-1);
   }
-
-  p.subtitle[data-level='1'] {
-    font-size: 1.8rem;
-  }
-
-  p.subtitle[data-level='2'] {
-    font-size: 1.4rem;
-  }
-
-  p.subtitle[data-level='3'] {
-    font-size: 1.2rem;
-  }
-
-  p.subtitle[data-level='4'] {
-    font-size: 1rem;
-  }
-
-  p.subtitle[data-level='5'] {
-    font-size: 0.85rem;
-  }
-
-  p.subtitle[data-level='6'] {
-    font-size: 0.75rem;
-  }
 </style>
 
 {
   url ? (
     <a href={url}>
       <HeadingElement
-        class={`${className} ${type}`}
+        class={`${type} ${size}`}
         data-text-overflow={textOverflow}
         data-level={level}
-        data-capitalize={capitalize}
-        {...rest}>
+        data-capitalize={capitalize}>
         <slot />
       </HeadingElement>
     </a>
   ) : (
     <HeadingElement
-      class={`${className} ${type}`}
+      class={`${type} ${size}`}
       data-text-overflow={textOverflow}
       data-level={level}
-      data-capitalize={capitalize}
-      {...rest}>
+      data-capitalize={capitalize}>
       <slot />
     </HeadingElement>
   )
