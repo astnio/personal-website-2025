@@ -97,6 +97,29 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
     margin: 0;
   }
 
+  .link-group-open-icon {
+    color: var(--clr-subtext-0);
+    font-size: 1.4rem;
+    font-weight: 400;
+
+    opacity: 0.6;
+    
+
+    margin-left: auto;
+
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+  }
+
+article.link-group-wrapper:has(.link-nav-wrapper[data-open="true"]) .link-group-open-icon {
+  transform: rotate(180deg);
+}
+
+article.link-group-wrapper:has(.link-nav-wrapper[data-open="false"]) .link-group-open-icon {
+  transform: rotate(0deg);
+}
+
   .link-list {
     padding-inline: 1rem;
     padding-block: 0;
@@ -117,6 +140,7 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
       class='link-group-title'
       >{title}</Heading
     >
+    <span class='link-group-open-icon bx bxs-chevron-down'></span>
   </button>
   <nav
     class='link-nav-wrapper'
