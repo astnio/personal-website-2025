@@ -67,7 +67,6 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
 
     border: none;
     outline: 1px solid var(--clr-surface-0);
-    border-radius: var(--radius-input);
 
     background-color: var(--clr-base);
 
@@ -97,7 +96,6 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
     font-weight: 400;
 
     opacity: 0.6;
-    
 
     margin-left: auto;
 
@@ -106,13 +104,15 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
     transition-timing-function: ease-in-out;
   }
 
-article.link-group-wrapper:has(.link-nav-wrapper[data-open="true"]) .link-group-open-icon {
-  transform: rotate(180deg);
-}
+  article.link-group-wrapper:has(.link-nav-wrapper[data-open='true'])
+    .link-group-open-icon {
+    transform: rotate(180deg);
+  }
 
-article.link-group-wrapper:has(.link-nav-wrapper[data-open="false"]) .link-group-open-icon {
-  transform: rotate(0deg);
-}
+  article.link-group-wrapper:has(.link-nav-wrapper[data-open='false'])
+    .link-group-open-icon {
+    transform: rotate(0deg);
+  }
 
   .link-list {
     padding-inline: 1rem;
@@ -129,10 +129,7 @@ article.link-group-wrapper:has(.link-nav-wrapper[data-open="false"]) .link-group
     class='link-group-heading-wrapper'
     id={btnId}>
     <span class={iconClass}></span>
-    <Heading
-      level={3}
-      >{title}</Heading
-    >
+    <Heading level={3}>{title}</Heading>
     <span class='link-group-open-icon bx bxs-chevron-down'></span>
   </button>
   <nav
@@ -149,7 +146,7 @@ article.link-group-wrapper:has(.link-nav-wrapper[data-open="false"]) .link-group
                 label={link.label}
                 iconClass={link.iconClass}
                 newTab={internalLink ? false : true}
-                size="xs"
+                size='xs'
               />
             </li>
           ))
