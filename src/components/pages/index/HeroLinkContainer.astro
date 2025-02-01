@@ -91,12 +91,6 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
     background-color: var(--clr-surface-0);
   }
 
-  h3.link-group-title {
-    font-size: 1rem;
-    padding: 0;
-    margin: 0;
-  }
-
   .link-group-open-icon {
     color: var(--clr-subtext-0);
     font-size: 1.4rem;
@@ -137,7 +131,6 @@ article.link-group-wrapper:has(.link-nav-wrapper[data-open="false"]) .link-group
     <span class={iconClass}></span>
     <Heading
       level={3}
-      class='link-group-title'
       >{title}</Heading
     >
     <span class='link-group-open-icon bx bxs-chevron-down'></span>
