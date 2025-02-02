@@ -17,8 +17,9 @@ const timeRead = calculateReadingTime(post.body);
 
     font-size: 0.9rem;
 
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    /* margin-bottom: 0.2rem; */
   }
 
   .read-minutes {
@@ -31,6 +32,9 @@ const timeRead = calculateReadingTime(post.body);
     gap: 0.2ch;
 
     color: var(--clr-subtext-0);
+
+    padding: 0;
+    margin: 0;
   }
 
   .time-read-icon {
@@ -73,7 +77,5 @@ const timeRead = calculateReadingTime(post.body);
       <span> minute read</span>
     </span>
   </p>
-  <DateLabel
-    date={post.data.date_published}
-  />
+  <DateLabel date={post.data.date_published} />
 </div>

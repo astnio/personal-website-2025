@@ -250,6 +250,12 @@ const { post, featured = false } = Astro.props;
     font-weight: 700;
     text-transform: capitalize;
   }
+
+  @media screen and (max-width: 768px) {
+    .picture-wrapper {
+      min-height: 20rem;
+    }
+  }
 </style>
 
 <div class='blog-card-wrapper'>
