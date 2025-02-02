@@ -1,0 +1,256 @@
+---
+import TaxonomyCard from '@components/pages/blog/TaxonomyCard.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { calculateReadingTime } from '@scripts/utils/readingTime';
+import toCapitalCase from '@scripts/utils/toCapitalCase';
+import { getCollection } from 'astro:content';
+
+type Props = {
+  taxonomyCollection: any;
+  page: 'tags' | 'categories' | 'topics';
+};
+
+const { taxonomyCollection, page } = Astro.props;
+
+const pageTitleLabel = toCapitalCase(page);
+
+const title = `Blog | ${pageTitleLabel}`;
+
+function getCardType() {
+  switch (page) {
+    case 'tags':
+      return 'tag';
+    case 'categories':
+      return 'category';
+    case 'topics':
+      return 'topic';
+  }
+}
+const cardType = getCardType();
+
+const allPosts = await getCollection('blog');
+
+const sortedPosts = allPosts
+  .sort(
+    (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
+  )
+  .map((post: any) => ({
+    ...post,
+    readingTime: calculateReadingTime(post.body),
+  }));
+
+const topicCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const topic = post.data.topic;
+    acc[topic] = (acc[topic] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+const categoryCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const category = post.data.category;
+    acc[category] = (acc[category] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+const tagCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const tags = post.data.tags;
+    tags.forEach((tag: string) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+    });
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+/*** *** */
+const topicToTags = sortedPosts.reduce(
+  (acc, post) => {
+    const topic = post.data.topic;
+    if (!acc[topic]) {
+      acc[topic] = new Set();
+    }
+    post.data.tags.forEach((tag: string) => {
+      acc[topic].add(tag);
+    });
+    return acc;
+  },
+  {} as Record<string, Set<string>>
+);
+
+const topicToCategories = sortedPosts.reduce(
+  (acc, post) => {
+    const topic = post.data.topic;
+    if (!acc[topic]) {
+      acc[topic] = new Set();
+    }
+    acc[topic].add(post.data.category);
+    return acc;
+  },
+  {} as Record<string, Set<string>>
+);
+
+const categoryToTags = sortedPosts.reduce(
+  (acc, post) => {
+    const category = post.data.category;
+    if (!acc[category]) {
+      acc[category] = new Set();
+    }
+    post.data.tags.forEach((tag: string) => {
+      acc[category].add(tag);
+    });
+    return acc;
+  },
+  {} as Record<string, Set<string>>
+);
+
+const categoryToTopics = sortedPosts.reduce(
+  (acc, post) => {
+    const category = post.data.category;
+    if (!acc[category]) {
+      acc[category] = new Set();
+    }
+    acc[category].add(post.data.topic);
+    return acc;
+  },
+  {} as Record<string, Set<string>>
+);
+
+const tagToTopics = sortedPosts.reduce(
+  (acc, post) => {
+    post.data.tags.forEach((tag: string) => {
+      if (!acc[tag]) {
+        acc[tag] = new Set();
+      }
+      acc[tag].add(post.data.topic);
+    });
+    return acc;
+  },
+  {} as Record<string, Set<string>>
+);
+
+const tagToCategories = sortedPosts.reduce(
+  (acc, post) => {
+    post.data.tags.forEach((tag: string) => {
+      if (!acc[tag]) {
+        acc[tag] = new Set();
+      }
+      acc[tag].add(post.data.category);
+    });
+    return acc;
+  },
+  {} as Record<string, Set<string>>
+);
+
+function getCountsForTaxonomy(taxonomyItem: string) {
+  switch (page) {
+    case 'topics':
+      return {
+        postsCount: topicCounts[taxonomyItem] || 0,
+        tagsCount: topicToTags[taxonomyItem]?.size || 0,
+        categoriesCount: topicToCategories[taxonomyItem]?.size || 0,
+        topicsCount: 0,
+      };
+    case 'categories':
+      return {
+        postsCount: categoryCounts[taxonomyItem] || 0,
+        tagsCount: categoryToTags[taxonomyItem]?.size || 0,
+        categoriesCount: 0,
+        topicsCount: categoryToTopics[taxonomyItem]?.size || 0,
+      };
+    case 'tags':
+      return {
+        postsCount: tagCounts[taxonomyItem] || 0,
+        tagsCount: 0,
+        categoriesCount: tagToCategories[taxonomyItem]?.size || 0,
+        topicsCount: tagToTopics[taxonomyItem]?.size || 0,
+      };
+    default:
+      return {
+        postsCount: 0,
+        tagsCount: 0,
+        categoriesCount: 0,
+        topicsCount: 0,
+      };
+  }
+}
+
+console.log(getCountsForTaxonomy('Test Topic'));
+---
+
+<style>
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+
+    font-size: 2.4rem;
+
+    width: 100%;
+
+    margin-top: 6rem;
+  }
+  .content-wrapper {
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
+  .content {
+    margin-bottom: 6rem;
+    /* padding: 1rem; */
+
+    /* background-color: var(--clr-base); */
+
+    /* border-radius: var(--radius-surface); */
+  }
+
+  ul.taxonomy-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.6rem;
+
+    list-style-type: none;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    ul.taxonomy-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<BaseLayout title={title}>
+  <section class='content-wrapper max-width'>
+    <h1 class='title max-width'>
+      {cardType === 'topic' && <span class='bx bxs-bulb' />}
+      {cardType === 'category' && <span class='bx bxs-category' />}
+      {cardType === 'tag' && <span class='bx bxs-tag-alt' />}
+      <span>{pageTitleLabel}</span>
+    </h1>
+    <article class='content'>
+      <ul class='taxonomy-list'>
+        {
+          taxonomyCollection.map((taxonomyItem: any) => {
+            const counts = getCountsForTaxonomy(taxonomyItem);
+            return (
+              <li>
+                <TaxonomyCard
+                  title={taxonomyItem}
+                  cardType={cardType}
+                  {...counts}
+                  url={`/blog/${page}/${taxonomyItem}`}
+                />
+              </li>
+            );
+          })
+        }
+      </ul>
+    </article>
+  </section>
+</BaseLayout>
