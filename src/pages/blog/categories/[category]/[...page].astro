@@ -15,8 +15,8 @@ export async function getStaticPaths({
   ];
 
   return uniqueCategories.flatMap((category) => {
-    const categoryPosts = allPosts.filter((post) =>
-      post.data.category.includes(category)
+    const categoryPosts = allPosts.filter(
+      (post) => post.data.category.toLowerCase() === category.toLowerCase()
     );
 
     const sortedPosts = categoryPosts.sort(
