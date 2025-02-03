@@ -45,24 +45,28 @@ const tagCounts = sortedPosts.reduce(
 
 const topics = [
   ...new Set(sortedPosts.map((post: any) => post.data.topic).flat()),
-].sort((a, b) => {
-  const countDiff = topicCounts[b] - topicCounts[a];
-  return countDiff !== 0 ? countDiff : a.localeCompare(b);
-});
+]
+  .sort((a, b) => {
+    const countDiff = topicCounts[b] - topicCounts[a];
+    return countDiff !== 0 ? countDiff : a.localeCompare(b);
+  })
+  .slice(0, 5);
 
 const categories = [
   ...new Set(sortedPosts.map((post: any) => post.data.category).flat()),
-].sort((a, b) => {
-  const countDiff = categoryCounts[b] - categoryCounts[a];
-  return countDiff !== 0 ? countDiff : a.localeCompare(b);
-});
+]
+  .sort((a, b) => {
+    const countDiff = categoryCounts[b] - categoryCounts[a];
+    return countDiff !== 0 ? countDiff : a.localeCompare(b);
+  })
+  .slice(0, 7);
 
-const tags = [
-  ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
-].sort((a, b) => {
-  const countDiff = tagCounts[b] - tagCounts[a];
-  return countDiff !== 0 ? countDiff : a.localeCompare(b);
-});
+const tags = [...new Set(sortedPosts.map((post: any) => post.data.tags).flat())]
+  .sort((a, b) => {
+    const countDiff = tagCounts[b] - tagCounts[a];
+    return countDiff !== 0 ? countDiff : a.localeCompare(b);
+  })
+  .slice(0, 9);
 ---
 
 <style>
