@@ -123,6 +123,71 @@ const tags = [...new Set(sortedPosts.map((post: any) => post.data.tags).flat())]
     margin: 0;
   }
 
+  .btn-archive {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    gap: 0.6rem;
+
+    font-weight: 500;
+
+    background-color: var(--clr-surface-0);
+
+    width: 100%;
+    height: 2.8rem;
+
+    overflow: hidden;
+
+    border: 1px solid;
+    border-color: var(--clr-surface-1);
+    border-radius: var(--radius-surface);
+
+    transition-property: background-color, color, border-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  .btn-archive:hover {
+    background-color: var(--clr-surface-1);
+    border-color: var(--clr-surface-2);
+  }
+
+  .btn-archive:hover > .btn-archive-icon-wrapper {
+    background-color: var(--clr-base);
+  }
+
+  .btn-archive-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    aspect-ratio: 1;
+    height: 100%;
+
+    background-color: var(--clr-mantle);
+
+    transition-property: background-color, color, border-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  .btn-archive-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.4rem;
+  }
+
+  .btn-archive-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 0.2rem;
+  }
+
   @media screen and (min-width: 768px) {
     .blog-nav-wrapper {
       position: sticky;
@@ -157,7 +222,7 @@ const tags = [...new Set(sortedPosts.map((post: any) => post.data.tags).flat())]
 <aside
   class='blog-nav-wrapper'
   data-appbar-revealed='true'
-  transition:name='post-direcotry-nav'>
+  transition:name='post-directory-nav'>
   <nav class='blog-nav'>
     <ul class='blog-nav-list'>
       <li>
@@ -191,11 +256,14 @@ const tags = [...new Set(sortedPosts.map((post: any) => post.data.tags).flat())]
         />
       </li>
       <li>
-        <a href='/blog/archive'>
-          <span>
-            <i class='bx bxs-archive'></i>
+        <a
+          href='/blog/archive'
+          class='btn-archive'
+          title=`View archives`>
+          <span class='btn-archive-icon-wrapper'>
+            <span class=`btn-archive-icon bx bxs-archive`></span>
           </span>
-          <span>Archive</span>
+          <span class='btn-archive-label'>Archive</span>
         </a>
       </li>
     </ul>
