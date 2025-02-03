@@ -2,7 +2,20 @@
 type Props = {
   type?: 'heading' | 'title' | 'subtitle';
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
+  size?:
+    | 'sx'
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'lx'
+    | 'l2x'
+    | 'l3x'
+    | 'l4x'
+    | 'l5x'
+    | 'l6x'
+    | 'l7x'
+    | 'l8x'
+    | 'l9x';
   url?: string;
   textOverflow?: '' | 'ellipsis';
   capitalize?: boolean;
@@ -82,12 +95,12 @@ const HeadingElement =
     color: var(--clr-text);
   }
 
-  .xs {
-    font-size: 0.7rem;
+  .sx {
+    font-size: 0.75rem;
   }
 
   .sm {
-    font-size: 0.85rem;
+    font-size: 0.875rem;
   }
 
   .md {
@@ -95,19 +108,43 @@ const HeadingElement =
   }
 
   .lg {
-    font-size: 1.2 rem;
+    font-size: 1.125rem;
   }
 
-  .xl {
-    font-size: 1.6rem;
+  .lx {
+    font-size: 1.25rem;
   }
 
-  .xxl {
-    font-size: 2.4rem;
+  .l2x {
+    font-size: 1.5rem;
   }
 
-  .xxxl {
-    font-size: 4rem;
+  .l3x {
+    font-size: 1.875rem;
+  }
+
+  .l4x {
+    font-size: 2.25rem;
+  }
+
+  .l5x {
+    font-size: 3rem;
+  }
+
+  .l6x {
+    font-size: 3.75rem;
+  }
+
+  .l7x {
+    font-size: 4.5rem;
+  }
+
+  .l8x {
+    font-size: 6rem;
+  }
+
+  .l9x {
+    font-size: 8rem;
   }
 
   /*** Heading ***/

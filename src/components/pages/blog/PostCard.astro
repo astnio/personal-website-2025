@@ -301,6 +301,7 @@ const { post, featured = false } = Astro.props;
       <div class='card-title-wrapper'>
         <Heading
           level={3}
+          size='l2x'
           type={featured ? 'title' : 'heading'}
           textOverflow='ellipsis'
           url={`/blog/${post.slug}`}
