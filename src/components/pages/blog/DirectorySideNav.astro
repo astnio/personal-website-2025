@@ -14,18 +14,6 @@ const sortedPosts = allPosts
     readingTime: calculateReadingTime(post.body),
   }));
 
-const topics = [
-  ...new Set(sortedPosts.map((post: any) => post.data.topic).flat()),
-];
-
-const categories = [
-  ...new Set(sortedPosts.map((post: any) => post.data.category).flat()),
-];
-
-const tags = [
-  ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
-];
-
 const topicCounts = sortedPosts.reduce(
   (acc, post) => {
     const topic = post.data.topic;
@@ -54,6 +42,27 @@ const tagCounts = sortedPosts.reduce(
   },
   {} as Record<string, number>
 );
+
+const topics = [
+  ...new Set(sortedPosts.map((post: any) => post.data.topic).flat()),
+].sort((a, b) => {
+  const countDiff = topicCounts[b] - topicCounts[a];
+  return countDiff !== 0 ? countDiff : a.localeCompare(b);
+});
+
+const categories = [
+  ...new Set(sortedPosts.map((post: any) => post.data.category).flat()),
+].sort((a, b) => {
+  const countDiff = categoryCounts[b] - categoryCounts[a];
+  return countDiff !== 0 ? countDiff : a.localeCompare(b);
+});
+
+const tags = [
+  ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
+].sort((a, b) => {
+  const countDiff = tagCounts[b] - tagCounts[a];
+  return countDiff !== 0 ? countDiff : a.localeCompare(b);
+});
 ---
 
 <style>
