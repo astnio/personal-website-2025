@@ -1,11 +1,10 @@
 ---
-import BlogPostCard from '@components/pages/blog/BlogPostCard.astro';
 import PostDirectorySideNav from '@components/pages/blog/PostDirectorySideNav.astro';
-// import PostDirectoryTopicNav from '@components/pages/blog/PostDirectoryTopicNav.astro';
-import BlogPageImage from '@components/pages/blog/BlogPageImage.astro';
 import Heading from '@components/typography/Heading.astro';
 import BaseLayout from './BaseLayout.astro';
 import PostPaginator from '@components/pages/blog/PostPaginator.astro';
+import LayoutImage from '@/components/pages/blog/LayoutImage.astro';
+import PostCard from '@/components/pages/blog/PostCard.astro';
 
 type Props = {
   page: any;
@@ -130,7 +129,7 @@ const title =
 <BaseLayout title={title}>
   {
     enableImage ? (
-      <BlogPageImage
+      <LayoutImage
         directoryTitle={directoryTitle}
         transition:name='post-directory-image'
       />
@@ -168,7 +167,7 @@ const title =
     {
       featuredPost && (
         <section class='featured-post-wrapper'>
-          <BlogPostCard
+          <PostCard
             featured={true}
             post={featuredPost}
             transition:name={`post-card-featured-${featuredPost.id}`}
@@ -183,7 +182,7 @@ const title =
         {
           page.data.map((post: any) => (
             <li>
-              <BlogPostCard
+              <PostCard
                 post={post}
                 transition:name={`post-card-${post.id}`}
               />
