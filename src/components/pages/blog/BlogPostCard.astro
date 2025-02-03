@@ -65,7 +65,7 @@ const { post, featured = false } = Astro.props;
     align-items: center;
     justify-content: center;
 
-    aspect-ratio: auto;
+    aspect-ratio: 2 / 1;
 
     overflow: hidden;
   }
@@ -254,6 +254,7 @@ const { post, featured = false } = Astro.props;
   @media screen and (max-width: 768px) {
     .picture-wrapper {
       min-height: 20rem;
+      aspect-ratio: auto;
     }
   }
 </style>
