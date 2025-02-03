@@ -30,17 +30,23 @@ const title = 'Archive';
   section {
     width: 100%;
     padding-inline: 1rem;
+
+    margin-bottom: 6rem;
   }
 
   div.timeline-list-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: center;
 
     width: 100%;
 
     background-color: var(--clr-base);
+
+    border-radius: var(--radius-surface);
+
+    padding-block: 2rem;
   }
 
   /*** Timeline List ***/
@@ -62,7 +68,7 @@ const title = 'Archive';
 
     justify-self: end;
 
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
 
     padding-bottom: 1rem;
@@ -71,11 +77,11 @@ const title = 'Archive';
   p.timeline-list-post-count {
     align-self: center;
 
-    color: var(--clr-subtext-1);
-    font-size: 1rem;
-    font-weight: 400;
+    color: var(--clr-text);
+    font-size: 1.5rem;
+    font-weight: 700;
 
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
   }
 
   /*** Date List ***/
@@ -99,26 +105,47 @@ const title = 'Archive';
 
     justify-self: end;
 
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--clr-subtext-0);
   }
 
   ol.post-list {
     width: 100%;
+    gap: 0.25rem;
   }
 
   li.post-list-item {
-    padding-bottom: 0.8rem;
+    padding-bottom: 1rem;
   }
 
   li.post-list-item:last-child {
-    padding-bottom: 1.4rem;
+    padding-bottom: 2rem;
   }
 
   a.post-list-item-link {
-    font-size: 1.2rem;
+    position: relative;
+
+    font-size: 1rem;
     font-weight: 600;
+    text-decoration: none;
+
+    background-color: var(--clr-surface-0);
+
+    padding-block: 0.25rem;
+    padding-inline: 1.5rem;
+
+    border-radius: var(--radius-input);
+
+    outline: 1px solid var(--clr-surface-1);
+
+    width: 100%;
+  }
+
+  a.post-list-item-link:hover {
+    color: var(--clr-primary);
+    background-color: var(--clr-surface-1);
+    outline: 1px solid var(--clr-surface-2);
   }
 
   /*** Seperator ***/
