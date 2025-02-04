@@ -46,30 +46,46 @@ const timeRead = calculateReadingTime(post.body);
     grid-row-start: 2;
   }
 
+  .category-wrapper {
+    justify-self: end;
+  }
+
+  .read-minutes {
+    grid-column: span 2;
+  }
+
   @media screen and (min-width: 786px) {
     .post-info {
       display: grid;
-      grid-template-columns: auto 1fr 1fr;
+      grid-template-columns: auto 1fr auto;
       grid-template-rows: 1fr;
     }
 
-    .read-minutes {
-      grid-column-start: 2;
+    .published-date {
+      grid-column-start: 1;
       grid-row-start: 1;
-      justify-self: start;
     }
 
-    .published-date {
+    .category-wrapper {
+      grid-column-start: 2;
+      grid-row-start: 1;
+    }
+
+    .read-minutes {
       grid-column-start: 3;
       grid-row-start: 1;
+      justify-self: end;
     }
   }
 </style>
 
 <div class='post-info'>
-  <Chip url={`/blog/categories/${post.data.category}`}>
-    {post.data.category}
-  </Chip>
+  <DateLabel date={post.data.date_published} />
+  <div class='category-wrapper'>
+    <Chip url={`/blog/categories/${post.data.category}`}>
+      {post.data.category}
+    </Chip>
+  </div>
   <p class='read-minutes'>
     <span class='time-read-icon bx bxs-timer'></span>
     <span>
@@ -77,5 +93,4 @@ const timeRead = calculateReadingTime(post.body);
       <span> minute read</span>
     </span>
   </p>
-  <DateLabel date={post.data.date_published} />
 </div>
