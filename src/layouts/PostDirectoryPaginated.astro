@@ -10,7 +10,6 @@ type Props = {
   page: any;
   directoryTitle: string;
   directoryType?: 'topic' | 'category' | 'tag';
-  featuredPost?: any;
   enableImage?: boolean;
 };
 
@@ -18,7 +17,6 @@ const {
   page,
   directoryTitle,
   directoryType,
-  featuredPost,
   enableImage = false,
 } = Astro.props;
 
@@ -26,6 +24,10 @@ const title =
   directoryTitle === 'Blog'
     ? 'Austin Hagel | Blog'
     : `Blog | ${directoryTitle}`;
+
+const featuredPost = page.data.find((post: any) => post.data.featured);
+
+const sortedPosts = page.data.filter((post: any) => post !== featuredPost);
 ---
 
 <style>
@@ -180,7 +182,7 @@ const title =
         class='blog-post-cards-list'
         transition:name='blog-post-cards-list'>
         {
-          page.data.map((post: any) => (
+          sortedPosts.map((post: any) => (
             <li>
               <PostCard
                 post={post}

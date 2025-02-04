@@ -14,15 +14,7 @@ export async function getStaticPaths({
     (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
   );
 
-  const featuredPost = sortedProcessedPosts.find(
-    (post: any) => post.data.featured
-  );
-
-  const sortedPosts = sortedProcessedPosts.filter(
-    (post: any) => post !== featuredPost
-  );
-
-  return paginate(sortedPosts, { pageSize: 3 });
+  return paginate(sortedProcessedPosts, { pageSize: 3 });
 }
 
 const title = 'Blog';
