@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
+import ProjectCard from '@/components/pages/projects/ProjectCard.astro';
+import Heading from '@/components/typography/Heading.astro';
 
 // const allProjects = await getCollection('projects');
 const featuredProjects = await getCollection('projects', ({ data }) => {
@@ -33,7 +34,17 @@ const title = 'Projects';
 
   section {
     width: 100%;
-    padding-inline: 1rem;
+    padding-inline: 2rem;
+  }
+
+  section.project-section {
+    background-color: var(--clr-mantle);
+    border-radius: var(--radius-surface);
+
+    outline: 1px solid var(--clr-base);
+
+    margin-bottom: 2rem;
+    padding-block: 1.5rem;
   }
 
   h1 {
@@ -135,8 +146,12 @@ const title = 'Projects';
 
   <section
     id='featured'
-    class='max-width'>
-    <h2>Featured</h2>
+    class='max-width project-section'>
+    <Heading
+      level={2}
+      size='l4x'
+      >Featured</Heading
+    >
     <p>My featured projects</p>
     <ul class='projects-list'>
       {
@@ -154,13 +169,16 @@ const title = 'Projects';
 
   <section
     id='other'
-    class='max-width'>
-    <h2>
-      [PH] Other Projects <span
-        style='font-size: 1rem; font-weight: 400; font-style: italic; color: var(--clr-subtext-0)'
-        >(think of a better title for this section!)</span
-      >
-    </h2>
+    class='max-width project-section'>
+    <Heading
+      level={2}
+      size='l4x'
+      >[PH] Other</Heading
+    >
+    <p
+      style='font-size: 1rem; font-weight: 400; font-style: italic; color: var(--clr-subtext-0)'>
+      (think of a better title for this section!)
+    </p>
     <p>[PH] Projects sorted by area and stuff I guess</p>
     <ul class='projects-list'>
       {
@@ -178,8 +196,8 @@ const title = 'Projects';
 
   <section
     id='archive'
-    class='max-width'>
-    <h2>Archive</h2>
+    class='max-width project-section'>
+    <Heading level={2} size='l4x'>Archive</Heading>
     <p>My archived projects</p>
     <a href='/projects/archive'>Archived Projects</a>
   </section>

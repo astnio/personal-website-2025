@@ -1,8 +1,8 @@
 ---
 import { Picture } from 'astro:assets';
-import Tag from './interface/Tag.astro';
-import DateLabel from './interface/DateLabel.astro';
-import Heading from './typography/Heading.astro';
+import Tag from '@components/interface/Tag.astro';
+import DateLabel from '@components/interface/DateLabel.astro';
+import Heading from '@components/typography/Heading.astro';
 
 const { url, data } = Astro.props;
 
@@ -44,9 +44,11 @@ if (data.image_source) {
 
     border-radius: var(--radius-surface);
 
-    /* outline: 1px solid var(--clr-surface-0); */
+    outline: 1px solid var(--clr-surface-0);
 
     overflow: hidden;
+
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
   }
 
   .project-info-wrapper {
@@ -221,6 +223,7 @@ if (data.image_source) {
   <div class='project-info-wrapper'>
     <Heading
       level={3}
+      size='l2x'
       url={url}>
       {data.title}
     </Heading>
