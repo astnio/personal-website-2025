@@ -38,7 +38,7 @@ const title = 'Projects';
   }
 
   section.project-section {
-    background-color: var(--clr-mantle);
+    background-color: var(--clr-base);
     border-radius: var(--radius-surface);
 
     outline: 1px solid var(--clr-base);
@@ -97,7 +97,7 @@ const title = 'Projects';
       display: grid;
       align-items: stretch;
       grid-template-columns: 1fr 1fr;
-      gap: 1.4rem;
+      gap: 5rem 3.5rem;
 
       list-style: none;
 
@@ -197,7 +197,11 @@ const title = 'Projects';
   <section
     id='archive'
     class='max-width project-section'>
-    <Heading level={2} size='l4x'>Archive</Heading>
+    <Heading
+      level={2}
+      size='l4x'
+      >Archive</Heading
+    >
     <p>My archived projects</p>
     <a href='/projects/archive'>Archived Projects</a>
   </section>

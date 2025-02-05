@@ -40,15 +40,15 @@ if (data.image_source) {
     height: 100%;
     max-height: 38rem;
 
-    background-color: var(--clr-base);
+    background-color: var(--clr-mantle);
 
     border-radius: var(--radius-surface);
 
-    outline: 1px solid var(--clr-surface-0);
+    /* outline: 2px solid var(--clr-surface-0); */
 
     overflow: hidden;
 
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2); */
   }
 
   .project-info-wrapper {
@@ -159,6 +159,8 @@ if (data.image_source) {
     border-radius: var(--radius-input);
     outline: 1px solid var(--clr-surface-0);
 
+    background-color: var(--clr-base);
+
     height: 2.4rem;
 
     transition-property: color, background-color, outline;
@@ -169,7 +171,7 @@ if (data.image_source) {
   a.link:hover {
     outline: 1px solid var(--clr-surface-1);
     color: var(--clr-primary);
-    background-color: var(--clr-mantle);
+    background-color: var(--clr-surface-0);
   }
 
   .link-label {
