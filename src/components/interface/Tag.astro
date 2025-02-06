@@ -13,7 +13,7 @@ const { url } = Astro.props;
     align-items: center;
     justify-content: center;
 
-    background-color: var(--clr-mantle);
+    background-color: var(--clr-base);
 
     padding-inline: 1em;
     padding-block: 0.2rem;
@@ -52,8 +52,8 @@ const { url } = Astro.props;
 
   a.tag:hover {
     color: var(--clr-text);
-    background-color: var(--clr-crust);
-    outline: 1px solid var(--clr-primary);
+    background-color: var(--clr-surface-0);
+    outline: 1px solid var(--clr-surface-2);
   }
 
   a.tag:hover::before {
