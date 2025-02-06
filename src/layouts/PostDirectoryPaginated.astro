@@ -143,12 +143,15 @@ const paginatorDisabled =
 
 <BaseLayout title={title}>
   {
-    enableImage ? (
+    enableImage && (
       <LayoutImage
         directoryTitle={directoryTitle}
         transition:name='post-directory-image'
       />
-    ) : (
+    )
+  }
+  {
+    !enableImage && directoryTitle !== 'Blog' && (
       <div class='directory-title-wrapper max-width'>
         <Heading
           type='title'
