@@ -80,7 +80,7 @@ body::before {
   width: 100vw;
   min-height: 100vh;
 
-  background: var(--clr-base);
+  background: var(--clr-crust);
   background: var(--clr-gradient-bg);
   background-attachment: fixed;
 
@@ -99,7 +99,7 @@ body::after {
   width: 100vw;
   min-height: 100vh;
 
-  background-image: url('/bg_pattern.svg');
+  /* background-image: url('/bg_pattern.svg'); */
   background-attachment: fixed;
 
   opacity: var(--bg-pattern-opacity);
