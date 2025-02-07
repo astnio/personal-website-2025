@@ -14,11 +14,11 @@ button.btn-show-customization-options {
 
   border: none;
   border-radius: var(--radius-input);
-  outline: 1px solid var(--clr-surface-0);
+  outline: 1px solid var(--clr-surface-1);
 
   padding: 0;
 
-  background-color: var(--clr-base);
+  background-color: var(--clr-surface-0);
 
   height: 2.4rem;
   width: fit-content;
@@ -36,14 +36,14 @@ button.btn-show-customization-options {
 }
 
 button.btn-show-customization-options:hover {
-  background-color: var(--clr-surface-0);
+  background-color: var(--clr-surface-1);
   cursor: pointer;
-  outline: 1px solid var(--clr-surface-1);
+  outline: 1px solid var(--clr-surface-2);
   color: var(--clr-primary);
 }
 
 button.btn-show-customization-options:hover > .icon-wrapper {
-  background-color: var(--clr-base);
+  background-color: var(--clr-surface-0);
   color: var(--clr-primary);
 }
 
@@ -68,7 +68,7 @@ span.btn-label {
 
   aspect-ratio: 1;
 
-  background-color: var(--clr-mantle);
+  background-color: var(--clr-base);
 
   height: 100%;
 

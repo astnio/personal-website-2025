@@ -34,8 +34,8 @@ const { url } = Astro.props;
     font-weight: 400;
 
     border-radius: var(--radius-input);
-    outline: 1px solid var(--clr-surface-0);
-    background-color: var(--clr-mantle);
+    outline: 1px solid var(--clr-surface-1);
+    background-color: var(--clr-surface-0);
 
     transition-property: background-color, color, outline;
     transition-duration: 0.15s;
@@ -44,7 +44,7 @@ const { url } = Astro.props;
 
   .read-more-link:hover::before {
     color: var(--clr-primary);
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-surface-1);
     outline: 1px solid var(--clr-primary);
   }
 </style>
