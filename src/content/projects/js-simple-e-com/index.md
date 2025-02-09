@@ -2,6 +2,7 @@
 title: JavaScript E-Commerce Frontend
 description: 'The frontend mockup of an e-commerce site. Made with just JavaScript and CSS/HTML.'
 status: 'incomplete'
+type: 'personal'
 tags: ['JavaScript', 'HTML', 'CSS']
 date_completed: 2023-08-01
 featured: true
