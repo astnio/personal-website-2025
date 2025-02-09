@@ -101,8 +101,8 @@ if (data.image_source) {
     cursor: pointer;
 
     scale: 1.1;
-    opacity: 0.6;
-    filter: saturate(50%);
+    opacity: 0.8;
+    filter: saturate(75%);
 
     object-position: bottom;
 
@@ -265,7 +265,8 @@ if (data.image_source) {
 
     background-color: var(--clr-surface-0);
 
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
 
     overflow: hidden;
   }
@@ -279,7 +280,9 @@ if (data.image_source) {
 
     background-color: var(--clr-base);
 
-    opacity: 0.15;
+    opacity: 0.2;
+
+    filter: brightness(125%) saturate(90%);
   }
 
   .project-status.status-complete {
