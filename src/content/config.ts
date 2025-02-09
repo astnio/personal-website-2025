@@ -44,24 +44,11 @@ const projectCollection = defineCollection({
     description: z.string(),
     tags: z.array(z.string()),
     status: z.enum(['in-progress', 'complete', 'incomplete']).optional(),
+    type: z.enum(['personal', 'frontend-mentor', 'work', 'client']),
     date_completed: z.date().optional(),
     featured: z.boolean().optional(),
     github_url: z.string().optional(),
     demo_url: z.string().optional(),
-  }),
-});
-
-const femProjectCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    date_completed: z.date(),
-    description: z.string(),
-    github_url: z.string(),
-    demo_url: z.string(),
-    fem_page_url: z.string(),
-    tags: z.array(z.string()),
-    image: z.string().optional(),
   }),
 });
 
@@ -84,6 +71,5 @@ const jobCollection = defineCollection({
 export const collections = {
   blog: blogCollection,
   projects: projectCollection,
-  fem_projects: femProjectCollection,
   jobs: jobCollection,
 };
