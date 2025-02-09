@@ -118,7 +118,9 @@ if (data.image_source) {
   }
 
   .project-title-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
 
     width: 100%;
 
@@ -242,6 +244,70 @@ if (data.image_source) {
   .link-icon {
     font-size: 1.4rem;
   }
+
+  .project-status {
+    position: relative;
+
+    justify-self: end;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-inline: 0.8rem;
+    padding-block: 0.4rem;
+
+    max-height: fit-content;
+    width: fit-content;
+
+    border-radius: var(--radius-input);
+    outline: 1px solid var(--clr-surface-1);
+
+    background-color: var(--clr-surface-0);
+
+    font-size: 0.9rem;
+
+    overflow: hidden;
+  }
+
+  .project-status::before {
+    content: '';
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--clr-base);
+
+    opacity: 0.15;
+  }
+
+  .project-status.status-complete {
+    color: var(--clr-success);
+    outline: 1px solid var(--clr-success);
+  }
+
+  .project-status.status-complete::before {
+    background-color: var(--clr-success);
+  }
+
+  .project-status.status-incomplete {
+    color: var(--clr-error);
+    outline: 1px solid var(--clr-error);
+  }
+
+  .project-status.status-incomplete::before {
+    background-color: var(--clr-error);
+  }
+
+  .project-status.status-in-progress {
+    color: var(--clr-warning);
+    outline: 1px solid var(--clr-warning);
+  }
+
+  .project-status.status-in-progress::before {
+    background-color: var(--clr-warning);
+  }
 </style>
 
 <div class='project-card'>
@@ -267,6 +333,7 @@ if (data.image_source) {
       url={url}>
       {data.title}
     </Heading>
+    <p class=`project-status status-${data.status}`>{data.status}</p>
   </div>
   <div class='project-info-wrapper'>
     <DateLabel date={data.date_completed} />

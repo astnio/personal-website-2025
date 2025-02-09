@@ -47,6 +47,7 @@
   --clr-tertiary: var(--clr-mauve);
   --clr-error: var(--clr-red);
   --clr-warning: var(--clr-yellow);
+  --clr-success: var(--clr-green);
 
   --clr-text: rgb(202, 211, 245);
   --clr-subtext-1: rgb(184, 192, 224);
@@ -113,6 +114,8 @@
   --clr-tertiary: var(--clr-mauve);
   --clr-error: var(--clr-red);
   --clr-warning: var(--clr-yellow);
+  --clr-success: var(--clr-green);
+
 
   --clr-text: rgb(76, 79, 105);
   --clr-subtext-1: rgb(92, 95, 119);
@@ -181,6 +184,8 @@
   --clr-tertiary: var(--clr-mauve);
   --clr-error: var(--clr-red);
   --clr-warning: var(--clr-yellow);
+  --clr-success: var(--clr-green);
+
 
   --clr-text: #ffffff;
   --clr-subtext-1: #ffffff;
@@ -247,6 +252,8 @@
   --clr-tertiary: var(--clr-mauve);
   --clr-error: var(--clr-red);
   --clr-warning: var(--clr-yellow);
+  --clr-success: var(--clr-green);
+
 
   --clr-text: rgb(0, 0, 0);
   --clr-subtext-1: rgb(0, 0, 0);
