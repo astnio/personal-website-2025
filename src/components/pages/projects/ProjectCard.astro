@@ -79,7 +79,9 @@ if (data.image_source) {
 
     overflow: hidden;
 
-    /* border-bottom: 1px solid var(--clr-surface-0); */
+    z-index: 1;
+
+    /* border-bottom: 2px solid var(--clr-mantle); */
   }
 
   .project-image {
@@ -99,16 +101,20 @@ if (data.image_source) {
     cursor: pointer;
 
     scale: 1.1;
+    opacity: 0.6;
+    filter: saturate(50%);
 
     object-position: bottom;
 
-    transition-property: scale;
+    transition-property: scale, opacity, filter;
     transition-duration: 0.25s;
     transition-timing-function: ease-out;
   }
 
   .project-image:hover {
-    scale: 1.14;
+    scale: 1.12;
+    opacity: 1;
+    filter: saturate(100%);
   }
 
   .project-title-wrapper {
