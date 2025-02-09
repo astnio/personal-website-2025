@@ -242,13 +242,15 @@ if (data.image_source) {
   {
     imageSource && (
       <div class='picture-wrapper'>
-        <Picture
-          src={imageSource}
-          widths={[400, 800]}
-          sizes='(max-width: 800px) 100vw, 800px'
-          alt={data.title}
-          class='project-image'
-        />
+        <a href={url}>
+          <Picture
+            src={imageSource}
+            widths={[400, 800]}
+            sizes='(max-width: 800px) 100vw, 800px'
+            alt={data.title}
+            class='project-image'
+          />
+        </a>
       </div>
     )
   }
