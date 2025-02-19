@@ -38,7 +38,7 @@ const blogCollection = defineCollection({
 
 const projectCollection = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({image}) => z.object({
     image_source: z.string().optional(),
     title: z.string(),
     description: z.string(),
@@ -49,7 +49,25 @@ const projectCollection = defineCollection({
     featured: z.boolean().optional(),
     github_url: z.string().optional(),
     demo_url: z.string().optional(),
-  }),
+    cover: image().optional(),
+    cover_alt: z.string().optional(),
+  }).superRefine((data, ctx) => {
+    if (data.cover && !data.cover_alt) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'cover_alt is required when a cover image is present',
+        path: ['cover_alt'],
+      });
+    }
+    if (!data.cover && data.cover_alt) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message:
+          'cover_alt should not be present when there is no cover image',
+        path: ['cover_alt'],
+      });
+    }
+  })
 });
 
 const jobCollection = defineCollection({
