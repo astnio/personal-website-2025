@@ -24,15 +24,15 @@ const { title, description } = Astro.props;
     description={description}
   />
   <body data-font='sans-serif'>
+    <NavDrawerOverlay />
+    <CustomizationMenuOverlay inDrawer='false' />
     <ContactDialog />
     <NavDrawer />
-    <NavDrawerOverlay />
     <NavDrawerToggle />
     <Logo mobileView={true} />
+    <Breadcrumb />
     <AppBar />
-    <CustomizationMenuOverlay inDrawer='false' />
     <main>
-      <Breadcrumb />
       <slot />
     </main>
     <Footer />
