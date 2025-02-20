@@ -1,0 +1,72 @@
+---
+const { type } = Astro.props;
+---
+
+<style>
+  .project-status {
+    position: relative;
+
+    justify-self: end;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-inline: 0.8rem;
+    padding-block: 0.4rem;
+
+    height: fit-content;
+    width: fit-content;
+
+    border-radius: var(--radius-input);
+    outline: 1px solid var(--clr-surface-1);
+
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    overflow: hidden;
+  }
+
+  .project-status::before {
+    content: '';
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--clr-base);
+
+    opacity: 0.2;
+
+    filter: brightness(125%) saturate(90%);
+  }
+
+  .project-status.status-complete {
+    color: var(--clr-success);
+    outline: 1px solid var(--clr-success);
+  }
+
+  .project-status.status-complete::before {
+    background-color: var(--clr-success);
+  }
+
+  .project-status.status-incomplete {
+    color: var(--clr-error);
+    outline: 1px solid var(--clr-error);
+  }
+
+  .project-status.status-incomplete::before {
+    background-color: var(--clr-error);
+  }
+
+  .project-status.status-in-progress {
+    color: var(--clr-warning);
+    outline: 1px solid var(--clr-warning);
+  }
+
+  .project-status.status-in-progress::before {
+    background-color: var(--clr-warning);
+  }
+</style>
+
+<p class=`project-status status-${type}`><slot /></p>
