@@ -38,7 +38,14 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
     position: absolute;
     top: 6rem;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
+
+    background-color: var(--clr-crust);
+    padding-block: 1rem;
 
     padding-inline: 1rem;
   }
@@ -49,16 +56,15 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.25rem;
+    gap: 1rem;
 
     list-style: none;
 
-    padding: 0;
+    padding-block: 0;
+    padding-inline: 1rem;
     margin: 0;
 
-    max-width: fit-content;
-
-    /* background-color: var(--clr-base); */
+    width: 100%;
   }
 
   /* .breadcrumb-list::after {
@@ -75,37 +81,58 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
   } */
 
   .breadcrumb-item {
+    position: relative;
+
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 0.875rem;
+
+    background-color: var(--clr-base);
+    border-radius: var(--radius-input);
   }
 
-  .breadcrumb-item a {
+  .breadcrumb-item a,
+  .current {
     color: var(--clr-subtext-1);
     text-decoration: none;
     transition: color 0.2s;
+
+    width: 100%;
+    height: 100%;
+
+    padding-block: 0.2rem;
+    padding-inline: 0.6rem;
   }
+
+  /* .breadcrumb-item:has(.separator) {
+    padding-right: 0.5rem;
+  } */
 
   .breadcrumb-item a:hover {
     color: var(--clr-primary);
     text-decoration: underline;
   }
 
-  .separator {
-    margin: 0 0.5rem;
-    color: var(--clr-surface-2);
-  }
-
   .current {
     color: var(--clr-subtext-0);
     font-weight: 500;
+  }
+
+  .separator {
+    position: absolute;
+    right: -0.1rem;
+    margin: 0 0.5rem;
+    color: var(--clr-surface-2);
+
+    display: none;
   }
 </style>
 
 <nav
   aria-label='Breadcrumb'
-  class='breadcrumb max-width'>
-  <ol class='breadcrumb-list'>
+  class='breadcrumb'>
+  <ol class='breadcrumb-list max-width'>
     {
       breadcrumbs.length > 0 && (
         <li class='breadcrumb-item'>
