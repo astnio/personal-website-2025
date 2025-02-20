@@ -44,6 +44,7 @@ const { type } = Astro.props;
   .project-status.status-complete {
     color: var(--clr-success);
     outline: 1px solid var(--clr-success);
+    box-shadow: 0 0 1px 1px var(--clr-success);
   }
 
   .project-status.status-complete::before {
@@ -53,6 +54,7 @@ const { type } = Astro.props;
   .project-status.status-incomplete {
     color: var(--clr-error);
     outline: 1px solid var(--clr-error);
+    box-shadow: 0 0 1px 1px var(--clr-error);
   }
 
   .project-status.status-incomplete::before {
@@ -62,6 +64,7 @@ const { type } = Astro.props;
   .project-status.status-in-progress {
     color: var(--clr-warning);
     outline: 1px solid var(--clr-warning);
+    box-shadow: 0 0 1px 1px var(--clr-warning);
   }
 
   .project-status.status-in-progress::before {
