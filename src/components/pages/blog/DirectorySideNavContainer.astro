@@ -1,7 +1,7 @@
 ---
 import { calculateReadingTime } from '@scripts/utils/readingTime';
 import { getCollection } from 'astro:content';
-import DirectorySideNavList from './DirectorySideNavList.astro';
+import DirectorySideNavItem from './DirectorySideNavItem.astro';
 
 const allPosts = await getCollection('blog');
 
@@ -226,7 +226,7 @@ const tags = [...new Set(sortedPosts.map((post: any) => post.data.tags).flat())]
   <nav class='blog-nav'>
     <ul class='blog-nav-list'>
       <li>
-        <DirectorySideNavList
+        <DirectorySideNavItem
           title='Topics'
           url='/blog/topics'
           iconClass='bx bxs-bulb'
@@ -237,7 +237,7 @@ const tags = [...new Set(sortedPosts.map((post: any) => post.data.tags).flat())]
       </li>
 
       <li>
-        <DirectorySideNavList
+        <DirectorySideNavItem
           title='Categories'
           url='/blog/categories'
           iconClass='bx bxs-category'
@@ -247,7 +247,7 @@ const tags = [...new Set(sortedPosts.map((post: any) => post.data.tags).flat())]
       </li>
 
       <li>
-        <DirectorySideNavList
+        <DirectorySideNavItem
           title='Tags'
           url='/blog/tags'
           iconClass='bx bxs-tag-alt'
