@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import PostDirectoryPaginated from '@layouts/PostDirectoryPaginated.astro';
+import PostDirectory from '@layouts/PostDirectory.astro';
 import type { PaginateFunction } from 'astro';
 
 export async function getStaticPaths({
@@ -37,7 +37,7 @@ const { category } = Astro.params;
 const { page } = Astro.props;
 ---
 
-<PostDirectoryPaginated
+<PostDirectory
   page={page}
   directoryTitle={category}
   directoryType='category'

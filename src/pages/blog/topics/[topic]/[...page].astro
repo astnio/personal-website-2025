@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import PostDirectoryPaginated from '@layouts/PostDirectoryPaginated.astro';
+import PostDirectory from '@layouts/PostDirectory.astro';
 import type { PaginateFunction } from 'astro';
 
 export async function getStaticPaths({
@@ -9,7 +9,7 @@ export async function getStaticPaths({
   paginate: PaginateFunction;
 }) {
   const allPosts = await getCollection('blog');
-  
+
   const uniqueTopics = [
     ...new Set(allPosts.map((post) => post.data.topic).flat()),
   ];
@@ -37,7 +37,7 @@ const { topic } = Astro.params;
 const { page } = Astro.props;
 ---
 
-<PostDirectoryPaginated
+<PostDirectory
   page={page}
   directoryTitle={topic}
   directoryType='topic'
