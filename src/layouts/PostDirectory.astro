@@ -6,12 +6,12 @@ import PostPaginator from '@components/pages/blog/PostPaginator.astro';
 import LayoutImage from '@/components/pages/blog/LayoutImage.astro';
 import PostCard from '@/components/pages/blog/PostCard.astro';
 
-type Props = {
+interface Props {
   page: any;
   directoryTitle: string;
   directoryType?: 'topic' | 'category' | 'tag';
   enableImage?: boolean;
-};
+}
 
 const {
   page,
