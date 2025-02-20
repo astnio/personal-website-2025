@@ -1,5 +1,5 @@
 ---
-type Props = {
+interface Props {
   type?: 'heading' | 'title' | 'subtitle';
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   size?:
@@ -19,7 +19,7 @@ type Props = {
   url?: string;
   textOverflow?: '' | 'ellipsis';
   capitalize?: boolean;
-};
+}
 
 const {
   type = 'heading',

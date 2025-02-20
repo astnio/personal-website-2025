@@ -2,14 +2,14 @@
 import Chip from '@components/interface/Chip.astro';
 import Tag from '@components/interface/Tag.astro';
 
-type Props = {
+interface Props {
   title: string;
   url: string;
   iconClass: string;
   listType: 'topics' | 'categories' | 'tags';
   list: any[];
   counts?: Record<string, number>;
-};
+}
 
 const { title, url, iconClass, listType, list, counts } = Astro.props;
 ---
@@ -216,7 +216,8 @@ const { title, url, iconClass, listType, list, counts } = Astro.props;
 <div class='blog-nav-sublist-wrapper'>
   <a
     href={url}
-    class='blog-nav-list-title' title=`View all ${title.toLowerCase()}`>
+    class='blog-nav-list-title'
+    title=`View all ${title.toLowerCase()}`>
     <span class='blog-nav-list-title-icon-wrapper'>
       <span class=`blog-nav-list-title-icon ${iconClass}`></span>
     </span>

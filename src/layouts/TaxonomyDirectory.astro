@@ -5,10 +5,10 @@ import { calculateReadingTime } from '@scripts/utils/readingTime';
 import toCapitalCase from '@scripts/utils/toCapitalCase';
 import { getCollection } from 'astro:content';
 
-type Props = {
+interface Props {
   taxonomyCollection: any;
   page: 'tags' | 'categories' | 'topics';
-};
+}
 
 const { taxonomyCollection, page } = Astro.props;
 

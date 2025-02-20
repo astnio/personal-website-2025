@@ -6,10 +6,10 @@ import { fade } from 'astro:transitions';
 import ReadMoreButton from './ReadMoreButton.astro';
 import PostInfo from './PostInfo.astro';
 
-type Props = {
+interface Props {
   post: CollectionEntry<'blog'>;
   featured?: boolean;
-};
+}
 
 const { post, featured = false } = Astro.props;
 ---

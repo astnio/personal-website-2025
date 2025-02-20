@@ -7,11 +7,11 @@ import Tag from '../components/interface/Tag.astro';
 import Heading from '../components/typography/Heading.astro';
 import PostInfo from '@components/pages/blog/PostInfo.astro';
 
-type Props = {
+interface Props {
   frontmatter: any;
   postTarget: 'blog' | 'projects';
   post: CollectionEntry<'blog' | 'projects'>;
-};
+}
 
 const { frontmatter, postTarget, post } = Astro.props;
 

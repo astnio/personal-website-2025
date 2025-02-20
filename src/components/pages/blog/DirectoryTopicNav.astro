@@ -1,10 +1,10 @@
 ---
 import ShowMoreMenu from '@components/pages/blog/ShowMoreMenu.astro';
 
-type Props = {
+interface Props {
   posts: any;
   urlPath: string | '/blog/topics/';
-};
+}
 
 const { posts, urlPath } = Astro.props;
 
