@@ -1,11 +1,12 @@
 ---
-import '../styles/posts/codeBlockCopyButton.css';
-import '../styles/posts/markdownPostStyles.css';
+import '@styles/posts/codeBlockCopyButton.css';
+import '@styles/posts/markdownPostStyles.css';
 import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
-import Tag from '../components/interface/Tag.astro';
-import Heading from '../components/typography/Heading.astro';
-import PostInfo from '@components/pages/blog/PostInfo.astro';
+import Tag from '@components/interface/Tag.astro';
+import Heading from '@components/typography/Heading.astro';
+import Status from '@components/pages/projects/Status.astro';
+import DateLabel from '@components/interface/DateLabel.astro';
 
 interface Props {
   frontmatter: any;
@@ -93,6 +94,14 @@ console.log(frontmatter);
     gap: 1rem;
   }
 
+  .post-info-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-block: 0.5rem;
+  }
+
   @media screen and (min-width: 768px) {
     .post-wrapper-spacer {
       padding-inline: 1rem;
@@ -130,6 +139,10 @@ console.log(frontmatter);
     }
 
     <header class='post-header'>
+      <div class='post-info-wrapper'>
+        <DateLabel date={frontmatter.date_completed} />
+        <Status type={frontmatter.status}>{frontmatter.status}</Status>
+      </div>
       <Heading
         type='title'
         level={1}
