@@ -1,7 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import PostLayout from '@layouts/PostLayout.astro';
+import ProjectLayout from '@layouts/ProjectLayout.astro';
 import Aside from '../../components/Aside.astro';
 
 export async function getStaticPaths() {
@@ -22,10 +22,9 @@ const { Content } = await entry.render();
 ---
 
 <BaseLayout title={entry.data.title}>
-  <PostLayout
-    postTarget='projects'
+  <ProjectLayout
     frontmatter={entry.data}
-    post={entry}>
+    project={entry}>
     <Content components={{ Aside: Aside }} />
-  </PostLayout>
+  </ProjectLayout>
 </BaseLayout>

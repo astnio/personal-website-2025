@@ -1,0 +1,165 @@
+---
+import '../styles/posts/codeBlockCopyButton.css';
+import '../styles/posts/markdownPostStyles.css';
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Tag from '../components/interface/Tag.astro';
+import Heading from '../components/typography/Heading.astro';
+import PostInfo from '@components/pages/blog/PostInfo.astro';
+
+interface Props {
+  frontmatter: any;
+  project: CollectionEntry<'projects'>;
+}
+
+const { frontmatter, project } = Astro.props;
+
+console.log(frontmatter);
+---
+
+<style>
+  p {
+    color: var(--clr-subtext-1);
+    font-size: 1.2rem;
+  }
+
+  hr {
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-wrapper-spacer {
+    padding-inline: 0;
+    width: 100%;
+    /* margin-top: 4rem; */
+  }
+
+  .post-wrapper {
+    background-color: var(--clr-base);
+    overflow: hidden;
+  }
+
+  .post-header {
+    padding-inline: 1rem;
+    /* margin-top: 2.5rem; */
+  }
+
+  .post-content {
+    padding-block: 1rem;
+    padding-inline: 1rem;
+  }
+
+  /*** Post Picture ***/
+
+  .picture-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    aspect-ratio: 2/1;
+  }
+
+  .picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /*** Footer ***/
+
+  footer {
+    display: flex;
+
+    width: 100%;
+  }
+
+  .footer-content {
+    width: 100%;
+
+    padding: 1rem;
+    margin-block: 2rem;
+
+    border-radius: var(--radius-surface);
+
+    background-color: var(--clr-base);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .post-wrapper-spacer {
+      padding-inline: 1rem;
+    }
+
+    .post-wrapper {
+      border-radius: var(--radius-base);
+    }
+
+    .post-header {
+      padding-inline: 4rem;
+    }
+
+    .post-content {
+      padding-inline: 4rem;
+    }
+  }
+</style>
+
+<div class='post-wrapper-spacer max-width'>
+  <article class='post-wrapper'>
+    {
+      frontmatter.cover && (
+        <div class='picture-wrapper'>
+          <Image
+            alt={'hi'}
+            width={1200}
+            height={800}
+            src={frontmatter.cover}
+            class={'picture'}
+            transition:name={`blog-cover-${project.data.title}`}
+          />
+        </div>
+      )
+    }
+
+    <header class='post-header'>
+      <Heading
+        type='title'
+        level={1}
+        size='l4x'
+        >{frontmatter.title}</Heading
+      >
+      <Heading
+        type='subtitle'
+        level={3}
+        size='l2x'
+        >{frontmatter.summary}</Heading
+      >
+      <hr />
+    </header>
+    <div class='post-content'>
+      <slot />
+    </div>
+  </article>
+  <footer class='max-width'>
+    <div class='footer-content'>
+      <p>Tags</p>
+      <div class='tags'>
+        {
+          frontmatter.tags.map((tag: string) => (
+            <Tag url={`/projects/tags/${tag}`}>{tag}</Tag>
+          ))
+        }
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src='../scripts/codeBlockCopy.ts'></script>
