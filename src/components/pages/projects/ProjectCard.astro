@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import Tag from '@components/interface/Tag.astro';
+import Chip from '@/components/interface/Chip.astro';
 import DateLabel from '@components/interface/DateLabel.astro';
 import Heading from '@components/typography/Heading.astro';
 import Status from '@components/pages/projects/Status.astro';
@@ -168,6 +169,7 @@ if (data.image_source) {
     list-style: none;
     padding: 0;
     margin: 0;
+    margin-bottom: 1rem;
   }
 
   ul.links-list {
@@ -284,7 +286,7 @@ if (data.image_source) {
       {
         data.tags.map((tag: string) => (
           <li>
-            <Tag url={`/projects/tags/${tag}`}>{tag}</Tag>
+            <Chip url={`/projects/tags/${tag}`}>{tag}</Chip>
           </li>
         ))
       }
