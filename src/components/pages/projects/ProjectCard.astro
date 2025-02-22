@@ -178,9 +178,13 @@ if (data.image_source) {
     list-style: none;
 
     padding: 0;
-    /* margin: 0; */
     margin-bottom: 1rem;
-    /* margin-top: auto; */
+
+    width: 100%;
+  }
+
+  li.link-list-item {
+    flex: 1;
   }
 
   a.link {
@@ -288,7 +292,7 @@ if (data.image_source) {
     <ul class='links-list'>
       {
         data.github_url && (
-          <li>
+          <li class='link-list-item'>
             <a
               class='link'
               href={data.github_url}
@@ -303,7 +307,7 @@ if (data.image_source) {
       }
       {
         data.demo_url && (
-          <li>
+          <li class='link-list-item'>
             <a
               class='link'
               href={data.demo_url}
