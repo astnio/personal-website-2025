@@ -1,10 +1,10 @@
 ---
 import { Picture } from 'astro:assets';
-import Tag from '@components/interface/Tag.astro';
 import Chip from '@/components/interface/Chip.astro';
 import DateLabel from '@components/interface/DateLabel.astro';
 import Heading from '@components/typography/Heading.astro';
 import Status from '@components/pages/projects/Status.astro';
+import { getIcon } from '@scripts/utils/iconHelper';
 
 const { url, data } = Astro.props;
 
@@ -164,7 +164,7 @@ if (data.image_source) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.45rem;
+    gap: 1.5rem 0.5rem;
 
     list-style: none;
     padding: 0;
@@ -252,6 +252,11 @@ if (data.image_source) {
   .link-icon {
     font-size: 1.4rem;
   }
+
+  .tech-icon {
+    position: relative;
+    top: 1px;
+  }
 </style>
 
 <div class='project-card'>
@@ -285,8 +290,11 @@ if (data.image_source) {
     <ul class='tags-list'>
       {
         data.tags.map((tag: string) => (
-          <li>
-            <Chip url={`/projects/tags/${tag}`}>{tag}</Chip>
+          <li class='tags-list-item'>
+            <Chip url={`/projects/tags/${tag}`}>
+              <span class={`tech-icon ${getIcon(tag)}`} />
+              <span>{tag}</span>
+            </Chip>
           </li>
         ))
       }
