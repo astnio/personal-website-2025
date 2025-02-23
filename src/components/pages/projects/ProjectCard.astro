@@ -87,6 +87,14 @@ if (data.image_source) {
     /* border-bottom: 2px solid var(--clr-mantle); */
   }
 
+  .status-wrapper {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+
+    z-index: 1;
+  }
+
   .project-image {
     position: absolute;
     left: 0;
@@ -123,6 +131,8 @@ if (data.image_source) {
   .project-title-wrapper {
     display: grid;
     grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: start;
     gap: 1rem;
 
     width: 100%;
@@ -264,6 +274,10 @@ if (data.image_source) {
   {
     imageSource && (
       <div class='picture-wrapper'>
+        <div class='status-wrapper'>
+          <Status type={data.status}>{data.status}</Status>
+        </div>
+
         <a href={url}>
           <Picture
             src={imageSource}
@@ -283,10 +297,10 @@ if (data.image_source) {
       url={url}>
       {data.title}
     </Heading>
-    <Status type={data.status}>{data.status}</Status>
+    <!-- <Status type={data.status}>{data.status}</Status> -->
+    <DateLabel date={data.date_completed} />
   </div>
   <div class='project-info-wrapper'>
-    <DateLabel date={data.date_completed} />
     <p class='card-description'>{data.description}</p>
     <ul class='tags-list'>
       {
