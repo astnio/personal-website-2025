@@ -49,6 +49,7 @@ const projectCollection = defineCollection({
     featured: z.boolean().optional(),
     github_url: z.string().optional(),
     demo_url: z.string().optional(),
+    fem_url: z.string().optional(),
     cover: image().optional(),
     cover_alt: z.string().optional(),
   }).superRefine((data, ctx) => {
