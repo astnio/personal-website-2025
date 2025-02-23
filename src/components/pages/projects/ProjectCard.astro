@@ -175,6 +175,7 @@ if (data.image_source) {
   ul.links-list {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 1rem;
 
     list-style: none;
@@ -326,6 +327,21 @@ if (data.image_source) {
                 <span class='link-icon bx bxs-show' />
               </div>
               <span class='link-label'>Demo</span>
+            </a>
+          </li>
+        )
+      }
+      {
+        data.fem_url && (
+          <li class='link-list-item'>
+            <a
+              class='link'
+              href={data.fem_url}
+              target='_blank'>
+              <div class='link-icon-wrapper'>
+                <span class='link-icon bx bxs-widget' />
+              </div>
+              <span class='link-label'>Frontend Mentor</span>
             </a>
           </li>
         )
