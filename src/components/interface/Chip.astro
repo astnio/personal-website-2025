@@ -1,5 +1,9 @@
 ---
-const { url } = Astro.props;
+interface Props {
+  url?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+const { url, size = 'md' } = Astro.props;
 ---
 
 <style>
@@ -14,13 +18,13 @@ const { url } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.4ch;
+    gap: 0.5ch;
 
     background-color: var(--clr-surface-0);
 
     color: var(--clr-subtext-1);
     font-weight: 500;
-    font-size: 1rem;
+    /* font-size: 1rem; */
 
     padding-inline: 0.8rem;
     padding-block: 0.4rem;
@@ -39,17 +43,29 @@ const { url } = Astro.props;
     background-color: var(--clr-surface-1);
     outline: 1px solid var(--clr-surface-2);
   }
+
+  .sm {
+    font-size: 0.85rem;
+  }
+
+  .md {
+    font-size: 1rem;
+  }
+
+  .lg {
+    font-size: 1.2rem;
+  }
 </style>
 
 {
   url ? (
     <a
       href={url}
-      class='chip'>
+      class=`chip ${size}`>
       <slot />
     </a>
   ) : (
-    <div class='chip'>
+    <div class=`chip ${size}`>
       <slot />
     </div>
   )

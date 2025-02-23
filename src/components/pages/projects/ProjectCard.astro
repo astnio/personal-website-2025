@@ -306,7 +306,9 @@ if (data.image_source) {
       {
         data.tags.map((tag: string) => (
           <li class='tags-list-item'>
-            <Chip url={`/projects/tags/${tag}`}>
+            <Chip
+              url={`/projects/tags/${tag}`}
+              size='sm'>
               <span class={`tech-icon ${getIcon(tag)}`} />
               <span>{tag}</span>
             </Chip>
