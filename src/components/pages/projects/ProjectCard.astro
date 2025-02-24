@@ -3,7 +3,7 @@ import { Picture } from 'astro:assets';
 import Chip from '@/components/interface/Chip.astro';
 import DateLabel from '@components/interface/DateLabel.astro';
 import Heading from '@components/typography/Heading.astro';
-import Status from '@components/pages/projects/Status.astro';
+import StatusDot from '@components/pages/projects/StatusDot.astro';
 import { getIcon } from '@scripts/utils/iconHelper';
 
 const { url, data } = Astro.props;
@@ -275,7 +275,7 @@ if (data.image_source) {
     imageSource && (
       <div class='picture-wrapper'>
         <div class='status-wrapper'>
-          <Status type={data.status}>{data.status}</Status>
+          <StatusDot type={data.status} />
         </div>
 
         <a
@@ -329,7 +329,7 @@ if (data.image_source) {
               <div class='link-icon-wrapper'>
                 <span class='link-icon bx bxl-github' />
               </div>
-              <span class='link-label'>Github</span>
+              <span class='link-label visually-hidden'>Github</span>
             </a>
           </li>
         )
@@ -344,7 +344,7 @@ if (data.image_source) {
               <div class='link-icon-wrapper'>
                 <span class='link-icon bx bxs-show' />
               </div>
-              <span class='link-label'>Demo</span>
+              <span class='link-label visually-hidden'>Demo</span>
             </a>
           </li>
         )
@@ -359,7 +359,7 @@ if (data.image_source) {
               <div class='link-icon-wrapper'>
                 <span class='link-icon bx bxs-trophy' />
               </div>
-              <span class='link-label'>Challenge</span>
+              <span class='link-label visually-hidden'>Challenge</span>
             </a>
           </li>
         )
