@@ -121,6 +121,9 @@ if (data.image_source) {
   }
 
   .project-title-wrapper {
+    position: absolute;
+    bottom: 0;
+
     display: grid;
     gap: 0.2rem;
 
@@ -128,8 +131,24 @@ if (data.image_source) {
 
     padding-inline: 1rem;
     padding-top: 1rem;
+    padding-bottom: 1rem;
 
     z-index: 1;
+
+    backdrop-filter: blur(10px);
+  }
+
+  .project-title-wrapper::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--clr-crust);
+    z-index: -1;
+    opacity: 0.8;
   }
 
   .title-wrapper {
@@ -247,9 +266,23 @@ if (data.image_source) {
   {
     imageSource && (
       <div class='picture-wrapper'>
+        <div class='project-title-wrapper'>
+          <div class='title-wrapper'>
+            <StatusDot type={data.status} />
+            <Heading
+              level={3}
+              size='l2x'
+              url={url}>
+              {data.title}
+            </Heading>
+          </div>
+          <div class='date-wrapper'>
+            <DateLabel date={data.date_completed} />
+          </div>
+        </div>
         <a
           href={url}
-          class='picture-link vignette'>
+          class='picture-link'>
           <Picture
             src={imageSource}
             widths={[400, 800]}
@@ -261,20 +294,7 @@ if (data.image_source) {
       </div>
     )
   }
-  <div class='project-title-wrapper'>
-    <div class='title-wrapper'>
-      <StatusDot type={data.status} />
-      <Heading
-        level={3}
-        size='l2x'
-        url={url}>
-        {data.title}
-      </Heading>
-    </div>
-    <div class='date-wrapper'>
-      <DateLabel date={data.date_completed} />
-    </div>
-  </div>
+
   <div class='project-info-wrapper'>
     <p class='card-description'>{data.description}</p>
     <ul class='tags-list'>
