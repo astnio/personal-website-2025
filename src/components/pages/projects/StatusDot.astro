@@ -1,4 +1,8 @@
 ---
+interface Props {
+  type: 'in-progress' | 'complete' | 'incomplete';
+}
+
 const { type } = Astro.props;
 ---
 
@@ -76,4 +80,6 @@ const { type } = Astro.props;
   }
 </style>
 
-<p class=`project-status status-${type}`></p>
+<p class=`project-status status-${type}`>
+  <span class='visually-hidden'>{type}</span>
+</p>
