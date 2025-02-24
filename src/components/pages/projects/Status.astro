@@ -21,6 +21,8 @@ const { type } = Astro.props;
     border-radius: var(--radius-input);
     outline: 1px solid var(--clr-surface-1);
 
+    /* backdrop-filter: blur(10px); */
+
     font-size: 0.85rem;
     font-weight: 600;
 
@@ -38,7 +40,8 @@ const { type } = Astro.props;
 
     /* opacity: 0.2; */
 
-    filter: brightness(40%);
+    filter: brightness(50%) saturate(50%);
+    /* opacity: 0.2; */
 
     z-index: -1;
   }
