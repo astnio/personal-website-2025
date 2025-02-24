@@ -9,6 +9,7 @@ const { type } = Astro.props;
 <style>
   .project-status {
     position: relative;
+    left: 0.25rem;
 
     justify-self: end;
 
@@ -23,8 +24,6 @@ const { type } = Astro.props;
 
     border-radius: var(--radius-circle);
     outline: 1px solid var(--clr-surface-1);
-
-    /* backdrop-filter: blur(10px); */
 
     aspect-ratio: 1;
 
@@ -82,6 +81,8 @@ const { type } = Astro.props;
   }
 </style>
 
-<p class=`project-status status-${type}`>
+<p
+  class=`project-status status-${type}`
+  title=`Status: ${type}`>
   <span class='visually-hidden'>{type}</span>
 </p>

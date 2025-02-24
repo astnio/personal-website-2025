@@ -87,14 +87,6 @@ if (data.image_source) {
     /* border-bottom: 2px solid var(--clr-mantle); */
   }
 
-  .status-wrapper {
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
-
-    z-index: 5;
-  }
-
   .project-image {
     position: absolute;
     left: 0;
@@ -130,37 +122,20 @@ if (data.image_source) {
 
   .project-title-wrapper {
     display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-between;
-    align-items: start;
-    gap: 1rem;
+    gap: 0.2rem;
 
     width: 100%;
 
     padding-inline: 1rem;
-    /* padding-block: 1.5rem; */
     padding-top: 1rem;
 
     z-index: 1;
-
-    backdrop-filter: blur(5px);
-
-    /* border-top: 1px solid var(--clr-surface-0); */
   }
 
-  .project-title-wrapper::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background-color: var(--clr-base);
-    opacity: 0.85;
-
-    z-index: -1;
+  .title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
   }
 
   .card-description {
@@ -272,10 +247,6 @@ if (data.image_source) {
   {
     imageSource && (
       <div class='picture-wrapper'>
-        <div class='status-wrapper'>
-          <StatusDot type={data.status} />
-        </div>
-
         <a
           href={url}
           class='picture-link vignette'>
@@ -291,14 +262,18 @@ if (data.image_source) {
     )
   }
   <div class='project-title-wrapper'>
-    <Heading
-      level={3}
-      size='l2x'
-      url={url}>
-      {data.title}
-    </Heading>
-    <!-- <Status type={data.status}>{data.status}</Status> -->
-    <DateLabel date={data.date_completed} />
+    <div class='title-wrapper'>
+      <StatusDot type={data.status} />
+      <Heading
+        level={3}
+        size='l2x'
+        url={url}>
+        {data.title}
+      </Heading>
+    </div>
+    <div class='date-wrapper'>
+      <DateLabel date={data.date_completed} />
+    </div>
   </div>
   <div class='project-info-wrapper'>
     <p class='card-description'>{data.description}</p>
