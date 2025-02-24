@@ -196,10 +196,6 @@ if (data.image_source) {
     width: 100%;
   }
 
-  li.link-list-item {
-    flex: 1;
-  }
-
   a.link {
     position: relative;
 
@@ -211,12 +207,14 @@ if (data.image_source) {
     color: var(--clr-text);
     text-decoration: none;
 
-    border-radius: var(--radius-input);
+    border-radius: var(--radius-circle);
     outline: 1px solid var(--clr-surface-1);
 
     background-color: var(--clr-surface-0);
 
-    height: 2.4rem;
+    /* height: 2.4rem; */
+
+    padding: 0.6rem;
 
     overflow: hidden;
 
@@ -323,13 +321,12 @@ if (data.image_source) {
         data.github_url && (
           <li class='link-list-item'>
             <a
+              title='Visit GitHub repository'
               class='link'
               href={data.github_url}
               target='_blank'>
-              <div class='link-icon-wrapper'>
-                <span class='link-icon bx bxl-github' />
-              </div>
-              <span class='link-label visually-hidden'>Github</span>
+              <span class='link-icon bx bxl-github' />
+              <span class='link-label visually-hidden'>GitHub</span>
             </a>
           </li>
         )
@@ -338,12 +335,11 @@ if (data.image_source) {
         data.demo_url && (
           <li class='link-list-item'>
             <a
+              title='See demo'
               class='link'
               href={data.demo_url}
               target='_blank'>
-              <div class='link-icon-wrapper'>
-                <span class='link-icon bx bxs-show' />
-              </div>
+              <span class='link-icon bx bxs-show' />
               <span class='link-label visually-hidden'>Demo</span>
             </a>
           </li>
@@ -353,12 +349,11 @@ if (data.image_source) {
         data.fem_url && (
           <li class='link-list-item'>
             <a
+              title='Visit Frontend Mentor challenge page'
               class='link'
               href={data.fem_url}
               target='_blank'>
-              <div class='link-icon-wrapper'>
-                <span class='link-icon bx bxs-trophy' />
-              </div>
+              <span class='link-icon bx bxs-trophy' />
               <span class='link-label visually-hidden'>Challenge</span>
             </a>
           </li>
