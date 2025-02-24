@@ -1,10 +1,11 @@
 ---
+import { calculateReadingTime } from '@scripts/utils/readingTime';
 import Heading from '@components/typography/Heading.astro';
 import { Picture } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import { fade } from 'astro:transitions';
 import ReadMoreButton from './ReadMoreButton.astro';
-import PostInfo from './PostInfo.astro';
+import DateLabel from '@/components/interface/DateLabel.astro';
+import Chip from '@/components/interface/Chip.astro';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -12,6 +13,8 @@ interface Props {
 }
 
 const { post, featured = false } = Astro.props;
+
+const timeRead = calculateReadingTime(post.body);
 ---
 
 <style>
@@ -30,8 +33,7 @@ const { post, featured = false } = Astro.props;
   }
 
   header,
-  footer,
-  .blog-card-summary {
+  footer {
     padding-inline: 1rem;
   }
 
@@ -96,6 +98,7 @@ const { post, featured = false } = Astro.props;
     width: 100%;
 
     padding-inline: 1rem;
+    padding-block: 1rem;
 
     backdrop-filter: blur(10px);
 
@@ -142,15 +145,23 @@ const { post, featured = false } = Astro.props;
 
     width: 100%;
     min-height: 10rem;
+
+    padding-inline: 1rem;
+    /* margin-top: 2rem; */
   }
 
   .card-title-wrapper {
-    grid-column-start: 1;
+    /* grid-column-start: 1; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    z-index: 1;
 
     font-size: 1.6rem;
-    padding-inline: 1rem;
+    /* padding-inline: 1rem; */
     margin: 0;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -162,8 +173,12 @@ const { post, featured = false } = Astro.props;
 
     color: var(--clr-subtext-0);
 
-    margin-top: 0.8rem;
-    margin-bottom: 1.5rem;
+    /* margin-top: 0.8rem; */
+    /* margin-bottom: 1.5rem; */
+
+    margin-block: 1rem;
+
+    align-self: center;
 
     height: fit-content;
 
@@ -178,7 +193,7 @@ const { post, featured = false } = Astro.props;
 
   .btn-read-more-wrapper {
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 5;
     grid-column-start: 2;
 
     display: flex;
@@ -186,7 +201,9 @@ const { post, featured = false } = Astro.props;
     height: 100%;
     flex-shrink: 0;
 
-    padding: 1rem;
+    padding-block: 1rem;
+    width: 2rem;
+    margin-left: auto;
   }
 
   .post-info-wrapper {
@@ -259,18 +276,39 @@ const { post, featured = false } = Astro.props;
     color: var(--clr-yellow);
   }
 
+  .post-details-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .card-title-wrapper-no-cover {
+    margin-top: 2rem;
+  }
+
   @media screen and (max-width: 768px) {
     .picture-wrapper {
       min-height: 20rem;
       aspect-ratio: auto;
     }
   }
+
+  hr.post-card-hr {
+    height: 1px;
+    margin-top: 1.5rem;
+    background-color: var(--clr-surface-0);
+  }
 </style>
 
 <div class='blog-card-wrapper'>
   <article class='blog-card'>
     {
-      post.data.cover ? (
+      post.data.cover && (
         <div class='picture-wrapper'>
           {featured && (
             <div class='featured-label-wrapper'>
@@ -279,11 +317,20 @@ const { post, featured = false } = Astro.props;
             </div>
           )}
           <div class='post-info-wrapper'>
-            <PostInfo
-              post={post}
-              transition:animate={fade({ duration: '2s' })}
-            />
+            <div class='card-title-wrapper'>
+              <Heading
+                level={3}
+                size='l2x'
+                type={featured ? 'title' : 'heading'}
+                textOverflow='ellipsis'
+                url={`/blog/${post.slug}`}
+                transition:name={`blog-title-${post.data.title}`}>
+                {post.data.title}
+              </Heading>
+              <DateLabel date={post.data.date_published} />
+            </div>
           </div>
+
           <a href={`/blog/${post.slug}`}>
             <Picture
               width={400}
@@ -296,31 +343,48 @@ const { post, featured = false } = Astro.props;
             />
           </a>
         </div>
-      ) : (
-        <div
-          class='post-info-wrapper'
-          data-has-picture='false'>
-          <PostInfo post={post} />
-        </div>
       )
     }
 
     <div class='content-wrapper'>
-      <div class='card-title-wrapper'>
-        <Heading
-          level={3}
-          size='l2x'
-          type={featured ? 'title' : 'heading'}
-          textOverflow='ellipsis'
-          url={`/blog/${post.slug}`}
-          transition:name={`blog-title-${post.data.title}`}>
-          {post.data.title}
-        </Heading>
-      </div>
+      {
+        !post.data.cover && (
+          <div class='card-title-wrapper card-title-wrapper-no-cover'>
+            <Heading
+              level={3}
+              size='l2x'
+              type={featured ? 'title' : 'heading'}
+              textOverflow='ellipsis'
+              url={`/blog/${post.slug}`}
+              transition:name={`blog-title-${post.data.title}`}>
+              {post.data.title}
+            </Heading>
+            <DateLabel date={post.data.date_published} />
+          </div>
+        )
+      }
+
+      {!post.data.cover && <hr class='post-card-hr' />}
 
       <p class='blog-card-summary'>
         {post.data.summary}
       </p>
+
+      <div class='post-details-wrapper'>
+        <div class='category-wrapper'>
+          <Chip url={`/blog/categories/${post.data.category}`}>
+            {post.data.category}
+          </Chip>
+        </div>
+
+        <p class='read-minutes'>
+          <span class='time-read-icon bx bxs-timer'></span>
+          <span>
+            <span>{timeRead}</span>
+            <span> minute read</span>
+          </span>
+        </p>
+      </div>
 
       <div class='btn-read-more-wrapper'>
         <ReadMoreButton url={`/blog/${post.slug}`} />
