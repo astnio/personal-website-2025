@@ -53,7 +53,7 @@ const title = 'Projects';
 
   ul.projects-list {
     display: grid;
-    grid-template-columns: auto;
+    /* grid-template-columns: auto; */
     gap: 2rem;
 
     list-style: none;
@@ -88,18 +88,18 @@ const title = 'Projects';
 
   li.project-area-list-item {
     display: flex;
+    width: 100%;
 
     padding: 0;
   }
 
   li.projects-list-item {
-    display: flex; /* Add this */
+    display: flex;
   }
 
   @media screen and (min-width: 1024px) {
     ul.projects-list {
-      display: grid;
-      align-items: stretch;
+      /* display: grid; */
       grid-template-columns: 1fr 1fr;
       gap: 3rem 2rem;
 
