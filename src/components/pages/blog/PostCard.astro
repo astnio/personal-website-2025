@@ -3,9 +3,9 @@ import { calculateReadingTime } from '@scripts/utils/readingTime';
 import Heading from '@components/typography/Heading.astro';
 import { Picture } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import ReadMoreButton from './ReadMoreButton.astro';
 import DateLabel from '@/components/interface/DateLabel.astro';
 import Chip from '@/components/interface/Chip.astro';
+import ReadMoreLink from './ReadMoreLink.astro';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -151,30 +151,22 @@ const timeRead = calculateReadingTime(post.body);
   }
 
   .card-title-wrapper {
-    /* grid-column-start: 1; */
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
+
+    grid-column: span 2;
 
     z-index: 1;
 
     font-size: 1.6rem;
-    /* padding-inline: 1rem; */
     margin: 0;
-    /* margin-top: 1rem; */
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 
   .blog-card-summary {
-    grid-column-start: 1;
+    grid-column: span 2;
 
     color: var(--clr-subtext-0);
-
-    /* margin-top: 0.8rem; */
-    /* margin-bottom: 1.5rem; */
 
     margin-block: 1rem;
 
@@ -192,17 +184,9 @@ const timeRead = calculateReadingTime(post.body);
   }
 
   .btn-read-more-wrapper {
-    grid-row-start: 1;
-    grid-row-end: 5;
-    grid-column-start: 2;
+    grid-row-start: 2;
 
     display: flex;
-
-    height: 100%;
-    flex-shrink: 0;
-
-    padding-block: 1rem;
-    width: 2rem;
     margin-left: auto;
   }
 
@@ -277,13 +261,15 @@ const timeRead = calculateReadingTime(post.body);
   }
 
   .post-details-wrapper {
+    grid-column: span 2;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     width: 100%;
 
-    padding-top: 2rem;
+    /* padding-top: 2rem; */
     padding-bottom: 1rem;
   }
 
@@ -299,6 +285,8 @@ const timeRead = calculateReadingTime(post.body);
   }
 
   hr.post-card-hr {
+    grid-column: span 2;
+
     height: 1px;
     margin-top: 1.5rem;
     background-color: var(--clr-surface-0);
@@ -319,6 +307,14 @@ const timeRead = calculateReadingTime(post.body);
     position: relative;
     top: 1px;
   }
+
+  .card-title-details-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
 </style>
 
 <div class='blog-card-wrapper'>
@@ -334,7 +330,16 @@ const timeRead = calculateReadingTime(post.body);
           )}
           <div class='post-info-wrapper'>
             <div class='card-title-wrapper'>
-              <DateLabel date={post.data.date_published} />
+              <div class='card-title-details-wrapper'>
+                <DateLabel date={post.data.date_published} />
+                <div class='category-wrapper'>
+                  <Chip
+                    url={`/blog/categories/${post.data.category}`}
+                    size='sm'>
+                    {post.data.category}
+                  </Chip>
+                </div>
+              </div>
               <Heading
                 level={3}
                 size='l2x'
@@ -366,7 +371,16 @@ const timeRead = calculateReadingTime(post.body);
       {
         !post.data.cover && (
           <div class='card-title-wrapper card-title-wrapper-no-cover'>
-            <DateLabel date={post.data.date_published} />
+            <div class='card-title-details-wrapper'>
+              <DateLabel date={post.data.date_published} />
+              <div class='category-wrapper'>
+                <Chip
+                  url={`/blog/categories/${post.data.category}`}
+                  size='sm'>
+                  {post.data.category}
+                </Chip>
+              </div>
+            </div>
             <Heading
               level={3}
               size='l2x'
@@ -387,14 +401,6 @@ const timeRead = calculateReadingTime(post.body);
       </p>
 
       <div class='post-details-wrapper'>
-        <div class='category-wrapper'>
-          <Chip
-            url={`/blog/categories/${post.data.category}`}
-            size='sm'>
-            {post.data.category}
-          </Chip>
-        </div>
-
         <p class='read-minutes'>
           <span class='time-read-icon bx bxs-timer'></span>
           <span>
@@ -402,10 +408,9 @@ const timeRead = calculateReadingTime(post.body);
             <span> minute read</span>
           </span>
         </p>
-      </div>
-
-      <div class='btn-read-more-wrapper'>
-        <ReadMoreButton url={`/blog/${post.slug}`} />
+        <div class='btn-read-more-wrapper'>
+          <ReadMoreLink url={`/blog/${post.slug}`} />
+        </div>
       </div>
     </div>
   </article>
