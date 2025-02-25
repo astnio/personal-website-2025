@@ -310,7 +310,6 @@ const timeRead = calculateReadingTime(post.body);
 
   .card-title-details-wrapper {
     display: flex;
-    flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
     width: 100%;
@@ -330,6 +329,15 @@ const timeRead = calculateReadingTime(post.body);
           )}
           <div class='post-info-wrapper'>
             <div class='card-title-wrapper'>
+              <Heading
+                level={3}
+                size='l2x'
+                type={featured ? 'title' : 'heading'}
+                textOverflow='ellipsis'
+                url={`/blog/${post.slug}`}
+                transition:name={`blog-title-${post.data.title}`}>
+                {post.data.title}
+              </Heading>
               <div class='card-title-details-wrapper'>
                 <DateLabel date={post.data.date_published} />
                 <div class='category-wrapper'>
@@ -340,15 +348,6 @@ const timeRead = calculateReadingTime(post.body);
                   </Chip>
                 </div>
               </div>
-              <Heading
-                level={3}
-                size='l2x'
-                type={featured ? 'title' : 'heading'}
-                textOverflow='ellipsis'
-                url={`/blog/${post.slug}`}
-                transition:name={`blog-title-${post.data.title}`}>
-                {post.data.title}
-              </Heading>
             </div>
           </div>
 
@@ -371,6 +370,15 @@ const timeRead = calculateReadingTime(post.body);
       {
         !post.data.cover && (
           <div class='card-title-wrapper card-title-wrapper-no-cover'>
+            <Heading
+              level={3}
+              size='l2x'
+              type={featured ? 'title' : 'heading'}
+              textOverflow='ellipsis'
+              url={`/blog/${post.slug}`}
+              transition:name={`blog-title-${post.data.title}`}>
+              {post.data.title}
+            </Heading>
             <div class='card-title-details-wrapper'>
               <DateLabel date={post.data.date_published} />
               <div class='category-wrapper'>
@@ -381,15 +389,6 @@ const timeRead = calculateReadingTime(post.body);
                 </Chip>
               </div>
             </div>
-            <Heading
-              level={3}
-              size='l2x'
-              type={featured ? 'title' : 'heading'}
-              textOverflow='ellipsis'
-              url={`/blog/${post.slug}`}
-              transition:name={`blog-title-${post.data.title}`}>
-              {post.data.title}
-            </Heading>
           </div>
         )
       }
