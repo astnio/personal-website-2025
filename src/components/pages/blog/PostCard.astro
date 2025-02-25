@@ -303,6 +303,22 @@ const timeRead = calculateReadingTime(post.body);
     margin-top: 1.5rem;
     background-color: var(--clr-surface-0);
   }
+
+  .read-minutes {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    color: var(--clr-subtext-0);
+    font-size: 0.85rem;
+  }
+
+  .time-read-icon {
+    position: relative;
+    top: 1px;
+  }
 </style>
 
 <div class='blog-card-wrapper'>
@@ -318,6 +334,7 @@ const timeRead = calculateReadingTime(post.body);
           )}
           <div class='post-info-wrapper'>
             <div class='card-title-wrapper'>
+              <DateLabel date={post.data.date_published} />
               <Heading
                 level={3}
                 size='l2x'
@@ -327,7 +344,6 @@ const timeRead = calculateReadingTime(post.body);
                 transition:name={`blog-title-${post.data.title}`}>
                 {post.data.title}
               </Heading>
-              <DateLabel date={post.data.date_published} />
             </div>
           </div>
 
@@ -350,6 +366,7 @@ const timeRead = calculateReadingTime(post.body);
       {
         !post.data.cover && (
           <div class='card-title-wrapper card-title-wrapper-no-cover'>
+            <DateLabel date={post.data.date_published} />
             <Heading
               level={3}
               size='l2x'
@@ -359,7 +376,6 @@ const timeRead = calculateReadingTime(post.body);
               transition:name={`blog-title-${post.data.title}`}>
               {post.data.title}
             </Heading>
-            <DateLabel date={post.data.date_published} />
           </div>
         )
       }
@@ -372,7 +388,9 @@ const timeRead = calculateReadingTime(post.body);
 
       <div class='post-details-wrapper'>
         <div class='category-wrapper'>
-          <Chip url={`/blog/categories/${post.data.category}`}>
+          <Chip
+            url={`/blog/categories/${post.data.category}`}
+            size='sm'>
             {post.data.category}
           </Chip>
         </div>
