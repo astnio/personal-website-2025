@@ -5,6 +5,7 @@ import DateLabel from '@components/interface/DateLabel.astro';
 import Heading from '@components/typography/Heading.astro';
 import StatusDot from '@components/pages/projects/StatusDot.astro';
 import { getIcon } from '@scripts/utils/iconHelper';
+import ReadMoreLink from '../blog/ReadMoreLink.astro';
 
 const { url, data } = Astro.props;
 
@@ -178,14 +179,14 @@ if (data.image_source) {
 
   ul.links-list {
     display: flex;
+    align-items: center;
     flex-direction: row;
-    /* flex-wrap: wrap; */
     gap: 1rem;
 
     list-style: none;
 
     padding: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 
     width: 100%;
   }
@@ -259,6 +260,10 @@ if (data.image_source) {
   .tech-icon {
     position: relative;
     top: 1px;
+  }
+
+  .project-link-wrapper {
+    margin-left: auto;
   }
 </style>
 
@@ -354,6 +359,9 @@ if (data.image_source) {
           </li>
         )
       }
+      <div class='project-link-wrapper'>
+        <ReadMoreLink url={url}>View Project</ReadMoreLink>
+      </div>
     </ul>
   </div>
 </div>
