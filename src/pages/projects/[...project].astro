@@ -1,6 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayoutAlt from '@layouts/BaseLayoutAlt.astro';
 import ProjectLayout from '@layouts/ProjectLayout.astro';
 import Aside from '../../components/Aside.astro';
 
@@ -21,10 +21,10 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<BaseLayout title={entry.data.title}>
+<BaseLayoutAlt title={entry.data.title}>
   <ProjectLayout
     frontmatter={entry.data}
     project={entry}>
     <Content components={{ Aside: Aside }} />
   </ProjectLayout>
-</BaseLayout>
+</BaseLayoutAlt>

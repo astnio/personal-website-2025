@@ -17,6 +17,10 @@ const { frontmatter, project } = Astro.props;
 ---
 
 <style>
+  main {
+    margin-top: 8rem;
+  }
+
   p {
     color: var(--clr-subtext-1);
     font-size: 1.2rem;
@@ -117,9 +121,29 @@ const { frontmatter, project } = Astro.props;
       padding-inline: 4rem;
     }
   }
+
+  .testing {
+    content: '';
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: blue;
+    pointer-events: none;
+
+    opacity: 0.1;
+
+    z-index: 1;
+  }
 </style>
 
-<div class='post-wrapper-spacer max-width'>
+<div class='testing'></div>
+
+<main class='post-wrapper-spacer max-width'>
   <article class='post-wrapper'>
     {
       frontmatter.cover && (
@@ -171,6 +195,6 @@ const { frontmatter, project } = Astro.props;
       </div>
     </div>
   </footer>
-</div>
+</main>
 
 <script src='../scripts/codeBlockCopy.ts'></script>
