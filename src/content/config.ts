@@ -39,7 +39,6 @@ const blogCollection = defineCollection({
 const projectCollection = defineCollection({
   type: 'content',
   schema: ({image}) => z.object({
-    image_source: z.string().optional(),
     title: z.string(),
     description: z.string(),
     tags: z.array(z.string()),
@@ -51,7 +50,13 @@ const projectCollection = defineCollection({
     demo_url: z.string().optional(),
     fem_url: z.string().optional(),
     cover: image().optional(),
-    cover_alt: z.string().optional(),
+    cover_alt: z.string().optional().default(''),
+    images: z.array(
+      z.object({
+        src: z.string(),
+        alt: z.string().optional().default(''),
+      })
+    ).optional()
   }).superRefine((data, ctx) => {
     if (data.cover && !data.cover_alt) {
       ctx.addIssue({

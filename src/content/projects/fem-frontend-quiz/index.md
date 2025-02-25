@@ -9,7 +9,6 @@ featured: true
 github_url: https://github.com/astnio/frontend-mentor-quiz-app
 demo_url: https://github.astn.io/frontend-mentor-quiz-app/
 fem_url: https://www.frontendmentor.io/solutions/overly-complicated-quiz-app-in-javascript-and-css-ueDqjT8TYJ
-image_source: './desktop-screenshots/fem-quiz-app-0.png'
 cover: './desktop-screenshots/fem-quiz-app-0.png'
 cover_alt: 'Quiz App Homepage'
 ---

@@ -8,7 +8,8 @@ date_completed: 2023-07-01
 featured: true
 github_url: https://astn.sh/gh-js-simple-wordguess
 demo_url: https://astn.sh/js-simple-wordguess
-image_source: './js-wordguess1.png'
+cover: './js-wordguess1.png'
+cover_alt: 'Project cover'
 ---
 
 # JavaScript Simple Wordguess

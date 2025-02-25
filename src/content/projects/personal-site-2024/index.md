@@ -7,7 +7,8 @@ type: 'personal'
 date_completed: 2023-12-01
 featured: true
 github_url: https://astn.sh/gh-personal-site-2024
-image_source: './personal_website.png'
+cover: './personal_website.png'
+cover_alt: 'Project cover'
 ---
 
 # My Personal Site, 2024

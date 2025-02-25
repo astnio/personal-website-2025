@@ -8,7 +8,8 @@ date_completed: 2024-02-01
 featured: true
 github_url: https://astn.sh/gh-ts-simple-e-com
 demo_url: https://astn.sh/ts-simple-e-com
-image_source: './ts-e-com.png'
+cover: './ts-e-com.png'
+cover_alt: 'Project cover'
 ---
 
 # TypeScript E-commerce Frontend

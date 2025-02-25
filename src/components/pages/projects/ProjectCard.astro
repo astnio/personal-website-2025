@@ -8,21 +8,6 @@ import { getIcon } from '@scripts/utils/iconHelper';
 import ReadMoreLink from '../blog/ReadMoreLink.astro';
 
 const { url, data } = Astro.props;
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/content/projects/**/*.{png,jpg,jpeg,gif,webp}'
-);
-
-let imageSource: ImageMetadata | null = null;
-
-if (data.image_source) {
-  const projectSlug = url.split('/').pop();
-  const fullPath = `/src/content/projects/${projectSlug}/${data.image_source.replace('./', '')}`;
-  const imageModule = await images[fullPath]();
-  imageSource = imageModule.default;
-} else {
-  imageSource = null;
-}
 ---
 
 <style>
@@ -269,7 +254,7 @@ if (data.image_source) {
 
 <div class='project-card'>
   {
-    imageSource && (
+    data.cover && (
       <div class='picture-wrapper'>
         <div class='project-title-wrapper'>
           <div class='title-wrapper'>
@@ -289,7 +274,7 @@ if (data.image_source) {
           href={url}
           class='picture-link'>
           <Picture
-            src={imageSource}
+            src={data.cover}
             widths={[400, 800]}
             sizes='(max-width: 800px) 100vw, 800px'
             alt={data.title}

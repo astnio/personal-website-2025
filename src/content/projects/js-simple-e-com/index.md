@@ -8,9 +8,8 @@ date_completed: 2023-08-01
 featured: true
 github_url: https://astn.sh/gh-js-simple-e-com
 demo_url: https://astn.sh/js-simple-e-com
-image_source: './simple_ecom.png'
 cover: './simple_ecom.png'
-cover_alt: 'Placeholder'
+cover_alt: 'Project cover'
 ---
 
 > [!IMPORTANT]
