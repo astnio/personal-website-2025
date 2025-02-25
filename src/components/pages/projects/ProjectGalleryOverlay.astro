@@ -1,0 +1,41 @@
+---
+
+---
+
+<style>
+  div#project-gallery-overlay {
+    content: '';
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: var(--clr-mantle);
+
+    z-index: 1;
+
+    transition-property: opacity, visibility;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+  }
+
+  div#project-gallery-overlay[data-active='true'] {
+    pointer-events: all;
+    opacity: 0.8;
+    visibility: visible;
+  }
+
+  div#project-gallery-overlay[data-active='false'] {
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+</style>
+
+<div
+  id='project-gallery-overlay'
+  data-active='false'>
+</div>
