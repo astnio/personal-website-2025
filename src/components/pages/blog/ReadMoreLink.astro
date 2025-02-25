@@ -19,8 +19,6 @@ const { url } = Astro.props;
     font-weight: 600;
     color: var(--clr-primary);
 
-    /* margin-top: 1rem; */
-
     transition-property: right;
     transition-duration: 0.15s;
     transition-timing-function: ease-in-out;
@@ -46,11 +44,15 @@ const { url } = Astro.props;
   a.read-more-link:hover > .read-more-link-icon {
     transform: rotate(0);
   }
+
+  a.read-more-link > p {
+    color: var(--clr-primary);
+  }
 </style>
 
 <a
   class='read-more-link'
   href={url}>
-  <span>Read Post</span>
+  <p><slot /></p>
   <span class='read-more-link-icon bx bx-right-arrow-alt'></span>
 </a>
