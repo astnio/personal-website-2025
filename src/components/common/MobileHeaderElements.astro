@@ -19,6 +19,12 @@ import Logo from './Logo.astro';
     transition-duration: 0.4s;
     transition-timing-function: ease-in-out;
   }
+
+  @media screen and (min-width: 768px) {
+    div#mobile-header-elements-wrapper {
+      display: none;
+    }
+  }
 </style>
 
 <div id='mobile-header-elements-wrapper'>
