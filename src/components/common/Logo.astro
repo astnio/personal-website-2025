@@ -1,4 +1,8 @@
 ---
+interface Props {
+  mobileView: boolean;
+}
+
 const { mobileView } = Astro.props;
 ---
 
@@ -38,7 +42,7 @@ const { mobileView } = Astro.props;
     margin: 1rem;
 
     z-index: 20;
-    display: none;
+    /* display: none; */
   }
 
   a.logo-wrapper[data-mobile-view='false'] {

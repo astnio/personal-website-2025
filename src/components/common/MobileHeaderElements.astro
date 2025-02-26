@@ -1,0 +1,31 @@
+---
+import SearchInput from '../interface/SearchInput.astro';
+import NavDrawerToggle from '../NavDrawerToggle.astro';
+import Logo from './Logo.astro';
+---
+
+<style>
+  div#mobile-header-elements-wrapper {
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    z-index: 2;
+
+    width: 100%;
+    height: 4rem;
+
+    transition-property: top, transform;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-in-out;
+  }
+</style>
+
+<div id='mobile-header-elements-wrapper'>
+  <NavDrawerToggle />
+  <SearchInput
+    inDrawer={false}
+    mobileView={true}
+  />
+  <Logo mobileView={true} />
+</div>

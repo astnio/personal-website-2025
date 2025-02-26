@@ -1,6 +1,6 @@
 document.addEventListener('astro:page-load', () => {
   const navbar = document.getElementById('app-bar');
-  const drawerToggle = document.getElementById('btn-open-nav-drawer');
+  const drawerToggle = document.getElementById('mobile-header-elements-wrapper');
   const blogNavWrapper = document.querySelector(
     '.blog-nav-wrapper'
   ) as HTMLElement;

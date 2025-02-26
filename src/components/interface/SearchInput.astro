@@ -1,9 +1,10 @@
 ---
 interface Props {
   inDrawer: boolean;
+  mobileView: boolean;
 }
 
-const { inDrawer } = Astro.props;
+const { inDrawer, mobileView } = Astro.props;
 ---
 
 <style>
@@ -124,13 +125,29 @@ const { inDrawer } = Astro.props;
     .btn-icon {
       top: 1px;
     }
+
+    section.search-wrapper[data-mobile-view='true'][data-in-drawer='false'] {
+      display: none;
+    }
+  }
+
+  section.search-wrapper[data-mobile-view='true'] {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin-left: 1rem;
+
+    display: flex;
   }
 </style>
 
 <section
   class='search-wrapper'
   role='search'
-  data-in-drawer={inDrawer}>
+  data-in-drawer={inDrawer}
+  data-mobile-view={mobileView}>
   <form
     action='#'
     method='get'>
