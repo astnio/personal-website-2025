@@ -134,19 +134,19 @@ import SearchInput from './interface/SearchInput.astro';
   id='nav-drawer'
   transition:name='nav-drawer'>
   <div class='customization-menu-overlay-wrapper'>
-    <CustomizationMenuOverlay />
+    <CustomizationMenuOverlay inDrawer={true} />
   </div>
 
   <div class='nav-drawer-content'>
-    <SearchInput inDrawer={true} />
+    <div class='customization-button-wrapper'>
+      <CustomizationMenu
+        id='nav-drawer'
+        inDrawer={true}
+      />
+    </div>
+    <!-- <SearchInput inDrawer={true} /> -->
     <NavLinks />
     <ContactButton inDrawer={true} />
-  </div>
-  <div class='customization-button-wrapper'>
-    <CustomizationMenu
-      id='nav-drawer'
-      inDrawer={true}
-    />
   </div>
 </aside>
 
