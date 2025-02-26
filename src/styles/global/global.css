@@ -23,7 +23,8 @@ body {
   touch-action: auto;
 }
 
-button {
+button,
+input {
   font-family: inherit;
 }
 
