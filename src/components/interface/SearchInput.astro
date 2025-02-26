@@ -137,9 +137,17 @@ const { inDrawer, mobileView } = Astro.props;
     left: 50%;
     transform: translateX(-50%);
 
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 
     display: flex;
+  }
+
+  section.search-wrapper[data-mobile-view='true'] input:active,
+  section.search-wrapper[data-mobile-view='true'] input:focus,
+  section.search-wrapper[data-mobile-view='true']
+    input:not(:placeholder-shown) {
+    width: calc(100vw - 18rem);
+    outline: 1px solid var(--clr-primary);
   }
 </style>
 
