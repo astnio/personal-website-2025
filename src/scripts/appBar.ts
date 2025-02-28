@@ -1,6 +1,9 @@
 document.addEventListener('astro:page-load', () => {
   const navbar = document.getElementById('app-bar');
-  const drawerToggle = document.getElementById('mobile-header-elements-wrapper');
+  const drawerToggle = document.getElementById(
+    'btn-open-nav-drawer'
+  );
+  const searchInput = document.getElementById('search-input-main');
   const blogNavWrapper = document.querySelector(
     '.blog-nav-wrapper'
   ) as HTMLElement;
@@ -15,6 +18,7 @@ document.addEventListener('astro:page-load', () => {
   function hideAppBar() {
     navbar!.style.transform = 'translateY(-100%)';
     drawerToggle!.style.transform = 'translateY(-100%)';
+    searchInput!.style.transform = 'translateY(-100%)';
 
     if (blogNavWrapper) {
       blogNavWrapper!.setAttribute('data-appbar-revealed', 'false');
@@ -24,6 +28,7 @@ document.addEventListener('astro:page-load', () => {
   function revealAppBar() {
     navbar!.style.transform = 'translateY(0%)';
     drawerToggle!.style.transform = 'translateY(0%)';
+    searchInput!.style.transform = 'translateY(0%)';
 
     if (blogNavWrapper) {
       blogNavWrapper!.setAttribute('data-appbar-revealed', 'true');
