@@ -1,12 +1,44 @@
 ---
-const { iconClass, url } = Astro.props;
+const { iconClass, url, label } = Astro.props;
 ---
 
-<style></style>
+<style>
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--clr-subtext-1);
+    text-decoration: none;
+    font-size: 1.2rem;
+
+    background-color: var(--clr-surface-0);
+
+    aspect-ratio: 1;
+
+    opacity: 0.8;
+
+    padding: 0.6rem;
+
+    border-radius: var(--radius-circle);
+
+    transition-property: background-color, color, opacity;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a:hover {
+    background-color: var(--clr-surface-1);
+    color: var(--clr-primary);
+    opacity: 1;
+  }
+</style>
 
 <a
   class='social-link-wrapper'
-  href={url}>
+  href={url}
+  target='_blank'
+  title={label}>
   <div class={`social-link-icon ${iconClass}`}></div>
-  <p class='social-link-label'><slot /></p>
+  <p class='social-link-label visually-hidden'>{label}</p>
 </a>
