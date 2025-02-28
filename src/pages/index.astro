@@ -1,5 +1,6 @@
 ---
-import HeroLinksGroup from '@components/pages/index/HeroLinksGroup.astro';
+import SocialLinksGroup from '@/components/pages/index/SocialLinksGroup.astro';
+import HeroLinksAccordionGroup from '@components/pages/index/HeroLinksAccordionGroup.astro';
 import ProfilePicture from '@components/pages/index/ProfilePicture.astro';
 import Heading from '@components/typography/Heading.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
@@ -154,11 +155,12 @@ const title = 'Austin Hagel';
         size='l4x'>
         <span>Austin Hagel</span>
       </Heading>
+      <SocialLinksGroup />
     </div>
 
     <div class='hero-info-wrapper'>
       <div class='hero-link-list'>
-        <HeroLinksGroup />
+        <HeroLinksAccordionGroup />
       </div>
     </div>
   </section>

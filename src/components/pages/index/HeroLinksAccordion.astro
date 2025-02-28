@@ -129,7 +129,11 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
     class='link-group-heading-wrapper'
     id={btnId}>
     <span class={iconClass}></span>
-    <Heading level={3} size='lg'>{title}</Heading>
+    <Heading
+      level={3}
+      size='lg'
+      >{title}</Heading
+    >
     <span class='link-group-open-icon bx bxs-chevron-down'></span>
   </button>
   <nav

@@ -1,0 +1,12 @@
+---
+const { iconClass, url } = Astro.props;
+---
+
+<style></style>
+
+<a
+  class='social-link-wrapper'
+  href={url}>
+  <div class={`social-link-icon ${iconClass}`}></div>
+  <p class='social-link-label'><slot /></p>
+</a>

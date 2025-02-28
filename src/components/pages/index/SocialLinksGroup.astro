@@ -1,0 +1,16 @@
+---
+import SocialLink from './SocialLink.astro';
+import links from '@content/links.json';
+
+const socialLinks = links.socialLinks;
+---
+
+<nav>
+  <ul>
+    {
+      socialLinks.map((socialLink) => {
+        return <SocialLink url={socialLink.url}>{socialLink.label}</SocialLink>;
+      })
+    }
+  </ul>
+</nav>
