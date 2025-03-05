@@ -8,6 +8,11 @@ const { inDrawer, mobileView } = Astro.props;
 ---
 
 <style>
+  #search-input-main {
+    transition-property: transform;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-in-out;
+  }
   fieldset {
     display: flex;
 
@@ -135,7 +140,7 @@ const { inDrawer, mobileView } = Astro.props;
     position: fixed;
     top: 1rem;
     left: 50%;
-    transform: translateX(-50%);
+    /* transform: translateX(-50%); */
 
     margin-left: 1.5rem;
 
@@ -149,6 +154,14 @@ const { inDrawer, mobileView } = Astro.props;
     width: calc(100vw - 18rem);
     outline: 1px solid var(--clr-primary);
   }
+
+  [data-mobile-view='true'][data-hidden='true'] {
+    transform: translateY(-200%) translateX(-50%);
+  }
+
+  [data-mobile-view='true'][data-hidden='false'] {
+    transform: translateY(0) translateX(-50%);
+  }
 </style>
 
 <section
@@ -156,7 +169,8 @@ const { inDrawer, mobileView } = Astro.props;
   class='search-wrapper'
   role='search'
   data-in-drawer={inDrawer}
-  data-mobile-view={mobileView}>
+  data-mobile-view={mobileView}
+  data-hidden='false'>
   <form
     action='#'
     method='get'>
