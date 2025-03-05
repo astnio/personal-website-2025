@@ -76,6 +76,14 @@ const { mobileView } = Astro.props;
     margin-right: -0.2em;
   }
 
+  #logo-mobile {
+    display: flex;
+  }
+
+  #logo-desktop {
+    display: none;
+  }
+
   @media screen and (min-width: 768px) {
     a.logo-wrapper[data-mobile-view='true'] {
       display: none;
@@ -84,10 +92,19 @@ const { mobileView } = Astro.props;
     a.logo-wrapper[data-mobile-view='false'] {
       display: flex;
     }
+
+    #logo-mobile {
+      display: none;
+    }
+
+    #logo-desktop {
+      display: flex;
+    }
   }
 </style>
 
 <a
+  id={`logo${mobileView ? '-desktop' : '-mobile'}`}
   class='logo-wrapper'
   data-mobile-view={mobileView}
   href='/'>
