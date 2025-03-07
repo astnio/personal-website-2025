@@ -42,11 +42,10 @@ const { mobileView } = Astro.props;
     margin: 1rem;
 
     z-index: 2;
-    /* display: none; */
   }
 
   a.logo-wrapper[data-mobile-view='false'] {
-    /* display: none; */
+    display: flex;
   }
 
   .logo {
@@ -65,7 +64,6 @@ const { mobileView } = Astro.props;
   }
 
   a.logo-wrapper:hover > .logo {
-    /* font-weight: 400; */
     color: var(--clr-crust);
   }
 
@@ -104,7 +102,7 @@ const { mobileView } = Astro.props;
 </style>
 
 <a
-  id={`logo${mobileView ? '-desktop' : '-mobile'}`}
+  id={`logo${mobileView ? '-mobile' : '-desktop'}`}
   class='logo-wrapper'
   data-mobile-view={mobileView}
   href='/'>
