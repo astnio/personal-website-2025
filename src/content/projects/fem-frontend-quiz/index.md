@@ -11,8 +11,66 @@ demo_url: https://github.astn.io/frontend-mentor-quiz-app/
 fem_url: https://www.frontendmentor.io/solutions/overly-complicated-quiz-app-in-javascript-and-css-ueDqjT8TYJ
 cover: './desktop-screenshots/fem-quiz-app-0.png'
 cover_alt: 'Quiz App Homepage'
+images:
+  [
+    {
+      src: './desktop-screenshots/fem-quiz-app-0.png',
+      alt: 'First desktop page',
+    },
+    {
+      src: './desktop-screenshots/fem-quiz-app-1.png',
+      alt: 'Second desktop page',
+    },
+    {
+      src: './desktop-screenshots/fem-quiz-app-2.png',
+      alt: 'Third desktop page',
+    },
+    {
+      src: './desktop-screenshots/fem-quiz-app-3.png',
+      alt: 'Fourth desktop page',
+    },
+    {
+      src: './desktop-screenshots/fem-quiz-app-4.png',
+      alt: 'Fifth desktop page',
+    },
+    {
+      src: './desktop-screenshots/fem-quiz-app-5.png',
+      alt: 'Sixth desktop page',
+    },
+    {
+      src: './desktop-screenshots/fem-quiz-app-6.png',
+      alt: 'Seventh desktop page',
+    },
+    {
+      src: './mobile-screenshots/fem-quiz-app-0.png',
+      alt: 'First mobile page',
+    },
+    {
+      src: './mobile-screenshots/fem-quiz-app-1.png',
+      alt: 'Second mobile page',
+    },
+    {
+      src: './mobile-screenshots/fem-quiz-app-2.png',
+      alt: 'Third mobile page',
+    },
+    {
+      src: './mobile-screenshots/fem-quiz-app-3.png',
+      alt: 'Fourth mobile page',
+    },
+    {
+      src: './mobile-screenshots/fem-quiz-app-4.png',
+      alt: 'Fifth mobile page',
+    },
+    {
+      src: './mobile-screenshots/fem-quiz-app-5.png',
+      alt: 'Sixth mobile page',
+    },
+    {
+      src: './mobile-screenshots/fem-quiz-app-6.png',
+      alt: 'Seventh mobile page',
+    },
+  ]
 ---
-
 
 # Frontend Mentor - Frontend quiz app solution
 

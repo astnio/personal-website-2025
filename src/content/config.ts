@@ -53,7 +53,7 @@ const projectCollection = defineCollection({
     cover_alt: z.string().optional().default(''),
     images: z.array(
       z.object({
-        src: z.string(),
+        src: image(),
         alt: z.string().optional().default(''),
       })
     ).optional()

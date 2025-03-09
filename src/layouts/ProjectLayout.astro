@@ -15,6 +15,9 @@ interface Props {
 }
 
 const { frontmatter, project } = Astro.props;
+
+// console.log(frontmatter.images);
+console.log(frontmatter.images[0].src);
 ---
 
 <style>
@@ -122,11 +125,45 @@ const { frontmatter, project } = Astro.props;
       padding-inline: 4rem;
     }
   }
+
+  .test-picture {
+    max-width: 30rem;
+    height: 100%;
+
+    margin-block: 1rem;
+
+    padding: 1rem;
+
+    outline: 1px solid white;
+    background-color: gray;
+
+    border-radius: 10pt;
+  }
 </style>
 
 <ProjectGalleryOverlay />
 
 <main class='post-wrapper-spacer max-width'>
+  <Image
+    class={'test-picture'}
+    alt={frontmatter.images[0].alt}
+    src={frontmatter.images[0].src}
+  />
+  <Image
+    class={'test-picture'}
+    alt={frontmatter.images[1].alt}
+    src={frontmatter.images[1].src}
+  />
+  <Image
+    class={'test-picture'}
+    alt={frontmatter.images[2].alt}
+    src={frontmatter.images[2].src}
+  />
+  <Image
+    class={'test-picture'}
+    alt={frontmatter.images[3].alt}
+    src={frontmatter.images[3].src}
+  />
   <article class='post-wrapper'>
     {
       frontmatter.cover && (
