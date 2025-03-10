@@ -16,8 +16,7 @@ interface Props {
 
 const { frontmatter, project } = Astro.props;
 
-// console.log(frontmatter.images);
-console.log(frontmatter.images[0].src);
+const hasImages = frontmatter.images ? true : false;
 ---
 
 <style>
@@ -151,42 +150,47 @@ console.log(frontmatter.images[0].src);
 <ProjectGalleryOverlay />
 
 <main class='post-wrapper-spacer max-width'>
-  <div class='pic-test-wrapper'>
-    <Image
-      class={'test-picture'}
-      alt={frontmatter.images[0].alt}
-      src={frontmatter.images[0].src}
-    />
-    <Image
-      class={'test-picture'}
-      alt={frontmatter.images[1].alt}
-      src={frontmatter.images[1].src}
-    />
-    <Image
-      class={'test-picture'}
-      alt={frontmatter.images[2].alt}
-      src={frontmatter.images[2].src}
-    />
-    <Image
-      class={'test-picture'}
-      alt={frontmatter.images[3].alt}
-      src={frontmatter.images[3].src}
-    />
-  </div>
-
   <article class='post-wrapper'>
     {
-      frontmatter.cover && (
-        <div class='picture-wrapper'>
-          <Image
-            alt={'hi'}
-            width={1200}
-            height={800}
-            src={frontmatter.cover}
-            class={'picture'}
-            transition:name={`blog-cover-${project.data.title}`}
-          />
+      hasImages ? (
+        <div>
+          <p>Image Gallery</p>
+          <div class='pic-test-wrapper'>
+            <Image
+              class={'test-picture'}
+              alt={frontmatter.images[0].alt}
+              src={frontmatter.images[0].src}
+            />
+            <Image
+              class={'test-picture'}
+              alt={frontmatter.images[1].alt}
+              src={frontmatter.images[1].src}
+            />
+            <Image
+              class={'test-picture'}
+              alt={frontmatter.images[2].alt}
+              src={frontmatter.images[2].src}
+            />
+            <Image
+              class={'test-picture'}
+              alt={frontmatter.images[3].alt}
+              src={frontmatter.images[3].src}
+            />
+          </div>
         </div>
+      ) : (
+        frontmatter.cover && (
+          <div class='picture-wrapper'>
+            <Image
+              alt={'hi'}
+              width={1200}
+              height={800}
+              src={frontmatter.cover}
+              class={'picture'}
+              transition:name={`blog-cover-${project.data.title}`}
+            />
+          </div>
+        )
       )
     }
 
