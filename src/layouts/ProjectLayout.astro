@@ -8,6 +8,7 @@ import Heading from '@components/typography/Heading.astro';
 import Status from '@components/pages/projects/Status.astro';
 import DateLabel from '@components/interface/DateLabel.astro';
 import ProjectGalleryOverlay from '@/components/pages/projects/ProjectGalleryOverlay.astro';
+import ProjectGallery from '@/components/pages/projects/ProjectGallery.astro';
 
 interface Props {
   frontmatter: any;
@@ -125,7 +126,7 @@ const hasImages = frontmatter.images ? true : false;
     }
   }
 
-  .pic-test-wrapper {
+  /* .pic-test-wrapper {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -144,7 +145,7 @@ const hasImages = frontmatter.images ? true : false;
     background-color: gray;
 
     border-radius: 10pt;
-  }
+  } */
 </style>
 
 <ProjectGalleryOverlay />
@@ -154,7 +155,7 @@ const hasImages = frontmatter.images ? true : false;
     {
       hasImages ? (
         <div>
-          <p>Image Gallery</p>
+          {/* <p>Image Gallery</p>
           <div class='pic-test-wrapper'>
             <Image
               class={'test-picture'}
@@ -176,7 +177,9 @@ const hasImages = frontmatter.images ? true : false;
               alt={frontmatter.images[3].alt}
               src={frontmatter.images[3].src}
             />
-          </div>
+          </div> */}
+
+          <ProjectGallery images={frontmatter.images} />
         </div>
       ) : (
         frontmatter.cover && (

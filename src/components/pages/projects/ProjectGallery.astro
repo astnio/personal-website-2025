@@ -1,7 +1,50 @@
 ---
+import { Image } from 'astro:assets';
 
+interface ImageProps {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: ImageProps[];
+}
+
+const { images } = Astro.props;
 ---
 
-<style></style>
+<style>
+  .pic-test-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 
-<div></div>
+  .test-picture {
+    max-width: 30rem;
+    height: 100%;
+
+    margin-block: 1rem;
+
+    padding: 1rem;
+
+    outline: 1px solid white;
+    background-color: gray;
+
+    border-radius: 10pt;
+  }
+</style>
+
+<p>Image Gallery</p>
+<div class='pic-test-wrapper'>
+  {
+    images.map((image) => (
+      <Image
+        class={'test-picture'}
+        alt={image.alt}
+        src={image.src}
+      />
+    ))
+  }
+</div>
