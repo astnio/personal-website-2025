@@ -155,30 +155,6 @@ const hasImages = frontmatter.images ? true : false;
     {
       hasImages ? (
         <div>
-          {/* <p>Image Gallery</p>
-          <div class='pic-test-wrapper'>
-            <Image
-              class={'test-picture'}
-              alt={frontmatter.images[0].alt}
-              src={frontmatter.images[0].src}
-            />
-            <Image
-              class={'test-picture'}
-              alt={frontmatter.images[1].alt}
-              src={frontmatter.images[1].src}
-            />
-            <Image
-              class={'test-picture'}
-              alt={frontmatter.images[2].alt}
-              src={frontmatter.images[2].src}
-            />
-            <Image
-              class={'test-picture'}
-              alt={frontmatter.images[3].alt}
-              src={frontmatter.images[3].src}
-            />
-          </div> */}
-
           <ProjectGallery images={frontmatter.images} />
         </div>
       ) : (
