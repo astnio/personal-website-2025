@@ -20,6 +20,14 @@ const { image, active } = Astro.props;
 
     object-fit: contain;
   }
+
+  [data-active='false'] {
+    visibility: hidden;
+  }
+
+  [data-active='true'] {
+    visibility: visible;
+  }
 </style>
 
 <div data-active={active}>
