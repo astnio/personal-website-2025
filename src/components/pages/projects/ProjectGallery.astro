@@ -36,11 +36,14 @@ const { images } = Astro.props;
     images.map((image, index) => (
       <ProjectGalleryImage
         image={image}
-        active={true}
+        active={false}
         id={`project-image-${index}`}
       />
     ))
   }
 </div>
 
-<script></script>
+<script>
+  const projectImages: HTMLElement = document.querySelector('.images-wrapper')!;
+  projectImages.firstElementChild!.setAttribute('data-active', 'true');
+</script>
