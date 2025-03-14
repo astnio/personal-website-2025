@@ -44,6 +44,9 @@ const { images } = Astro.props;
 </div>
 
 <script>
+  //todo: fix this on navigating away from page.
+  //it is supposed to just make the first element be enabled
+  //but none of them do when navigating away and back again
   const projectImages: HTMLElement = document.querySelector('.images-wrapper')!;
   projectImages.firstElementChild!.setAttribute('data-active', 'true');
 </script>
