@@ -4,9 +4,10 @@ import { Image } from 'astro:assets';
 interface Props {
   image: any;
   active: boolean;
+  id: string;
 }
 
-const { image, active } = Astro.props;
+const { image, active, id } = Astro.props;
 ---
 
 <style>
@@ -30,7 +31,9 @@ const { image, active } = Astro.props;
   }
 </style>
 
-<div data-active={active}>
+<div
+  data-active={active}
+  id={id}>
   <Image
     class={'project-image'}
     alt={image.alt}

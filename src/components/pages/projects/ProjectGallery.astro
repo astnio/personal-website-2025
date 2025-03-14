@@ -33,11 +33,14 @@ const { images } = Astro.props;
 
 <div class='images-wrapper'>
   {
-    images.map((image) => (
+    images.map((image, index) => (
       <ProjectGalleryImage
         image={image}
         active={true}
+        id={`project-image-${index}`}
       />
     ))
   }
 </div>
+
+<script></script>
