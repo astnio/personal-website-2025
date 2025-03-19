@@ -30,19 +30,51 @@ const { images } = Astro.props;
     overflow: hidden;
   }
 
-  .btn-nav-img {
+  .btn-nav-img-wrapper {
     position: absolute;
     top: 50%;
 
     z-index: 1;
+
+    font-size: 2rem;
   }
 
-  .btn-nav-left {
+  .btn-nav-left-wrapper {
     left: 1rem;
   }
 
-  .btn-nav-right {
+  .btn-nav-right-wrapper {
     right: 1rem;
+  }
+
+  .btn-nav-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 3rem;
+    width: 3rem;
+
+    background-color: var(--clr-base);
+
+    border: none;
+    border-radius: var(--radius-circle);
+    outline: 2px solid var(--clr-surface-1);
+
+    color: var(--clr-text);
+    font-size: 2.4rem;
+
+    cursor: pointer;
+
+    transition-property: outline, background-color, color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .btn-nav-img:hover {
+    background-color: var(--clr-surface-0);
+    outline: 2px solid var(--clr-surface-2);
+    color: var(--clr-primary);
   }
 
   .images-wrapper {
@@ -51,12 +83,24 @@ const { images } = Astro.props;
 </style>
 
 <div class='image-gallery-wrapper'>
-  <div class='btn-nav-img btn-nav-left'>
-    <button>Left</button>
+  <div class='btn-nav-img-wrapper btn-nav-left-wrapper'>
+    <button
+      class='btn-nav-img btn-nav-left'
+      title='Previous Image'
+      ><span class='bx bx-chevron-left'></span><span class='visually-hidden'
+        >Left</span
+      ></button
+    >
   </div>
 
-  <div class='btn-nav-img btn-nav-right'>
-    <button>Right</button>
+  <div class='btn-nav-img-wrapper btn-nav-right-wrapper'>
+    <button
+      class='btn-nav-img btn-nav-right'
+      title='Next Image'
+      ><span class='bx bx-chevron-right'></span><span class='visually-hidden'
+        >Right</span
+      ></button
+    >
   </div>
   <div class='images-wrapper'>
     {
