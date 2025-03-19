@@ -85,20 +85,22 @@ const { images } = Astro.props;
 <div class='image-gallery-wrapper'>
   <div class='btn-nav-img-wrapper btn-nav-left-wrapper'>
     <button
+      id='btn-previous-img'
       class='btn-nav-img btn-nav-left'
       title='Previous Image'
       ><span class='bx bx-chevron-left'></span><span class='visually-hidden'
-        >Left</span
+        >Previous Image</span
       ></button
     >
   </div>
 
   <div class='btn-nav-img-wrapper btn-nav-right-wrapper'>
     <button
+      id='btn-next-img'
       class='btn-nav-img btn-nav-right'
       title='Next Image'
       ><span class='bx bx-chevron-right'></span><span class='visually-hidden'
-        >Right</span
+        >Next Image</span
       ></button
     >
   </div>
@@ -116,13 +118,39 @@ const { images } = Astro.props;
 </div>
 
 <script>
-  //todo: fix this on navigating away from page.
-  //it is supposed to just make the first element be enabled
-  //but none of them do when navigating away and back again
-
   document.addEventListener('astro:page-load', () => {
+    const btnPrev = document.getElementById('btn-previous-img');
+    const btnNext = document.getElementById('btn-next-img');
+
     const projectImages: HTMLElement =
       document.querySelector('.images-wrapper')!;
+
+    let currentIndex = 0;
+
     projectImages.firstElementChild!.setAttribute('data-active', 'true');
+
+    btnNext?.addEventListener('click', () => {
+      projectImages.children[currentIndex].setAttribute('data-active', 'false');
+
+      currentIndex++;
+
+      if (currentIndex >= projectImages.children.length) {
+        currentIndex = 0;
+      }
+
+      projectImages.children[currentIndex].setAttribute('data-active', 'true');
+    });
+
+    btnPrev?.addEventListener('click', () => {
+      projectImages.children[currentIndex].setAttribute('data-active', 'false');
+
+      currentIndex--;
+
+      if (currentIndex <= 0) {
+        currentIndex = projectImages.children.length - 1;
+      }
+
+      projectImages.children[currentIndex].setAttribute('data-active', 'true');
+    });
   });
 </script>
