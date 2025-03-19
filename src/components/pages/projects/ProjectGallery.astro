@@ -15,7 +15,7 @@ const { images } = Astro.props;
 ---
 
 <style>
-  .images-wrapper {
+  .image-gallery-wrapper {
     position: relative;
 
     display: flex;
@@ -29,24 +29,56 @@ const { images } = Astro.props;
 
     overflow: hidden;
   }
+
+  .btn-nav-img {
+    position: absolute;
+    top: 50%;
+
+    z-index: 1;
+  }
+
+  .btn-nav-left {
+    left: 1rem;
+  }
+
+  .btn-nav-right {
+    right: 1rem;
+  }
+
+  .images-wrapper {
+    /* position: relative; */
+  }
 </style>
 
-<div class='images-wrapper'>
-  {
-    images.map((image, index) => (
-      <ProjectGalleryImage
-        image={image}
-        active={false}
-        id={`project-image-${index}`}
-      />
-    ))
-  }
+<div class='image-gallery-wrapper'>
+  <div class='btn-nav-img btn-nav-left'>
+    <button>Left</button>
+  </div>
+
+  <div class='btn-nav-img btn-nav-right'>
+    <button>Right</button>
+  </div>
+  <div class='images-wrapper'>
+    {
+      images.map((image, index) => (
+        <ProjectGalleryImage
+          image={image}
+          active={false}
+          id={`project-image-${index}`}
+        />
+      ))
+    }
+  </div>
 </div>
 
 <script>
   //todo: fix this on navigating away from page.
   //it is supposed to just make the first element be enabled
   //but none of them do when navigating away and back again
-  const projectImages: HTMLElement = document.querySelector('.images-wrapper')!;
-  projectImages.firstElementChild!.setAttribute('data-active', 'true');
+
+  document.addEventListener('astro:page-load', () => {
+    const projectImages: HTMLElement =
+      document.querySelector('.images-wrapper')!;
+    projectImages.firstElementChild!.setAttribute('data-active', 'true');
+  });
 </script>
