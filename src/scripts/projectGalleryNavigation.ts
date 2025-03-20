@@ -1,35 +1,42 @@
 document.addEventListener('astro:page-load', () => {
-    const btnPrev = document.getElementById('btn-previous-img');
-    const btnNext = document.getElementById('btn-next-img');
+  const btnPrev = document.getElementById('btn-previous-img');
+  const btnNext = document.getElementById('btn-next-img');
 
-    const projectImages: HTMLElement =
-      document.querySelector('.images-wrapper')!;
+  const projectImagesElement: HTMLElement =
+    document.querySelector('.images-wrapper')!;
 
-    let currentIndex = 0;
+  const projectImages = projectImagesElement.children;
 
-    projectImages.firstElementChild!.setAttribute('data-active', 'true');
+  let currentIndex = 0;
 
-    btnNext?.addEventListener('click', () => {
-      projectImages.children[currentIndex].setAttribute('data-active', 'false');
+  projectImagesElement.firstElementChild!.setAttribute('data-active', 'true');
 
+  function currentImageToFirst() {
+    if (currentIndex >= projectImagesElement.children.length) {
+      currentIndex = 0;
+    }
+  }
+
+  function currentImageToLast() {
+    if (currentIndex < 0) {
+      currentIndex = projectImagesElement.children.length - 1;
+    }
+  }
+
+  function navImage(isNextImage: boolean) {
+    projectImages[currentIndex].setAttribute('data-active', 'false');
+
+    if (isNextImage) {
       currentIndex++;
-
-      if (currentIndex >= projectImages.children.length) {
-        currentIndex = 0;
-      }
-
-      projectImages.children[currentIndex].setAttribute('data-active', 'true');
-    });
-
-    btnPrev?.addEventListener('click', () => {
-      projectImages.children[currentIndex].setAttribute('data-active', 'false');
-
+      currentImageToFirst();
+    } else {
       currentIndex--;
+      currentImageToLast();
+    }
 
-      if (currentIndex < 0) {
-        currentIndex = projectImages.children.length - 1;
-      }
+    projectImages[currentIndex].setAttribute('data-active', 'true');
+  }
 
-      projectImages.children[currentIndex].setAttribute('data-active', 'true');
-    });
-  });
+  btnNext!.addEventListener('click', () => navImage(true));
+  btnPrev!.addEventListener('click', () => navImage(false));
+});
