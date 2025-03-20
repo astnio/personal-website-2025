@@ -1,7 +1,6 @@
 document.addEventListener('astro:page-load', () => {
   const btnPrev = document.getElementById('btn-previous-img');
   const btnNext = document.getElementById('btn-next-img');
-
   const projectImagesElement: HTMLElement =
     document.querySelector('.images-wrapper')!;
 
@@ -9,7 +8,9 @@ document.addEventListener('astro:page-load', () => {
 
   let currentIndex = 0;
 
-  projectImagesElement.firstElementChild!.setAttribute('data-active', 'true');
+  function init() {
+    projectImages[0]!.setAttribute('data-active', 'true');
+  }
 
   function currentImageToFirst() {
     if (currentIndex >= projectImagesElement.children.length) {
@@ -39,4 +40,5 @@ document.addEventListener('astro:page-load', () => {
 
   btnNext!.addEventListener('click', () => navImage(true));
   btnPrev!.addEventListener('click', () => navImage(false));
+  init();
 });
