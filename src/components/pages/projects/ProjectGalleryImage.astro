@@ -12,14 +12,19 @@ const { image, active, id } = Astro.props;
 
 <style>
   .project-image-wrapper {
-    padding-block: 2rem;
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    transition-property: transform, visibility;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
   }
 
   .project-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-
     width: 100%;
     height: 100%;
 
@@ -28,10 +33,12 @@ const { image, active, id } = Astro.props;
 
   [data-active='false'] {
     visibility: hidden;
+    transform: translateX(-100%);
   }
 
   [data-active='true'] {
     visibility: visible;
+    transform: translateX(0%);
   }
 
   .image-caption {
