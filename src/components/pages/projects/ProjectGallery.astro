@@ -48,33 +48,69 @@ const { images } = Astro.props;
   }
 
   .btn-nav-img {
+    isolation: isolate;
+
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    height: 3rem;
-    width: 3rem;
+    height: 3.4rem;
+    width: 3.4rem;
 
-    background-color: var(--clr-base);
+    background-color: transparent;
 
     border: none;
     border-radius: var(--radius-circle);
-    outline: 2px solid var(--clr-surface-1);
 
     color: var(--clr-text);
-    font-size: 2.4rem;
+    font-size: 2.6rem;
 
     cursor: pointer;
+
+    overflow: hidden;
 
     transition-property: outline, background-color, color;
     transition-duration: 0.15s;
     transition-timing-function: ease-in-out;
   }
 
+  .btn-nav-img::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    opacity: 0.4;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: var(--radius-circle);
+
+    background-color: var(--clr-mantle);
+
+    transition-property: outline, background-color, color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+
+    z-index: -1;
+  }
+
   .btn-nav-img:hover {
-    background-color: var(--clr-surface-0);
-    outline: 2px solid var(--clr-surface-2);
     color: var(--clr-primary);
+  }
+
+  .btn-nav-img:hover::before {
+    background-color: var(--clr-surface-2);
+  }
+
+  .btn-nav-icon {
+    position: absolute;
+
+    top: 0.5rem;
   }
 
   .images-wrapper {
@@ -88,8 +124,8 @@ const { images } = Astro.props;
       id='btn-previous-img'
       class='btn-nav-img btn-nav-left'
       title='Previous Image'
-      ><span class='bx bx-chevron-left'></span><span class='visually-hidden'
-        >Previous Image</span
+      ><span class='btn-nav-icon bx bx-chevron-left'></span><span
+        class='visually-hidden'>Previous Image</span
       ></button
     >
   </div>
@@ -99,8 +135,8 @@ const { images } = Astro.props;
       id='btn-next-img'
       class='btn-nav-img btn-nav-right'
       title='Next Image'
-      ><span class='bx bx-chevron-right'></span><span class='visually-hidden'
-        >Next Image</span
+      ><span class='btn-nav-icon bx bx-chevron-right'></span><span
+        class='visually-hidden'>Next Image</span
       ></button
     >
   </div>
