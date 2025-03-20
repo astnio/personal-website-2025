@@ -11,6 +11,10 @@ const { image, active, id } = Astro.props;
 ---
 
 <style>
+  .project-image-wrapper {
+    padding-block: 2rem;
+  }
+
   .project-image {
     position: absolute;
     top: 0;
@@ -29,9 +33,50 @@ const { image, active, id } = Astro.props;
   [data-active='true'] {
     visibility: visible;
   }
+
+  .image-caption {
+    isolation: isolate;
+
+    position: absolute;
+    right: 0;
+    bottom: 1rem;
+
+    padding: 1rem;
+
+    border-radius: var(--radius-surface) 0 0 var(--radius-surface);
+
+    color: var(--clr-subtext-1);
+    font-weight: 300;
+
+    overflow: hidden;
+
+    backdrop-filter: blur(10px);
+  }
+
+  .image-caption::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--clr-mantle);
+
+    opacity: 0.4;
+
+    z-index: -1;
+  }
+
+  .image-caption-label {
+    padding-right: 1rem;
+  }
 </style>
 
 <div
+  class='project-image-wrapper'
   data-active={active}
   id={id}>
   <Image
@@ -39,4 +84,7 @@ const { image, active, id } = Astro.props;
     alt={image.alt}
     src={image.src}
   />
+  <p class='image-caption'>
+    <span class='image-caption-label'>{image.alt}</span>
+  </p>
 </div>
