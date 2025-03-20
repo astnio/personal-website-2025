@@ -19,9 +19,9 @@ const { image, active, id } = Astro.props;
 
     object-fit: contain;
 
-    transition-property: transform, visibility;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-out;
+    /* transition-property: transform, visibility;
+    transition-duration: 0;
+    transition-timing-function: ease-out; */
   }
 
   .project-image {
@@ -32,13 +32,13 @@ const { image, active, id } = Astro.props;
   }
 
   [data-active='false'] {
-    visibility: hidden;
-    transform: translateX(-100%);
+    /* visibility: hidden; */
+    /* transform: translateX(-100%); */
   }
 
   [data-active='true'] {
-    visibility: visible;
-    transform: translateX(0%);
+    /* visibility: visible; */
+    /* transform: translateX(0%); */
   }
 
   .image-caption {
