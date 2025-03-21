@@ -5,12 +5,55 @@ document.addEventListener('astro:page-load', () => {
     document.querySelector('.images-wrapper')!;
 
   const projectImages = projectImagesElement.children;
-  const transitionDuration = '0.69s';
+  const transitionTimeSeconds = 0.69;
+  const transitionDuration = `${transitionTimeSeconds}s`;
   const translateDistance = 102;
 
   let currentIndex = 0;
 
-  function positionImagesAsStrip() {
+  function setLastImagePosition() {
+    const lastImg = projectImages[projectImages.length - 1] as HTMLElement;
+    lastImg.style.transform = `translateX(-${translateDistance}%)`;
+  }
+
+  function initPositionImages() {
+    for (let i = 0; i < projectImages.length - 1; i++) {
+      const projectImage = projectImages[i] as HTMLElement;
+
+      const position = (i - currentIndex) * translateDistance;
+      projectImage.style.transform = `translateX(${position}%)`;
+
+      projectImage.setAttribute(
+        'data-active',
+        i === currentIndex ? 'true' : 'false'
+      );
+    }
+
+    setLastImagePosition();
+  }
+
+  function handleResetLoopOnLeft() {
+    const firstImage = projectImages[0] as HTMLElement;
+    firstImage.style.transform = `translateX(${translateDistance}%)`;
+
+    for (let i = 1; i < projectImages.length - 1; i++) {
+      const projectImage = projectImages[i] as HTMLElement;
+
+      projectImage.style.transitionDuration = '0s';
+
+      const newPosition = (i - currentIndex) * translateDistance;
+      projectImage.style.transform = `translateX(${newPosition}%)`;
+
+      setTimeout(() => {
+        projectImage.style.transitionDuration = transitionDuration;
+      }, transitionTimeSeconds);
+    }
+
+    const lastImage = projectImages[projectImages.length - 1] as HTMLElement;
+    lastImage.style.transform = `translateX(0%)`;
+  }
+
+  function handleMoveImages() {
     for (let i = 0; i < projectImages.length; i++) {
       const projectImage = projectImages[i] as HTMLElement;
 
@@ -24,18 +67,33 @@ document.addEventListener('astro:page-load', () => {
     }
   }
 
+  function positionImages(direction: 'left' | 'right') {
+    if (currentIndex === projectImages.length - 1 && direction === 'left') {
+      handleResetLoopOnLeft();
+    } else if (
+      currentIndex === projectImages.length - 2 &&
+      direction === 'left'
+    ) {
+      const firstImage = projectImages[0] as HTMLElement;
+      firstImage.style.transitionDuration = '0s';
+      handleMoveImages();
+    } else {
+      handleMoveImages();
+    }
+  }
+
   function hideImages() {
     for (let i = 0; i < projectImages.length; i++) {
-        const projectImage = projectImages[i] as HTMLElement;
-        projectImage.style.visibility = 'hidden';
-      }
+      const projectImage = projectImages[i] as HTMLElement;
+      projectImage.style.visibility = 'hidden';
+    }
   }
 
   function revealImages() {
     for (let i = 0; i < projectImages.length; i++) {
-        const projectImage = projectImages[i] as HTMLElement;
-        projectImage.style.visibility = 'visible';
-      }
+      const projectImage = projectImages[i] as HTMLElement;
+      projectImage.style.visibility = 'visible';
+    }
   }
 
   function disableTransitions() {
@@ -56,13 +114,15 @@ document.addEventListener('astro:page-load', () => {
     (projectImages[0] as HTMLElement).style.zIndex = '1';
     disableTransitions();
     hideImages();
-    positionImagesAsStrip();
-    revealImages();
-    enableTransitions();
+    initPositionImages();
+    setTimeout(() => {
+      enableTransitions();
+      revealImages();
+    }, transitionTimeSeconds);
   }
 
-  function navImage(isNextImage: boolean) {
-    if (isNextImage) {
+  function navImage(imageDirection: 'left' | 'right') {
+    if (imageDirection === 'right') {
       currentIndex++;
       if (currentIndex >= projectImages.length) {
         currentIndex = 0;
@@ -74,11 +134,11 @@ document.addEventListener('astro:page-load', () => {
       }
     }
 
-    positionImagesAsStrip();
+    positionImages(imageDirection);
   }
 
-  btnNext!.addEventListener('click', () => navImage(true));
-  btnPrev!.addEventListener('click', () => navImage(false));
+  btnNext!.addEventListener('click', () => navImage('right'));
+  btnPrev!.addEventListener('click', () => navImage('left'));
 
   init();
 });
