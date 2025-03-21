@@ -148,6 +148,8 @@ const { images } = Astro.props;
           image={image}
           active={false}
           id={`project-image-${index}`}
+          currentIndex={index}
+          imagesCount={images.length - 1}
         />
       ))
     }
