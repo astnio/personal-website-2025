@@ -11,6 +11,12 @@ document.addEventListener('astro:page-load', () => {
 
   let currentIndex = 0;
 
+  function resetImageTransitionDuration(image: HTMLElement) {
+    setTimeout(() => {
+      image.style.transitionDuration = transitionDuration;
+    }, transitionTimeSeconds);
+  }
+
   function setLastImagePosition() {
     const lastImg = projectImages[projectImages.length - 1] as HTMLElement;
     lastImg.style.transform = `translateX(-${translateDistance}%)`;
@@ -44,9 +50,7 @@ document.addEventListener('astro:page-load', () => {
       const newPosition = (i - currentIndex) * translateDistance;
       projectImage.style.transform = `translateX(${newPosition}%)`;
 
-      setTimeout(() => {
-        projectImage.style.transitionDuration = transitionDuration;
-      }, transitionTimeSeconds);
+      resetImageTransitionDuration(projectImage);
     }
 
     const lastImage = projectImages[projectImages.length - 1] as HTMLElement;
@@ -65,6 +69,8 @@ document.addEventListener('astro:page-load', () => {
         i === currentIndex ? 'true' : 'false'
       );
     }
+
+    setLastImagePosition();
   }
 
   function positionImages(direction: 'left' | 'right') {
@@ -77,6 +83,7 @@ document.addEventListener('astro:page-load', () => {
       const firstImage = projectImages[0] as HTMLElement;
       firstImage.style.transitionDuration = '0s';
       handleMoveImages();
+      resetImageTransitionDuration(firstImage);
     } else {
       handleMoveImages();
     }
