@@ -24,10 +24,18 @@ document.addEventListener('astro:page-load', () => {
     }
   }
 
-  function init() {
-    disableTransitions();
-    positionImagesAsStrip();
-    enableTransitions();
+  function hideImages() {
+    for (let i = 0; i < projectImages.length; i++) {
+        const projectImage = projectImages[i] as HTMLElement;
+        projectImage.style.visibility = 'hidden';
+      }
+  }
+
+  function revealImages() {
+    for (let i = 0; i < projectImages.length; i++) {
+        const projectImage = projectImages[i] as HTMLElement;
+        projectImage.style.visibility = 'visible';
+      }
   }
 
   function disableTransitions() {
@@ -42,6 +50,15 @@ document.addEventListener('astro:page-load', () => {
       const projectImage = projectImages[i] as HTMLElement;
       projectImage.style.transitionDuration = transitionDuration;
     }
+  }
+
+  function init() {
+    (projectImages[0] as HTMLElement).style.zIndex = '1';
+    disableTransitions();
+    hideImages();
+    positionImagesAsStrip();
+    revealImages();
+    enableTransitions();
   }
 
   function navImage(isNextImage: boolean) {
