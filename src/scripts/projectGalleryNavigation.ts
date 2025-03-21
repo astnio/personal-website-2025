@@ -63,7 +63,7 @@ document.addEventListener('astro:page-load', () => {
   function handleMoveImages() {
     const lastImage = projectImages[projectImages.length - 1] as HTMLElement;
 
-    if (currentIndex > 0) {
+    if (currentIndex === 1) {
       lastImage.style.transitionDuration = '0s';
     }
 
