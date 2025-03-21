@@ -79,7 +79,7 @@ const { image, active, id, currentIndex, imagesCount } = Astro.props;
 
     background-color: var(--clr-mantle);
 
-    opacity: 0.4;
+    opacity: 0.8;
 
     z-index: -1;
   }
@@ -96,9 +96,9 @@ const { image, active, id, currentIndex, imagesCount } = Astro.props;
     justify-content: center;
     gap: 0.52ch;
 
-    background-color: var(--clr-base);
+    background-color: var(--clr-mantle);
     border-radius: var(--radius-input);
-    /* aspect-ratio: 1/1; */
+    outline: 1px solid var(--clr-base);
 
     margin: 0;
     padding-inline: 0.8rem;
