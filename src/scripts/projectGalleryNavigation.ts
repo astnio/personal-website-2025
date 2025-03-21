@@ -19,7 +19,10 @@ document.addEventListener('astro:page-load', () => {
 
   function setLastImagePosition() {
     const lastImg = projectImages[projectImages.length - 1] as HTMLElement;
+    
+    lastImg.style.transitionDuration = '0s';
     lastImg.style.transform = `translateX(-${translateDistance}%)`;
+    resetImageTransitionDuration(lastImg);
   }
 
   function initPositionImages() {
@@ -70,16 +73,21 @@ document.addEventListener('astro:page-load', () => {
       );
     }
 
-    setLastImagePosition();
+    if (currentIndex === 0) {
+      setLastImagePosition();
+    }
   }
 
   function positionImages(direction: 'left' | 'right') {
-    if (currentIndex === projectImages.length - 1 && direction === 'left') {
+    const onFirstImageMovingLeft =
+      currentIndex === projectImages.length - 1 && direction === 'left';
+
+    const onSecondToLastImageMovingLeft =
+      currentIndex === projectImages.length - 2 && direction === 'left';
+
+    if (onFirstImageMovingLeft) {
       handleResetLoopOnLeft();
-    } else if (
-      currentIndex === projectImages.length - 2 &&
-      direction === 'left'
-    ) {
+    } else if (onSecondToLastImageMovingLeft) {
       const firstImage = projectImages[0] as HTMLElement;
       firstImage.style.transitionDuration = '0s';
       handleMoveImages();
