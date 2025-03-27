@@ -1,0 +1,450 @@
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+  }
+
+  .carousel-container {
+    width: 800px;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .carousel-track {
+    display: flex;
+    will-change: transform;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    height: 400px;
+    flex-shrink: 0;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .carousel-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .carousel-indicator.active {
+    background-color: white;
+  }
+
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+
+  .carousel-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .carousel-button.prev {
+    left: 10px;
+  }
+
+  .carousel-button.next {
+    right: 10px;
+  }
+</style>
+
+<div class='carousel-container'>
+  <div class='carousel-track'>
+    <!-- First set of slides (pre-copy) -->
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/10/800/400'
+        alt='Image 1'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/11/800/400'
+        alt='Image 2'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/12/800/400'
+        alt='Image 3'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/13/800/400'
+        alt='Image 4'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/14/800/400'
+        alt='Image 5'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/15/800/400'
+        alt='Image 6'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/16/800/400'
+        alt='Image 7'
+      />
+    </div>
+
+    <!-- Second set of slides (middle) -->
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/10/800/400'
+        alt='Image 1'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/11/800/400'
+        alt='Image 2'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/12/800/400'
+        alt='Image 3'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/13/800/400'
+        alt='Image 4'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/14/800/400'
+        alt='Image 5'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/15/800/400'
+        alt='Image 6'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/16/800/400'
+        alt='Image 7'
+      />
+    </div>
+
+    <!-- Third set of slides (post-copy) -->
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/10/800/400'
+        alt='Image 1'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/11/800/400'
+        alt='Image 2'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/12/800/400'
+        alt='Image 3'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/13/800/400'
+        alt='Image 4'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/14/800/400'
+        alt='Image 5'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/15/800/400'
+        alt='Image 6'
+      />
+    </div>
+    <div class='carousel-slide'>
+      <img
+        src='https://picsum.photos/id/16/800/400'
+        alt='Image 7'
+      />
+    </div>
+  </div>
+  <button class='carousel-button prev'>&#10094;</button>
+  <button class='carousel-button next'>&#10095;</button>
+  <div class='carousel-controls'>
+    <!-- Indicators will be populated by JavaScript -->
+  </div>
+</div>
+
+<script>
+  class TrulySeamlessCarousel {
+    private carouselTrack: HTMLElement;
+    private indicators: HTMLElement[];
+    private prevButton: HTMLElement;
+    private nextButton: HTMLElement;
+    private slides: HTMLElement[];
+    private currentIndex: number = 0;
+    private autoplayInterval: number | null = null;
+    private slideWidth: number = 0;
+    private totalSlides: number = 0;
+    private isAnimating: boolean = false;
+
+    constructor(
+      private carouselContainer: HTMLElement,
+      private autoplaySpeed: number = 3000,
+      private transitionSpeed: number = 300
+    ) {
+      // Get DOM elements
+      this.carouselTrack = carouselContainer.querySelector(
+        '.carousel-track'
+      ) as HTMLElement;
+      this.prevButton = carouselContainer.querySelector(
+        '.carousel-button.prev'
+      ) as HTMLElement;
+      this.nextButton = carouselContainer.querySelector(
+        '.carousel-button.next'
+      ) as HTMLElement;
+      const controlsContainer = carouselContainer.querySelector(
+        '.carousel-controls'
+      ) as HTMLElement;
+
+      // Get all slides
+      this.slides = Array.from(
+        this.carouselTrack.querySelectorAll('.carousel-slide')
+      );
+
+      // Calculate how many original slides we have (total slides / 3 sets)
+      this.totalSlides = this.slides.length / 3;
+
+      // Create indicators
+      this.indicators = this.createIndicators(controlsContainer);
+
+      // Initialize carousel
+      this.slideWidth = this.carouselContainer.offsetWidth;
+      this.setupCarousel();
+
+      // Set up event listeners
+      this.prevButton.addEventListener('click', () => this.prev());
+      this.nextButton.addEventListener('click', () => this.next());
+      window.addEventListener('resize', () => this.handleResize());
+
+      // Start autoplay
+      this.startAutoplay();
+
+      // Pause autoplay on hover
+      this.carouselContainer.addEventListener('mouseenter', () =>
+        this.stopAutoplay()
+      );
+      this.carouselContainer.addEventListener('mouseleave', () =>
+        this.startAutoplay()
+      );
+    }
+
+    private createIndicators(container: HTMLElement): HTMLElement[] {
+      const indicators: HTMLElement[] = [];
+
+      // Clear existing indicators
+      container.innerHTML = '';
+
+      // Create new indicators (one per original slide)
+      for (let i = 0; i < this.totalSlides; i++) {
+        const indicator = document.createElement('div');
+        indicator.className = 'carousel-indicator';
+
+        // When indicator is clicked, go to corresponding slide
+        indicator.addEventListener('click', () => {
+          if (!this.isAnimating) {
+            const centralSetIndex = this.totalSlides + i;
+            this.goToSlide(centralSetIndex);
+          }
+        });
+
+        container.appendChild(indicator);
+        indicators.push(indicator);
+      }
+
+      return indicators;
+    }
+
+    private setupCarousel(): void {
+      // Start at the middle set of slides
+      this.currentIndex = this.totalSlides;
+
+      // Initial position
+      this.updateCarouselPosition(false);
+      this.updateIndicators();
+    }
+
+    private updateIndicators(): void {
+      // Get the active index within the original set
+      const activeIndex = this.getIndicatorIndex();
+
+      this.indicators.forEach((indicator, index) => {
+        if (index === activeIndex) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    }
+
+    private getIndicatorIndex(): number {
+      // Convert current index to an index within the original set (0 to totalSlides-1)
+      return (
+        ((this.currentIndex % this.totalSlides) + this.totalSlides) %
+        this.totalSlides
+      );
+    }
+
+    private updateCarouselPosition(withAnimation: boolean = true): void {
+      const position = -this.currentIndex * this.slideWidth;
+
+      if (withAnimation) {
+        this.isAnimating = true;
+        this.carouselTrack.style.transition = `transform ${this.transitionSpeed}ms ease-out`;
+        this.carouselTrack.style.transform = `translateX(${position}px)`;
+
+        // Clear animation flag after transition completes
+        setTimeout(() => {
+          this.isAnimating = false;
+          this.ensureWithinBoundary();
+        }, this.transitionSpeed);
+      } else {
+        this.carouselTrack.style.transition = 'none';
+        this.carouselTrack.style.transform = `translateX(${position}px)`;
+      }
+
+      this.updateIndicators();
+    }
+
+    private ensureWithinBoundary(): void {
+      // If we've gone too far in either direction, reposition to corresponding slide in middle set
+      const middleSetStart = this.totalSlides;
+      const middleSetEnd = this.totalSlides * 2 - 1;
+
+      if (this.currentIndex < middleSetStart - this.totalSlides / 2) {
+        // If we're too far left, jump to corresponding position in middle set
+        this.currentIndex += this.totalSlides;
+        this.updateCarouselPosition(false);
+      } else if (this.currentIndex > middleSetEnd + this.totalSlides / 2) {
+        // If we're too far right, jump to corresponding position in middle set
+        this.currentIndex -= this.totalSlides;
+        this.updateCarouselPosition(false);
+      }
+    }
+
+    private next(): void {
+      if (this.isAnimating) return;
+
+      this.currentIndex++;
+      this.updateCarouselPosition();
+    }
+
+    private prev(): void {
+      if (this.isAnimating) return;
+
+      this.currentIndex--;
+      this.updateCarouselPosition();
+    }
+
+    private goToSlide(index: number): void {
+      if (this.isAnimating) return;
+
+      this.currentIndex = index;
+      this.updateCarouselPosition();
+    }
+
+    private handleResize(): void {
+      // Update slide width on window resize
+      this.slideWidth = this.carouselContainer.offsetWidth;
+      this.updateCarouselPosition(false);
+    }
+
+    private startAutoplay(): void {
+      if (this.autoplayInterval === null) {
+        this.autoplayInterval = window.setInterval(() => {
+          if (!this.isAnimating) {
+            this.next();
+          }
+        }, this.autoplaySpeed);
+      }
+    }
+
+    private stopAutoplay(): void {
+      if (this.autoplayInterval !== null) {
+        clearInterval(this.autoplayInterval);
+        this.autoplayInterval = null;
+      }
+    }
+  }
+
+  // Initialize the carousel when the DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const carouselContainer = document.querySelector(
+      '.carousel-container'
+    ) as HTMLElement;
+    if (carouselContainer) {
+      new TrulySeamlessCarousel(carouselContainer, 3000, 300);
+    }
+  });
+</script>
