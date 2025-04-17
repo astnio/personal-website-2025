@@ -41,6 +41,35 @@ document.addEventListener('astro:page-load', () => {
     setLastImagePosition();
   }
 
+  function handleResetLoopOnRight() {
+    const firstImage = projectImages[0] as HTMLElement;
+    firstImage.style.transform = `translateX(${0}%)`;
+
+    /*
+    TODO:
+
+    So this works so far when navigating from the first image to the
+    last (moving to the left right away) and then back to the first
+    image again (so immediately going left, then going right again).
+
+    However, if you move left two times (going to the second to last image)
+    this ends up breaking.
+
+    It looks like the initial image gets moved to the back of the strip (all
+    the way to the left) and then has to transition all the way back over again,
+    however this ruins the seamlessness I am going for.
+
+    Looks like I need to add yet another condition where I am on the second-to-last
+    image and moving right (going to the last image). Once this condition is met I
+    then should move the first image back to the first position on the right, as
+    usual by first removing the transition duration time (setting it to 0) and moving
+    it, then setting the time back to normal again.
+
+    Once that is done, I still need to instantly move the rest of the strips over so
+    they also do not all fly in at once and look weird.
+    */
+  }
+
   function handleResetLoopOnLeft() {
     const firstImage = projectImages[0] as HTMLElement;
     firstImage.style.transform = `translateX(${translateDistance}%)`;
@@ -93,6 +122,11 @@ document.addEventListener('astro:page-load', () => {
     const onSecondToLastImageMovingLeft =
       currentIndex === projectImages.length - 2 && direction === 'left';
 
+    const fromLastImageToFirstImage =
+      currentIndex === 0 && direction === 'right';
+
+    console.log(currentIndex);
+
     if (onFirstImageMovingLeft) {
       handleResetLoopOnLeft();
     } else if (onSecondToLastImageMovingLeft) {
@@ -100,6 +134,9 @@ document.addEventListener('astro:page-load', () => {
       firstImage.style.transitionDuration = '0s';
       handleMoveImages();
       resetImageTransitionDuration(firstImage);
+    } else if (fromLastImageToFirstImage) {
+      console.log('blorp');
+      handleResetLoopOnRight();
     } else {
       handleMoveImages();
     }
