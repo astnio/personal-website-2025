@@ -161,7 +161,7 @@ const hasImages = frontmatter.images ? true : false;
         frontmatter.cover && (
           <div class='picture-wrapper'>
             <Image
-              alt={'hi'}
+              alt={frontmatter.cover_alt}
               width={1200}
               height={800}
               src={frontmatter.cover}
