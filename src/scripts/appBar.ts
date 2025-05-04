@@ -2,6 +2,7 @@ document.addEventListener('astro:page-load', () => {
   const navbar = document.getElementById('app-bar');
   const drawerToggle = document.getElementById('btn-open-nav-drawer');
   const searchInput = document.getElementById('search-input-main');
+  const mobileLogo = document.getElementById('logo-mobile');
   const blogNavWrapper = document.querySelector(
     '.blog-nav-wrapper'
   ) as HTMLElement;
@@ -18,6 +19,7 @@ document.addEventListener('astro:page-load', () => {
     drawerToggle!.style.transform = 'translateY(-100%)';
     // searchInput!.style.transform = 'translateY(-100%)';
     searchInput!.setAttribute('data-hidden', 'true');
+    mobileLogo!.setAttribute('data-hidden', 'true');
 
     if (blogNavWrapper) {
       blogNavWrapper!.setAttribute('data-appbar-revealed', 'false');
@@ -29,6 +31,8 @@ document.addEventListener('astro:page-load', () => {
     drawerToggle!.style.transform = 'translateY(0%)';
     // searchInput!.style.transform = 'translateY(0%)';
     searchInput!.setAttribute('data-hidden', 'false');
+    mobileLogo!.setAttribute('data-hidden', 'false');
+
 
     if (blogNavWrapper) {
       blogNavWrapper!.setAttribute('data-appbar-revealed', 'true');

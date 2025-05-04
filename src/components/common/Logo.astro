@@ -76,10 +76,22 @@ const { mobileView } = Astro.props;
 
   #logo-mobile {
     display: flex;
+
+    transition-property: transform;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-in-out;
   }
 
   #logo-desktop {
     display: none;
+  }
+
+  #logo-mobile[data-hidden='true'] {
+    transform: translateY(-200%);
+  }
+
+  #logo-mobile[data-hidden='false'] {
+    transform: translateY(0%);
   }
 
   @media screen and (min-width: 768px) {
@@ -105,6 +117,7 @@ const { mobileView } = Astro.props;
   id={`logo${mobileView ? '-mobile' : '-desktop'}`}
   class='logo-wrapper'
   data-mobile-view={mobileView}
+  data-hidden='false'
   href='/'>
   <span class='logo'>
     <span class='logo-text'>astn</span>
