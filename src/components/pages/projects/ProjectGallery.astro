@@ -17,25 +17,19 @@ const { images } = Astro.props;
 <style>
   .image-gallery-wrapper {
     isolation: isolate;
-
     position: relative;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 1rem;
-
     height: 35rem;
-
-    /* overflow: hidden; */
+    overflow: hidden;
   }
 
   .btn-nav-img-wrapper {
     position: absolute;
     top: 50%;
-
     z-index: 2;
-
     font-size: 2rem;
   }
 
@@ -49,28 +43,19 @@ const { images } = Astro.props;
 
   .btn-nav-img {
     isolation: isolate;
-
     position: relative;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     height: 3.4rem;
     width: 3.4rem;
-
     background-color: transparent;
-
     border: none;
     border-radius: var(--radius-circle);
-
     color: var(--clr-text);
     font-size: 2.6rem;
-
     cursor: pointer;
-
     overflow: hidden;
-
     transition-property: outline, background-color, color;
     transition-duration: 0.15s;
     transition-timing-function: ease-in-out;
@@ -78,24 +63,17 @@ const { images } = Astro.props;
 
   .btn-nav-img::before {
     content: '';
-
     position: absolute;
     left: 0;
     top: 0;
-
     opacity: 0.4;
-
     width: 100%;
     height: 100%;
-
     border-radius: var(--radius-circle);
-
     background-color: var(--clr-mantle);
-
     transition-property: outline, background-color, color;
     transition-duration: 0.15s;
     transition-timing-function: ease-in-out;
-
     z-index: -1;
   }
 
@@ -109,15 +87,16 @@ const { images } = Astro.props;
 
   .btn-nav-icon {
     position: absolute;
-
     top: 0.5rem;
   }
 
   .images-wrapper {
+    position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 100%;
+    overflow: hidden;
   }
 </style>
 

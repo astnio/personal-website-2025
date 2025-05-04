@@ -1,204 +1,113 @@
 document.addEventListener('astro:page-load', () => {
-  const btnPrev = document.getElementById('btn-previous-img');
-  const btnNext = document.getElementById('btn-next-img');
-  const projectImagesElement: HTMLElement =
-    document.querySelector('.images-wrapper')!;
+  const prevButton = document.getElementById('btn-previous-img');
+  const nextButton = document.getElementById('btn-next-img');
+  const imagesWrapper = document.querySelector('.images-wrapper');
+  const allImages = Array.from(
+    document.querySelectorAll('.project-image-wrapper')
+  );
 
-  const projectImages = projectImagesElement.children;
-  const transitionTimeSeconds = 0.69;
-  const transitionDuration = `${transitionTimeSeconds}s`;
-  const translateDistance = 102;
+  const imagesCount = allImages.length;
 
   let currentIndex = 0;
+  let isAnimating = false;
 
-  function resetImageTransitionDuration(image: HTMLElement) {
+  function setupTransitions() {
+    if (!imagesWrapper) return;
+
+    allImages.forEach((image, index) => {
+      const imageEl = image as HTMLElement;
+
+      const isActive = index === 0;
+      imageEl.setAttribute('data-active', isActive.toString());
+
+      imageEl.style.transition = 'none';
+      imageEl.style.opacity = isActive ? '1' : '0';
+
+      imageEl.style.transform = isActive ? 'translateX(0)' : 'translateX(100%)';
+      imageEl.style.zIndex = isActive ? '1' : '0';
+
+      void imageEl.offsetWidth;
+
+      imageEl.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+    });
+  }
+
+  function updateImageDisplay(direction: 'next' | 'prev') {
+    if (!imagesWrapper || allImages.length <= 1 || isAnimating) return;
+
+    isAnimating = true;
+
+    const previousActiveIndex =
+      direction === 'next'
+        ? (currentIndex - 1 + imagesCount) % imagesCount
+        : (currentIndex + 1) % imagesCount;
+    const previousActive = allImages[previousActiveIndex] as HTMLElement;
+
+    const currentActive = allImages[currentIndex] as HTMLElement;
+
+    previousActive.setAttribute('data-active', 'false');
+    currentActive.setAttribute('data-active', 'true');
+
+    previousActive.style.zIndex = '0';
+    currentActive.style.zIndex = '1';
+
+    currentActive.style.opacity = '0';
+    currentActive.style.transform = `translateX(${direction === 'next' ? '100%' : '-100%'})`;
+
+    void currentActive.offsetWidth;
+
+    previousActive.style.transform = `translateX(${direction === 'next' ? '-100%' : '100%'})`;
+    previousActive.style.opacity = '0';
+
+    currentActive.style.transform = 'translateX(0)';
+    currentActive.style.opacity = '1';
+
     setTimeout(() => {
-      image.style.transitionDuration = transitionDuration;
-    }, transitionTimeSeconds);
+      isAnimating = false;
+
+      previousActive.style.transform = 'translateX(100%)';
+    }, 500);
   }
 
-  function setLastImagePosition() {
-    const lastImg = projectImages[projectImages.length - 1] as HTMLElement;
+  function goToNextImage() {
+    if (allImages.length <= 1 || isAnimating) return;
 
-    lastImg.style.transitionDuration = '0s';
-    lastImg.style.transform = `translateX(-${translateDistance}%)`;
-    resetImageTransitionDuration(lastImg);
+    currentIndex = (currentIndex + 1) % imagesCount;
+    updateImageDisplay('next');
   }
 
-  function initPositionImages() {
-    for (let i = 0; i < projectImages.length - 1; i++) {
-      const projectImage = projectImages[i] as HTMLElement;
+  function goToPreviousImage() {
+    if (allImages.length <= 1 || isAnimating) return;
 
-      const position = (i - currentIndex) * translateDistance;
-      projectImage.style.transform = `translateX(${position}%)`;
+    currentIndex = (currentIndex - 1 + imagesCount) % imagesCount;
+    updateImageDisplay('prev');
+  }
 
-      projectImage.setAttribute(
-        'data-active',
-        i === currentIndex ? 'true' : 'false'
-      );
+  function initGallery() {
+    if (allImages.length <= 1) return;
+
+    setupTransitions();
+
+    if (prevButton) {
+      prevButton.addEventListener('click', goToPreviousImage);
     }
 
-    setLastImagePosition();
-  }
-
-  function handleResetLoopOnRight() {
-    const firstImage = projectImages[0] as HTMLElement;
-    firstImage.style.transform = `translateX(${0}%)`;
-
-    /*
-    TODO:
-
-    So this works so far when navigating from the first image to the
-    last (moving to the left right away) and then back to the first
-    image again (so immediately going left, then going right again).
-
-    However, if you move left two times (going to the second to last image)
-    this ends up breaking.
-
-    It looks like the initial image gets moved to the back of the strip (all
-    the way to the left) and then has to transition all the way back over again,
-    however this ruins the seamlessness I am going for.
-
-    Looks like I need to add yet another condition where I am on the second-to-last
-    image and moving right (going to the last image). Once this condition is met I
-    then should move the first image back to the first position on the right, as
-    usual by first removing the transition duration time (setting it to 0) and moving
-    it, then setting the time back to normal again.
-
-    Once that is done, I still need to instantly move the rest of the strips over so
-    they also do not all fly in at once and look weird.
-    */
-  }
-
-  function handleResetLoopOnLeft() {
-    const firstImage = projectImages[0] as HTMLElement;
-    firstImage.style.transform = `translateX(${translateDistance}%)`;
-
-    for (let i = 1; i < projectImages.length - 1; i++) {
-      const projectImage = projectImages[i] as HTMLElement;
-
-      projectImage.style.transitionDuration = '0s';
-
-      const newPosition = (i - currentIndex) * translateDistance;
-      projectImage.style.transform = `translateX(${newPosition}%)`;
-
-      resetImageTransitionDuration(projectImage);
+    if (nextButton) {
+      nextButton.addEventListener('click', goToNextImage);
     }
 
-    const lastImage = projectImages[projectImages.length - 1] as HTMLElement;
-    lastImage.style.transform = `translateX(0%)`;
-  }
+    document.addEventListener('keydown', (event) => {
+      const galleryWrapper = document.querySelector('.image-gallery-wrapper');
+      if (!galleryWrapper) return;
 
-  function handleMoveImages() {
-    const lastImage = projectImages[projectImages.length - 1] as HTMLElement;
-
-    if (currentIndex === 1) {
-      lastImage.style.transitionDuration = '0s';
-    }
-
-    for (let i = 0; i < projectImages.length; i++) {
-      const projectImage = projectImages[i] as HTMLElement;
-
-      const position = (i - currentIndex) * translateDistance;
-      projectImage.style.transform = `translateX(${position}%)`;
-
-      projectImage.setAttribute(
-        'data-active',
-        i === currentIndex ? 'true' : 'false'
-      );
-    }
-
-    resetImageTransitionDuration(lastImage);
-
-    if (currentIndex === 0) {
-      setLastImagePosition();
-    }
-  }
-
-  function positionImages(direction: 'left' | 'right') {
-    const onFirstImageMovingLeft =
-      currentIndex === projectImages.length - 1 && direction === 'left';
-
-    const onSecondToLastImageMovingLeft =
-      currentIndex === projectImages.length - 2 && direction === 'left';
-
-    const fromLastImageToFirstImage =
-      currentIndex === 0 && direction === 'right';
-
-    console.log(currentIndex);
-
-    if (onFirstImageMovingLeft) {
-      handleResetLoopOnLeft();
-    } else if (onSecondToLastImageMovingLeft) {
-      const firstImage = projectImages[0] as HTMLElement;
-      firstImage.style.transitionDuration = '0s';
-      handleMoveImages();
-      resetImageTransitionDuration(firstImage);
-    } else if (fromLastImageToFirstImage) {
-      console.log('blorp');
-      handleResetLoopOnRight();
-    } else {
-      handleMoveImages();
-    }
-  }
-
-  function hideImages() {
-    for (let i = 0; i < projectImages.length; i++) {
-      const projectImage = projectImages[i] as HTMLElement;
-      projectImage.style.visibility = 'hidden';
-    }
-  }
-
-  function revealImages() {
-    for (let i = 0; i < projectImages.length; i++) {
-      const projectImage = projectImages[i] as HTMLElement;
-      projectImage.style.visibility = 'visible';
-    }
-  }
-
-  function disableTransitions() {
-    for (let i = 0; i < projectImages.length; i++) {
-      const projectImage = projectImages[i] as HTMLElement;
-      projectImage.style.transitionDuration = '0s';
-    }
-  }
-
-  function enableTransitions() {
-    for (let i = 0; i < projectImages.length; i++) {
-      const projectImage = projectImages[i] as HTMLElement;
-      projectImage.style.transitionDuration = transitionDuration;
-    }
-  }
-
-  function init() {
-    (projectImages[0] as HTMLElement).style.zIndex = '1';
-    disableTransitions();
-    hideImages();
-    initPositionImages();
-    setTimeout(() => {
-      enableTransitions();
-      revealImages();
-    }, transitionTimeSeconds);
-  }
-
-  function navImage(imageDirection: 'left' | 'right') {
-    if (imageDirection === 'right') {
-      currentIndex++;
-      if (currentIndex >= projectImages.length) {
-        currentIndex = 0;
+      if (event.key === 'ArrowLeft') {
+        goToPreviousImage();
+      } else if (event.key === 'ArrowRight') {
+        goToNextImage();
       }
-    } else {
-      currentIndex--;
-      if (currentIndex < 0) {
-        currentIndex = projectImages.length - 1;
-      }
-    }
-
-    positionImages(imageDirection);
+    });
   }
 
-  btnNext!.addEventListener('click', () => navImage('right'));
-  btnPrev!.addEventListener('click', () => navImage('left'));
-
-  init();
+  initGallery();
 });
+
