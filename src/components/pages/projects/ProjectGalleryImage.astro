@@ -117,9 +117,9 @@ const { image, active, id, currentIndex, imagesCount } = Astro.props;
   <div class='image-caption'>
     <p class='image-caption-label'>{image.alt}</p>
     <p class='image-count-label'>
-      <span>{currentIndex}</span>
+      <span>{currentIndex + 1}</span>
       <span>/</span>
-      <span>{imagesCount}</span>
+      <span>{imagesCount + 1}</span>
     </p>
   </div>
 </div>
