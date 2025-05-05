@@ -39,6 +39,11 @@
       "iconClass": "ri-facebook-fill"
     },
     {
+      "url": "https://astn.sh/instagram",
+      "label": "Instagram",
+      "iconClass": "ri-instagram-fill"
+    },
+    {
       "url": "https://astn.sh/bluesky",
       "label": "Bluesky",
       "iconClass": "ri-bluesky-fill"
