@@ -26,17 +26,17 @@
     {
       "url": "https://astn.sh/linkedin",
       "label": "LinkedIn",
-      "iconClass": "bx bxl-linkedin"
+      "iconClass": "ri-linkedin-fill"
     },
     {
       "url": "https://astn.sh/discord",
       "label": "Discord",
-      "iconClass": "bx bxl-discord-alt"
+      "iconClass": "ri-discord-fill"
     },
     {
       "url": "https://astn.sh/facebook",
       "label": "Facebook",
-      "iconClass": "bx bxl-facebook-circle"
+      "iconClass": "ri-facebook-fill"
     },
     {
       "url": "https://astn.sh/bluesky",

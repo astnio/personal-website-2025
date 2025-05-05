@@ -3,7 +3,7 @@ const { iconClass, url, label } = Astro.props;
 ---
 
 <style>
-  a {
+  a.social-link-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,11 +14,12 @@ const { iconClass, url, label } = Astro.props;
 
     background-color: var(--clr-surface-0);
 
-    aspect-ratio: 1;
+    width: 2.5rem;
+    height: 2.5rem;
 
     opacity: 0.8;
 
-    padding: 0.6rem;
+    /* padding: 0.4rem; */
 
     border-radius: var(--radius-circle);
 
@@ -32,6 +33,12 @@ const { iconClass, url, label } = Astro.props;
     color: var(--clr-primary);
     opacity: 1;
   }
+
+  .social-link-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
 
 <a
@@ -39,6 +46,8 @@ const { iconClass, url, label } = Astro.props;
   href={url}
   target='_blank'
   title={label}>
-  <div class={`social-link-icon ${iconClass}`}></div>
+  <div class={`social-link-icon`}>
+    <span class={iconClass}></span>
+  </div>
   <p class='social-link-label visually-hidden'>{label}</p>
 </a>
