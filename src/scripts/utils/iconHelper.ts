@@ -1,22 +1,20 @@
 const icons = {
-  JavaScript: 'bx bxl-javascript',
-  React: 'bx bxl-react',
-  TypeScript: 'bx bxl-typescript',
-  Node: 'bx bxl-nodejs',
-  CSS: 'bx bxl-css3',
-  HTML: 'bx bxl-html5',
-  Python: 'bx bxl-python',
-  Git: 'bx bxl-git',
-  MongoDB: 'bx bxl-mongodb',
-  PostgreSQL: 'bx bxl-postgresql',
-  Tailwind: 'bx bxl-tailwind-css',
-  Skeleton: 'bx bxs-skull',
-  Svelte: 'bx bx-code-block',
-  SvelteKit: 'bx bx-code-block',
-  Vite: 'bx bx-code-block',
+  JavaScript: 'ri-javascript-fill',
+  React: 'ri-reactjs-fill',
+  TypeScript: 'ri-javascript-fill',
+  Node: 'ri-nodejs-fill',
+  CSS: 'ri-css3-fill',
+  HTML: 'ri-html5-fill',
+  Git: 'ri-git-repository-fill',
+  MongoDB: 'ri-database-2-fill',
+  PostgreSQL: 'ri-database-2-fill',
+  Tailwind: 'ri-tailwind-css-fill',
+  Skeleton: 'ri-svelte-fill',
+  Svelte: 'ri-svelte-fill',
+  SvelteKit: 'ri-svelte-fill',
 };
 
 export function getIcon(name: string) {
   const icon = icons[name as keyof typeof icons];
-  return icon ?? 'bx bx-code-alt';
+  return icon ?? 'ri-code-box-fill';
 }
