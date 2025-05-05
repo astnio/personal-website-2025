@@ -41,7 +41,7 @@
     {
       "url": "https://astn.sh/bluesky",
       "label": "Bluesky",
-      "iconClass": "bx bxs-message-square-detail"
+      "iconClass": "ri-bluesky-fill"
     }
   ],
 
