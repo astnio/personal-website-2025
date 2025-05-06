@@ -58,7 +58,7 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
     margin-bottom: 2rem;
   }
 
-  button.link-group-heading-wrapper {
+  .link-group-heading-wrapper {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -80,16 +80,16 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
     padding-inline: 1rem;
     padding-block: 0.8rem;
 
-    cursor: pointer;
+    /* cursor: pointer; */
 
     transition-property: background-color;
     transition-duration: 0.1s;
     transition-timing-function: ease-in-out;
   }
 
-  button.link-group-heading-wrapper:hover {
+  /* .link-group-heading-wrapper:hover {
     background-color: var(--clr-surface-0);
-  }
+  } */
 
   .link-group-open-icon {
     color: var(--clr-subtext-0);
@@ -126,7 +126,7 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
 </style>
 
 <article class='link-group-wrapper'>
-  <button
+  <div
     class='link-group-heading-wrapper'
     id={btnId}>
     <span class={iconClass}></span>
@@ -135,41 +135,24 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
       size='lg'
       >{title}</Heading
     >
-    <span class='link-group-open-icon bx bxs-chevron-down'></span>
-  </button>
+  </div>
   <nav
     class='link-nav-wrapper'
-    id={navId}
-    data-open={startOpen ? 'true' : 'false'}>
-    <div>
-      <ul class='link-list'>
-        {
-          links.map((link) => (
-            <li class='link-list-item'>
-              <HeroLink
-                url={link.url}
-                label={link.label}
-                iconClass={link.iconClass}
-                newTab={internalLink ? false : true}
-                size='xs'
-              />
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    id={navId}>
+    <ul class='link-list'>
+      {
+        links.map((link) => (
+          <li class='link-list-item'>
+            <HeroLink
+              url={link.url}
+              label={link.label}
+              iconClass={link.iconClass}
+              newTab={internalLink ? false : true}
+              size='xs'
+            />
+          </li>
+        ))
+      }
+    </ul>
   </nav>
 </article>
-
-<script define:vars={{ navId, btnId }}>
-  const button = document.getElementById(btnId);
-  const navList = document.getElementById(navId);
-
-  button.addEventListener('click', () => {
-    if (navList.getAttribute('data-open') === 'true') {
-      navList.setAttribute('data-open', 'false');
-    } else {
-      navList.setAttribute('data-open', 'true');
-    }
-  });
-</script>

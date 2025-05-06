@@ -1,7 +1,6 @@
 ---
 import SocialLinksGroup from '@/components/pages/index/SocialLinksGroup.astro';
-import GalleryTest from '@/components/pages/projects/GalleryTest.astro';
-import HeroLinksAccordionGroup from '@components/pages/index/HeroLinksAccordionGroup.astro';
+import HeroLinksGroup from '@components/pages/index/HeroLinksGroup.astro';
 import ProfilePicture from '@components/pages/index/ProfilePicture.astro';
 import Heading from '@components/typography/Heading.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
@@ -109,6 +108,8 @@ const title = 'Austin Hagel';
 
   @media screen and (min-width: 1024px) {
     .hero-wrapper {
+      flex-direction: column;
+
       width: 100%;
       margin-top: 0;
       margin-bottom: 0;
@@ -119,6 +120,27 @@ const title = 'Austin Hagel';
     .hero-content-wrapper {
       grid-row: 1;
       justify-self: end;
+
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: repeat(2, 1fr);
+
+      gap: 0 1rem;
+    }
+
+    .profile-pic-wrapper {
+      grid-column: -1;
+      grid-row: span 3;
+    }
+
+    .title-wrapper {
+      grid-row: 1;
+      align-self: end;
+    }
+
+    .social-links-wrapper {
+      grid-row: 3;
+      align-self: start;
     }
 
     .hero-paragraph-wrapper {
@@ -135,7 +157,10 @@ const title = 'Austin Hagel';
     }
 
     .about-me {
-      max-width: 74ch;
+      grid-column: 0;
+      grid-row: 2;
+
+      max-width: 50ch;
       text-align: left;
       margin-inline: auto;
     }
@@ -151,19 +176,29 @@ const title = 'Austin Hagel';
       iconClass='bx bxs-bulb'
     /> -->
     <div class='hero-content-wrapper'>
-      <ProfilePicture />
-      <Heading
-        type='title'
-        level={1}
-        size='l4x'>
-        <span>Austin Hagel</span>
-      </Heading>
-      <SocialLinksGroup />
+      <div class='profile-pic-wrapper'>
+        <ProfilePicture />
+      </div>
+      <div class='title-wrapper'>
+        <Heading
+          type='title'
+          level={1}
+          size='l4x'>
+          <span>Austin Hagel</span>
+        </Heading>
+      </div>
+      <p class='about-me'>
+        Exploring the intersection of code, design, and interactive media
+        through a collection of personal and professional projects.
+      </p>
+      <div class='social-links-wrapper'>
+        <SocialLinksGroup />
+      </div>
     </div>
 
     <div class='hero-info-wrapper'>
       <div class='hero-link-list'>
-        <HeroLinksAccordionGroup />
+        <HeroLinksGroup />
       </div>
     </div>
   </section>

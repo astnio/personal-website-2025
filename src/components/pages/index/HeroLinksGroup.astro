@@ -1,13 +1,13 @@
 ---
 import links from '@content/links.json';
-import HeroLinksAccordion from './HeroLinksAccordion.astro';
+import HeroLinks from './HeroLinks.astro';
 
 const internalLinks = links.internalLinks.filter((link) => {
   if (link.url === '/') return false;
   else return true;
 });
 
-const socialLinks = links.socialLinks;
+// const socialLinks = links.socialLinks;
 const workLinks = links.workLinks;
 ---
 
@@ -109,26 +109,19 @@ const workLinks = links.workLinks;
 
 <div class='links-nav'>
   <div class='link-list-wrapper'>
-    <HeroLinksAccordion
+    <HeroLinks
       internalLink={true}
       links={internalLinks}
       title='Explore My Site'
       iconClass='ri-compass-3-fill'
     />
 
-    <HeroLinksAccordion
+    <HeroLinks
       internalLink={false}
       startOpen={true}
       links={workLinks}
       title='Discover My Work'
       iconClass='ri-briefcase-fill'
     />
-
-    <!-- <HeroLinksAccordion
-      internalLink={false}
-      links={socialLinks}
-      title='Connect with Me'
-      iconClass='bx bxs-conversation'
-    /> -->
   </div>
 </div>
