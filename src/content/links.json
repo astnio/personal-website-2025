@@ -8,17 +8,17 @@
     {
       "url": "/about",
       "label": "About",
-      "iconClass": "bx bxs-user"
+      "iconClass": "ri-user-5-fill"
     },
     {
       "url": "/blog",
       "label": "Blog",
-      "iconClass": "bx bxs-message-square-dots"
+      "iconClass": "ri-article-fill"
     },
     {
       "url": "/projects",
       "label": "Projects",
-      "iconClass": "bx bxs-collection"
+      "iconClass": "ri-folder-fill"
     }
   ],
 
@@ -54,17 +54,17 @@
     {
       "url": "https://astn.sh/frontend-mentor",
       "label": "Frontend Mentor",
-      "iconClass": "bx bxs-widget"
+      "iconClass": "ri-pencil-ruler-2-fill"
     },
     {
       "url": "https://astn.sh/github",
       "label": "Github",
-      "iconClass": "bx bxl-github"
+      "iconClass": "ri-github-fill"
     },
     {
       "url": "https://astn.sh/codepen",
       "label": "CodePen",
-      "iconClass": "bx bxl-codepen"
+      "iconClass": "ri-codepen-fill"
     }
   ],
 
