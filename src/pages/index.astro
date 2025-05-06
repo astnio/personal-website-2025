@@ -114,18 +114,22 @@ const featuredProjects = await getCollection('projects', ({ data }) => {
 
   ul.projects-list {
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: auto;
     gap: 1rem;
 
     list-style: none;
     padding: 0;
   }
 
-  .projects-list-item {
-    /* max-width: 20rem; */
+  section.featured-projects {
+    padding-inline: 1rem;
   }
 
   @media screen and (min-width: 1024px) {
+    ul.projects-list {
+      grid-template-columns: repeat(2, auto);
+    }
+
     .hero-wrapper {
       flex-direction: column;
 
@@ -221,10 +225,10 @@ const featuredProjects = await getCollection('projects', ({ data }) => {
       </div>
     </div>
   </section>
-  <section>
+  <section class='max-width'>
     <h1>Recent Posts</h1>
   </section>
-  <section class='max-width'>
+  <section class='max-width featured-projects'>
     <h1>Featured Projects</h1>
     <ul class='projects-list'>
       {
