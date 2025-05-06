@@ -3,7 +3,7 @@
     {
       "url": "/",
       "label": "Home",
-      "iconClass": "bx bxs-home"
+      "iconClass": "ri-home-smile-fill"
     },
     {
       "url": "/about",
