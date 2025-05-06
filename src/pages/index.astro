@@ -1,4 +1,5 @@
 ---
+import PostCard from '@/components/pages/blog/PostCard.astro';
 import SocialLinksGroup from '@/components/pages/index/SocialLinksGroup.astro';
 import ProjectCard from '@/components/pages/projects/ProjectCard.astro';
 import HeroLinksGroup from '@components/pages/index/HeroLinksGroup.astro';
@@ -12,6 +13,12 @@ const title = 'Austin Hagel';
 const featuredProjects = await getCollection('projects', ({ data }) => {
   return data.featured === true;
 });
+
+const allPosts = await getCollection('blog');
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
+);
 ---
 
 <style>
@@ -112,7 +119,8 @@ const featuredProjects = await getCollection('projects', ({ data }) => {
     padding: 0;
   }
 
-  ul.projects-list {
+  ul.projects-list,
+  ul.blog-post-cards-list {
     display: grid;
     grid-template-columns: auto;
     gap: 1rem;
@@ -121,13 +129,21 @@ const featuredProjects = await getCollection('projects', ({ data }) => {
     padding: 0;
   }
 
-  section.featured-projects {
+  ul.blog-post-cards-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  section.featured-projects,
+  section.recent-posts {
     padding-inline: 1rem;
+    width: 100%;
   }
 
   @media screen and (min-width: 1024px) {
-    ul.projects-list {
-      grid-template-columns: repeat(2, auto);
+    ul.projects-list,
+    ul.blog-post-cards-list {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .hero-wrapper {
@@ -225,8 +241,20 @@ const featuredProjects = await getCollection('projects', ({ data }) => {
       </div>
     </div>
   </section>
-  <section class='max-width'>
+  <section class='max-width recent-posts'>
     <h1>Recent Posts</h1>
+    <ul class='blog-post-cards-list'>
+      {
+        sortedPosts.slice(0, 4).map((post: any) => (
+          <li>
+            <PostCard
+              post={post}
+              transition:name={`post-card-${post.id}`}
+            />
+          </li>
+        ))
+      }
+    </ul>
   </section>
   <section class='max-width featured-projects'>
     <h1>Featured Projects</h1>
