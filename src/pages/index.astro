@@ -148,6 +148,40 @@ const sortedPosts = allPosts.sort(
     width: 100%;
   }
 
+  a.link-view-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6ch;
+
+    margin-left: auto;
+
+    background-color: var(--clr-base);
+
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+
+    width: fit-content;
+    padding-inline: 0.8rem;
+    padding-block: 0.6rem;
+
+    margin-top: 2rem;
+
+    border-radius: var(--radius-input);
+    outline: 2px solid var(--clr-primary);
+
+    transition-property: background-color, color, outline;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a.link-view-all:hover {
+    background-color: var(--clr-surface-0);
+    color: var(--clr-primary);
+    outline: 2px solid var(--clr-text);
+  }
+
   @media screen and (min-width: 1024px) {
     ul.projects-list,
     ul.blog-post-cards-list {
@@ -263,6 +297,12 @@ const sortedPosts = allPosts.sort(
         ))
       }
     </ul>
+    <a
+      class='link-view-all'
+      href='/blog'>
+      <span class='ri-infinity-line'></span>
+      <span>View All</span>
+    </a>
   </section>
   <section class='max-width featured-projects'>
     <h1>Featured Projects</h1>
@@ -278,6 +318,12 @@ const sortedPosts = allPosts.sort(
         ))
       }
     </ul>
+    <a
+      class='link-view-all'
+      href='/projects'>
+      <span class='ri-infinity-line'></span>
+      <span>View All</span>
+    </a>
   </section>
   <!-- <section
     class='max-width'
