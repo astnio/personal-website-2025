@@ -1,11 +1,17 @@
 ---
 import SocialLinksGroup from '@/components/pages/index/SocialLinksGroup.astro';
+import ProjectCard from '@/components/pages/projects/ProjectCard.astro';
 import HeroLinksGroup from '@components/pages/index/HeroLinksGroup.astro';
 import ProfilePicture from '@components/pages/index/ProfilePicture.astro';
 import Heading from '@components/typography/Heading.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 const title = 'Austin Hagel';
+
+const featuredProjects = await getCollection('projects', ({ data }) => {
+  return data.featured === true;
+});
 ---
 
 <style>
@@ -106,6 +112,19 @@ const title = 'Austin Hagel';
     padding: 0;
   }
 
+  ul.projects-list {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 1rem;
+
+    list-style: none;
+    padding: 0;
+  }
+
+  .projects-list-item {
+    /* max-width: 20rem; */
+  }
+
   @media screen and (min-width: 1024px) {
     .hero-wrapper {
       flex-direction: column;
@@ -201,6 +220,24 @@ const title = 'Austin Hagel';
         <HeroLinksGroup />
       </div>
     </div>
+  </section>
+  <section>
+    <h1>Recent Posts</h1>
+  </section>
+  <section class='max-width'>
+    <h1>Featured Projects</h1>
+    <ul class='projects-list'>
+      {
+        featuredProjects.slice(0, 4).map((project) => (
+          <li class='projects-list-item'>
+            <ProjectCard
+              url={`/projects/${project.slug}`}
+              data={project.data}
+            />
+          </li>
+        ))
+      }
+    </ul>
   </section>
   <!-- <section
     class='max-width'
