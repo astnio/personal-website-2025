@@ -145,10 +145,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         }
       }
 
-      if (!fuseInstance) {
-        console.log('generating fuse instance');
-        fuseInstance = new Fuse(searchData, searchOptions);
+      if (searchData && !fuseInstance) {
+        fuseInstance = new Fuse(searchData, fuseOptions);
       }
+
+      if (!fuseInstance) return;
+
+      const searchResult = fuseInstance.search(search);
+      console.log(searchResult);
     }
 
     function initSearchPage() {
