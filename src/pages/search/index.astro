@@ -1,4 +1,5 @@
 ---
+import '@styles/search.css';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
@@ -17,17 +18,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   }
 
   ul#search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
     padding: 0;
     list-style: none;
-  }
-
-  li.search-result-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: var(--clr-mantle);
-    color: red;
   }
 
   #spinner {
