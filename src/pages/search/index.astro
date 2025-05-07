@@ -48,6 +48,61 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   document.addEventListener('astro:page-load', () => {
     let searchData: string = '';
     let fuseInstance: any = undefined;
+    const fuseOptions = {
+      includeScore: true,
+      shouldSort: true,
+      keys: [
+        // Blog Keys
+        {
+          name: 'title',
+          weight: 0.75,
+        },
+        {
+          name: 'summary',
+          weight: 0.5,
+        },
+        {
+          name: 'tags',
+          weight: 0.4,
+        },
+        {
+          name: 'topic',
+          weight: 0.3,
+        },
+        {
+          name: 'category',
+          weight: 0.2,
+        },
+
+        // Project Keys
+        {
+          name: 'description',
+          weight: 0.6,
+        },
+        {
+          name: 'status',
+          weight: 0.4,
+        },
+        {
+          name: 'type',
+          weight: 0.3,
+        },
+
+        // Job Keys
+        {
+          name: 'company',
+          weight: 0.6,
+        },
+        {
+          name: 'skills',
+          weight: 0.5,
+        },
+        {
+          name: 'description',
+          weight: 0.4,
+        },
+      ],
+    };
 
     const search = document.getElementById('search')! as HTMLInputElement;
     const searchReadout = document.getElementById('search-readout')!;
@@ -92,7 +147,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
       if (!fuseInstance) {
         console.log('generating fuse instance');
-        fuseInstance = new Fuse(searchData);
+        fuseInstance = new Fuse(searchData, searchOptions);
       }
     }
 
