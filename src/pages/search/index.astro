@@ -124,6 +124,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         : ``;
     }
 
+    function updateSearchPageURL(search: string) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('q', search);
+      window.history.replaceState(null, '', url);
+    }
+
     async function fetchSearchResults(search: string, searchData: string) {
       const spinner = document.getElementById('spinner');
 
@@ -169,6 +175,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       fetchSearchResults(searchTerm, searchData);
       updateDocumentTitle(searchTerm);
       updateSearchReadout(searchReadout, searchTerm);
+      updateSearchPageURL(searchTerm);
     });
 
     initSearchPage();
