@@ -1,47 +1,23 @@
 ---
-import '../styles/global/fonts.css';
-import '../styles/global/global.css';
-import '../styles/global/variables.css';
-import '../styles/utils/boxicons.min.css';
-import '../styles/utils/remixicon.css';
+import '@styles/global/fonts.css';
+import '@styles/global/global.css';
+import '@styles/global/variables.css';
+import '@styles/utils/boxicons.min.css';
+import '@styles/utils/remixicon.css';
 
-import NavDrawer from '../components/NavDrawer.astro';
-import NavDrawerToggle from '../components/NavDrawerToggle.astro';
-import CustomizationMenuOverlay from '../components/CustomizationMenuOverlay.astro';
-import ContactDialog from '../components/ContactDialog.astro';
-import NavDrawerOverlay from '../components/NavDrawerOverlay.astro';
 import AppBar from '@components/common/AppBar.astro';
-import Logo from '@components/common/Logo.astro';
-import CommonHead from '@components/common/CommonHead.astro';
-import Footer from '@components/common/Footer.astro';
 import Breadcrumb from '@components/common/Breadcrumb.astro';
-import SearchInput from '@/components/interface/SearchInput.astro';
+import CommonHead from '@components/common/CommonHead.astro';
+import ContactDialog from '@components/ContactDialog.astro';
+import CustomizationMenuOverlay from '@components/CustomizationMenuOverlay.astro';
+import Footer from '@components/common/Footer.astro';
+import Logo from '@components/common/Logo.astro';
+import NavDrawer from '@components/NavDrawer.astro';
+import NavDrawerToggle from '@components/NavDrawerToggle.astro';
+import NavDrawerOverlay from '@components/NavDrawerOverlay.astro';
 
 const { title, description } = Astro.props;
 ---
-
-<style>
-  div.search-input-wrapper {
-    position: fixed;
-    right: 0;
-    top: 0;
-
-    z-index: 2;
-
-    width: 100%;
-    height: 4rem;
-
-    transition-property: top, transform;
-    transition-duration: 0.4s;
-    transition-timing-function: ease-in-out;
-  }
-
-  @media screen and (min-width: 768px) {
-    div.search-input-wrapper {
-      display: none;
-    }
-  }
-</style>
 
 <html lang='en'>
   <CommonHead
@@ -56,13 +32,6 @@ const { title, description } = Astro.props;
 
     <NavDrawerToggle />
 
-    <div class='search-input-wrapper'>
-      <SearchInput
-        inDrawer={false}
-        mobileView={true}
-      />
-    </div>
-
     <Logo mobileView={true} />
 
     <Breadcrumb />
@@ -72,4 +41,4 @@ const { title, description } = Astro.props;
   </body>
 </html>
 
-<script src='../scripts/main.ts'></script>
+<script src='@/scripts/main.ts'></script>
