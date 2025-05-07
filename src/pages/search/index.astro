@@ -2,6 +2,43 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
-<BaseLayout>
-  <h1>search time yeeee</h1>
+<BaseLayout title={`Search the site`}>
+  <h1>Search</h1>
+  <p id='search-readout'></p>
+  <section aria-label='Search Results'>
+    <ul></ul>
+  </section>
 </BaseLayout>
+
+<script>
+  function updateDocumentTitle(search: string) {
+    document.title = search
+      ? `Search results for "${search}"`
+      : `Search the site`;
+  }
+
+  function updateSearchReadout(searchReadout: HTMLElement, search: string) {
+    searchReadout.textContent = search ? `Search results for "${search}"` : ``;
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    const search = document.getElementById('search')! as HTMLInputElement;
+    const searchReadout = document.getElementById('search-readout')!;
+
+    const urlParams = new URLSearchParams(window.location.search)
+      .get('q')
+      ?.toString();
+
+    updateDocumentTitle(urlParams!.toString());
+    updateSearchReadout(searchReadout, urlParams!.toString());
+
+    search.value = urlParams?.toString()!;
+    search.focus();
+
+    search.addEventListener('input', () => {
+      const searchTerm = search.value;
+      updateDocumentTitle(searchTerm);
+      updateSearchReadout(searchReadout, searchTerm);
+    });
+  });
+</script>
