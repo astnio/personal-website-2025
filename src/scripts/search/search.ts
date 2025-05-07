@@ -1,63 +1,10 @@
 import Fuse from 'fuse.js';
+import fuseOptions from './fuseOptions';
+import resultTemplate from './resultTemplate';
 
 document.addEventListener('astro:page-load', () => {
   let searchData: any[] = [];
   let fuseInstance: any = undefined;
-  const fuseOptions = {
-    includeScore: true,
-    shouldSort: true,
-    keys: [
-      // Blog Keys
-      {
-        name: 'title',
-        weight: 0.75,
-      },
-      {
-        name: 'description',
-        weight: 0.5,
-      },
-      {
-        name: 'tags',
-        weight: 0.4,
-      },
-      {
-        name: 'topic',
-        weight: 0.3,
-      },
-      {
-        name: 'category',
-        weight: 0.2,
-      },
-
-      // Project Keys
-      {
-        name: 'description',
-        weight: 0.6,
-      },
-      {
-        name: 'status',
-        weight: 0.4,
-      },
-      {
-        name: 'type',
-        weight: 0.3,
-      },
-
-      // Job Keys
-      {
-        name: 'company',
-        weight: 0.6,
-      },
-      {
-        name: 'skills',
-        weight: 0.5,
-      },
-      {
-        name: 'description',
-        weight: 0.4,
-      },
-    ],
-  };
 
   const search = document.getElementById('search')! as HTMLInputElement;
   const searchReadout = document.getElementById('search-readout')!;
@@ -86,38 +33,7 @@ document.addEventListener('astro:page-load', () => {
   function generateSearchList(results: any) {
     return results
       .map((result: any) => {
-        const { title, date, slug, source, description } = result.item;
-
-        const resultDate = new Date(date);
-        const dateOptions: Intl.DateTimeFormatOptions = {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        };
-        const formattedDate = resultDate.toLocaleDateString('en-US', dateOptions);
-
-        let link = '';
-        switch (source) {
-          case 'blog':
-            link = `/blog/${slug}`;
-            break;
-          case 'projects':
-            link = `/projects/${slug}`;
-            break;
-          case 'jobs':
-            link = `/about`;
-            break;
-        }
-        return /*html*/ `
-          <li class='search-result-item'>
-              <a href='${link}'>
-                <h3>${title}</h3>              
-              </a>
-              <time>${formattedDate}</time>
-              <p>${description}</p>
-              <a href='${link}'>View Post</a>
-          </li>
-      `;
+        return resultTemplate(result.item);
       })
       .join('');
   }
