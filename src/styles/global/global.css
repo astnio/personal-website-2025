@@ -30,7 +30,7 @@ input {
 }
 
 body[data-font='sans-serif'] {
-  font-family: 'SN Pro', sans-serif;
+  font-family: 'SN Pro', system-ui, sans-serif;
 }
 
 body[data-font='serif'] {
