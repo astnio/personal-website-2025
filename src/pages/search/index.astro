@@ -3,6 +3,28 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
 <style>
+  div.search-results-header {
+    width: 100%;
+  }
+
+  section.search-results {
+    width: 100%;
+  }
+
+  ul#search-results {
+    padding: 0;
+    list-style: none;
+  }
+
+  li.search-result-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--clr-mantle);
+    color: red;
+  }
+
   #spinner {
     align-items: center;
     justify-content: center;
@@ -29,9 +51,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 </style>
 
 <BaseLayout title={`Search the site`}>
-  <h1>Search</h1>
-  <p id='search-readout'></p>
-  <section aria-label='Search Results'>
+  <div class='max-width search-results-header'>
+    <h2 id='search-readout'></h2>
+  </div>
+  <section
+    aria-label='Search Results'
+    class='max-width search-results'>
     <div class='loading-icon'>
       <i
         id='spinner'

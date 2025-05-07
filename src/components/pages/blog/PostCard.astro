@@ -163,7 +163,7 @@ const timeRead = calculateReadingTime(post.body);
     margin: 0;
   }
 
-  .blog-card-summary {
+  .blog-card-description {
     grid-column: span 2;
 
     color: var(--clr-text);
@@ -395,8 +395,8 @@ const timeRead = calculateReadingTime(post.body);
 
       {!post.data.cover && <hr class='post-card-hr' />}
 
-      <p class='blog-card-summary'>
-        {post.data.summary}
+      <p class='blog-card-description'>
+        {post.data.description}
       </p>
 
       <div class='post-details-wrapper'>

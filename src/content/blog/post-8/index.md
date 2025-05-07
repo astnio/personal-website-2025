@@ -1,6 +1,6 @@
 ---
 title: 'Space Ipsum (Post 8)'
-summary: 'A post all about space!'
+description: 'A post all about space!'
 date_published: 2024-08-04
 topic: 'Astrology'
 category: 'Space'

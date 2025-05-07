@@ -1,6 +1,6 @@
 ---
 title: 'Space Ipsum (Post 10)'
-summary: 'What? Another Post About Space?!'
+description: 'What? Another Post About Space?!'
 date_published: 2022-02-19
 topic: 'Astrology'
 category: 'Space'

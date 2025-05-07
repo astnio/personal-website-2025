@@ -1,6 +1,6 @@
 ---
 title: 'Meow Ipsum (post 11)'
-summary: 'meow meow all about cat meow'
+description: 'meow meow all about cat meow'
 date_published: 2024-12-31
 topic: 'Animals'
 category: 'Cats'

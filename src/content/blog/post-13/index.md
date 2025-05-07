@@ -1,6 +1,6 @@
 ---
 title: 'Meow Ipsum (post 13)'
-summary: 'Featured Post 2'
+description: 'Featured Post 2'
 date_published: 2025-01-02
 topic: 'Animals'
 category: 'Cats'

@@ -1,6 +1,6 @@
 ---
 title: 'Long Post Example (Post 7)'
-summary: 'This post will be a bit longer to pad the reading time!'
+description: 'This post will be a bit longer to pad the reading time!'
 date_published: 2024-12-23
 topic: 'Reading Time'
 category: 'Space'

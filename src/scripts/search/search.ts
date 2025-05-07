@@ -13,7 +13,7 @@ document.addEventListener('astro:page-load', () => {
         weight: 0.75,
       },
       {
-        name: 'summary',
+        name: 'description',
         weight: 0.5,
       },
       {
@@ -74,9 +74,7 @@ document.addEventListener('astro:page-load', () => {
   }
 
   function updateSearchReadout(searchReadout: HTMLElement, search: string) {
-    searchReadout.textContent = search
-      ? `Search results for "${search}"`
-      : ``;
+    searchReadout.textContent = search ? `Search results for "${search}"` : ``;
   }
 
   function updateSearchPageURL(search: string) {
@@ -88,8 +86,15 @@ document.addEventListener('astro:page-load', () => {
   function generateSearchList(results: any) {
     return results
       .map((result: any) => {
-        const { title, date, slug, source } = result.item;
-        const dateAsDate = new Date(date);
+        const { title, date, slug, source, description } = result.item;
+
+        const resultDate = new Date(date);
+        const dateOptions: Intl.DateTimeFormatOptions = {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        };
+        const formattedDate = resultDate.toLocaleDateString('en-US', dateOptions);
 
         let link = '';
         switch (source) {
@@ -103,10 +108,13 @@ document.addEventListener('astro:page-load', () => {
             link = `/about`;
             break;
         }
-        return `
-          <li>
-              <h3>${title}</h3>
-              <p>${dateAsDate}</p>
+        return /*html*/ `
+          <li class='search-result-item'>
+              <a href='${link}'>
+                <h3>${title}</h3>              
+              </a>
+              <time>${formattedDate}</time>
+              <p>${description}</p>
               <a href='${link}'>View Post</a>
           </li>
       `;

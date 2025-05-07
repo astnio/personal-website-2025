@@ -8,7 +8,7 @@ async function getAllContent() {
   const blogData = blogPosts.map((post) => ({
     slug: post.slug,
     title: post.data.title,
-    summary: post.data.summary,
+    description: post.data.description,
     date: post.data.date_published,
     tags: post.data.tags,
     topic: post.data.topic,

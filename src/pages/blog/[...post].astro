@@ -23,7 +23,7 @@ const { Content } = await entry.render();
 
 <BaseLayout
   title={`${entry.data.title} | Blog`}
-  description={entry.data.summary}>
+  description={entry.data.description}>
   <PostLayout
     postTarget='blog'
     frontmatter={entry.data}

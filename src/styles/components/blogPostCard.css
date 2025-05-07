@@ -14,7 +14,7 @@ p {
 
 header,
 footer,
-.blog-card-summary {
+.blog-card-description {
   padding-inline: 1rem;
 }
 
@@ -140,7 +140,7 @@ footer,
   text-decoration: none;
 }
 
-.blog-card-summary {
+.blog-card-description {
   grid-column-start: 1;
 
   color: var(--clr-subtext-0);
