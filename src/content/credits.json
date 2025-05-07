@@ -11,6 +11,11 @@
       "url": "https://github.com/lin-stephanie/rehype-callouts"
     },
     {
+      "use": "Search Utility",
+      "name": "Fuse.js",
+      "url": "https://www.fusejs.io/"
+    },
+    {
       "use": "Color Theme",
       "name": "Catppuccin",
       "url": "https://catppuccin.com/"
