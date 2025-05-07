@@ -32,13 +32,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <h1>Search</h1>
   <p id='search-readout'></p>
   <section aria-label='Search Results'>
-    <ul id='search-results'>
+    <div class='loading-icon'>
       <i
         id='spinner'
         class='ri-loader-2-fill'
         data-active='false'
       ></i>
-    </ul>
+    </div>
+    <ul id='search-results'></ul>
   </section>
 </BaseLayout>
 
@@ -130,6 +131,22 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       window.history.replaceState(null, '', url);
     }
 
+    function generateSearchList(results: any) {
+      return results
+        .map((result: any) => {
+          const { title, date, slug } = result.item;
+          const dateAsDate = new Date(date);
+          return `
+            <li>
+                <h3>${title}</h3>
+                <p>${dateAsDate}</p>
+                <a href='/blog/${slug}'>View Post</a>
+            </li>
+        `;
+        })
+        .join('');
+    }
+
     async function fetchSearchResults(search: string, searchData: string) {
       const spinner = document.getElementById('spinner');
 
@@ -158,7 +175,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       if (!fuseInstance) return;
 
       const searchResult = fuseInstance.search(search);
-      console.log(searchResult);
+
+      spinner?.setAttribute('data-active', 'false');
+
+      searchResultOutput.innerHTML =
+        searchResult.length > 0
+          ? generateSearchList(searchResult)
+          : `No results found.`;
     }
 
     function initSearchPage() {
