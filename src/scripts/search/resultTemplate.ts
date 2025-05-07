@@ -30,12 +30,12 @@ export default function resultTemplate(result: any) {
 
   return /*html*/ `
     <li class='search-result-item'>
-        <a href='${link}'>
+        <a class="search-result-link-title" href='${link}'>
           <h3>${result.title}</h3>              
         </a>
         <time>${date}</time>
         <p>${result.description}</p>
-        <a href='${link}'>View Post</a>
+        <a class="search-result-link" href='${link}'>Read More</a>
     </li>
 `;
 }
