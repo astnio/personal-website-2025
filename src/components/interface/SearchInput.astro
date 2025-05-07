@@ -1,10 +1,6 @@
 ---
-interface Props {
-  inDrawer: boolean;
-  mobileView: boolean;
-}
-
-const { inDrawer, mobileView } = Astro.props;
+const searchFormId = `search-input-form`;
+const searchInputId = `search-input`;
 ---
 
 <style>
@@ -50,7 +46,7 @@ const { inDrawer, mobileView } = Astro.props;
     visibility: visible;
     opacity: 1;
 
-    transition-property: visiblity, opacity;
+    transition-property: visibility, opacity;
     transition-duration: 0.1s;
     transition-timing-function: ease-in-out;
   }
@@ -118,69 +114,77 @@ const { inDrawer, mobileView } = Astro.props;
     padding-inline: 0.2rem;
   }
 
-  .search-wrapper[data-in-drawer='false'] {
-    display: none;
+  .search-wrapper {
+    transition-property: transform;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
+  }
+
+  @media screen and (max-width: 768px) {
+    /* Mobile */
+    section.search-wrapper {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      /* transform: translateX(-50%); */
+
+      margin-left: 1.5rem;
+
+      display: flex;
+    }
+
+    /* Mobile */
+    section.search-wrapper input:active,
+    section.search-wrapper input:focus,
+    section.search-wrapper input:not(:placeholder-shown) {
+      width: calc(100vw - 18rem);
+      outline: 1px solid var(--clr-primary);
+    }
+
+    /* Mobile AND Hidden */
+    .search-wrapper[data-hidden='true'] {
+      transform: translateY(-200%) translateX(-50%);
+    }
+
+    /* Mobile AND NOT Hidden */
+    .search-wrapper[data-hidden='false'] {
+      transform: translateY(0) translateX(-50%);
+    }
   }
 
   @media screen and (min-width: 768px) {
-    .search-wrapper[data-in-drawer='false'] {
-      display: flex;
+    /* Desktop AND Hidden */
+    .search-wrapper[data-hidden='true'] {
+      transform: translateY(-100%) translateX(0%);
+    }
+
+    /* Desktop AND NOT Hidden */
+    .search-wrapper[data-hidden='false'] {
+      transform: translateY(0) translateX(0%);
     }
 
     .btn-icon {
       top: 1px;
     }
-
-    section.search-wrapper[data-mobile-view='true'][data-in-drawer='false'] {
-      display: none;
-    }
-  }
-
-  section.search-wrapper[data-mobile-view='true'] {
-    position: fixed;
-    top: 1rem;
-    left: 50%;
-    /* transform: translateX(-50%); */
-
-    margin-left: 1.5rem;
-
-    display: flex;
-  }
-
-  section.search-wrapper[data-mobile-view='true'] input:active,
-  section.search-wrapper[data-mobile-view='true'] input:focus,
-  section.search-wrapper[data-mobile-view='true']
-    input:not(:placeholder-shown) {
-    width: calc(100vw - 18rem);
-    outline: 1px solid var(--clr-primary);
-  }
-
-  [data-mobile-view='true'][data-hidden='true'] {
-    transform: translateY(-200%) translateX(-50%);
-  }
-
-  [data-mobile-view='true'][data-hidden='false'] {
-    transform: translateY(0) translateX(-50%);
   }
 </style>
 
 <section
-  id='search-input-main'
+  id='search-wrapper'
   class='search-wrapper'
   role='search'
-  data-in-drawer={inDrawer}
-  data-mobile-view={mobileView}
   data-hidden='false'>
-  <form>
+  <form id={searchFormId}>
     <fieldset>
       <legend class='visually-hidden'>Search this website:</legend>
-      <label for='search'>
+      <label for={searchInputId}>
         <input
           type='search'
-          name='search'
-          id='search'
+          name={searchInputId}
+          id={searchInputId}
           placeholder='_'
-          maxlength='200'
+          min='1'
+          required
         />
       </label>
       <button
@@ -191,3 +195,19 @@ const { inDrawer, mobileView } = Astro.props;
     </fieldset>
   </form>
 </section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const form = document.getElementById(
+      'search-input-form'
+    ) as HTMLFormElement;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      console.log('heyyy');
+      console.log(e.target);
+      console.log(formData);
+    });
+  });
+</script>

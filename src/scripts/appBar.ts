@@ -1,7 +1,7 @@
 document.addEventListener('astro:page-load', () => {
   const navbar = document.getElementById('app-bar');
   const drawerToggle = document.getElementById('btn-open-nav-drawer');
-  const searchInput = document.getElementById('search-input-main');
+  const searchInput = document.getElementById('search-wrapper');
   const mobileLogo = document.getElementById('logo-mobile');
   const blogNavWrapper = document.querySelector(
     '.blog-nav-wrapper'
@@ -17,7 +17,6 @@ document.addEventListener('astro:page-load', () => {
   function hideAppBar() {
     navbar!.style.transform = 'translateY(-100%)';
     drawerToggle!.style.transform = 'translateY(-100%)';
-    // searchInput!.style.transform = 'translateY(-100%)';
     searchInput!.setAttribute('data-hidden', 'true');
     mobileLogo!.setAttribute('data-hidden', 'true');
 
@@ -29,17 +28,15 @@ document.addEventListener('astro:page-load', () => {
   function revealAppBar() {
     navbar!.style.transform = 'translateY(0%)';
     drawerToggle!.style.transform = 'translateY(0%)';
-    // searchInput!.style.transform = 'translateY(0%)';
     searchInput!.setAttribute('data-hidden', 'false');
     mobileLogo!.setAttribute('data-hidden', 'false');
-
 
     if (blogNavWrapper) {
       blogNavWrapper!.setAttribute('data-appbar-revealed', 'true');
     }
   }
 
-  function updateScrollDireciton(scrollDir: number) {
+  function updateScrollDirection(scrollDir: number) {
     if (scrollDir > 0) {
       isScrollingDown = true;
     } else if (scrollDir < 0) {
@@ -73,7 +70,7 @@ document.addEventListener('astro:page-load', () => {
 
     totalScrollDistance += scrollDistance;
 
-    updateScrollDireciton(scrollDirection);
+    updateScrollDirection(scrollDirection);
     updateAppBar();
 
     prevScrollPos = currentScrollPos;

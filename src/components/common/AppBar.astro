@@ -72,6 +72,7 @@ import ContactButton from './ContactButton.astro';
 
   .nav-links-wrapper {
     margin-left: 2rem;
+    margin-right: auto;
   }
 
   .search-input-wrapper {
@@ -96,10 +97,7 @@ import ContactButton from './ContactButton.astro';
       <NavLinks />
     </div>
     <div class='search-input-wrapper'>
-      <SearchInput
-        inDrawer={false}
-        mobileView={false}
-      />
+      <SearchInput />
     </div>
     <div class='contact-btn-wrapper'>
       <ContactButton />
