@@ -134,13 +134,26 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     function generateSearchList(results: any) {
       return results
         .map((result: any) => {
-          const { title, date, slug } = result.item;
+          const { title, date, slug, source } = result.item;
           const dateAsDate = new Date(date);
+
+          let link = '';
+          switch (source) {
+            case 'blog':
+              link = `/blog/${slug}`;
+              break;
+            case 'projects':
+              link = `/projects/${slug}`;
+              break;
+            case 'jobs':
+              link = `/about`;
+              break;
+          }
           return `
             <li>
                 <h3>${title}</h3>
                 <p>${dateAsDate}</p>
-                <a href='/blog/${slug}'>View Post</a>
+                <a href='${link}'>View Post</a>
             </li>
         `;
         })
