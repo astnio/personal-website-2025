@@ -35,7 +35,10 @@ export default function resultTemplate(result: any) {
         </a>
         <time class="search-result-date">${date}</time>
         <p class="search-result-desc">${result.description}</p>
-        <a class="search-result-link" href='${link}'>Read More</a>
+        <a class="search-result-link" href='${link}'>
+        <span>Read More</span>
+        <span class="ri-arrow-right-fill"></span>
+        </a>
     </li>
 `;
 }

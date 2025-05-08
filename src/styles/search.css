@@ -6,6 +6,7 @@ li.search-result-item {
 
   padding: 1rem;
 
+  outline: 1px solid var(--clr-surface-0);
   border-radius: var(--radius-surface);
 
   background-color: var(--clr-base);
@@ -14,12 +15,18 @@ li.search-result-item {
 h3.search-result-title {
   margin: 0;
   margin-bottom: 0.4rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 a.search-result-link-title {
   grid-column: span 2;
 
   text-decoration: none;
+
+  overflow: hidden;
 
   transition-property: color;
   transition-duration: 0.15s;
@@ -43,10 +50,16 @@ a.search-result-link-title {
 
 p.search-result-desc {
   width: 100%;
+  margin-top: 1.5rem;
 }
 
 a.search-result-link {
   align-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 
   font-weight: 600;
   text-decoration: none;
