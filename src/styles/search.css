@@ -11,6 +11,11 @@ li.search-result-item {
   background-color: var(--clr-base);
 }
 
+h3.search-result-title {
+  margin: 0;
+  margin-bottom: 0.4rem;
+}
+
 a.search-result-link-title {
   grid-column: span 2;
 
@@ -32,6 +37,8 @@ a.search-result-link-title {
 
 .search-result-date {
   grid-column: span 2;
+
+  color: var(--clr-subtext-0);
 }
 
 p.search-result-desc {
@@ -65,5 +72,3 @@ a.search-result-link:hover {
   outline: 1px solid var(--clr-surface-1);
   color: var(--clr-primary);
 }
-
-

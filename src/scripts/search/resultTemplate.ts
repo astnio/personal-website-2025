@@ -31,7 +31,7 @@ export default function resultTemplate(result: any) {
   return /*html*/ `
     <li class='search-result-item'>
         <a class="search-result-link-title" href='${link}'>
-          <h3>${result.title}</h3>              
+          <h3 class="search-result-title">${result.title}</h3>              
         </a>
         <time class="search-result-date">${date}</time>
         <p class="search-result-desc">${result.description}</p>
