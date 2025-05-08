@@ -34,7 +34,7 @@ export default function resultTemplate(result: any) {
           <h3>${result.title}</h3>              
         </a>
         <time class="search-result-date">${date}</time>
-        <p>${result.description}</p>
+        <p class="search-result-desc">${result.description}</p>
         <a class="search-result-link" href='${link}'>Read More</a>
     </li>
 `;
