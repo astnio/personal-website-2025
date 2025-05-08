@@ -13,8 +13,9 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     width: 100%;
   }
 
-  section.search-results {
+  section.search-results-section {
     width: 100%;
+    margin-bottom: 8rem;
   }
 
   ul#search-results {
@@ -57,7 +58,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   </div>
   <section
     aria-label='Search Results'
-    class='max-width search-results'>
+    class='max-width search-results-section'>
     <div class='loading-icon'>
       <i
         id='spinner'
