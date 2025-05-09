@@ -21,7 +21,6 @@ const title = 'Archive';
 
   li {
     padding: 0;
-    max-width: fit-content;
   }
 
   section {
@@ -30,36 +29,55 @@ const title = 'Archive';
   }
 
   .tabs-group-wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
     position: relative;
 
     background-color: var(--clr-base);
 
+    border-radius: var(--radius-surface);
+
+    outline: 1px solid var(--clr-surface-0);
+
     width: 100%;
+
+    overflow: hidden;
+  }
+
+  .tabs-titles-group-wrapper {
+    display: flex;
   }
 
   .tab-title-wrapper {
-    align-self: center;
-    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    cursor: pointer;
+
+    outline: 1px solid var(--clr-surface-0);
   }
 
-  .tab-title-wrapper[data-active='true'] > h3 {
+  .tab-title-wrapper:hover {
+    background-color: var(--clr-surface-0);
+  }
+
+  .tab-title-wrapper[data-active='true'] {
     color: var(--clr-primary);
+    background-color: var(--clr-mantle);
+    cursor: default;
   }
 
   .tab-content-wrapper {
-    position: absolute;
-    top: 2.5rem;
-    left: 0;
-
     width: 100%;
+    padding: 1rem;
   }
 
-  .tab-content-wrapper > ul {
+  ul.tab-content-list {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    gap: 0.45rem 0.4rem;
   }
 
   .tab-content-wrapper[data-active='false'] {
@@ -68,98 +86,101 @@ const title = 'Archive';
 </style>
 
 <BaseLayout pageTitle={title}>
-  <!-- <p>Posts within {category}</p>
-  <ul>
-    {posts.map((post) => <a href={`/blog/${post.slug}/`}>{post.data.title}</a>)}
-  </ul> -->
-
   <section class='max-width'>
     <h1>{title}</h1>
     <div class='tabs-group-wrapper'>
-      <div
-        class='tab-title-wrapper'
-        data-tab-id='tags'
-        data-active='true'>
-        <h3 class='tab-title'>Tags</h3>
+      <div class='tabs-titles-group-wrapper'>
+        <div
+          class='tab-title-wrapper'
+          data-tab-id='tags'
+          data-active='true'>
+          <h3 class='tab-title'>Tags</h3>
+        </div>
+        <div
+          class='tab-title-wrapper'
+          data-tab-id='categories'
+          data-active='false'>
+          <h3 class='tab-title'>Categories</h3>
+        </div>
+        <div
+          class='tab-title-wrapper'
+          data-tab-id='topics'
+          data-active='false'>
+          <h3 class='tab-title'>Topics</h3>
+        </div>
       </div>
-      <div
-        class='tab-content-wrapper'
-        data-tab-id='tags'
-        data-active='true'>
-        <ul>
-          <li>
-            <p>Tag 1</p>
-          </li>
-          <li>
-            <p>Tag 2</p>
-          </li>
-          <li>
-            <p>Tag 3</p>
-          </li>
-          <li>
-            <p>Tag 4</p>
-          </li>
-          <li>
-            <p>Tag 5</p>
-          </li>
-        </ul>
-      </div>
-      <div
-        class='tab-title-wrapper'
-        data-tab-id='categories'
-        data-active='false'>
-        <h3 class='tab-title'>Categories</h3>
-      </div>
-      <div
-        class='tab-content-wrapper'
-        data-tab-id='categories'
-        data-active='false'>
-        <ul>
-          <li>
-            <p>Category 1</p>
-          </li>
-          <li>
-            <p>Category 2</p>
-          </li>
-          <li>
-            <p>Category 3</p>
-          </li>
-          <li>
-            <p>Category 4</p>
-          </li>
-          <li>
-            <p>Category 5</p>
-          </li>
-        </ul>
-      </div>
+      <div class='tabs-content-group-wrapper'>
+        <div
+          class='tab-content-wrapper'
+          data-tab-id='tags'
+          data-active='true'>
+          <p>Filter by tag</p>
+          <ul class='tab-content-list'>
+            <li>
+              <p>Tag 1</p>
+            </li>
+            <li>
+              <p>Tag 2</p>
+            </li>
+            <li>
+              <p>Tag 3</p>
+            </li>
+            <li>
+              <p>Tag 4</p>
+            </li>
+            <li>
+              <p>Tag 5</p>
+            </li>
+          </ul>
+        </div>
 
-      <div
-        class='tab-title-wrapper'
-        data-tab-id='topics'
-        data-active='false'>
-        <h3 class='tab-title'>Topics</h3>
-      </div>
-      <div
-        class='tab-content-wrapper'
-        data-tab-id='topics'
-        data-active='false'>
-        <ul>
-          <li>
-            <p>Topic 1</p>
-          </li>
-          <li>
-            <p>Topic 2</p>
-          </li>
-          <li>
-            <p>Topic 3</p>
-          </li>
-          <li>
-            <p>Topic 4</p>
-          </li>
-          <li>
-            <p>Topic 5</p>
-          </li>
-        </ul>
+        <div
+          class='tab-content-wrapper'
+          data-tab-id='categories'
+          data-active='false'>
+          <p>Filter by category</p>
+          <ul class='tab-content-list'>
+            <li>
+              <p>Category 1</p>
+            </li>
+            <li>
+              <p>Category 2</p>
+            </li>
+            <li>
+              <p>Category 3</p>
+            </li>
+            <li>
+              <p>Category 4</p>
+            </li>
+            <li>
+              <p>Category 5</p>
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class='tab-content-wrapper'
+          data-tab-id='topics'
+          data-active='false'>
+          <p>Filter by topic</p>
+          <ul class='tab-content-list'>
+            <li>
+              <p>Topic 1</p>
+            </li>
+            <li>
+              <p>Topic 2</p>
+            </li>
+            <li>
+              <p>Topic 3</p>
+            </li>
+            <li>
+              <p>Topic 4</p>
+            </li>
+            <li>
+              <p>Topic 5</p>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
