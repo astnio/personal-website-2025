@@ -8,6 +8,7 @@ https://shoka.lostyu.me/archives/
 
 */
 
+import Tag from '@/components/interface/Tag.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const title = 'Archive';
@@ -64,7 +65,7 @@ const title = 'Archive';
 
   .tab-title-wrapper[data-active='true'] {
     color: var(--clr-primary);
-    background-color: var(--clr-mantle);
+    background-color: var(--clr-surface-0);
     cursor: default;
   }
 
@@ -82,6 +83,38 @@ const title = 'Archive';
 
   .tab-content-wrapper[data-active='false'] {
     display: none;
+  }
+
+  .tab-content-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-inline: 1rem;
+    padding-block: 0.4rem;
+
+    background-color: var(--clr-surface-0);
+
+    border-radius: var(--radius-pill);
+    outline: 1px solid var(--clr-surface-1);
+
+    cursor: pointer;
+
+    transition-property: background-color, outline, color;
+    transition-timing-function: ease-out;
+    transition-duration: 0.15s;
+  }
+
+  .tab-content-item:hover {
+    background-color: var(--clr-surface-1);
+    outline: 1px solid var(--clr-surface-2);
+  }
+
+  .tab-content-item[data-active='true'] {
+    background-color: var(--clr-primary);
+    outline: 1px solid var(--clr-surface-0);
+
+    color: var(--clr-mantle);
   }
 </style>
 
@@ -117,19 +150,26 @@ const title = 'Archive';
           <p>Filter by tag</p>
           <ul class='tab-content-list'>
             <li>
-              <p>Tag 1</p>
+              <p
+                class='tab-content-item'
+                data-active='true'>
+                All
+              </p>
             </li>
             <li>
-              <p>Tag 2</p>
+              <p class='tab-content-item'>Tag 1</p>
             </li>
             <li>
-              <p>Tag 3</p>
+              <p class='tab-content-item'>Tag 2</p>
             </li>
             <li>
-              <p>Tag 4</p>
+              <p class='tab-content-item'>Tag 3</p>
             </li>
             <li>
-              <p>Tag 5</p>
+              <p class='tab-content-item'>Tag 4</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Tag 5</p>
             </li>
           </ul>
         </div>
