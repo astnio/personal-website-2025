@@ -188,9 +188,9 @@ const {
       title=`View all ${title.toLowerCase()} posts`>
       <span class='posts-count-icon bx bxs-spreadsheet'></span>
       <p class='view-posts-link-label'>
-        <span>View </span><span></span>{postsCount}<span
-          >{postsCount === 1 ? ' Post' : ' Posts'}</span
-        >
+        <span>View </span>
+        <span>{postsCount}</span>
+        <span>{postsCount === 1 ? ' Post' : ' Posts'}</span>
       </p>
     </a>
   </div>
