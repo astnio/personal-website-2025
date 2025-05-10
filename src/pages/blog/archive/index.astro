@@ -44,12 +44,15 @@ const title = 'Blog | Archive';
 
   .tabs-titles-group-wrapper {
     display: flex;
+    flex-direction: column;
   }
 
   .tab-title-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+
+    padding-left: 1rem;
 
     width: 100%;
 
@@ -124,6 +127,18 @@ const title = 'Blog | Archive';
     outline: 1px solid var(--clr-surface-0);
 
     color: var(--clr-mantle);
+  }
+
+  @media screen and (min-width: 768px) {
+    .tabs-titles-group-wrapper {
+      flex-direction: row;
+    }
+
+    .tab-title-wrapper {
+      justify-content: center;
+
+      padding-left: 0rem;
+    }
   }
 </style>
 
