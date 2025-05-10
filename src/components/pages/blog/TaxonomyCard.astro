@@ -135,14 +135,14 @@ const {
     justify-content: center;
     flex-shrink: 0;
 
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-mantle);
 
     padding-inline: 1rem;
     padding-block: 0.6rem;
 
     border-radius: var(--radius-input);
 
-    outline: 1px solid var(--clr-surface-1);
+    outline: 1px solid var(--clr-surface-0);
 
     text-decoration: none;
 
@@ -155,13 +155,18 @@ const {
   }
 
   a.view-posts-link:hover {
-    background-color: var(--clr-surface-1);
-    outline: 1px solid var(--clr-surface-2);
+    background-color: var(--clr-surface-0);
+    outline: 1px solid var(--clr-surface-1);
   }
 
   a.view-posts-link > p {
     padding: 0;
     margin: 0;
+  }
+
+  a.view-posts-link:hover > p,
+  a.view-posts-link:hover > .posts-count-icon {
+    color: var(--clr-primary);
   }
 
   .view-posts-link-label {
