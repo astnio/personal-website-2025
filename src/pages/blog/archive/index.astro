@@ -149,6 +149,19 @@ const title = 'Blog | Archive';
     color: var(--clr-mantle);
   }
 
+  .filter-label {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 0.4ch;
+
+    font-size: 1.2rem;
+  }
+
+  .filter-icon {
+    font-size: 1.5rem;
+  }
+
   @media screen and (min-width: 768px) {
     .tabs-titles-group-wrapper {
       flex-direction: row;
@@ -199,7 +212,10 @@ const title = 'Blog | Archive';
           class='tab-content-wrapper'
           data-tab-id='tags'
           data-active='true'>
-          <p>Filter by tag</p>
+          <p class='filter-label'>
+            <span class='filter-icon ri-filter-3-fill'></span>
+            <span>Filter by tag</span>
+          </p>
           <ul class='tab-content-list'>
             <li>
               <p
@@ -263,7 +279,10 @@ const title = 'Blog | Archive';
           class='tab-content-wrapper'
           data-tab-id='categories'
           data-active='false'>
-          <p>Filter by category</p>
+          <p class='filter-label'>
+            <span class='filter-icon ri-filter-3-fill'></span>
+            <span>Filter by category</span>
+          </p>
           <ul class='tab-content-list'>
             <li>
               <p>Category 1</p>
@@ -287,7 +306,10 @@ const title = 'Blog | Archive';
           class='tab-content-wrapper'
           data-tab-id='topics'
           data-active='false'>
-          <p>Filter by topic</p>
+          <p class='filter-label'>
+            <span class='filter-icon ri-filter-3-fill'></span>
+            <span>Filter by topic</span>
+          </p>
           <ul class='tab-content-list'>
             <li>
               <p>Topic 1</p>
