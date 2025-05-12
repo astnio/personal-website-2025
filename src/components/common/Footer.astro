@@ -1,7 +1,6 @@
 ---
-import BuildDateMessage from "@components/BuildDateMessage.astro";
-import CustomizationMenu from "@components/CustomizationMenu.astro";
-
+import BuildDateMessage from '@components/BuildDateMessage.astro';
+import CustomizationMenu from '@components/CustomizationMenu.astro';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -38,9 +37,9 @@ const currentYear = new Date().getFullYear();
   }
 
   .copyright-paragraph {
-    display: flex;
-    align-items: center;
-    gap: 0.6ch;
+    /* display: flex; */
+    /* align-items: center; */
+    /* gap: 0.6ch; */
   }
 
   .build-date-paragraph {
@@ -107,9 +106,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <p class='copyright-paragraph'>
-      <span class='visually-hidden'>&#169;</span>
-      <span class='bx bxs-copyright'></span>
-      <span>2021 &#45;</span>
+      <span>&#169; 2021 &#45;</span>
       <span id='footer-copyright-current-year'>
         {currentYear}
       </span>
