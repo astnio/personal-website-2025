@@ -59,16 +59,29 @@ const title = 'Blog | Archive';
     cursor: pointer;
 
     outline: 1px solid var(--clr-surface-0);
+
+    transition-property: background-color;
+    transition-timing-function: ease-out;
+    transition-duration: 0.15s;
   }
 
   .tab-title-wrapper:hover {
     background-color: var(--clr-surface-0);
   }
 
+  .tab-title-wrapper:hover > .tab-title {
+    color: var(--clr-primary);
+  }
+
   .tab-title-wrapper[data-active='true'] {
     color: var(--clr-primary);
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-crust);
     cursor: default;
+  }
+
+  .tab-title-wrapper[data-active='true'] > .tab-title {
+    color: var(--clr-primary);
+    /* font-weight: bold; */
   }
 
   .tab-title {
@@ -79,6 +92,10 @@ const title = 'Blog | Archive';
 
     font-weight: 400;
     font-size: 1.2rem;
+
+    transition-property: color;
+    transition-timing-function: ease-out;
+    transition-duration: 0.15s;
   }
 
   .tab-content-wrapper {
@@ -90,7 +107,7 @@ const title = 'Blog | Archive';
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.45rem 0.4rem;
+    gap: 0.8rem 0.8rem;
   }
 
   .tab-content-wrapper[data-active='false'] {
@@ -104,6 +121,8 @@ const title = 'Blog | Archive';
 
     padding-inline: 1rem;
     padding-block: 0.4rem;
+
+    margin: 0;
 
     background-color: var(--clr-surface-0);
 
@@ -120,6 +139,7 @@ const title = 'Blog | Archive';
   .tab-content-item:hover {
     background-color: var(--clr-surface-1);
     outline: 1px solid var(--clr-surface-2);
+    color: var(--clr-primary);
   }
 
   .tab-content-item[data-active='true'] {
@@ -202,6 +222,39 @@ const title = 'Blog | Archive';
             </li>
             <li>
               <p class='tab-content-item'>Tag 5</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Lorem Ipsum</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Lorem Ipsum 10</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Lorem Ipsum 11</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Lorem Ipsum 12</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Lorem Ipsum 13</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Lorem Ipsum 14</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Lorem Ipsum 15</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Lorem Ipsum 16</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Lorem Ipsum 17</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Lorem Ipsum 18</p>
+            </li>
+            <li>
+              <p class='tab-content-item'>Lorem Ipsum 19</p>
             </li>
           </ul>
         </div>
