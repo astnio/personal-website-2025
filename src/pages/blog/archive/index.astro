@@ -101,14 +101,16 @@ const title = 'Blog | Archive';
   .tabs-content-group-wrapper {
     position: relative;
 
-    max-height: 6rem;
-    overflow: hidden;
+    /* max-height: 6rem; */
+    /* overflow: hidden; */
   }
 
   .btn-show-more-tabs-wrapper {
-    position: absolute;
-    right: 1rem;
-    bottom: 0.6rem;
+    /* position: absolute; */
+    /* right: 1rem; */
+    /* bottom: 0.6rem; */
+
+    padding: 1rem;
   }
 
   .btn-show-more-tabs {
@@ -116,19 +118,21 @@ const title = 'Blog | Archive';
     align-items: center;
     justify-content: center;
 
-    background-color: var(--clr-mantle);
+    /* background-color: var(--clr-mantle); */
+    background-color: transparent;
 
     border: none;
-    border-radius: var(--radius-input);
-    outline: 1px solid var(--clr-surface-0);
+    /* border-radius: var(--radius-input); */
+    /* outline: 1px solid var(--clr-surface-0); */
 
-    padding-inline: 1rem;
-    padding-block: 0.6rem;
+    /* padding-inline: 1rem; */
+    /* padding-block: 0.6rem; */
 
     cursor: pointer;
 
     font-size: 1rem;
-    font-weight: 600;
+    /* font-weight: 600; */
+    color: var(--clr-primary);
 
     transition-property: background-color, outline, color;
     transition-duration: 0.15s;
@@ -136,9 +140,9 @@ const title = 'Blog | Archive';
   }
 
   .btn-show-more-tabs:hover {
-    background-color: var(--clr-surface-0);
-    outline: 1px solid var(--clr-surface-1);
-    color: var(--clr-primary);
+    /* background-color: var(--clr-surface-0); */
+    /* outline: 1px solid var(--clr-surface-1); */
+    /* color: var(--clr-primary); */
   }
 
   .btn-show-more-tabs[data-show-more='true'] > .btn-show-more-icon {
@@ -151,13 +155,13 @@ const title = 'Blog | Archive';
 
   .btn-show-more-icon {
     position: relative;
-    top: 2px;
+    /* top: 2px; */
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 2rem;
+    font-size: 1.8rem;
 
     /* outline: 1px solid white; */
     border-radius: 100%;
@@ -165,8 +169,8 @@ const title = 'Blog | Archive';
     width: 1.5rem;
     height: 1.5rem;
 
-    margin-left: 0.2rem;
-    margin-right: -0.6rem;
+    margin-right: 0.2rem;
+    margin-left: -0.4rem;
 
     transition-property: transform;
     transition-duration: 0.3s;
@@ -175,8 +179,9 @@ const title = 'Blog | Archive';
 
   .tab-content-wrapper {
     /* width: 100%; */
-    max-width: calc(100% - 8rem);
-    padding: 1rem;
+    /* max-width: calc(100% - 8rem); */
+    padding-inline: 1rem;
+    margin-top: 1rem;
   }
 
   ul.tab-content-list {
@@ -184,6 +189,12 @@ const title = 'Blog | Archive';
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.8rem 0.8rem;
+
+    margin: 0;
+    padding-block: 1px;
+    padding-inline: 1px;
+
+    overflow: hidden;
   }
 
   .tab-content-wrapper[data-active='false'] {
@@ -234,12 +245,25 @@ const title = 'Blog | Archive';
     gap: 0.4ch;
 
     margin: 0;
+    margin-bottom: 1rem;
 
     font-size: 1.2rem;
   }
 
   .filter-icon {
     font-size: 1.5rem;
+  }
+
+  .tabs-content-group-wrapper:has(.btn-show-more-tabs[data-show-more='false'])
+    > .tab-content-wrapper
+    > .tab-content-list {
+    max-height: 2rem;
+  }
+
+  .tabs-content-group-wrapper:has(.btn-show-more-tabs[data-show-more='true'])
+    > .tab-content-wrapper
+    > .tab-content-list {
+    max-height: 100%;
   }
 
   @media screen and (min-width: 768px) {
@@ -288,15 +312,6 @@ const title = 'Blog | Archive';
         </div>
       </div>
       <div class='tabs-content-group-wrapper'>
-        <div class='btn-show-more-tabs-wrapper'>
-          <button
-            class='btn-show-more-tabs'
-            id='btn-show-more-tabs'
-            data-show-more='false'>
-            <span id='btn-show-more-tabs-label'>Show More</span>
-            <span class='btn-show-more-icon ri-arrow-drop-down-fill'></span>
-          </button>
-        </div>
         <div
           class='tab-content-wrapper'
           data-tab-id='tags'
@@ -416,6 +431,16 @@ const title = 'Blog | Archive';
               <p>Topic 5</p>
             </li>
           </ul>
+        </div>
+
+        <div class='btn-show-more-tabs-wrapper'>
+          <button
+            class='btn-show-more-tabs'
+            id='btn-show-more-tabs'
+            data-show-more='false'>
+            <span class='btn-show-more-icon ri-arrow-drop-down-fill'></span>
+            <span id='btn-show-more-tabs-label'>Show More</span>
+          </button>
         </div>
       </div>
     </div>
