@@ -494,6 +494,20 @@ const title = 'Blog | Archive';
 
           lastTabTitle!.setAttribute('data-active', 'false');
           tabTitleTarget!.setAttribute('data-active', 'true');
+
+          const currentTabId = tabTitleTarget.getAttribute('data-tab-id');
+          const lastTabId = lastTabTitle.getAttribute('data-tab-id');
+
+          const currentTabContentElement = document.querySelector(
+            `.tab-content-wrapper[data-tab-id=${currentTabId}]`
+          );
+          const lastTabContentElement = document.querySelector(
+            `.tab-content-wrapper[data-tab-id=${lastTabId}]`
+          );
+
+          lastTabContentElement!.setAttribute('data-active', 'false');
+          currentTabContentElement!.setAttribute('data-active', 'true');
+
           lastTabTitle = tabTitleTarget;
         });
       });
