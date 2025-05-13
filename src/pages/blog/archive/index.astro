@@ -185,6 +185,8 @@ const title = 'Blog | Archive';
   }
 
   ul.tab-content-list {
+    interpolate-size: allow-keywords;
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -195,6 +197,10 @@ const title = 'Blog | Archive';
     padding-inline: 1px;
 
     overflow: hidden;
+
+    transition-property: height;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-in-out;
   }
 
   .tab-content-wrapper[data-active='false'] {
@@ -257,13 +263,13 @@ const title = 'Blog | Archive';
   .tabs-content-group-wrapper:has(.btn-show-more-tabs[data-show-more='false'])
     > .tab-content-wrapper
     > .tab-content-list {
-    max-height: 2rem;
+    height: 2rem;
   }
 
   .tabs-content-group-wrapper:has(.btn-show-more-tabs[data-show-more='true'])
     > .tab-content-wrapper
     > .tab-content-list {
-    max-height: 100%;
+    height: auto;
   }
 
   @media screen and (min-width: 768px) {
