@@ -98,8 +98,84 @@ const title = 'Blog | Archive';
     transition-duration: 0.15s;
   }
 
+  .tabs-content-group-wrapper {
+    position: relative;
+
+    max-height: 6rem;
+    overflow: hidden;
+  }
+
+  .btn-show-more-tabs-wrapper {
+    position: absolute;
+    right: 1rem;
+    bottom: 0.6rem;
+  }
+
+  .btn-show-more-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--clr-mantle);
+
+    border: none;
+    border-radius: var(--radius-input);
+    outline: 1px solid var(--clr-surface-0);
+
+    padding-inline: 1rem;
+    padding-block: 0.6rem;
+
+    cursor: pointer;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    transition-property: background-color, outline, color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  .btn-show-more-tabs:hover {
+    background-color: var(--clr-surface-0);
+    outline: 1px solid var(--clr-surface-1);
+    color: var(--clr-primary);
+  }
+
+  .btn-show-more-tabs[data-show-more='true'] > .btn-show-more-icon {
+    transform: rotate(180deg);
+  }
+
+  .btn-show-more-tabs[data-show-more='false'] > .btn-show-more-icon {
+    transform: rotate(0deg);
+  }
+
+  .btn-show-more-icon {
+    position: relative;
+    top: 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2rem;
+
+    /* outline: 1px solid white; */
+    border-radius: 100%;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    margin-left: 0.2rem;
+    margin-right: -0.6rem;
+
+    transition-property: transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+  }
+
   .tab-content-wrapper {
-    width: 100%;
+    /* width: 100%; */
+    max-width: calc(100% - 8rem);
     padding: 1rem;
   }
 
@@ -157,6 +233,8 @@ const title = 'Blog | Archive';
     justify-content: start;
     gap: 0.4ch;
 
+    margin: 0;
+
     font-size: 1.2rem;
   }
 
@@ -210,6 +288,15 @@ const title = 'Blog | Archive';
         </div>
       </div>
       <div class='tabs-content-group-wrapper'>
+        <div class='btn-show-more-tabs-wrapper'>
+          <button
+            class='btn-show-more-tabs'
+            id='btn-show-more-tabs'
+            data-show-more='false'>
+            <span id='btn-show-more-tabs-label'>Show More</span>
+            <span class='btn-show-more-icon ri-arrow-drop-down-fill'></span>
+          </button>
+        </div>
         <div
           class='tab-content-wrapper'
           data-tab-id='tags'
@@ -334,3 +421,29 @@ const title = 'Blog | Archive';
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const btnShowMore = document.getElementById('btn-show-more-tabs')!;
+    const btnShowMoreLabel = document.getElementById(
+      'btn-show-more-tabs-label'
+    )!;
+
+    function updateShowMoreBtn() {
+      const showMoreEnabled =
+        btnShowMore.getAttribute('data-show-more') === 'true';
+
+      if (showMoreEnabled) {
+        btnShowMore.setAttribute('data-show-more', 'false');
+        btnShowMoreLabel!.textContent = 'Show More';
+      } else {
+        btnShowMore.setAttribute('data-show-more', 'true');
+        btnShowMoreLabel!.textContent = 'Show Less';
+      }
+    }
+
+    btnShowMore!.addEventListener('click', () => {
+      updateShowMoreBtn();
+    });
+  });
+</script>
