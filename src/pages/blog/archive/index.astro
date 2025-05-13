@@ -55,10 +55,12 @@ const title = 'Blog | Archive';
     padding-left: 1rem;
 
     width: 100%;
+    background-color: var(--clr-base);
 
     cursor: pointer;
 
     outline: 1px solid var(--clr-surface-0);
+    border: none;
 
     transition-property: background-color;
     transition-timing-function: ease-out;
@@ -289,7 +291,7 @@ const title = 'Blog | Archive';
   <section class='max-width'>
     <div class='tabs-group-wrapper'>
       <div class='tabs-titles-group-wrapper'>
-        <div
+        <button
           class='tab-title-wrapper'
           data-tab-id='tags'
           data-active='true'>
@@ -297,17 +299,17 @@ const title = 'Blog | Archive';
             <span class='ri-price-tag-3-fill'></span>
             <span>Tags</span>
           </p>
-        </div>
-        <div
+        </button>
+        <button
           class='tab-title-wrapper'
           data-tab-id='categories'
           data-active='false'>
-          <p class='tab-title'>
+          <b class='tab-title'>
             <span class='ri-apps-2-fill'></span>
             <span>Categories</span>
-          </p>
-        </div>
-        <div
+          </b>
+        </button>
+        <button
           class='tab-title-wrapper'
           data-tab-id='topics'
           data-active='false'>
@@ -315,7 +317,7 @@ const title = 'Blog | Archive';
             <span class='ri-lightbulb-fill'></span>
             <span>Topics</span>
           </p>
-        </div>
+        </button>
       </div>
       <div class='tabs-content-group-wrapper'>
         <div
