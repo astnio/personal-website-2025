@@ -304,10 +304,10 @@ const title = 'Blog | Archive';
           class='tab-title-wrapper'
           data-tab-id='categories'
           data-active='false'>
-          <b class='tab-title'>
+          <p class='tab-title'>
             <span class='ri-apps-2-fill'></span>
             <span>Categories</span>
-          </b>
+          </p>
         </button>
         <button
           class='tab-title-wrapper'
@@ -482,9 +482,24 @@ const title = 'Blog | Archive';
     }
 
     function initBtnTabTitle() {
-      //todo
+      const tabTitles = document.querySelectorAll('.tab-title-wrapper');
+
+      let lastTabTitle: HTMLElement = tabTitles[0] as HTMLElement;
+
+      tabTitles.forEach((tabTitle) => {
+        tabTitle.addEventListener('click', (e) => {
+          const tabTitleTarget: HTMLElement = (
+            e.target! as HTMLElement
+          ).closest('.tab-title-wrapper')!;
+
+          lastTabTitle!.setAttribute('data-active', 'false');
+          tabTitleTarget!.setAttribute('data-active', 'true');
+          lastTabTitle = tabTitleTarget;
+        });
+      });
     }
 
     initBtnShowMore();
+    initBtnTabTitle();
   });
 </script>
