@@ -17,8 +17,11 @@ document.addEventListener('astro:page-load', () => {
     '.btn-close-customization-menu'
   );
 
-  const iconClosedClass = 'bx bxs-palette';
-  const iconOpenedlass = 'bx bx-palette';
+  //TODO: Fix the weird dependency I made where I also need to update line 62 of navDrawerTouchControl.ts as
+  //the icon is also manually defined there
+
+  const iconClosedClass = 'ri-palette-fill';
+  const iconOpenedClass = 'ri-palette-line';
 
   function menuIsOpen(): boolean {
     return Array.from(customizationMenus).some((menu) => {
@@ -50,7 +53,7 @@ document.addEventListener('astro:page-load', () => {
     });
 
     customizationButtonsIcons!.forEach((icon) => {
-      icon.className = `btn-show-customization-options-icon ${iconOpenedlass}`;
+      icon.className = `btn-show-customization-options-icon ${iconOpenedClass}`;
     });
   }
 

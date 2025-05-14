@@ -55,7 +55,11 @@ export function initDrawerTouch() {
           '.btn-show-customization-options-icon'
         );
 
-        const iconClosedClass = 'bx bxs-customize';
+
+        //TODO: This ain't right. You also need to update this in customizationMenuButton.ts, so if this
+        //different then it won't reflect unless you update it everywhere. Just make it change a 
+        //data attribute or something instead and handle this with CSS or something
+        const iconClosedClass = 'ri-palette-fill';
 
         customizationOverlays.forEach((overlay) => {
           overlay.setAttribute('data-active', 'false');
