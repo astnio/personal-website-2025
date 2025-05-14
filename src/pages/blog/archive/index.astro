@@ -8,8 +8,68 @@ https://shoka.lostyu.me/archives/
 
 */
 
+import { calculateReadingTime } from '@/scripts/utils/readingTime';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
+const allPosts = await getCollection('blog');
+
+const sortedPosts = allPosts
+  .sort(
+    (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
+  )
+  .map((post: any) => ({
+    ...post,
+    readingTime: calculateReadingTime(post.body),
+  }));
+
+const topicCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const topic = post.data.topic;
+    acc[topic] = (acc[topic] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+const categoryCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const category = post.data.category;
+    acc[category] = (acc[category] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+const tagCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const tags = post.data.tags;
+    tags.forEach((tag: string) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+    });
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+const topics = [
+  ...new Set(sortedPosts.map((post: any) => post.data.topic).flat()),
+].sort((a, b) => {
+  const countDiff = topicCounts[b] - topicCounts[a];
+  return countDiff !== 0 ? countDiff : a.localeCompare(b);
+});
+const categories = [
+  ...new Set(sortedPosts.map((post: any) => post.data.category).flat()),
+].sort((a, b) => {
+  const countDiff = categoryCounts[b] - categoryCounts[a];
+  return countDiff !== 0 ? countDiff : a.localeCompare(b);
+});
+const tags = [
+  ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
+].sort((a, b) => {
+  const countDiff = tagCounts[b] - tagCounts[a];
+  return countDiff !== 0 ? countDiff : a.localeCompare(b);
+});
 const title = 'Blog | Archive';
 ---
 
@@ -336,54 +396,13 @@ const title = 'Blog | Archive';
                 All
               </p>
             </li>
-            <li>
-              <p class='tab-content-item'>Tag 1</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Tag 2</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Tag 3</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Tag 4</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Tag 5</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Lorem Ipsum</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Lorem Ipsum 10</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Lorem Ipsum 11</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Lorem Ipsum 12</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Lorem Ipsum 13</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Lorem Ipsum 14</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Lorem Ipsum 15</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Lorem Ipsum 16</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Lorem Ipsum 17</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Lorem Ipsum 18</p>
-            </li>
-            <li>
-              <p class='tab-content-item'>Lorem Ipsum 19</p>
-            </li>
+            {
+              tags.map((tag) => (
+                <li>
+                  <p class='tab-content-item'>{tag}</p>
+                </li>
+              ))
+            }
           </ul>
         </div>
 
@@ -396,21 +415,13 @@ const title = 'Blog | Archive';
             <span>Filter by category</span>
           </p>
           <ul class='tab-content-list'>
-            <li>
-              <p>Category 1</p>
-            </li>
-            <li>
-              <p>Category 2</p>
-            </li>
-            <li>
-              <p>Category 3</p>
-            </li>
-            <li>
-              <p>Category 4</p>
-            </li>
-            <li>
-              <p>Category 5</p>
-            </li>
+            {
+              categories.map((category) => (
+                <li>
+                  <p class='tab-content-item'>{category}</p>
+                </li>
+              ))
+            }
           </ul>
         </div>
 
@@ -423,21 +434,13 @@ const title = 'Blog | Archive';
             <span>Filter by topic</span>
           </p>
           <ul class='tab-content-list'>
-            <li>
-              <p>Topic 1</p>
-            </li>
-            <li>
-              <p>Topic 2</p>
-            </li>
-            <li>
-              <p>Topic 3</p>
-            </li>
-            <li>
-              <p>Topic 4</p>
-            </li>
-            <li>
-              <p>Topic 5</p>
-            </li>
+            {
+              topics.map((topic) => (
+                <li>
+                  <p class='tab-content-item'>{topic}</p>
+                </li>
+              ))
+            }
           </ul>
         </div>
 
