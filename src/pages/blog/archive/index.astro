@@ -415,10 +415,21 @@ const title = 'Blog | Archive';
             <span>Filter by category</span>
           </p>
           <ul class='tab-content-list'>
+            <li>
+              <p
+                class='tab-content-item'
+                data-active='false'>
+                All
+              </p>
+            </li>
             {
               categories.map((category) => (
                 <li>
-                  <p class='tab-content-item'>{category}</p>
+                  <p
+                    class='tab-content-item'
+                    data-active='false'>
+                    {category}
+                  </p>
                 </li>
               ))
             }
@@ -434,10 +445,21 @@ const title = 'Blog | Archive';
             <span>Filter by topic</span>
           </p>
           <ul class='tab-content-list'>
+            <li>
+              <p
+                class='tab-content-item'
+                data-active='false'>
+                All
+              </p>
+            </li>
             {
               topics.map((topic) => (
                 <li>
-                  <p class='tab-content-item'>{topic}</p>
+                  <p
+                    class='tab-content-item'
+                    data-active='false'>
+                    {topic}
+                  </p>
                 </li>
               ))
             }
@@ -516,7 +538,29 @@ const title = 'Blog | Archive';
       });
     }
 
+    function initBtnItem() {
+      const btnItems = document.querySelectorAll('.tab-content-item');
+
+      let lastActiveButton = document.querySelector(
+        '.tab-content-item[data-active="true"]'
+      );
+
+      btnItems.forEach((btnItem) => {
+        btnItem.addEventListener('click', (e) => {
+          const targetButton: HTMLElement = (e.target as HTMLElement).closest(
+            '.tab-content-item'
+          ) as HTMLElement;
+
+          lastActiveButton!.setAttribute('data-active', 'false');
+          targetButton.setAttribute('data-active', 'true');
+
+          lastActiveButton = targetButton;
+        });
+      });
+    }
+
     initBtnShowMore();
     initBtnTabTitle();
+    initBtnItem();
   });
 </script>
