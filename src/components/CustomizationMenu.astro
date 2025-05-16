@@ -18,7 +18,7 @@ const { inDrawer, id } = Astro.props;
     display: none;
   }
 
-  button.btn-show-customization-options {
+  button.btn-customize {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -46,14 +46,14 @@ const { inDrawer, id } = Astro.props;
     transition-timing-function: ease-out;
   }
 
-  button.btn-show-customization-options:hover {
+  button.btn-customize:hover {
     background-color: var(--clr-surface-1);
     cursor: pointer;
     outline: 1px solid var(--clr-surface-2);
     color: var(--clr-primary);
   }
 
-  button.btn-show-customization-options:hover > .icon-wrapper {
+  button.btn-customize:hover > .btn-customize-icon-wrapper {
     background-color: var(--clr-surface-0);
     color: var(--clr-primary);
   }
@@ -72,7 +72,7 @@ const { inDrawer, id } = Astro.props;
     font-weight: 500;
   }
 
-  .icon-wrapper {
+  .btn-customize-icon-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -188,7 +188,7 @@ const { inDrawer, id } = Astro.props;
     width: 100%;
   }
 
-  .lightswitch-wrapper {
+  .light-switch-wrapper {
     background-color: var(--clr-base);
 
     width: 100%;
@@ -198,6 +198,26 @@ const { inDrawer, id } = Astro.props;
     border: none;
     border-radius: var(--radius-surface);
     outline: 1px solid var(--clr-surface-0);
+  }
+
+  div.btn-customize-icon-wrapper[data-active='true']
+    > span#btn-customize-icon-closed.btn-customize-icon {
+    display: none;
+  }
+
+  div.btn-customize-icon-wrapper[data-active='false']
+    > span#btn-customize-icon-closed.btn-customize-icon {
+    display: inline-block;
+  }
+
+  div.btn-customize-icon-wrapper[data-active='true']
+    > span#btn-customize-icon-opened.btn-customize-icon {
+    display: inline-block;
+  }
+
+  div.btn-customize-icon-wrapper[data-active='false']
+    > span#btn-customize-icon-opened.btn-customize-icon {
+    display: none;
   }
 
   @media screen and (max-width: 768px) {
@@ -220,10 +240,19 @@ const { inDrawer, id } = Astro.props;
 <div
   class='customization-menu-wrapper'
   data-in-drawer={inDrawer}>
-  <button class='btn-show-customization-options'>
+  <button class='btn-customize'>
     <span class='btn-label'>Customize</span>
-    <div class='icon-wrapper'>
-      <span class='btn-show-customization-options-icon ri-palette-fill'></span>
+    <div
+      class='btn-customize-icon-wrapper'
+      data-active='false'>
+      <span
+        id='btn-customize-icon-closed'
+        class='btn-customize-icon ri-palette-fill'
+      ></span>
+      <span
+        id='btn-customize-icon-opened'
+        class='btn-customize-icon ri-palette-line'
+      ></span>
     </div>
   </button>
   <div
@@ -237,7 +266,7 @@ const { inDrawer, id } = Astro.props;
       >
     </div>
     <div class='menu-content'>
-      <div class='lightswitch-wrapper'>
+      <div class='light-switch-wrapper'>
         <LightSwitch id={id} />
       </div>
       <SelectFont id={id} />

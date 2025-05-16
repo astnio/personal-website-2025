@@ -51,15 +51,9 @@ export function initDrawerTouch() {
         const customizationMenus = document.querySelectorAll(
           '.customization-menu'
         );
-        const customizationButtonsIcons = document.querySelectorAll(
-          '.btn-show-customization-options-icon'
+        const allCustomizeButtonsIcons = document.querySelectorAll(
+          '.btn-customize-icon-wrapper'
         );
-
-
-        //TODO: This ain't right. You also need to update this in customizationMenuButton.ts, so if this
-        //different then it won't reflect unless you update it everywhere. Just make it change a 
-        //data attribute or something instead and handle this with CSS or something
-        const iconClosedClass = 'ri-palette-fill';
 
         customizationOverlays.forEach((overlay) => {
           overlay.setAttribute('data-active', 'false');
@@ -69,8 +63,8 @@ export function initDrawerTouch() {
           menu.setAttribute('data-active', 'false');
         });
 
-        customizationButtonsIcons!.forEach((icon) => {
-          icon.className = `btn-show-customization-options-icon ${iconClosedClass}`;
+        allCustomizeButtonsIcons!.forEach((buttonIcon) => {
+          buttonIcon.setAttribute('data-active', 'false');
         });
       }
       closeCustomizationMenus();

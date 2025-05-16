@@ -1,10 +1,8 @@
 document.addEventListener('astro:page-load', () => {
-  const customizationButtons = document.querySelectorAll(
-    '.btn-show-customization-options'
-  );
+  const customizationButtons = document.querySelectorAll('.btn-customize');
 
-  const customizationButtonsIcons = document.querySelectorAll(
-    '.btn-show-customization-options-icon'
+  const allCustomizeButtonsIcons = document.querySelectorAll(
+    '.btn-customize-icon-wrapper'
   );
 
   const customizationOverlays = document.querySelectorAll(
@@ -16,12 +14,6 @@ document.addEventListener('astro:page-load', () => {
   const menuCloseButtons = document.querySelectorAll(
     '.btn-close-customization-menu'
   );
-
-  //TODO: Fix the weird dependency I made where I also need to update line 62 of navDrawerTouchControl.ts as
-  //the icon is also manually defined there
-
-  const iconClosedClass = 'ri-palette-fill';
-  const iconOpenedClass = 'ri-palette-line';
 
   function menuIsOpen(): boolean {
     return Array.from(customizationMenus).some((menu) => {
@@ -38,8 +30,8 @@ document.addEventListener('astro:page-load', () => {
       menu.setAttribute('data-active', 'false');
     });
 
-    customizationButtonsIcons!.forEach((icon) => {
-      icon.className = `btn-show-customization-options-icon ${iconClosedClass}`;
+    allCustomizeButtonsIcons!.forEach((buttonIcon) => {
+      buttonIcon.setAttribute('data-active', 'false');
     });
   }
 
@@ -52,8 +44,8 @@ document.addEventListener('astro:page-load', () => {
       menu.setAttribute('data-active', 'true');
     });
 
-    customizationButtonsIcons!.forEach((icon) => {
-      icon.className = `btn-show-customization-options-icon ${iconOpenedClass}`;
+    allCustomizeButtonsIcons!.forEach((buttonIcon) => {
+      buttonIcon.setAttribute('data-active', 'true');
     });
   }
 
