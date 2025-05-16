@@ -67,11 +67,11 @@ const hasPages = page.url.next !== undefined || page.url.prev !== undefined;
           href={page.url.first}
           title='First Page'>
           <p class='visually-hidden'>First Page</p>
-          <i class='bx bx-chevrons-left' />
+          <i class='ri-arrow-left-double-fill' />
         </a>
       ) : (
         <p class='page-nav-icon-wrapper disabled'>
-          <i class='bx bx-chevrons-left' />
+          <i class='ri-arrow-left-double-fill' />
         </p>
       )}
       {page.url.prev ? (
@@ -80,11 +80,11 @@ const hasPages = page.url.next !== undefined || page.url.prev !== undefined;
           href={page.url.prev}
           title='Previous Page'>
           <p class='visually-hidden'>Previous Page</p>
-          <i class='bx bx-chevron-left' />
+          <i class='ri-arrow-left-s-fill' />
         </a>
       ) : (
         <p class='page-nav-icon-wrapper disabled'>
-          <i class='bx bx-chevron-left' />
+          <i class='ri-arrow-left-s-fill' />
         </p>
       )}
       <p class='page-counter'>
@@ -98,11 +98,11 @@ const hasPages = page.url.next !== undefined || page.url.prev !== undefined;
           href={page.url.next}
           title='Next Page'>
           <p class='visually-hidden'>Next Page</p>
-          <i class='bx bx-chevron-right' />
+          <i class='ri-arrow-right-s-fill' />
         </a>
       ) : (
         <p class='page-nav-icon-wrapper disabled'>
-          <i class='bx bx-chevron-right' />
+          <i class='ri-arrow-right-s-fill' />
         </p>
       )}
       {page.url.last ? (
@@ -111,11 +111,11 @@ const hasPages = page.url.next !== undefined || page.url.prev !== undefined;
           href={page.url.last}
           title='Last Page'>
           <p class='visually-hidden'>Last Page</p>
-          <i class='bx bx-chevrons-right' />
+          <i class='ri-arrow-right-double-fill' />
         </a>
       ) : (
         <p class='page-nav-icon-wrapper disabled'>
-          <i class='bx bx-chevrons-right' />
+          <i class='ri-arrow-right-double-fill' />
         </p>
       )}
     </nav>
