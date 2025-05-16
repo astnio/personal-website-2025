@@ -87,7 +87,9 @@ const { images } = Astro.props;
 
   .btn-nav-icon {
     position: absolute;
-    top: 0.5rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    /* top: 0.5rem; */
   }
 
   .images-wrapper {
@@ -106,7 +108,7 @@ const { images } = Astro.props;
       id='btn-previous-img'
       class='btn-nav-img btn-nav-left'
       title='Previous Image'
-      ><span class='btn-nav-icon bx bx-chevron-left'></span><span
+      ><span class='btn-nav-icon ri-arrow-left-wide-fill'></span><span
         class='visually-hidden'>Previous Image</span
       ></button
     >
@@ -116,10 +118,9 @@ const { images } = Astro.props;
     <button
       id='btn-next-img'
       class='btn-nav-img btn-nav-right'
-      title='Next Image'
-      ><span class='btn-nav-icon bx bx-chevron-right'></span><span
-        class='visually-hidden'>Next Image</span
-      ></button
+      title='Next Image'>
+      <span class='btn-nav-icon ri-arrow-right-wide-fill'></span>
+      <span class='visually-hidden'>Next Image</span></button
     >
   </div>
   <div class='images-wrapper'>

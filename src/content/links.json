@@ -72,17 +72,17 @@
     {
       "url": "https://astn.sh/leetcode",
       "label": "LeetCode",
-      "iconClass": "bx bx-code-alt"
+      "iconClass": "ri-code-box-fill"
     },
     {
       "url": "https://astn.sh/hackerrank",
       "label": "HackerRank",
-      "iconClass": "bx bxs-terminal"
+      "iconClass": "ri-terminal-box-fill"
     },
     {
       "url": "https://astn.sh/credly",
       "label": "Credly",
-      "iconClass": "bx bxs-award"
+      "iconClass": "ri-award-fill"
     }
   ]
 }

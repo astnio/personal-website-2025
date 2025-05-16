@@ -1,4 +1,3 @@
-import 'boxicons';
 import initColorSchemeDetector from './initColorScheme';
 import initSavedTheme from './initTheme';
 import { initDrawerTouch } from './navDrawerTouchControl';

@@ -22,11 +22,6 @@
     },
     {
       "use": "Icons",
-      "name": "Boxicons",
-      "url": "https://boxicons.com/"
-    },
-    {
-      "use": "Icons",
       "name": "Remix Icon",
       "url": "https://remixicon.com/"
     },
