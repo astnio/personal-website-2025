@@ -58,19 +58,37 @@ const topics = [
   const countDiff = topicCounts[b] - topicCounts[a];
   return countDiff !== 0 ? countDiff : a.localeCompare(b);
 });
+
 const categories = [
   ...new Set(sortedPosts.map((post: any) => post.data.category).flat()),
 ].sort((a, b) => {
   const countDiff = categoryCounts[b] - categoryCounts[a];
   return countDiff !== 0 ? countDiff : a.localeCompare(b);
 });
+
 const tags = [
   ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
 ].sort((a, b) => {
   const countDiff = tagCounts[b] - tagCounts[a];
   return countDiff !== 0 ? countDiff : a.localeCompare(b);
 });
+
 const title = 'Blog | Archive';
+
+const topicsLimit = topics.length <= 7;
+const categoriesLimit = categories.length <= 7;
+const tagsLimit = tags.length <= 7;
+
+console.log(topics.length);
+console.log(topicsLimit);
+
+console.log(categories.length);
+console.log(categoriesLimit);
+
+console.log(tags.length);
+console.log(tagsLimit);
+
+//TODO: Limit
 ---
 
 <style>
@@ -386,31 +404,54 @@ const title = 'Blog | Archive';
             <span class='filter-icon ri-filter-3-fill'></span>
             <span>Filter by tag</span>
           </p>
-          <ul class='tab-content-list'>
-            <li>
-              <p
-                class='tab-content-item'
-                data-active='true'>
-                All
-              </p>
-            </li>
-            {
-              tags.map((tag) => (
+          {
+            tagsLimit ? (
+              <ul class='tab-content-list'>
                 <li>
-                  <p class='tab-content-item'>{tag}</p>
+                  <p
+                    class='tab-content-item'
+                    data-active='true'>
+                    All
+                  </p>
                 </li>
-              ))
-            }
-          </ul>
-          <div class='btn-show-more-tabs-wrapper'>
-            <button
-              class='btn-show-more-tabs'
-              id='btn-show-more-tabs'
-              data-show-more='false'>
-              <span class='btn-show-more-icon ri-arrow-drop-down-fill'></span>
-              <span class='btn-show-more-tabs-label'>Show More</span>
-            </button>
-          </div>
+                {tags.map((tag) => (
+                  <li>
+                    <p class='tab-content-item'>{tag}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <>
+                <ul class='tab-content-list'>
+                  <li>
+                    <p
+                      class='tab-content-item'
+                      data-active='true'>
+                      All
+                    </p>
+                  </li>
+                  {tags.map((tag) => (
+                    <li>
+                      <p class='tab-content-item'>{tag}</p>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )
+          }
+
+          {
+            !tagsLimit && (
+              <div class='btn-show-more-tabs-wrapper'>
+                <button
+                  class='btn-show-more-tabs'
+                  data-show-more='false'>
+                  <span class='btn-show-more-icon ri-arrow-drop-down-fill' />
+                  <span class='btn-show-more-tabs-label'>Show More</span>
+                </button>
+              </div>
+            )
+          }
         </div>
 
         <div
@@ -421,35 +462,61 @@ const title = 'Blog | Archive';
             <span class='filter-icon ri-filter-3-fill'></span>
             <span>Filter by category</span>
           </p>
-          <ul class='tab-content-list'>
-            <li>
-              <p
-                class='tab-content-item'
-                data-active='false'>
-                All
-              </p>
-            </li>
-            {
-              categories.map((category) => (
+          {
+            categoriesLimit ? (
+              <ul class='tab-content-list'>
                 <li>
                   <p
                     class='tab-content-item'
                     data-active='false'>
-                    {category}
+                    All
                   </p>
                 </li>
-              ))
-            }
-          </ul>
-          <div class='btn-show-more-tabs-wrapper'>
-            <button
-              class='btn-show-more-tabs'
-              id='btn-show-more-tabs'
-              data-show-more='false'>
-              <span class='btn-show-more-icon ri-arrow-drop-down-fill'></span>
-              <span class='btn-show-more-tabs-label'>Show More</span>
-            </button>
-          </div>
+                {categories.map((category) => (
+                  <li>
+                    <p
+                      class='tab-content-item'
+                      data-active='false'>
+                      {category}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <>
+                <ul class='tab-content-list'>
+                  <li>
+                    <p
+                      class='tab-content-item'
+                      data-active='false'>
+                      All
+                    </p>
+                  </li>
+                  {categories.map((category) => (
+                    <li>
+                      <p
+                        class='tab-content-item'
+                        data-active='false'>
+                        {category}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )
+          }
+          {
+            !categoriesLimit && (
+              <div class='btn-show-more-tabs-wrapper'>
+                <button
+                  class='btn-show-more-tabs'
+                  data-show-more='false'>
+                  <span class='btn-show-more-icon ri-arrow-drop-down-fill' />
+                  <span class='btn-show-more-tabs-label'>Show More</span>
+                </button>
+              </div>
+            )
+          }
         </div>
 
         <div
@@ -460,35 +527,62 @@ const title = 'Blog | Archive';
             <span class='filter-icon ri-filter-3-fill'></span>
             <span>Filter by topic</span>
           </p>
-          <ul class='tab-content-list'>
-            <li>
-              <p
-                class='tab-content-item'
-                data-active='false'>
-                All
-              </p>
-            </li>
-            {
-              topics.map((topic) => (
+          {
+            topicsLimit ? (
+              <ul class='tab-content-list'>
                 <li>
                   <p
                     class='tab-content-item'
                     data-active='false'>
-                    {topic}
+                    All
                   </p>
                 </li>
-              ))
-            }
-          </ul>
-          <div class='btn-show-more-tabs-wrapper'>
-            <button
-              class='btn-show-more-tabs'
-              id='btn-show-more-tabs'
-              data-show-more='false'>
-              <span class='btn-show-more-icon ri-arrow-drop-down-fill'></span>
-              <span class='btn-show-more-tabs-label'>Show More</span>
-            </button>
-          </div>
+                {topics.map((topic) => (
+                  <li>
+                    <p
+                      class='tab-content-item'
+                      data-active='false'>
+                      {topic}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <>
+                <p>Topics limit reached</p>
+                <ul class='tab-content-list'>
+                  <li>
+                    <p
+                      class='tab-content-item'
+                      data-active='false'>
+                      All
+                    </p>
+                  </li>
+                  {topics.map((topic) => (
+                    <li>
+                      <p
+                        class='tab-content-item'
+                        data-active='false'>
+                        {topic}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )
+          }
+          {
+            !topicsLimit && (
+              <div class='btn-show-more-tabs-wrapper'>
+                <button
+                  class='btn-show-more-tabs'
+                  data-show-more='false'>
+                  <span class='btn-show-more-icon ri-arrow-drop-down-fill' />
+                  <span class='btn-show-more-tabs-label'>Show More</span>
+                </button>
+              </div>
+            )
+          }
         </div>
       </div>
     </div>
