@@ -1,5 +1,5 @@
-function initBtnShowMore() {
-  const btnShowMore = document.querySelectorAll('.btn-show-more-tabs')!;
+function initShowMoreButtons() {
+  const allShowMoreButtons = document.querySelectorAll('.btn-show-more-tabs')!;
 
   function updateShowMoreBtn(showMoreButton: Element) {
     const btnShowMoreLabel = showMoreButton.querySelector(
@@ -18,11 +18,11 @@ function initBtnShowMore() {
     }
   }
 
-  btnShowMore!.forEach((btn) => {
+  allShowMoreButtons!.forEach((btn) => {
     btn.addEventListener('click', () => {
       updateShowMoreBtn(btn);
     });
   });
 }
 
-export default initBtnShowMore;
+export default initShowMoreButtons;
