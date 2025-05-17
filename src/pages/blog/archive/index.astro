@@ -322,14 +322,12 @@ const title = 'Blog | Archive';
     font-size: 1.5rem;
   }
 
-  .tabs-content-group-wrapper:has(.btn-show-more-tabs[data-show-more='false'])
-    > .tab-content-wrapper
+  .tab-content-wrapper:has(.btn-show-more-tabs[data-show-more='false'])
     > .tab-content-list {
     height: 2rem;
   }
 
-  .tabs-content-group-wrapper:has(.btn-show-more-tabs[data-show-more='true'])
-    > .tab-content-wrapper
+  .tab-content-wrapper:has(.btn-show-more-tabs[data-show-more='true'])
     > .tab-content-list {
     height: auto;
   }
@@ -404,6 +402,15 @@ const title = 'Blog | Archive';
               ))
             }
           </ul>
+          <div class='btn-show-more-tabs-wrapper'>
+            <button
+              class='btn-show-more-tabs'
+              id='btn-show-more-tabs'
+              data-show-more='false'>
+              <span class='btn-show-more-icon ri-arrow-drop-down-fill'></span>
+              <span class='btn-show-more-tabs-label'>Show More</span>
+            </button>
+          </div>
         </div>
 
         <div
@@ -434,6 +441,15 @@ const title = 'Blog | Archive';
               ))
             }
           </ul>
+          <div class='btn-show-more-tabs-wrapper'>
+            <button
+              class='btn-show-more-tabs'
+              id='btn-show-more-tabs'
+              data-show-more='false'>
+              <span class='btn-show-more-icon ri-arrow-drop-down-fill'></span>
+              <span class='btn-show-more-tabs-label'>Show More</span>
+            </button>
+          </div>
         </div>
 
         <div
@@ -464,16 +480,15 @@ const title = 'Blog | Archive';
               ))
             }
           </ul>
-        </div>
-
-        <div class='btn-show-more-tabs-wrapper'>
-          <button
-            class='btn-show-more-tabs'
-            id='btn-show-more-tabs'
-            data-show-more='false'>
-            <span class='btn-show-more-icon ri-arrow-drop-down-fill'></span>
-            <span id='btn-show-more-tabs-label'>Show More</span>
-          </button>
+          <div class='btn-show-more-tabs-wrapper'>
+            <button
+              class='btn-show-more-tabs'
+              id='btn-show-more-tabs'
+              data-show-more='false'>
+              <span class='btn-show-more-icon ri-arrow-drop-down-fill'></span>
+              <span class='btn-show-more-tabs-label'>Show More</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

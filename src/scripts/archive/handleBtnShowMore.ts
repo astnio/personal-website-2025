@@ -1,22 +1,27 @@
 function initBtnShowMore() {
-  const btnShowMore = document.getElementById('btn-show-more-tabs')!;
-  const btnShowMoreLabel = document.getElementById('btn-show-more-tabs-label')!;
+  const btnShowMore = document.querySelectorAll('.btn-show-more-tabs')!;
 
-  function updateShowMoreBtn() {
+  function updateShowMoreBtn(showMoreButton: Element) {
+    const btnShowMoreLabel = showMoreButton.querySelector(
+      '.btn-show-more-tabs-label'
+    )!;
+
     const showMoreEnabled =
-      btnShowMore.getAttribute('data-show-more') === 'true';
+      showMoreButton.getAttribute('data-show-more') === 'true';
 
     if (showMoreEnabled) {
-      btnShowMore.setAttribute('data-show-more', 'false');
+      showMoreButton.setAttribute('data-show-more', 'false');
       btnShowMoreLabel!.textContent = 'Show More';
     } else {
-      btnShowMore.setAttribute('data-show-more', 'true');
+      showMoreButton.setAttribute('data-show-more', 'true');
       btnShowMoreLabel!.textContent = 'Show Less';
     }
   }
 
-  btnShowMore!.addEventListener('click', () => {
-    updateShowMoreBtn();
+  btnShowMore!.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      updateShowMoreBtn(btn);
+    });
   });
 }
 
