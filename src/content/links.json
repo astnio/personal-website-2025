@@ -3,12 +3,12 @@
     {
       "url": "/",
       "label": "Home",
-      "iconClass": "ri-home-smile-fill"
+      "iconClass": "ri-home-9-fill"
     },
     {
       "url": "/about",
       "label": "About",
-      "iconClass": "ri-user-5-fill"
+      "iconClass": "ri-user-3-fill"
     },
     {
       "url": "/blog",
