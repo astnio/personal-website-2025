@@ -1,0 +1,614 @@
+---
+import { calculateReadingTime } from '@/scripts/utils/readingTime';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const allPosts = await getCollection('blog');
+
+const sortedPosts = allPosts
+  .sort(
+    (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
+  )
+  .map((post: any) => ({
+    ...post,
+    readingTime: calculateReadingTime(post.body),
+  }));
+
+const topicCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const topic = post.data.topic;
+    acc[topic] = (acc[topic] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+const categoryCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const category = post.data.category;
+    acc[category] = (acc[category] || 0) + 1;
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+const tagCounts = sortedPosts.reduce(
+  (acc, post) => {
+    const tags = post.data.tags;
+    tags.forEach((tag: string) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+    });
+    return acc;
+  },
+  {} as Record<string, number>
+);
+
+const topics = [
+  ...new Set(sortedPosts.map((post: any) => post.data.topic).flat()),
+].sort((a, b) => {
+  const countDiff = topicCounts[b] - topicCounts[a];
+  return countDiff !== 0 ? countDiff : a.localeCompare(b);
+});
+
+const categories = [
+  ...new Set(sortedPosts.map((post: any) => post.data.category).flat()),
+].sort((a, b) => {
+  const countDiff = categoryCounts[b] - categoryCounts[a];
+  return countDiff !== 0 ? countDiff : a.localeCompare(b);
+});
+
+const tags = [
+  ...new Set(sortedPosts.map((post: any) => post.data.tags).flat()),
+].sort((a, b) => {
+  const countDiff = tagCounts[b] - tagCounts[a];
+  return countDiff !== 0 ? countDiff : a.localeCompare(b);
+});
+
+const topicsLimit = topics.length <= 7;
+const categoriesLimit = categories.length <= 7;
+const tagsLimit = tags.length <= 7;
+---
+
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    padding: 0;
+  }
+
+  section {
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
+  .tabs-group-wrapper {
+    position: relative;
+
+    background-color: var(--clr-base);
+
+    border-radius: var(--radius-surface);
+
+    outline: 1px solid var(--clr-surface-0);
+
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+  .tabs-titles-group-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tab-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    padding-left: 1rem;
+
+    width: 100%;
+    background-color: var(--clr-base);
+
+    cursor: pointer;
+
+    outline: 1px solid var(--clr-surface-0);
+    border: none;
+
+    transition-property: background-color;
+    transition-timing-function: ease-out;
+    transition-duration: 0.15s;
+  }
+
+  .tab-title-wrapper:hover {
+    background-color: var(--clr-surface-0);
+  }
+
+  .tab-title-wrapper:hover > .tab-title {
+    color: var(--clr-primary);
+  }
+
+  .tab-title-wrapper[data-active='true'] {
+    color: var(--clr-primary);
+    background-color: var(--clr-crust);
+    cursor: default;
+  }
+
+  .tab-title-wrapper[data-active='true'] > .tab-title {
+    color: var(--clr-primary);
+    /* font-weight: bold; */
+  }
+
+  .tab-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4ch;
+
+    font-weight: 400;
+    font-size: 1.2rem;
+
+    transition-property: color;
+    transition-timing-function: ease-out;
+    transition-duration: 0.15s;
+  }
+
+  .tabs-content-group-wrapper {
+    position: relative;
+
+    /* max-height: 6rem; */
+    /* overflow: hidden; */
+  }
+
+  .btn-show-more-tabs-wrapper {
+    /* position: absolute; */
+    /* right: 1rem; */
+    /* bottom: 0.6rem; */
+
+    padding: 1rem;
+  }
+
+  .btn-show-more-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* background-color: var(--clr-mantle); */
+    background-color: transparent;
+
+    border: none;
+    /* border-radius: var(--radius-input); */
+    /* outline: 1px solid var(--clr-surface-0); */
+
+    /* padding-inline: 1rem; */
+    /* padding-block: 0.6rem; */
+
+    cursor: pointer;
+
+    font-size: 1rem;
+    /* font-weight: 600; */
+    color: var(--clr-primary);
+
+    transition-property: background-color, outline, color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  .btn-show-more-tabs:hover {
+    /* background-color: var(--clr-surface-0); */
+    /* outline: 1px solid var(--clr-surface-1); */
+    /* color: var(--clr-primary); */
+  }
+
+  .btn-show-more-tabs[data-show-more='true'] > .btn-show-more-icon {
+    transform: rotate(180deg);
+  }
+
+  .btn-show-more-tabs[data-show-more='false'] > .btn-show-more-icon {
+    transform: rotate(0deg);
+  }
+
+  .btn-show-more-icon {
+    position: relative;
+    /* top: 2px; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.8rem;
+
+    /* outline: 1px solid white; */
+    border-radius: 100%;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    margin-right: 0.2rem;
+    margin-left: -0.4rem;
+
+    transition-property: transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .tab-content-wrapper {
+    /* width: 100%; */
+    /* max-width: calc(100% - 8rem); */
+    padding-inline: 1rem;
+    margin-top: 1rem;
+  }
+
+  ul.tab-content-list {
+    interpolate-size: allow-keywords;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.8rem 0.8rem;
+
+    margin: 0;
+    padding-block: 1px;
+    padding-inline: 1px;
+
+    overflow: hidden;
+
+    transition-property: height;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .tab-content-wrapper[data-active='false'] {
+    display: none;
+  }
+
+  .tab-content-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.85rem;
+
+    padding-inline: 1rem;
+    padding-block: 0.4rem;
+
+    margin: 0;
+
+    background-color: var(--clr-surface-0);
+
+    border-radius: var(--radius-pill);
+    outline: 1px solid var(--clr-surface-1);
+
+    cursor: pointer;
+
+    transition-property: background-color, outline, color;
+    transition-timing-function: ease-out;
+    transition-duration: 0.15s;
+  }
+
+  .tab-content-item:hover {
+    background-color: var(--clr-surface-1);
+    outline: 1px solid var(--clr-surface-2);
+    color: var(--clr-primary);
+  }
+
+  .tab-content-item[data-active='true'] {
+    background-color: var(--clr-primary);
+    outline: 1px solid var(--clr-surface-0);
+
+    color: var(--clr-mantle);
+  }
+
+  .filter-icon {
+    font-size: 1.5rem;
+  }
+
+  .tab-content-wrapper:has(.btn-show-more-tabs[data-show-more='false'])
+    > .tab-content-list {
+    height: 2rem;
+  }
+
+  .tab-content-wrapper:has(.btn-show-more-tabs[data-show-more='true'])
+    > .tab-content-list {
+    height: auto;
+  }
+
+  .tab-content-wrapper:not(:has(.btn-show-more-tabs)) > .tab-content-list {
+    padding-bottom: 1.5rem;
+  }
+
+  .filter-title {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 0.5rem;
+
+    margin-bottom: 1rem;
+  }
+
+  .filter-label {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 0.4ch;
+
+    margin: 0;
+
+    font-size: 1.2rem;
+  }
+
+  .filter-label-type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4ch;
+
+    background-color: var(--clr-mantle);
+
+    padding-inline: 0.6rem;
+    padding-block: 0.2rem;
+
+    border-radius: var(--radius-input);
+
+    font-size: 1rem;
+    color: var(--clr-subtext-1);
+    font-weight: 700;
+  }
+
+  @media screen and (min-width: 768px) {
+    .tabs-titles-group-wrapper {
+      flex-direction: row;
+    }
+
+    .tab-title-wrapper {
+      justify-content: center;
+
+      padding-left: 0rem;
+    }
+  }
+</style>
+
+<div class='tabs-group-wrapper'>
+  <div class='tabs-titles-group-wrapper'>
+    <button
+      class='tab-title-wrapper'
+      data-tab-id='tags'
+      data-active='true'>
+      <p class='tab-title'>
+        <span class='ri-price-tag-3-fill'></span>
+        <span>Tags</span>
+      </p>
+    </button>
+    <button
+      class='tab-title-wrapper'
+      data-tab-id='categories'
+      data-active='false'>
+      <p class='tab-title'>
+        <span class='ri-apps-2-fill'></span>
+        <span>Categories</span>
+      </p>
+    </button>
+    <button
+      class='tab-title-wrapper'
+      data-tab-id='topics'
+      data-active='false'>
+      <p class='tab-title'>
+        <span class='ri-lightbulb-fill'></span>
+        <span>Topics</span>
+      </p>
+    </button>
+  </div>
+  <div class='tabs-content-group-wrapper'>
+    <div
+      class='tab-content-wrapper'
+      data-tab-id='tags'
+      data-active='true'>
+      <div class='filter-title'>
+        <span class='filter-icon ri-filter-3-fill'></span>
+        <p class='filter-label'>
+          <span>Filter by </span>
+          <span class='filter-label-type'>
+            <span>tag</span>
+          </span>
+        </p>
+      </div>
+      {
+        tagsLimit ? (
+          <ul class='tab-content-list'>
+            <li>
+              <p
+                class='tab-content-item'
+                data-active='true'>
+                All
+              </p>
+            </li>
+            {tags.map((tag) => (
+              <li>
+                <p class='tab-content-item'>{tag}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <>
+            <ul class='tab-content-list'>
+              <li>
+                <p
+                  class='tab-content-item'
+                  data-active='true'>
+                  All
+                </p>
+              </li>
+              {tags.map((tag) => (
+                <li>
+                  <p class='tab-content-item'>{tag}</p>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+
+      {
+        !tagsLimit && (
+          <div class='btn-show-more-tabs-wrapper'>
+            <button
+              class='btn-show-more-tabs'
+              data-show-more='false'>
+              <span class='btn-show-more-icon ri-arrow-drop-down-fill' />
+              <span class='btn-show-more-tabs-label'>Show More</span>
+            </button>
+          </div>
+        )
+      }
+    </div>
+
+    <div
+      class='tab-content-wrapper'
+      data-tab-id='categories'
+      data-active='false'>
+      <div class='filter-title'>
+        <span class='filter-icon ri-filter-3-fill'></span>
+        <p class='filter-label'>
+          <span>Filter by </span>
+          <span class='filter-label-type'>
+            <span>category</span>
+          </span>
+        </p>
+      </div>
+      {
+        categoriesLimit ? (
+          <ul class='tab-content-list'>
+            <li>
+              <p
+                class='tab-content-item'
+                data-active='false'>
+                All
+              </p>
+            </li>
+            {categories.map((category) => (
+              <li>
+                <p
+                  class='tab-content-item'
+                  data-active='false'>
+                  {category}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <>
+            <ul class='tab-content-list'>
+              <li>
+                <p
+                  class='tab-content-item'
+                  data-active='false'>
+                  All
+                </p>
+              </li>
+              {categories.map((category) => (
+                <li>
+                  <p
+                    class='tab-content-item'
+                    data-active='false'>
+                    {category}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+      {
+        !categoriesLimit && (
+          <div class='btn-show-more-tabs-wrapper'>
+            <button
+              class='btn-show-more-tabs'
+              data-show-more='false'>
+              <span class='btn-show-more-icon ri-arrow-drop-down-fill' />
+              <span class='btn-show-more-tabs-label'>Show More</span>
+            </button>
+          </div>
+        )
+      }
+    </div>
+
+    <div
+      class='tab-content-wrapper'
+      data-tab-id='topics'
+      data-active='false'>
+      <div class='filter-title'>
+        <span class='filter-icon ri-filter-3-fill'></span>
+        <p class='filter-label'>
+          <span>Filter by </span>
+          <span class='filter-label-type'>
+            <span>topic</span>
+          </span>
+        </p>
+      </div>
+      {
+        topicsLimit ? (
+          <ul class='tab-content-list'>
+            <li>
+              <p
+                class='tab-content-item'
+                data-active='false'>
+                All
+              </p>
+            </li>
+            {topics.map((topic) => (
+              <li>
+                <p
+                  class='tab-content-item'
+                  data-active='false'>
+                  {topic}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <>
+            <p>Topics limit reached</p>
+            <ul class='tab-content-list'>
+              <li>
+                <p
+                  class='tab-content-item'
+                  data-active='false'>
+                  All
+                </p>
+              </li>
+              {topics.map((topic) => (
+                <li>
+                  <p
+                    class='tab-content-item'
+                    data-active='false'>
+                    {topic}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+      {
+        !topicsLimit && (
+          <div class='btn-show-more-tabs-wrapper'>
+            <button
+              class='btn-show-more-tabs'
+              data-show-more='false'>
+              <span class='btn-show-more-icon ri-arrow-drop-down-fill' />
+              <span class='btn-show-more-tabs-label'>Show More</span>
+            </button>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  import initPage from '@/scripts/archive/archiveFilter.ts';
+  initPage();
+</script>
