@@ -103,7 +103,46 @@
   }
 
   .sub-list {
-    padding-left: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .sub-li-title {
+    position: relative;
+  }
+
+  .sub-li-title-dot {
+    isolation: isolate;
+    content: '';
+
+    position: absolute;
+    left: -1.9rem;
+    top: 0.2rem;
+
+    width: 1rem;
+    height: 1rem;
+
+    border-radius: var(--radius-circle);
+
+    background-color: var(--clr-primary);
+  }
+
+  .sub-li-title-dot::after {
+    content: '';
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translateX(-50%) translateY(-50%);
+
+    width: 0.4rem;
+    height: 0.4rem;
+
+    background-color: var(--clr-base);
+
+    border-radius: var(--radius-circle);
+
+    z-index: 1;
   }
 </style>
 
@@ -114,19 +153,28 @@
       <h4>2025</h4>
     </button>
     <ol class='sub-list'>
-      <h5>May</h5>
+      <h5 class='sub-li-title'>
+        <span class='sub-li-title-dot'></span>
+        <span>May</span>
+      </h5>
       <li>Post 1</li>
       <li>Post 2</li>
       <li>Post 3</li>
     </ol>
     <ol class='sub-list'>
-      <h5>April</h5>
+      <h5 class='sub-li-title'>
+        <span class='sub-li-title-dot'></span>
+        <span>April</span>
+      </h5>
       <li>Post 1</li>
       <li>Post 2</li>
       <li>Post 3</li>
     </ol>
     <ol class='sub-list'>
-      <h5>March</h5>
+      <h5 class='sub-li-title'>
+        <span class='sub-li-title-dot'></span>
+        <span>March</span>
+      </h5>
       <li>Post 1</li>
       <li>Post 2</li>
       <li>Post 3</li>
@@ -139,19 +187,28 @@
       <h4>2024</h4>
     </button>
     <ol class='sub-list'>
-      <h5>December</h5>
+      <h5 class='sub-li-title'>
+        <span class='sub-li-title-dot'></span>
+        <span>December</span>
+      </h5>
       <li>Post 1</li>
       <li>Post 2</li>
       <li>Post 3</li>
     </ol>
     <ol class='sub-list'>
-      <h5>November</h5>
+      <h5 class='sub-li-title'>
+        <span class='sub-li-title-dot'></span>
+        <span>November</span>
+      </h5>
       <li>Post 1</li>
       <li>Post 2</li>
       <li>Post 3</li>
     </ol>
     <ol class='sub-list'>
-      <h5>October</h5>
+      <h5 class='sub-li-title'>
+        <span class='sub-li-title-dot'></span>
+        <span>October</span>
+      </h5>
       <li>Post 1</li>
       <li>Post 2</li>
       <li>Post 3</li>
