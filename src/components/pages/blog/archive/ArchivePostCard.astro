@@ -10,23 +10,63 @@ const {
 
 <style>
   .archive-post-card-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+
+    background-color: var(--clr-crust);
+
+    border-radius: var(--radius-surface);
+    outline: 1px solid var(--clr-surface-0);
+
+    overflow: hidden;
   }
 
   .picture-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    aspect-ratio: 3 / 2;
+
     overflow: hidden;
   }
 
   .archive-post-img {
-    max-width: 1rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  .content-wrapper {
+    /* max-width: 10rem; */
+    /* max-width: fit-content; */
+
+    padding: 1rem;
+    padding-left: 0;
+
+    /* background-color: green; */
+  }
+
+  .post-title {
+    font-size: 1.25rem;
+
+    margin: 0;
   }
 </style>
 
 <div class='archive-post-card-wrapper'>
   <div class='picture-wrapper'>
     <Picture
+      width={400}
+      height={200}
       src={testImage}
       alt={'A test image'}
       formats={['avif', 'webp', 'png']}
@@ -35,8 +75,8 @@ const {
       class='archive-post-img'
     />
   </div>
-  <div>
-    <h5>{title}</h5>
+  <div class='content-wrapper'>
+    <h5 class='post-title'>{title}</h5>
     <p>{content}</p>
   </div>
 </div>

@@ -19,11 +19,12 @@ import ArchivePostCard from './ArchivePostCard.astro';
     padding: 0;
   }
 
-  h4 {
-    font-size: 1.5rem;
+  .main-li-heading > button {
+    font-size: 1.75rem;
+    font-weight: 700;
   }
 
-  h5 {
+  h4 {
     font-size: 1.25rem;
   }
 
@@ -33,13 +34,7 @@ import ArchivePostCard from './ArchivePostCard.astro';
     display: flex;
     gap: 1rem;
 
-    /* padding-left: 1rem; */
-
-    /* background-color: var(--clr-base); */
-    /* padding: 1rem; */
-
-    /* border-radius: var(--radius-surface); */
-    /* outline: 1px solid var(--clr-surface-0); */
+    margin-top: 2.5rem;
   }
 
   li.main-list-item {
@@ -76,6 +71,7 @@ import ArchivePostCard from './ArchivePostCard.astro';
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.25ch;
 
     width: fit-content;
 
@@ -103,7 +99,16 @@ import ArchivePostCard from './ArchivePostCard.astro';
   }
 
   .sub-list {
+    display: flex;
+    gap: 1.5rem;
+
     padding-left: 1.5rem;
+
+    margin-bottom: 2rem;
+  }
+
+  .sub-list:last-child {
+    margin-bottom: 0;
   }
 
   .sub-li-title {
@@ -148,7 +153,7 @@ import ArchivePostCard from './ArchivePostCard.astro';
 
 <ol class='main-list'>
   <li class='main-list-item'>
-    <h3>
+    <h3 class='main-li-heading'>
       <button class='main-li-title'>
         <span class='main-li-title-icon ri-arrow-down-s-fill'></span>
         <span>2025</span>
@@ -159,34 +164,32 @@ import ArchivePostCard from './ArchivePostCard.astro';
         <span class='sub-li-title-dot'></span>
         <span>May</span>
       </h4>
-      <li>
-        <ArchivePostCard />
-      </li>
-      <li>Post 2</li>
-      <li>Post 3</li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
     </ol>
     <ol class='sub-list'>
       <h4 class='sub-li-title'>
         <span class='sub-li-title-dot'></span>
         <span>April</span>
       </h4>
-      <li>Post 1</li>
-      <li>Post 2</li>
-      <li>Post 3</li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
     </ol>
     <ol class='sub-list'>
       <h4 class='sub-li-title'>
         <span class='sub-li-title-dot'></span>
         <span>March</span>
       </h4>
-      <li>Post 1</li>
-      <li>Post 2</li>
-      <li>Post 3</li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
     </ol>
   </li>
 
   <li class='main-list-item'>
-    <h3>
+    <h3 class='main-li-heading'>
       <button class='main-li-title'>
         <span class='main-li-title-icon ri-arrow-down-s-fill'></span>
         <span>2024</span>
@@ -197,27 +200,27 @@ import ArchivePostCard from './ArchivePostCard.astro';
         <span class='sub-li-title-dot'></span>
         <span>December</span>
       </h4>
-      <li>Post 1</li>
-      <li>Post 2</li>
-      <li>Post 3</li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
     </ol>
     <ol class='sub-list'>
       <h4 class='sub-li-title'>
         <span class='sub-li-title-dot'></span>
         <span>November</span>
       </h4>
-      <li>Post 1</li>
-      <li>Post 2</li>
-      <li>Post 3</li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
     </ol>
     <ol class='sub-list'>
       <h4 class='sub-li-title'>
         <span class='sub-li-title-dot'></span>
         <span>October</span>
       </h4>
-      <li>Post 1</li>
-      <li>Post 2</li>
-      <li>Post 3</li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard /></li>
     </ol>
   </li>
 </ol>
