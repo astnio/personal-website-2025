@@ -161,7 +161,7 @@ const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase(
   </nav>
 </article>
 
-<script define:vars={{ navId, btnId }}>
+<script is:inline define:vars={{ navId, btnId }}>
   const button = document.getElementById(btnId);
   const navList = document.getElementById(navId);
 

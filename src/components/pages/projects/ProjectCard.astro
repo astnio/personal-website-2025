@@ -279,6 +279,8 @@ const { url, data } = Astro.props;
             sizes='(max-width: 800px) 100vw, 800px'
             alt={data.title}
             class='project-image'
+            loading={'lazy'}
+            decoding={'async'}
           />
         </a>
       </div>

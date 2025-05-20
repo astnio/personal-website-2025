@@ -21,11 +21,10 @@ const otherProjects = await getCollection('projects', ({ data }) => {
 });
 
 interface Props {
-  page: any;
   directoryTitle: string;
 }
 
-const { page, directoryTitle } = Astro.props;
+const { directoryTitle } = Astro.props;
 
 const title =
   directoryTitle === 'Projects'

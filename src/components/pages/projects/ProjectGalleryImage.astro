@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import Picture from 'astro/components/Picture.astro';
 
 interface Props {
   image: any;
@@ -109,10 +109,13 @@ const { image, active, id, currentIndex, imagesCount } = Astro.props;
   class='project-image-wrapper'
   data-active={active}
   id={id}>
-  <Image
+  <Picture
     class={'project-image'}
-    alt={image.alt}
     src={image.src}
+    alt={image.alt}
+    loading={'lazy'}
+    decoding={'async'}
+    formats={['avif', 'webp', 'png']}
   />
   <div class='image-caption'>
     <p class='image-caption-label'>{image.alt}</p>

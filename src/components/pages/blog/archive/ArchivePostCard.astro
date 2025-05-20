@@ -1,8 +1,42 @@
 ---
-const { title, content } = Astro.props;
+import Picture from 'astro/components/Picture.astro';
+import testImage from '@assets/images/test.jpg';
+
+const {
+  title = 'Placeholder Title',
+  content = 'Lorem Ipsum placeholder description text.',
+} = Astro.props;
 ---
 
-<div>
-  <h5>{title}</h5>
-  <p>{content}</p>
+<style>
+  .archive-post-card-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .picture-wrapper {
+    overflow: hidden;
+  }
+
+  .archive-post-img {
+    max-width: 1rem;
+  }
+</style>
+
+<div class='archive-post-card-wrapper'>
+  <div class='picture-wrapper'>
+    <Picture
+      src={testImage}
+      alt={'A test image'}
+      formats={['avif', 'webp', 'png']}
+      decoding={'async'}
+      loading={'lazy'}
+      class='archive-post-img'
+    />
+  </div>
+  <div>
+    <h5>{title}</h5>
+    <p>{content}</p>
+  </div>
 </div>

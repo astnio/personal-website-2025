@@ -9,10 +9,9 @@ interface Props {
   title: string;
   iconClass?: string;
   internalLink: boolean;
-  startOpen?: boolean;
 }
 
-const { links, title, iconClass, internalLink, startOpen = true } = Astro.props;
+const { links, title, iconClass, internalLink } = Astro.props;
 
 const navId = `link-nav-wrapper-${convertSpacesToHyphens(title).toLowerCase()}`;
 const btnId = `btn-toggle-accordion-${convertSpacesToHyphens(title).toLowerCase()}`;

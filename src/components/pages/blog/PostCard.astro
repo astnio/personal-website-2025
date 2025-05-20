@@ -358,8 +358,10 @@ const timeRead = calculateReadingTime(post.body);
               src={post.data.cover}
               alt={post.data.cover_alt ? post.data.cover_alt : ''}
               class='blog-picture'
-              loading={'eager'}
+              loading={'lazy'}
+              decoding={'async'}
               transition:name={`blog-cover-${post.data.title}`}
+              formats={['avif', 'webp', 'png']}
             />
           </a>
         </div>
