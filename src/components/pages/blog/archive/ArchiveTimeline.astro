@@ -28,8 +28,12 @@
   }
 
   ol.main-list {
+    position: relative;
+
     display: flex;
     gap: 1rem;
+
+    /* padding-left: 1rem; */
 
     /* background-color: var(--clr-base); */
     /* padding: 1rem; */
@@ -39,9 +43,33 @@
   }
 
   li.main-list-item {
+    isolation: isolate;
+
+    position: relative;
+
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    /* padding-left: 1rem; */
+  }
+
+  li.main-list-item::before {
+    content: '';
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    height: 100%;
+    height: calc(100% - 2.5rem);
+    width: 0.2rem;
+
+    border-radius: var(--radius-pill);
+
+    background-color: var(--clr-surface-0);
+
+    z-index: -1;
   }
 
   button.main-li-title {
@@ -53,6 +81,7 @@
 
     padding: 0;
     margin: 0;
+    margin-left: -0.9rem;
 
     background-color: transparent;
 
@@ -72,6 +101,10 @@
   .main-li-title-icon {
     font-size: 2rem;
   }
+
+  .sub-list {
+    padding-left: 1rem;
+  }
 </style>
 
 <ol class='main-list'>
@@ -80,19 +113,19 @@
       <span class='main-li-title-icon ri-arrow-down-s-fill'></span>
       <h4>2025</h4>
     </button>
-    <ol>
+    <ol class='sub-list'>
       <h5>May</h5>
       <li>Post 1</li>
       <li>Post 2</li>
       <li>Post 3</li>
     </ol>
-    <ol>
+    <ol class='sub-list'>
       <h5>April</h5>
       <li>Post 1</li>
       <li>Post 2</li>
       <li>Post 3</li>
     </ol>
-    <ol>
+    <ol class='sub-list'>
       <h5>March</h5>
       <li>Post 1</li>
       <li>Post 2</li>
@@ -105,19 +138,19 @@
       <span class='main-li-title-icon ri-arrow-down-s-fill'></span>
       <h4>2024</h4>
     </button>
-    <ol>
+    <ol class='sub-list'>
       <h5>December</h5>
       <li>Post 1</li>
       <li>Post 2</li>
       <li>Post 3</li>
     </ol>
-    <ol>
+    <ol class='sub-list'>
       <h5>November</h5>
       <li>Post 1</li>
       <li>Post 2</li>
       <li>Post 3</li>
     </ol>
-    <ol>
+    <ol class='sub-list'>
       <h5>October</h5>
       <li>Post 1</li>
       <li>Post 2</li>
