@@ -19,6 +19,8 @@ const {
     border-radius: var(--radius-surface);
     outline: 1px solid var(--clr-surface-0);
 
+    height: 8rem;
+
     overflow: hidden;
   }
 
@@ -29,9 +31,11 @@ const {
     align-items: center;
     justify-content: center;
 
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 5 / 3;
 
     overflow: hidden;
+
+    max-height: 100%;
   }
 
   .archive-post-img {
@@ -46,13 +50,13 @@ const {
   }
 
   .content-wrapper {
-    /* max-width: 10rem; */
-    /* max-width: fit-content; */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
 
     padding: 1rem;
     padding-left: 0;
-
-    /* background-color: green; */
   }
 
   .post-title {
@@ -60,13 +64,17 @@ const {
 
     margin: 0;
   }
+
+  .date {
+    margin: 0;
+  }
 </style>
 
 <div class='archive-post-card-wrapper'>
   <div class='picture-wrapper'>
     <Picture
-      width={400}
-      height={200}
+      width={1200}
+      height={1200}
       src={testImage}
       alt={'A test image'}
       formats={['avif', 'webp', 'png']}
@@ -76,6 +84,7 @@ const {
     />
   </div>
   <div class='content-wrapper'>
+    <p class='date'>January 01</p>
     <h5 class='post-title'>{title}</h5>
     <p>{content}</p>
   </div>
