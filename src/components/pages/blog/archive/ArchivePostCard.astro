@@ -54,6 +54,7 @@ const {
     flex-direction: column;
     align-items: start;
     justify-content: center;
+    gap: 0.4rem;
 
     padding: 1rem;
     padding-left: 0;
@@ -67,6 +68,9 @@ const {
 
   .date {
     margin: 0;
+
+    font-size: 0.9rem;
+    color: var(--clr-subtext-1);
   }
 </style>
 
@@ -84,7 +88,10 @@ const {
     />
   </div>
   <div class='content-wrapper'>
-    <p class='date'>January 01</p>
+    <p class='date'>
+      <span class='ri-calendar-fill'></span>
+      <span>January 01</span>
+    </p>
     <h5 class='post-title'>{title}</h5>
     <p>{content}</p>
   </div>
