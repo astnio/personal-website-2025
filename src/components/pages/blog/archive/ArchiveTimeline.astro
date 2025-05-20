@@ -111,6 +111,29 @@ import ArchivePostCard from './ArchivePostCard.astro';
     margin-bottom: 0;
   }
 
+  .sub-list > li {
+    position: relative;
+  }
+
+  .sub-list > li::before {
+    content: '';
+
+    position: absolute;
+    left: -1.7rem;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    height: 0.6rem;
+    width: 0.6rem;
+
+    border-radius: var(--radius-circle);
+
+    background-color: var(--clr-text);
+
+    z-index: 1;
+  }
+
   .sub-li-title {
     position: relative;
   }
