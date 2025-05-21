@@ -1,11 +1,16 @@
 ---
 import Picture from 'astro/components/Picture.astro';
 import testImage from '@assets/images/test.jpg';
+import type { CollectionEntry } from 'astro:content';
+import DateLabel from '@/components/interface/DateLabel.astro';
 
-const {
-  title = 'Placeholder Title',
-  content = 'Lorem Ipsum placeholder description text.',
-} = Astro.props;
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+
+const hasCover = post.data.cover;
 ---
 
 <style>
@@ -67,7 +72,23 @@ const {
     gap: 0.4rem;
 
     padding: 1rem;
+    /* padding-left: 0; */
+  }
+
+  .content-wrapper-has-cover {
     padding-left: 0;
+  }
+
+  a.post-title-link {
+    text-decoration: none;
+
+    transition-property: color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a.post-title-link:hover {
+    color: var(--clr-primary);
   }
 
   .post-title {
@@ -76,33 +97,39 @@ const {
     margin: 0;
   }
 
-  .date {
-    margin: 0;
-
-    font-size: 0.9rem;
-    color: var(--clr-subtext-1);
+  .date-wrapper {
+    margin-bottom: 0.2rem;
   }
 </style>
 
 <div class='archive-post-card-wrapper'>
-  <div class='picture-wrapper'>
-    <Picture
-      width={1200}
-      height={1200}
-      src={testImage}
-      alt={'A test image'}
-      formats={['avif', 'webp', 'png']}
-      decoding={'async'}
-      loading={'lazy'}
-      class='archive-post-img'
-    />
-  </div>
-  <div class='content-wrapper'>
-    <p class='date'>
-      <span class='ri-calendar-fill'></span>
-      <span>January 01</span>
-    </p>
-    <h5 class='post-title'>{title}</h5>
-    <p>{content}</p>
+  {
+    hasCover && (
+      <div class='picture-wrapper'>
+        <a href={`/blog/${post.slug}`}>
+          <Picture
+            width={400}
+            height={400}
+            src={post.data.cover}
+            alt={post.data.cover_alt ? post.data.cover_alt : ''}
+            formats={['avif', 'webp', 'png']}
+            decoding={'async'}
+            loading={'lazy'}
+            class='archive-post-img'
+          />
+        </a>
+      </div>
+    )
+  }
+  <div class={`content-wrapper ${hasCover ? 'content-wrapper-has-cover' : ''}`}>
+    <div class='date-wrapper'>
+      <DateLabel date={post.data.date_published} />
+    </div>
+    <a
+      class='post-title-link'
+      href={`/blog/${post.slug}`}>
+      <h5 class='post-title'>{post.data.title}</h5>
+    </a>
+    <p>{post.data.description}</p>
   </div>
 </div>

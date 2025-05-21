@@ -1,5 +1,12 @@
 ---
+import { getCollection } from 'astro:content';
 import ArchivePostCard from './ArchivePostCard.astro';
+
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data;
+});
+
+// console.log(allPosts.length);
 ---
 
 <style>
@@ -187,27 +194,27 @@ import ArchivePostCard from './ArchivePostCard.astro';
         <span class='sub-li-title-dot'></span>
         <span>May</span>
       </h4>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard post={allPosts[0]} /></li>
+      <li><ArchivePostCard post={allPosts[1]} /></li>
+      <li><ArchivePostCard post={allPosts[2]} /></li>
     </ol>
     <ol class='sub-list'>
       <h4 class='sub-li-title'>
         <span class='sub-li-title-dot'></span>
         <span>April</span>
       </h4>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard post={allPosts[3]} /></li>
+      <li><ArchivePostCard post={allPosts[4]} /></li>
+      <li><ArchivePostCard post={allPosts[5]} /></li>
     </ol>
     <ol class='sub-list'>
       <h4 class='sub-li-title'>
         <span class='sub-li-title-dot'></span>
         <span>March</span>
       </h4>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard post={allPosts[6]} /></li>
+      <li><ArchivePostCard post={allPosts[7]} /></li>
+      <li><ArchivePostCard post={allPosts[8]} /></li>
     </ol>
   </li>
 
@@ -223,27 +230,27 @@ import ArchivePostCard from './ArchivePostCard.astro';
         <span class='sub-li-title-dot'></span>
         <span>December</span>
       </h4>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard post={allPosts[9]} /></li>
+      <li><ArchivePostCard post={allPosts[10]} /></li>
+      <li><ArchivePostCard post={allPosts[11]} /></li>
     </ol>
     <ol class='sub-list'>
       <h4 class='sub-li-title'>
         <span class='sub-li-title-dot'></span>
         <span>November</span>
       </h4>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard post={allPosts[0]} /></li>
+      <li><ArchivePostCard post={allPosts[1]} /></li>
+      <li><ArchivePostCard post={allPosts[2]} /></li>
     </ol>
     <ol class='sub-list'>
       <h4 class='sub-li-title'>
         <span class='sub-li-title-dot'></span>
         <span>October</span>
       </h4>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
-      <li><ArchivePostCard /></li>
+      <li><ArchivePostCard post={allPosts[2]} /></li>
+      <li><ArchivePostCard post={allPosts[3]} /></li>
+      <li><ArchivePostCard post={allPosts[4]} /></li>
     </ol>
   </li>
 </ol>
