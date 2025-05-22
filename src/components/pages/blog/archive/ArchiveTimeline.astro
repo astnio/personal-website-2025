@@ -2,9 +2,56 @@
 import { getCollection } from 'astro:content';
 import ArchivePostCard from './ArchivePostCard.astro';
 
-const allPosts = await getCollection('blog', ({ data }) => {
-  return data;
-});
+const allPosts = await getCollection('blog');
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date_published.getTime() - a.data.date_published.getTime()
+);
+
+const postsByYearAndMonth = sortedPosts.reduce(
+  (acc, post) => {
+    const date = post.data.date_published;
+    const year = date.getFullYear();
+    const month = date.toLocaleString('default', { month: 'long' });
+
+    if (!acc[year]) {
+      acc[year] = {};
+    }
+
+    if (!acc[year][month]) {
+      acc[year][month] = [];
+    }
+
+    acc[year][month].push(post);
+
+    return acc;
+  },
+  {} as Record<number, Record<string, typeof sortedPosts>>
+);
+
+const sortedYears = Object.keys(postsByYearAndMonth)
+  .map(Number)
+  .sort((a, b) => b - a);
+
+const monthOrder = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const getSortedMonths = (year: number) => {
+  const months = Object.keys(postsByYearAndMonth[year]);
+  return months.sort((a, b) => monthOrder.indexOf(b) - monthOrder.indexOf(a));
+};
 ---
 
 <style>
@@ -187,75 +234,29 @@ const allPosts = await getCollection('blog', ({ data }) => {
 </style>
 
 <ol class='main-list'>
-  <li class='main-list-item'>
-    <h3 class='main-li-heading'>
-      <button class='main-li-title'>
-        <span class='main-li-title-icon ri-arrow-down-s-fill'></span>
-        <span>2025</span>
-      </button>
-    </h3>
-    <ol class='sub-list'>
-      <h4 class='sub-li-title'>
-        <span class='sub-li-title-dot'></span>
-        <span>May</span>
-      </h4>
-      <li><ArchivePostCard post={allPosts[0]} /></li>
-      <li><ArchivePostCard post={allPosts[1]} /></li>
-      <li><ArchivePostCard post={allPosts[2]} /></li>
-    </ol>
-    <ol class='sub-list'>
-      <h4 class='sub-li-title'>
-        <span class='sub-li-title-dot'></span>
-        <span>April</span>
-      </h4>
-      <li><ArchivePostCard post={allPosts[3]} /></li>
-      <li><ArchivePostCard post={allPosts[4]} /></li>
-      <li><ArchivePostCard post={allPosts[5]} /></li>
-    </ol>
-    <ol class='sub-list'>
-      <h4 class='sub-li-title'>
-        <span class='sub-li-title-dot'></span>
-        <span>March</span>
-      </h4>
-      <li><ArchivePostCard post={allPosts[6]} /></li>
-      <li><ArchivePostCard post={allPosts[7]} /></li>
-      <li><ArchivePostCard post={allPosts[8]} /></li>
-    </ol>
-  </li>
-
-  <li class='main-list-item'>
-    <h3 class='main-li-heading'>
-      <button class='main-li-title'>
-        <span class='main-li-title-icon ri-arrow-down-s-fill'></span>
-        <span>2024</span>
-      </button>
-    </h3>
-    <ol class='sub-list'>
-      <h4 class='sub-li-title'>
-        <span class='sub-li-title-dot'></span>
-        <span>December</span>
-      </h4>
-      <li><ArchivePostCard post={allPosts[9]} /></li>
-      <li><ArchivePostCard post={allPosts[10]} /></li>
-      <li><ArchivePostCard post={allPosts[11]} /></li>
-    </ol>
-    <ol class='sub-list'>
-      <h4 class='sub-li-title'>
-        <span class='sub-li-title-dot'></span>
-        <span>November</span>
-      </h4>
-      <li><ArchivePostCard post={allPosts[12]} /></li>
-      <li><ArchivePostCard post={allPosts[1]} /></li>
-      <li><ArchivePostCard post={allPosts[2]} /></li>
-    </ol>
-    <ol class='sub-list'>
-      <h4 class='sub-li-title'>
-        <span class='sub-li-title-dot'></span>
-        <span>October</span>
-      </h4>
-      <li><ArchivePostCard post={allPosts[2]} /></li>
-      <li><ArchivePostCard post={allPosts[3]} /></li>
-      <li><ArchivePostCard post={allPosts[4]} /></li>
-    </ol>
-  </li>
+  {
+    sortedYears.map((year) => (
+      <li class='main-list-item'>
+        <h3 class='main-li-heading'>
+          <button class='main-li-title'>
+            <span class='main-li-title-icon ri-arrow-down-s-fill' />
+            <span>{year}</span>
+          </button>
+        </h3>
+        {getSortedMonths(year).map((month) => (
+          <ol class='sub-list'>
+            <h4 class='sub-li-title'>
+              <span class='sub-li-title-dot' />
+              <span>{month}</span>
+            </h4>
+            {postsByYearAndMonth[year][month].map((post) => (
+              <li>
+                <ArchivePostCard post={post} />
+              </li>
+            ))}
+          </ol>
+        ))}
+      </li>
+    ))
+  }
 </ol>
