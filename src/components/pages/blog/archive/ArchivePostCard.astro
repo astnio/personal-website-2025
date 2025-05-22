@@ -2,6 +2,7 @@
 import { Picture } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import DateLabel from '@/components/interface/DateLabel.astro';
+import Chip from '@/components/interface/Chip.astro';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -30,7 +31,7 @@ const hasCover = post.data.cover;
     border-radius: var(--radius-surface);
     outline: 1px solid var(--clr-surface-0);
 
-    height: 8rem;
+    height: 9rem;
     width: 100%;
 
     overflow: hidden;
@@ -101,6 +102,8 @@ const hasCover = post.data.cover;
     width: 100%;
     display: block;
 
+    min-width: 0;
+
     transition-property: color;
     transition-duration: 0.15s;
     transition-timing-function: ease-out;
@@ -134,6 +137,30 @@ const hasCover = post.data.cover;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
+
+    margin: 0;
+  }
+
+  .two-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+
+    margin: 0;
+  }
+
+  .card-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+
+    width: 100%;
+
+    margin-bottom: 1rem;
   }
 
   @media screen and (max-width: 768px) {
@@ -172,16 +199,18 @@ const hasCover = post.data.cover;
     )
   }
   <div class={`content-wrapper ${hasCover ? 'content-wrapper-has-cover' : ''}`}>
-    <div class='date-wrapper'>
-      <DateLabel date={post.data.date_published} />
+    <div class='card-header'>
+      <a
+        class='post-title-link'
+        href={`/blog/${post.slug}`}>
+        <h5 class='post-title single-line'>{post.data.title}</h5>
+      </a>
+      <Chip url={`/blog/categories/${post.data.category}`}
+        >{post.data.category}</Chip
+      >
     </div>
-    <a
-      class='post-title-link'
-      href={`/blog/${post.slug}`}>
-      <h5 class='post-title single-line'>{post.data.title}</h5>
-    </a>
     <div class='post-desc-wrapper'>
-      <p class='single-line'>{post.data.description}</p>
+      <p class='two-line'>{post.data.description}</p>
     </div>
   </div>
 </div>
