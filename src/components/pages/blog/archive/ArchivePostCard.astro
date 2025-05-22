@@ -14,9 +14,16 @@ const hasCover = post.data.cover;
 ---
 
 <style>
+  .archive-post-card-wrapper-with-cover {
+    grid-template-columns: minmax(0, 1fr) 2fr;
+  }
+
+  .archive-post-card-wrapper-without-cover {
+    grid-template-columns: 1fr;
+  }
+
   .archive-post-card-wrapper {
     display: grid;
-    grid-template-columns: auto 1fr;
     gap: 1rem;
 
     background-color: var(--clr-crust);
@@ -25,6 +32,7 @@ const hasCover = post.data.cover;
     outline: 1px solid var(--clr-surface-0);
 
     height: 8rem;
+    width: 100%;
 
     overflow: hidden;
   }
@@ -36,11 +44,15 @@ const hasCover = post.data.cover;
     align-items: center;
     justify-content: center;
 
+    top: 50%;
+    transform: translateY(-50%);
+
     aspect-ratio: 5 / 3;
 
     overflow: hidden;
 
-    max-height: 100%;
+    width: 100%;
+    min-width: 0;
   }
 
   .archive-post-img {
@@ -52,12 +64,14 @@ const hasCover = post.data.cover;
     height: 100%;
 
     object-fit: cover;
+    object-position: center center;
 
     cursor: pointer;
 
     transition-property: scale;
     transition-duration: 0.25s;
     transition-timing-function: ease-in-out;
+    transform-origin: center;
   }
 
   .archive-post-img:hover {
@@ -72,7 +86,9 @@ const hasCover = post.data.cover;
     gap: 0.4rem;
 
     padding: 1rem;
-    /* padding-left: 0; */
+    width: 100%;
+
+    overflow: hidden;
   }
 
   .content-wrapper-has-cover {
@@ -81,6 +97,9 @@ const hasCover = post.data.cover;
 
   a.post-title-link {
     text-decoration: none;
+
+    width: 100%;
+    display: block;
 
     transition-property: color;
     transition-duration: 0.15s;
@@ -95,14 +114,31 @@ const hasCover = post.data.cover;
     font-size: 1.25rem;
 
     margin: 0;
+
+    width: 100%;
+    min-width: 0;
   }
 
   .date-wrapper {
     margin-bottom: 0.2rem;
   }
+
+  .post-desc-wrapper {
+    overflow: hidden;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .single-line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
 </style>
 
-<div class='archive-post-card-wrapper'>
+<div
+  class={`archive-post-card-wrapper ${hasCover ? 'archive-post-card-wrapper-with-cover' : 'archive-post-card-wrapper-without-cover'}`}>
   {
     hasCover && (
       <div class='picture-wrapper'>
@@ -128,8 +164,10 @@ const hasCover = post.data.cover;
     <a
       class='post-title-link'
       href={`/blog/${post.slug}`}>
-      <h5 class='post-title'>{post.data.title}</h5>
+      <h5 class='post-title single-line'>{post.data.title}</h5>
     </a>
-    <p>{post.data.description}</p>
+    <div class='post-desc-wrapper'>
+      <p class='single-line'>{post.data.description}</p>
+    </div>
   </div>
 </div>
