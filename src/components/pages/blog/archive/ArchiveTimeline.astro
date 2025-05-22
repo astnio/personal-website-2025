@@ -5,8 +5,6 @@ import ArchivePostCard from './ArchivePostCard.astro';
 const allPosts = await getCollection('blog', ({ data }) => {
   return data;
 });
-
-// console.log(allPosts.length);
 ---
 
 <style>

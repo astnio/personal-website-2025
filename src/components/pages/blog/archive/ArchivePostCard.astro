@@ -155,7 +155,7 @@ const hasCover = post.data.cover;
 <div
   class={`archive-post-card-wrapper ${hasCover ? 'archive-post-card-wrapper-with-cover' : 'archive-post-card-wrapper-without-cover'}`}>
   {
-    hasCover && (
+    post.data.cover && (
       <div class='picture-wrapper'>
         <a href={`/blog/${post.slug}`}>
           <Picture
