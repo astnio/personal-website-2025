@@ -10,7 +10,7 @@ import { getCollection } from 'astro:content';
 
 const title = 'Austin Hagel';
 
-const featuredProjects = await getCollection('projects', ({ data }) => {
+const featuredProjects = await getCollection('frontendProjects', ({ data }) => {
   return data.featured === true;
 });
 
@@ -19,6 +19,9 @@ const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort(
   (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
 );
+
+console.log('FEATURED PROJECTS! YIPPEEEE');
+console.log(featuredProjects);
 ---
 
 <style>
@@ -312,7 +315,7 @@ const sortedPosts = allPosts.sort(
         featuredProjects.slice(0, 4).map((project) => (
           <li class='projects-list-item'>
             <ProjectCard
-              url={`/projects/${project.slug}`}
+              url={`/projects/frontend/${project.slug}`}
               data={project.data}
             />
           </li>
@@ -321,14 +324,9 @@ const sortedPosts = allPosts.sort(
     </ul>
     <a
       class='link-view-all'
-      href='/projects'>
+      href='/projects/frontend'>
       <span class='ri-infinity-line'></span>
       <span>View All</span>
     </a>
   </section>
-  <!-- <section
-    class='max-width'
-    style='margin-bottom: 4rem;'>
-    <GalleryTest />
-  </section> -->
 </BaseLayout>

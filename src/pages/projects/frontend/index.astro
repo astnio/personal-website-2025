@@ -1,15 +1,8 @@
 ---
-/***
- * === NOTE ===
- * I am not using this anywhere right now,
- * but I should continue to use this in the future
- * as I currently have no real common directory layout
- * for any frontendProjects yet.
- * ***/
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import ProjectCard from '@/components/pages/projects/ProjectCard.astro';
-import Heading from '@/components/typography/Heading.astro';
+import ProjectCard from '@components/pages/projects/ProjectCard.astro';
+import Heading from '@components/typography/Heading.astro';
 
 // const allProjects = await getCollection('projects');
 const featuredProjects = await getCollection('frontendProjects', ({ data }) => {
@@ -20,16 +13,7 @@ const otherProjects = await getCollection('frontendProjects', ({ data }) => {
   return data.featured === false;
 });
 
-interface Props {
-  directoryTitle: string;
-}
-
-const { directoryTitle } = Astro.props;
-
-const title =
-  directoryTitle === 'Projects'
-    ? 'Austin Hagel | Projects'
-    : `Projects | ${directoryTitle}`;
+const title = 'Projects';
 ---
 
 <style>
@@ -69,7 +53,7 @@ const title =
 
   ul.projects-list {
     display: grid;
-    grid-template-columns: auto;
+    /* grid-template-columns: auto; */
     gap: 2rem;
 
     list-style: none;
@@ -104,18 +88,18 @@ const title =
 
   li.project-area-list-item {
     display: flex;
+    width: 100%;
 
     padding: 0;
   }
 
   li.projects-list-item {
-    display: flex; /* Add this */
+    display: flex;
   }
 
   @media screen and (min-width: 1024px) {
     ul.projects-list {
-      display: grid;
-      align-items: stretch;
+      /* display: grid; */
       grid-template-columns: 1fr 1fr;
       gap: 3rem 2rem;
 

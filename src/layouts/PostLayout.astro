@@ -9,8 +9,8 @@ import PostInfo from '@components/pages/blog/PostInfo.astro';
 
 interface Props {
   frontmatter: any;
-  postTarget: 'blog' | 'projects';
-  post: CollectionEntry<'blog' | 'projects'>;
+  postTarget: 'blog' | 'frontendProjects';
+  post: CollectionEntry<'blog' | 'frontendProjects'>;
 }
 
 const { frontmatter, postTarget, post } = Astro.props;

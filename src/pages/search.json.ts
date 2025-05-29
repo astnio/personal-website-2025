@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 
 async function getAllContent() {
   const blogPosts = await getCollection('blog');
-  const projects = await getCollection('projects');
+  const projects = await getCollection('frontendProjects');
   const jobs = await getCollection('jobs');
 
   const blogData = blogPosts.map((post) => ({
@@ -16,7 +16,7 @@ async function getAllContent() {
     source: 'blog',
   }));
 
-  const projectsData = projects.map((project) => ({
+  const frontendProjectsData = projects.map((project) => ({
     slug: project.slug,
     title: project.data.title,
     description: project.data.description,
@@ -24,7 +24,7 @@ async function getAllContent() {
     status: project.data.status,
     type: project.data.type,
     date: project.data.date_completed,
-    source: 'projects',
+    source: 'frontendProjects',
   }));
 
   const jobsData = jobs.map((job) => ({
@@ -38,7 +38,7 @@ async function getAllContent() {
     source: 'jobs',
   }));
 
-  return [...blogData, ...projectsData, ...jobsData];
+  return [...blogData, ...frontendProjectsData, ...jobsData];
 }
 
 export async function GET({}) {

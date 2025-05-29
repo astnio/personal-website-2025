@@ -12,7 +12,7 @@ import ProjectGallery from '@/components/pages/projects/ProjectGallery.astro';
 
 interface Props {
   frontmatter: any;
-  project: CollectionEntry<'projects'>;
+  project: CollectionEntry<'frontendProjects'>;
 }
 
 const { frontmatter, project } = Astro.props;
@@ -202,7 +202,7 @@ const hasImages = frontmatter.images ? true : false;
       <div class='tags'>
         {
           frontmatter.tags.map((tag: string) => (
-            <Tag url={`/projects/tags/${tag}`}>{tag}</Tag>
+            <Tag url={`/projects/frontend/tags/${tag}`}>{tag}</Tag>
           ))
         }
       </div>

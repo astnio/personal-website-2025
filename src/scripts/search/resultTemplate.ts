@@ -4,8 +4,8 @@ function getLink(result: any) {
     case 'blog':
       link = `/blog/${result.slug}`;
       break;
-    case 'projects':
-      link = `/projects/${result.slug}`;
+    case 'frontendProjects':
+      link = `/projects/frontend/${result.slug}`;
       break;
     case 'jobs':
       link = `/about`;

@@ -24,7 +24,7 @@ const fuseOptions = {
       weight: 0.2,
     },
 
-    // Project Keys
+    // Frontend Project Keys
     {
       name: 'description',
       weight: 0.6,

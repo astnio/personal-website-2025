@@ -294,7 +294,7 @@ const { url, data } = Astro.props;
         data.tags.map((tag: string) => (
           <li class='tags-list-item'>
             <Chip
-              url={`/projects/tags/${tag}`}
+              url={`/projects/frontend/tags/${tag}`}
               size='sm'>
               <span class={`tech-icon ${getIcon(tag)}`} />
               <span>{tag}</span>

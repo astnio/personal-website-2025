@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-  const allProjectPosts = await getCollection('projects');
+  const allProjectPosts = await getCollection('frontendProjects');
   const uniqueTags = [
     ...new Set(allProjectPosts.map((post) => post.data.tags).flat()),
   ];
@@ -28,7 +28,7 @@ const { projectPosts } = Astro.props;
   <ul>
     {
       projectPosts.map((post) => (
-        <a href={`/projects/${post.slug}/`}>{post.data.title}</a>
+        <a href={`/projects/frontend/${post.slug}/`}>{post.data.title}</a>
       ))
     }
   </ul>

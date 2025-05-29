@@ -5,7 +5,7 @@ import ProjectLayout from '@layouts/ProjectLayout.astro';
 import Aside from '@components/Aside.astro';
 
 export async function getStaticPaths() {
-  const allProjects = await getCollection('projects');
+  const allProjects = await getCollection('frontendProjects');
 
   return allProjects.map((entry) => ({
     params: { project: entry.slug },
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  entry: CollectionEntry<'projects'>;
+  entry: CollectionEntry<'frontendProjects'>;
 }
 
 const { entry } = Astro.props;
