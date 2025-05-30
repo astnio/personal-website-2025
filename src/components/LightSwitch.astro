@@ -148,10 +148,15 @@ const { id } = Astro.props;
   input:checked ~ .light-switch-toggle-icon > .light-switch-toggle-icon-light {
     display: none;
   }
+
+  .light-switch-label-wrapper {
+    font-size: 0.9rem;
+    color: var(--clr-subtext-0);
+  }
 </style>
 
 <div class='light-switch-container'>
-  <p class=''>
+  <p class='light-switch-label-wrapper'>
     <span class='light-switch-label'></span> Theme
   </p>
   <label
