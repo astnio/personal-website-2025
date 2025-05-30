@@ -5,9 +5,17 @@ interface Props {
   url: string;
   disabled?: boolean;
   iconClass: string;
+  stats?: any;
 }
 
-const { title, description, url, disabled = false, iconClass } = Astro.props;
+const {
+  title,
+  description,
+  url,
+  disabled = false,
+  iconClass,
+  stats,
+} = Astro.props;
 ---
 
 <style>
@@ -71,6 +79,8 @@ const { title, description, url, disabled = false, iconClass } = Astro.props;
     gap: 1rem;
 
     width: 100%;
+
+    padding-bottom: 2rem;
   }
 
   .title {
@@ -138,16 +148,20 @@ const { title, description, url, disabled = false, iconClass } = Astro.props;
 
     height: 1px;
     background-color: var(--clr-surface-1);
+
+    margin-bottom: 2rem;
   }
 
   .card-footer-wrapper {
+    width: 100%;
+
+    padding-bottom: 2rem;
+  }
+
+  .stats-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    width: 100%;
-
-    padding-block: 2rem;
   }
 
   .stat-label {
@@ -179,7 +193,11 @@ const { title, description, url, disabled = false, iconClass } = Astro.props;
     }
 
     .card-footer-wrapper {
-      padding-block: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .card-body-wrapper {
+      padding-bottom: 1rem;
     }
   }
 </style>
@@ -221,23 +239,28 @@ const { title, description, url, disabled = false, iconClass } = Astro.props;
     <p>
       {description}
     </p>
-
-    <hr class='hr-long' />
   </div>
-  <div class='card-footer-wrapper padding-inline'>
-    <p class='stat-label'>
-      <span class='stat-label-number'>15+</span>
-      <span class='stat-label-name'>Lorem Ipsums</span>
-    </p>
+  {
+    stats && (
+      <div class='card-footer-wrapper padding-inline'>
+        <hr class='hr-long' />
+        <div class='stats-wrapper'>
+          <p class='stat-label'>
+            <span class='stat-label-number'>15+</span>
+            <span class='stat-label-name'>Lorem Ipsums</span>
+          </p>
 
-    <p class='stat-label'>
-      <span class='stat-label-number'>15+</span>
-      <span class='stat-label-name'>Lorem Ipsums</span>
-    </p>
+          <p class='stat-label'>
+            <span class='stat-label-number'>15+</span>
+            <span class='stat-label-name'>Lorem Ipsums</span>
+          </p>
 
-    <p class='stat-label'>
-      <span class='stat-label-number'>15+</span>
-      <span class='stat-label-name'>Lorem Ipsums</span>
-    </p>
-  </div>
+          <p class='stat-label'>
+            <span class='stat-label-number'>15+</span>
+            <span class='stat-label-name'>Lorem Ipsums</span>
+          </p>
+        </div>
+      </div>
+    )
+  }
 </div>
