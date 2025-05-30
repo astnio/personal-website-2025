@@ -67,10 +67,22 @@ const {
 
     background-color: var(--clr-mantle);
 
+    outline: 1px solid transparent;
+
     width: 100%;
     height: 100%;
 
     padding-block: 1.5rem;
+
+    transition-property: background-color, outline;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+  }
+
+  a.card-header-wrapper:hover {
+    background-color: var(--clr-base);
+
+    outline: 1px solid var(--clr-surface-1);
   }
 
   .header-icon {
@@ -115,6 +127,10 @@ const {
     max-width: fit-content;
 
     border-radius: var(--radius-circle);
+
+    transition-property: background-color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
   }
 
   .link:hover {
@@ -229,25 +245,31 @@ const {
 </style>
 
 <div class='card-wrapper box-shadow-3'>
-  <div class='card-header-wrapper padding-inline'>
-    <span class=`header-icon ${iconClass}`></span>
-    {
-      disabled ? (
+  {
+    disabled ? (
+      <div class='card-header-wrapper padding-inline'>
+        <span class={`header-icon ${iconClass}`} />
+
         <p
           class='link disabled-link'
           title='Coming soon!'>
           <span class='ri-arrow-right-wide-fill' />
         </p>
-      ) : (
-        <a
+      </div>
+    ) : (
+      <a
+        title={`View ${title} projects`}
+        href={url}
+        class='card-header-wrapper padding-inline'>
+        <span class={`header-icon ${iconClass}`} />
+        <p
           class='link'
-          href={url}
           title={`View ${title} projects`}>
           <span class='ri-arrow-right-wide-fill' />
-        </a>
-      )
-    }
-  </div>
+        </p>
+      </a>
+    )
+  }
 
   <div class='card-body-wrapper padding-inline'>
     <div class='title-wrapper'>
