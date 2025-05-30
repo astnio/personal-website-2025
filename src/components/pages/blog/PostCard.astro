@@ -40,6 +40,8 @@ const timeRead = calculateReadingTime(post.body);
   .blog-card-wrapper {
     isolation: isolate;
     width: 100%;
+
+    border-radius: var(--radius-surface);
   }
 
   .blog-card-wrapper[data-featured='true'] {
@@ -316,7 +318,7 @@ const timeRead = calculateReadingTime(post.body);
   }
 </style>
 
-<div class='blog-card-wrapper'>
+<div class='blog-card-wrapper box-shadow-2'>
   <article class='blog-card'>
     {
       post.data.cover && (

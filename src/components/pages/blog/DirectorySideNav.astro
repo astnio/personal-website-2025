@@ -106,7 +106,7 @@ const tags = [...new Set(sortedPosts.map((post: any) => post.data.tags).flat())]
   }
 
   .blog-nav {
-    overflow-y: auto;
+    /* overflow-y: auto; */
     scrollbar-width: thin;
     scrollbar-color: var(--clr-surface-0) var(--clr-base);
 
@@ -259,7 +259,7 @@ const tags = [...new Set(sortedPosts.map((post: any) => post.data.tags).flat())]
       <li>
         <a
           href='/blog/archive'
-          class='btn-archive'
+          class='btn-archive box-shadow-1'
           title=`View archives`>
           <span class='btn-archive-icon-wrapper'>
             <span class=`btn-archive-icon ri-archive-fill`></span>

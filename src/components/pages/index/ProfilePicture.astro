@@ -19,7 +19,7 @@ import profilePicture from '@assets/images/site/index/profile-pic.png';
   }
 
   a {
-    border-radius: 999px;
+    border-radius: var(--radius-circle);
 
     transition-property: scale, filter, box-shadow;
     transition-duration: 0.2s;
@@ -51,7 +51,7 @@ import profilePicture from '@assets/images/site/index/profile-pic.png';
 </style>
 
 <a href='/about'>
-  <div class='image-frame'>
+  <div class='image-frame box-shadow-3'>
     <Picture
       src={profilePicture}
       formats={['webp', 'png']}
