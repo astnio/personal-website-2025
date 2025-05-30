@@ -36,11 +36,11 @@ const { id } = Astro.props;
     cursor: pointer;
 
     background: var(--clr-surface-0);
-    background: linear-gradient(
+    /* background: linear-gradient(
       90deg,
       var(--clr-surface-0) 0%,
       var(--clr-base) 100%
-    );
+    ); */
 
     outline: 1px solid var(--clr-surface-1);
 
@@ -61,33 +61,33 @@ const { id } = Astro.props;
     left: 0.24rem;
     bottom: 0.18rem;
 
-    outline: 1px solid var(--clr-surface-0);
+    /* outline: 1px solid var(--clr-surface-0); */
 
     background-color: var(--clr-base);
     transition: 0.1s ease-out;
   }
 
   input:checked + .slider {
-    background-color: var(--clr-surface-2);
-    background: linear-gradient(
+    background-color: var(--clr-mantle);
+    /* background: linear-gradient(
       90deg,
       var(--clr-surface-0) 0%,
       var(--clr-surface-1) 100%
-    );
+    ); */
   }
 
   input:hover + .slider {
     outline: 1px solid var(--clr-primary);
   }
 
-  input:focus + slider {
+  /* input:focus + .slider {
     outline: 1px solid var(--clr-surface-0);
-  }
+  } */
 
   input:checked + .slider:before {
     transform: translateX(1.85rem);
 
-    background: var(--clr-mantle);
+    background: var(--clr-surface-0);
   }
 
   .slider.round {
@@ -100,8 +100,8 @@ const { id } = Astro.props;
 
   .light-switch-toggle-icon {
     position: absolute;
-    left: 0.4rem;
-    bottom: 0.3rem;
+    left: 0.38rem;
+    bottom: 0.28rem;
 
     display: flex;
     align-items: center;
@@ -126,7 +126,7 @@ const { id } = Astro.props;
 
   input:checked ~ .light-switch-toggle-icon {
     transform: translateX(1.8rem);
-    color: var(--clr-texts);
+    color: var(--clr-text);
   }
 
   input:not(:checked)
