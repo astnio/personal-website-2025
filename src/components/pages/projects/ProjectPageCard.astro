@@ -4,9 +4,10 @@ interface Props {
   description: string;
   url: string;
   disabled?: boolean;
+  iconClass: string;
 }
 
-const { title, description, url, disabled = false } = Astro.props;
+const { title, description, url, disabled = false, iconClass } = Astro.props;
 ---
 
 <style>
@@ -26,33 +27,79 @@ const { title, description, url, disabled = false } = Astro.props;
     margin: 0;
   }
 
+  .padding-inline {
+    padding-inline: 2rem;
+  }
+
   .card-wrapper {
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    gap: 1rem;
 
     width: 100%;
 
-    background-color: var(--clr-crust);
+    background-color: var(--clr-base);
     outline: 1px solid var(--clr-surface-0);
 
     border-radius: var(--radius-surface);
 
-    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .card-header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: var(--clr-mantle);
+
+    width: 100%;
+    height: 100%;
+
+    padding-block: 1.5rem;
+  }
+
+  .header-icon {
+    font-size: 4rem;
+  }
+
+  .card-body-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+
+    width: 100%;
   }
 
   .title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin: 0;
+    margin-bottom: 0.4rem;
+    margin-top: 1rem;
   }
 
   .link {
-    background-color: var(--clr-mantle);
-    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--clr-crust);
+
+    height: 3rem;
+    width: 3rem;
+
+    aspect-ratio: 1;
+
     outline: 1px solid var(--clr-surface-0);
     border-radius: var(--radius-input);
+
+    font-size: 2rem;
+
+    max-width: fit-content;
+
+    border-radius: var(--radius-circle);
   }
 
   .link:hover {
@@ -61,37 +108,136 @@ const { title, description, url, disabled = false } = Astro.props;
 
   .link.disabled-link {
     color: var(--clr-subtext-0);
-    background-color: var(--clr-crust);
-    outline: 1px solid var(--clr-base);
+    background-color: var(--clr-base);
+    outline: 1px solid var(--clr-surface-0);
     cursor: default;
   }
 
   .link.disabled-link:hover {
-    background-color: var(--clr-crust);
+    background-color: var(--clr-base);
+  }
+
+  hr.hr-short {
+    width: 4rem;
+
+    border: none;
+    border-radius: var(--radius-pill);
+
+    height: 0.25rem;
+    background-color: var(--clr-primary);
+
+    margin: 0;
+    margin-right: auto;
+    margin-bottom: 1rem;
+  }
+
+  hr.hr-long {
+    width: 100%;
+
+    border: none;
+
+    height: 1px;
+    background-color: var(--clr-surface-1);
+  }
+
+  .card-footer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding-block: 2rem;
+  }
+
+  .stat-label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-label-number {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--clr-primary);
+  }
+
+  .stat-label-name {
+    color: var(--clr-subtext-1);
+  }
+
+  @media screen and (max-width: 768px) {
+    .padding-inline {
+      padding-inline: 1rem;
+    }
+
+    .stat-label-number {
+      font-size: 1.5rem;
+    }
+
+    .stat-label-name {
+      font-size: 0.85rem;
+    }
+
+    .card-footer-wrapper {
+      padding-block: 1rem;
+    }
   }
 </style>
 
 <div class='card-wrapper'>
-  {
-    disabled ? (
-      <h3 class='title'>{title}</h3>
-    ) : (
-      <h3 class='title'>
-        <a href={url}>{title}</a>
-      </h3>
-    )
-  }
-  <p></p>
-  {description}
-  {
-    disabled ? (
-      <p class='link disabled-link'>Coming Soon!</p>
-    ) : (
-      <a
-        class='link'
-        href={url}>
-        View {title} Projects
-      </a>
-    )
-  }
+  <div class='card-header-wrapper padding-inline'>
+    <span class=`header-icon ${iconClass}`></span>
+    {
+      disabled ? (
+        <p
+          class='link disabled-link'
+          title='Coming soon!'>
+          <span class='ri-arrow-right-wide-fill' />
+        </p>
+      ) : (
+        <a
+          class='link'
+          href={url}
+          title={`View ${title} projects`}>
+          <span class='ri-arrow-right-wide-fill' />
+        </a>
+      )
+    }
+  </div>
+
+  <div class='card-body-wrapper padding-inline'>
+    <div class='title-wrapper'>
+      {
+        disabled ? (
+          <h3 class='title title-disabled'>{title}</h3>
+        ) : (
+          <h3 class='title'>
+            <a href={url}>{title}</a>
+          </h3>
+        )
+      }
+      <hr class='hr-short' />
+    </div>
+    <p>
+      {description}
+    </p>
+
+    <hr class='hr-long' />
+  </div>
+  <div class='card-footer-wrapper padding-inline'>
+    <p class='stat-label'>
+      <span class='stat-label-number'>15+</span>
+      <span class='stat-label-name'>Lorem Ipsums</span>
+    </p>
+
+    <p class='stat-label'>
+      <span class='stat-label-number'>15+</span>
+      <span class='stat-label-name'>Lorem Ipsums</span>
+    </p>
+
+    <p class='stat-label'>
+      <span class='stat-label-number'>15+</span>
+      <span class='stat-label-name'>Lorem Ipsums</span>
+    </p>
+  </div>
 </div>

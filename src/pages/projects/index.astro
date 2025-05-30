@@ -6,6 +6,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 <style>
   .max-width {
     width: 100%;
+
+    margin-bottom: 6rem;
+
+    padding-inline: 1rem;
   }
 
   .cards-wrapper {
@@ -13,31 +17,45 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 3rem;
 
     width: 100%;
+  }
+
+  .intro {
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
   }
 </style>
 
 <BaseLayout>
   <section class='max-width'>
+    <p class='intro'>
+      I work on a variety of projects, primarily focusing on development and
+      programming. I do dabble in some art and graphic design, though, so feel
+      free to check out those projects when they are available!
+    </p>
+
     <div class='cards-wrapper'>
       <ProjectPageCard
         title='Frontend'
         description='Projects that focus on the frontend for websites and apps. A lot of UI and UX design to be found here!'
         url='/projects/frontend'
+        iconClass='ri-flashlight-fill'
       />
       <ProjectPageCard
         title='Backend'
         description="Projects that focus on the server side of things for apps and sites. Expect to find some projects that don't look fancy, but are working hard!"
         url='/projects/backend'
         disabled={true}
+        iconClass='ri-terminal-box-fill'
       />
       <ProjectPageCard
         title='Graphic Design'
         description='These are any designs and projects I made that focus more on visual communication.'
         url='/projects/graphic-design'
         disabled={true}
+        iconClass='ri-collage-fill'
       />
     </div>
   </section>
