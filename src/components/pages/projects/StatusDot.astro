@@ -40,14 +40,15 @@ const { type } = Astro.props;
     width: 100%;
     height: 100%;
 
-    /* background-color: var(--clr-base); */
-
-    /* opacity: 0.2; */
-
-    filter: brightness(70%) saturate(90%);
-    /* opacity: 0.2; */
-
     z-index: -1;
+  }
+
+  :root[data-color-scheme='dark'] .project-status::before {
+    filter: brightness(70%) saturate(90%);
+  }
+
+  :root[data-color-scheme='light'] .project-status::before {
+    filter: brightness(115%) saturate(80%);
   }
 
   .project-status.status-complete {
