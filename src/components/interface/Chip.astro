@@ -8,7 +8,7 @@ const { url, size = 'md' } = Astro.props;
 
 <style>
   a.chip {
-    outline: 1px solid var(--clr-surface-1);
+    outline: 1px solid var(--clr-surface-0);
     text-decoration: none;
   }
 
@@ -20,7 +20,7 @@ const { url, size = 'md' } = Astro.props;
     justify-content: center;
     gap: 0.5ch;
 
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-mantle);
 
     color: var(--clr-subtext-1);
     font-weight: 500;
@@ -40,8 +40,8 @@ const { url, size = 'md' } = Astro.props;
 
   a.chip:hover {
     color: var(--clr-text);
-    background-color: var(--clr-surface-1);
-    outline: 1px solid var(--clr-surface-2);
+    background-color: var(--clr-base);
+    outline: 1px solid var(--clr-surface-1);
   }
 
   .sm {
