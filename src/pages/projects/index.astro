@@ -1,8 +1,44 @@
 ---
+import ProjectPageCard from '@/components/pages/projects/ProjectPageCard.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
+<style>
+  .max-width {
+    width: 100%;
+  }
+
+  .cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    width: 100%;
+  }
+</style>
+
 <BaseLayout>
-  <h1>Hello world</h1>
-  <a href='/projects/frontend/'>Frontend web dev projects</a>
+  <section class='max-width'>
+    <div class='cards-wrapper'>
+      <ProjectPageCard
+        title='Frontend'
+        description='Projects that focus on the frontend for websites and apps. A lot of UI and UX design to be found here!'
+        url='/projects/frontend'
+      />
+      <ProjectPageCard
+        title='Backend'
+        description="Projects that focus on the server side of things for apps and sites. Expect to find some projects that don't look fancy, but are working hard!"
+        url='/projects/backend'
+        disabled={true}
+      />
+      <ProjectPageCard
+        title='Graphic Design'
+        description='These are any designs and projects I made that focus more on visual communication.'
+        url='/projects/graphic-design'
+        disabled={true}
+      />
+    </div>
+  </section>
 </BaseLayout>
