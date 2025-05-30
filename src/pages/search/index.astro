@@ -1,6 +1,19 @@
 ---
 import '@styles/search.css';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+
+/* 
+
+NOTE REGARDING THE CARD TEMPLATE:
+
+This is actually NOT an astro component!
+It is just a template literal inside the script file.
+Specifically, it is the file in the
+./src/scripts/search/resultTemplate.ts file. There is
+a function there that returns the actual template. Modify that
+file if you need to add classes or anything to the card itself.
+
+*/
 ---
 
 <style>

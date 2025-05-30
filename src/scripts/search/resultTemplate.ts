@@ -29,7 +29,7 @@ export default function resultTemplate(result: any) {
   const link = getLink(result);
 
   return /*html*/ `
-    <li class='search-result-item'>
+    <li class='search-result-item box-shadow-2'>
         <a class="search-result-link-title" href='${link}'>
           <h3 class="search-result-title">${result.title}</h3>              
         </a>
