@@ -1,6 +1,58 @@
 ---
 import ProjectPageCard from '@/components/pages/projects/ProjectPageCard.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const frontendProjects = await getCollection('frontendProjects', (entry) => {
+  return entry.data.published !== false && entry.data.archived !== true;
+});
+
+const calculateFrontendStats = () => {
+  const totalProjects = frontendProjects.length;
+
+  const allTags = frontendProjects.flatMap(
+    (project) => project.data.tags || []
+  );
+  const uniqueTags = new Set(allTags);
+  const totalTechnologies = uniqueTags.size;
+
+  const completedProjects = frontendProjects.filter(
+    (project) => project.data.date_completed
+  );
+  let yearsActive = 0;
+
+  if (completedProjects.length > 0) {
+    const dates = completedProjects.map(
+      (project) => project.data.date_completed
+    );
+    const oldestDate = new Date(
+      Math.min(...dates.map((date) => date!.getTime()))
+    );
+    const newestDate = new Date(
+      Math.max(...dates.map((date) => date!.getTime()))
+    );
+
+    const yearsDiff = newestDate.getFullYear() - oldestDate.getFullYear();
+    yearsActive = yearsDiff === 0 ? 1 : yearsDiff;
+  }
+
+  return [
+    {
+      number: totalProjects.toString(),
+      label: totalProjects === 1 ? 'Project' : 'Projects',
+    },
+    {
+      number: totalTechnologies.toString(),
+      label: totalTechnologies === 1 ? 'Technology' : 'Technologies',
+    },
+    {
+      number: yearsActive === 0 ? '1' : yearsActive.toString(),
+      label: yearsActive <= 1 ? 'Year Active' : 'Years Active',
+    },
+  ];
+};
+
+const frontendStats = calculateFrontendStats();
 ---
 
 <style>
@@ -42,7 +94,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         description='Projects that focus on the frontend for websites and apps. A lot of UI and UX design to be found here!'
         url='/projects/frontend'
         iconClass='ri-flashlight-fill'
-        stats={true}
+        stats={frontendStats}
       />
       <ProjectPageCard
         title='Backend'

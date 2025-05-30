@@ -1,11 +1,16 @@
 ---
+interface StatItem {
+  number: string;
+  label: string;
+}
+
 interface Props {
   title: string;
   description: string;
   url: string;
   disabled?: boolean;
   iconClass: string;
-  stats?: any;
+  stats?: StatItem[];
 }
 
 const {
@@ -265,24 +270,16 @@ const {
     </p>
   </div>
   {
-    stats && (
+    stats && stats.length > 0 && (
       <div class='card-footer-wrapper padding-inline'>
         <hr class='hr-long' />
         <div class='stats-wrapper'>
-          <p class='stat-label'>
-            <span class='stat-label-number'>15+</span>
-            <span class='stat-label-name'>Lorem Ipsums</span>
-          </p>
-
-          <p class='stat-label'>
-            <span class='stat-label-number'>15+</span>
-            <span class='stat-label-name'>Lorem Ipsums</span>
-          </p>
-
-          <p class='stat-label'>
-            <span class='stat-label-number'>15+</span>
-            <span class='stat-label-name'>Lorem Ipsums</span>
-          </p>
+          {stats.map((stat) => (
+            <p class='stat-label'>
+              <span class='stat-label-number'>{stat.number}</span>
+              <span class='stat-label-name'>{stat.label}</span>
+            </p>
+          ))}
         </div>
       </div>
     )
