@@ -247,6 +247,36 @@ const sortedPosts = allPosts.sort(
       text-align: left;
     }
   }
+
+  .post-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+
+    font-size: 2rem;
+
+    margin: 0;
+  }
+
+  .post-section-title-icon {
+    font-size: 3rem;
+  }
+
+  hr.hr-short {
+    display: flex;
+
+    border-radius: var(--radius-pill);
+
+    background-color: var(--clr-primary);
+
+    height: 0.25rem;
+
+    min-width: auto;
+    width: 100%;
+    max-width: 5rem;
+
+    margin-bottom: 1rem;
+  }
 </style>
 
 <BaseLayout title={title}>
@@ -285,7 +315,11 @@ const sortedPosts = allPosts.sort(
     </div>
   </section>
   <section class='max-width recent-posts'>
-    <h1>Recent Posts</h1>
+    <h2 class='post-section-title'>
+      <span class='post-section-title-icon ri-news-fill'></span>
+      <span>Recent Posts</span>
+    </h2>
+    <hr class='hr-short' />
     <ul class='blog-post-cards-list'>
       {
         sortedPosts.slice(0, 4).map((post: any) => (
@@ -306,7 +340,11 @@ const sortedPosts = allPosts.sort(
     </a>
   </section>
   <section class='max-width featured-projects'>
-    <h1>Featured Projects</h1>
+    <h2 class='post-section-title'>
+      <span class='post-section-title-icon ri-code-box-fill'></span>
+      <span>Featured Projects</span>
+    </h2>
+    <hr class='hr-short' />
     <ul class='projects-list'>
       {
         featuredProjects.slice(0, 4).map((project) => (
