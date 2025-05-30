@@ -25,11 +25,11 @@ const { inDrawer, id } = Astro.props;
 
     border: none;
     border-radius: var(--radius-input);
-    outline: 1px solid var(--clr-surface-1);
+    outline: 1px solid var(--clr-surface-0);
 
     padding: 0;
 
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-crust);
 
     height: 2.4rem;
     width: fit-content;
@@ -47,9 +47,9 @@ const { inDrawer, id } = Astro.props;
   }
 
   button.btn-customize:hover {
-    background-color: var(--clr-surface-1);
+    background-color: var(--clr-base);
     cursor: pointer;
-    outline: 1px solid var(--clr-surface-2);
+    outline: 1px solid var(--clr-primary);
     color: var(--clr-primary);
   }
 
@@ -79,7 +79,7 @@ const { inDrawer, id } = Astro.props;
 
     aspect-ratio: 1;
 
-    background-color: var(--clr-base);
+    background-color: var(--clr-mantle);
 
     height: 100%;
 
