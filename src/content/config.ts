@@ -16,6 +16,7 @@ const blogCollection = defineCollection({
         category: z.string(),
         tags: z.array(z.string()),
         featured: z.boolean().optional(),
+        published: z.boolean().optional()
       })
       .superRefine((data, ctx) => {
         if (data.cover && !data.cover_alt) {
@@ -56,7 +57,9 @@ const frontendProjectCollection = defineCollection({
         src: image(),
         alt: z.string().optional().default(''),
       })
-    ).optional()
+    ).optional(),
+    archived: z.boolean().optional(),
+    published: z.boolean().optional()
   }).superRefine((data, ctx) => {
     if (data.cover && !data.cover_alt) {
       ctx.addIssue({
