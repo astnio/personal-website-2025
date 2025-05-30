@@ -49,6 +49,8 @@ const lastBuildDate = formatDateTime(new Date());
   }
 
   .build-date-paragraph {
+    isolation: isolate;
+
     position: relative;
 
     display: flex;
@@ -75,6 +77,8 @@ const lastBuildDate = formatDateTime(new Date());
     outline: 1px solid var(--clr-surface-0);
 
     background-color: var(--clr-mantle);
+
+    z-index: -1;
   }
 
   .build-date-icon {
@@ -86,11 +90,6 @@ const lastBuildDate = formatDateTime(new Date());
 
   .build-date {
     color: var(--clr-subtext-0);
-  }
-
-  .build-date-icon,
-  .build-date {
-    opacity: 0.9;
   }
 </style>
 
