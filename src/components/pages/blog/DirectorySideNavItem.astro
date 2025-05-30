@@ -63,7 +63,7 @@ const { title, url, iconClass, listType, list, counts } = Astro.props;
 
     font-weight: 500;
 
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-mantle);
 
     width: 100%;
     height: 2.8rem;
@@ -71,7 +71,7 @@ const { title, url, iconClass, listType, list, counts } = Astro.props;
     overflow: hidden;
 
     border: 1px solid;
-    border-color: var(--clr-surface-1);
+    border-color: var(--clr-surface-0);
     border-radius: var(--radius-surface) var(--radius-surface) 0 0;
 
     transition-property: background-color, color, border-color;
@@ -80,13 +80,13 @@ const { title, url, iconClass, listType, list, counts } = Astro.props;
   }
 
   .blog-nav-list-title:hover {
-    background-color: var(--clr-surface-1);
-    /* color: var(--clr-primary); */
-    border-color: var(--clr-surface-2);
+    background-color: var(--clr-base);
+    color: var(--clr-primary);
+    border-color: var(--clr-surface-1);
   }
 
   .blog-nav-list-title:hover > .blog-nav-list-title-icon-wrapper {
-    background-color: var(--clr-base);
+    background-color: var(--clr-surface-0);
     /* color: var(--clr-primary); */
   }
 
@@ -98,7 +98,7 @@ const { title, url, iconClass, listType, list, counts } = Astro.props;
     aspect-ratio: 1;
     height: 100%;
 
-    background-color: var(--clr-mantle);
+    background-color: var(--clr-base);
 
     transition-property: background-color, color, border-color;
     transition-duration: 0.1s;
