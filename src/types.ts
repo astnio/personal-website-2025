@@ -3,3 +3,13 @@ export interface Link {
   label: string;
   iconClass: string;
 }
+
+export interface SourceCredit {
+  use: string;
+  name: string;
+  url: string;
+}
+
+export interface SourceCreditCategory {
+  [categoryName: string]: SourceCredit[];
+}

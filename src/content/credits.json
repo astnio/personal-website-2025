@@ -1,69 +1,83 @@
-{
-  "credits": [
-    {
-      "use": "Framework",
-      "name": "Astro",
-      "url": "https://astro.build/"
-    },
-    {
-      "use": "Framework Utility",
-      "name": "Rehype Callouts",
-      "url": "https://github.com/lin-stephanie/rehype-callouts"
-    },
-    {
-      "use": "Search Utility",
-      "name": "Fuse.js",
-      "url": "https://www.fusejs.io/"
-    },
-    {
-      "use": "Color Theme",
-      "name": "Catppuccin",
-      "url": "https://catppuccin.com/"
-    },
-    {
-      "use": "Icons",
-      "name": "Remix Icon",
-      "url": "https://remixicon.com/"
-    },
-    {
-      "use": "Assets",
-      "name": "Undraw",
-      "url": "https://undraw.co/"
-    },
-    {
-      "use": "Profile Picture",
-      "name": "DiceBear",
-      "url": "https://www.dicebear.com/"
-    },
-    {
-      "use": "Blog BG Photo (Dark)",
-      "name": "Stein Egil Liland",
-      "url": "https://www.pexels.com/photo/time-lapse-photo-of-northern-lights-1933316/"
-    },
-    {
-      "use": "Blog BG Photo (Light)",
-      "name": "Eberhard Grossgasteiger",
-      "url": "https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/"
-    },
-    {
-      "use": "Font (Sans Serif)",
-      "name": "SN Pro",
-      "url": "https://supernotes.app/open-source/sn-pro/"
-    },
-    {
-      "use": "Font (Serif)",
-      "name": "IBM Plex Serif",
-      "url": "https://www.ibm.com/plex/"
-    },
-    {
-      "use": "Font (Hyperlegible)",
-      "name": "Atkinson Hyperlegible",
-      "url": "https://www.brailleinstitute.org/freefont/"
-    },
-    {
-      "use": "Font (Monospace)",
-      "name": "JetBrains Mono",
-      "url": "https://www.jetbrains.com/lp/mono/"
-    }
-  ]
-}
+[
+  {
+    "development": [
+      {
+        "use": "Framework",
+        "name": "Astro",
+        "url": "https://astro.build/"
+      },
+      {
+        "use": "Framework Utility",
+        "name": "Rehype Callouts",
+        "url": "https://github.com/lin-stephanie/rehype-callouts"
+      },
+      {
+        "use": "Search Utility",
+        "name": "Fuse.js",
+        "url": "https://www.fusejs.io/"
+      }
+    ]
+  },
+  {
+    "design": [
+      {
+        "use": "Color Theme",
+        "name": "Catppuccin",
+        "url": "https://catppuccin.com/"
+      },
+      {
+        "use": "Icons",
+        "name": "Remix Icon",
+        "url": "https://remixicon.com/"
+      },
+      {
+        "use": "Assets",
+        "name": "Undraw",
+        "url": "https://undraw.co/"
+      },
+      {
+        "use": "Profile Picture",
+        "name": "DiceBear",
+        "url": "https://www.dicebear.com/"
+      }
+    ]
+  },
+  {
+    "photography": [
+      {
+        "use": "Blog BG Photo (Dark)",
+        "name": "Stein Egil Liland",
+        "url": "https://www.pexels.com/photo/time-lapse-photo-of-northern-lights-1933316/"
+      },
+      {
+        "use": "Blog BG Photo (Light)",
+        "name": "Eberhard Grossgasteiger",
+        "url": "https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/"
+      }
+    ]
+  },
+  {
+    "typography": [
+      {
+        "use": "Font (Sans Serif)",
+        "name": "SN Pro",
+        "url": "https://supernotes.app/open-source/sn-pro/"
+      },
+      {
+        "use": "Font (Serif)",
+        "name": "IBM Plex Serif",
+        "url": "https://www.ibm.com/plex/"
+      },
+      {
+        "use": "Font (Hyperlegible)",
+        "name": "Atkinson Hyperlegible",
+        "url": "https://www.brailleinstitute.org/freefont/"
+      },
+      {
+        "use": "Font (Monospace)",
+        "name": "JetBrains Mono",
+        "url": "https://www.jetbrains.com/lp/mono/"
+      }
+    ]
+  }
+]

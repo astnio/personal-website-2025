@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import data from '@content/credits.json';
+import type { SourceCreditCategory } from '@/types.ts';
 
-import data from '../../content/credits.json';
-
-const credits = data.credits;
+const creditCategories = data as unknown as SourceCreditCategory[];
 ---
 
 <style>
@@ -76,25 +76,43 @@ const credits = data.credits;
   .wrapper {
     margin-inline: 1rem;
   }
+
+  .category-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--clr-text);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+  }
 </style>
 
 <BaseLayout>
   <section class='wrapper max-width'>
     <h1>Credits</h1>
-    <ul class='credits-list'>
-      {
-        credits.map((credit) => (
-          <li class='credit-list-item'>
-            <h3 class='credit-list-item-title'>{credit.use}</h3>
-            <a
-              class='credit-list-item-link'
-              href={credit.url}
-              target='_blank'>
-              <span>{credit.name}</span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+    {
+      creditCategories.map((categoryObj) => {
+        const [categoryName, credits] = Object.entries(categoryObj)[0];
+
+        return (
+          <div>
+            <h2 class='category-title'>{categoryName}</h2>
+            <ul class='credits-list'>
+              {credits.map((credit) => (
+                <li class='credit-list-item'>
+                  <h3 class='credit-list-item-title'>{credit.use}</h3>
+                  <a
+                    class='credit-list-item-link'
+                    href={credit.url}
+                    target='_blank'>
+                    <span>{credit.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })
+    }
   </section>
 </BaseLayout>
