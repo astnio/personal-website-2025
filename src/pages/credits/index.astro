@@ -2,6 +2,7 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import data from '@content/credits.json';
 import type { SourceCreditCategory } from '@/types.ts';
+import CreditCard from '@/components/pages/credits/CreditCard.astro';
 
 const creditCategories = data as unknown as SourceCreditCategory[];
 ---
@@ -12,104 +13,23 @@ const creditCategories = data as unknown as SourceCreditCategory[];
     padding: 0;
   }
 
-  ul.credits-list {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-
-    list-style-type: none;
-
-    padding: 0;
-  }
-
-  li.credit-list-item {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    gap: 0.8rem;
-
-    padding-block: 0.8rem;
-    padding-inline: 1.4rem;
-
-    margin: 0;
-
-    border-radius: var(--radius-base);
-    border: 1px solid var(--clr-surface-0);
-
-    background-color: var(--clr-mantle);
-
+  .max-width {
+    padding-inline: 1rem;
     width: 100%;
-  }
-
-  h3.credit-list-item-title {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: var(--clr-subtext-1);
-
-    margin: 0;
-    margin-bottom: -0.6rem;
-    padding: 0;
-  }
-
-  a.credit-list-item-link {
-    text-decoration: none;
-    color: var(--clr-primary);
-    font-weight: 600;
-    font-size: 1.2rem;
-
-    padding: 0;
-    margin: 0;
-
-    transition-property: filter;
-    transition-duration: 0.15s;
-    transition-timing-function: ease-out;
-  }
-
-  a.credit-list-item-link:hover {
-    filter: brightness(120%);
-  }
-
-  .wrapper {
-    margin-inline: 1rem;
-  }
-
-  .category-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--clr-text);
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    text-transform: capitalize;
   }
 </style>
 
 <BaseLayout>
-  <section class='wrapper max-width'>
+  <section class='max-width'>
     {
       creditCategories.map((categoryObj) => {
         const [categoryName, credits] = Object.entries(categoryObj)[0];
 
         return (
-          <div>
-            <h2 class='category-title'>{categoryName}</h2>
-            <ul class='credits-list'>
-              {credits.map((credit) => (
-                <li class='credit-list-item'>
-                  <h3 class='credit-list-item-title'>{credit.use}</h3>
-                  <a
-                    class='credit-list-item-link'
-                    href={credit.url}
-                    target='_blank'>
-                    <span>{credit.name}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <CreditCard
+            categoryName={categoryName}
+            creditItems={credits}
+          />
         );
       })
     }
