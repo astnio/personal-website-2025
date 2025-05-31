@@ -89,7 +89,6 @@ const creditCategories = data as unknown as SourceCreditCategory[];
 
 <BaseLayout>
   <section class='wrapper max-width'>
-    <h1>Credits</h1>
     {
       creditCategories.map((categoryObj) => {
         const [categoryName, credits] = Object.entries(categoryObj)[0];
