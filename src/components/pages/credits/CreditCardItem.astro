@@ -3,14 +3,24 @@ const { credit } = Astro.props;
 ---
 
 <style>
-  li.credit-list-item {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    gap: 0.8rem;
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
 
-    padding-block: 0.8rem;
+  .credit-list-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.2rem;
+
+    padding-top: 0.8rem;
+    padding-bottom: 0.4rem;
     padding-inline: 1.4rem;
 
     margin: 0;
@@ -23,21 +33,20 @@ const { credit } = Astro.props;
     width: 100%;
   }
 
-  h3.credit-list-item-title {
+  .credit-list-item-title {
     font-size: 0.9rem;
     font-weight: 400;
     color: var(--clr-subtext-1);
 
     margin: 0;
-    margin-bottom: -0.6rem;
     padding: 0;
   }
 
-  a.credit-list-item-link {
+  .credit-list-item-link {
     text-decoration: none;
     color: var(--clr-primary);
-    font-weight: 600;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 1.4rem;
 
     padding: 0;
     margin: 0;
@@ -50,14 +59,65 @@ const { credit } = Astro.props;
   a.credit-list-item-link:hover {
     filter: brightness(120%);
   }
+
+  a.source-link {
+    text-decoration: none;
+
+    padding-inline: 1rem;
+    padding-block: 0.4rem;
+
+    border-radius: var(--radius-input);
+
+    background-color: var(--clr-crust);
+    outline: 1px solid var(--clr-surface-0);
+
+    font-size: 0.9rem;
+
+    transition-property: color, background-color, outline;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a.source-link:hover {
+    color: var(--clr-primary);
+    background-color: var(--clr-base);
+    outline: 1px solid var(--clr-surface-1);
+  }
+
+  .credit-name {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .credit-use {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .credit-link {
+    grid-column: 2;
+    grid-row: 1 / 3;
+
+    align-self: center;
+    justify-self: end;
+  }
 </style>
 
 <li class='credit-list-item'>
-  <h3 class='credit-list-item-title'>{credit.use}</h3>
+  <h3 class='credit-name'>
+    <a
+      class='credit-list-item-link'
+      href={credit.url}
+      target='_blank'>
+      <span>{credit.name}</span>
+    </a>
+  </h3>
+  <p class='credit-use credit-list-item-title'>{credit.use}</p>
   <a
-    class='credit-list-item-link'
+    class='credit-link source-link'
     href={credit.url}
     target='_blank'>
-    <span>{credit.name}</span>
+    <span>View Source</span>
+    <span class='ri-external-link-fill'></span>
   </a>
 </li>
