@@ -10,6 +10,11 @@ export interface SourceCredit {
   url: string;
 }
 
+export interface CategoryData {
+  iconClass: string;
+  items: SourceCredit[];
+}
+
 export interface SourceCreditCategory {
-  [categoryName: string]: SourceCredit[];
+  [categoryName: string]: CategoryData;
 }

@@ -2,27 +2,7 @@
 import type { SourceCredit } from '@/types';
 import CreditCardItem from './CreditCardItem.astro';
 
-const { categoryName, creditItems } = Astro.props;
-
-function getCategoryIcon(name: string) {
-  switch (name) {
-    case 'development':
-      return `ri-flashlight-fill`;
-      break;
-    case 'design':
-      return 'ri-palette-fill';
-      break;
-    case 'photography':
-      return 'ri-camera-fill';
-      break;
-    case 'typography':
-      return 'ri-text-snippet';
-      break;
-    default:
-      return 'ri-question-fill';
-      break;
-  }
-}
+const { categoryName, iconClass, creditItems } = Astro.props;
 ---
 
 <style>
@@ -67,7 +47,7 @@ function getCategoryIcon(name: string) {
 
 <div class='credits-card-wrapper box-shadow-3'>
   <h2 class='category-title'>
-    <span class={getCategoryIcon(categoryName)}></span>
+    <span class={iconClass}></span>
     <span>{categoryName}</span>
   </h2>
   <ul class='credits-list'>

@@ -23,12 +23,13 @@ const creditCategories = data as unknown as SourceCreditCategory[];
   <section class='max-width'>
     {
       creditCategories.map((categoryObj) => {
-        const [categoryName, credits] = Object.entries(categoryObj)[0];
+        const [categoryName, categoryData] = Object.entries(categoryObj)[0];
 
         return (
           <CreditCard
             categoryName={categoryName}
-            creditItems={credits}
+            iconClass={categoryData.iconClass}
+            creditItems={categoryData.items}
           />
         );
       })
