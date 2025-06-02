@@ -34,8 +34,12 @@ const sortedPosts = allPosts.sort(
     width: 100%;
     /* max-width: fit-content; */
 
-    margin-top: 0;
-    margin-bottom: 2rem;
+    /* margin-top: 0; */
+    /* margin-bottom: 2rem; */
+
+    margin-top: -8rem;
+
+    min-height: 100dvh;
   }
 
   .hero-info-wrapper {
@@ -182,6 +186,11 @@ const sortedPosts = allPosts.sort(
     outline: 2px solid var(--clr-surface-1);
   }
 
+  hr.hero-hr {
+    margin-top: 3rem;
+    display: none;
+  }
+
   @media screen and (min-width: 1024px) {
     ul.projects-list,
     ul.blog-post-cards-list {
@@ -192,7 +201,7 @@ const sortedPosts = allPosts.sort(
       flex-direction: column;
 
       width: 100%;
-      margin-top: 0;
+      /* margin-top: -8rem; */
       margin-bottom: 0;
 
       min-width: 18rem;
@@ -248,6 +257,10 @@ const sortedPosts = allPosts.sort(
       max-width: 50ch;
       text-align: left;
     }
+
+    hr.hero-hr {
+      display: flex;
+    }
   }
 
   .post-section-title {
@@ -285,10 +298,6 @@ const sortedPosts = allPosts.sort(
   hr {
     height: 1px;
     background-color: var(--clr-surface-0);
-  }
-
-  .hero-hr {
-    margin-top: 3rem;
   }
 </style>
 
