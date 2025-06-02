@@ -54,15 +54,32 @@ const currentYear = new Date().getFullYear();
     font-weight: 600;
     color: var(--clr-primary);
     max-width: fit-content;
-    opacity: 1;
 
-    transition-property: opacity;
-    transition-duration: 0.1s;
+    text-decoration: none;
+
+    padding-inline: 1rem;
+    padding-block: 0.6rem;
+
+    background-color: var(--clr-mantle);
+
+    border-radius: var(--radius-input);
+    outline: 1px solid var(--clr-surface-0);
+
+    color: var(--clr-text);
+
+    transition-property: color, background-color, outline;
+    transition-duration: 0.15s;
     transition-timing-function: ease-out;
   }
 
   .credits-link:hover {
-    opacity: 0.9;
+    color: var(--clr-tertiary);
+    outline: 1px solid var(--clr-tertiary);
+    background-color: var(--clr-base);
+  }
+
+  .credits-icon {
+    color: var(--clr-tertiary);
   }
 
   @media screen and (min-width: 768px) {
@@ -117,9 +134,10 @@ const currentYear = new Date().getFullYear();
 
     <a
       class='credits-link'
-      href='/credits'
-      >Credits</a
-    >
+      href='/credits'>
+      <span class='credits-icon ri-heart-fill'></span>
+      <span>Credits</span>
+    </a>
   </div>
 </footer>
 
