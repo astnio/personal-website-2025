@@ -17,10 +17,30 @@ const creditCategories = data as unknown as SourceCreditCategory[];
     padding-inline: 1rem;
     width: 100%;
   }
+
+  .acknowledgement-paragraph {
+    font-style: italic;
+    color: var(--clr-subtext-1);
+
+    background-color: var(--clr-base);
+    padding-inline: 1rem;
+    padding-block: 1.5rem;
+
+    outline: 1px solid var(--clr-primary);
+    border-radius: var(--radius-surface);
+
+    margin-bottom: 2rem;
+  }
 </style>
 
 <BaseLayout>
   <section class='max-width'>
+    <p class='acknowledgement-paragraph box-shadow-2'>
+      This website was made possible through the contributions of the
+      open-source community who share their work with the world. The
+      technologies, libraries, resources, and assets listed below have helped me
+      in bringing this site to life.
+    </p>
     {
       creditCategories.map((categoryObj) => {
         const [categoryName, categoryData] = Object.entries(categoryObj)[0];
