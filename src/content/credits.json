@@ -1,7 +1,7 @@
 [
   {
     "development": {
-      "iconClass": "ri-flashlight-fill",
+      "iconClass": "ri-code-s-slash-fill",
       "items": [
         {
           "use": "Meta Framework",
@@ -50,7 +50,7 @@
   },
   {
     "photography": {
-      "iconClass": "ri-camera-fill",
+      "iconClass": "ri-camera-3-fill",
       "items": [
         {
           "use": "Blog BG Photo (Dark)",
