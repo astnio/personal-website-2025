@@ -35,17 +35,14 @@ const workLinks = links.workLinks;
 
   .links-nav {
     width: 100%;
-    /* max-width: 20rem; */
   }
 
   .link-list-wrapper {
     display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    justify-content: space-between;
+    gap: 2rem;
 
-    width: 100%;
-
-    /* margin-bottom: 4rem; */
+    margin-inline: auto;
   }
 
   .link-list-title-wrapper {
@@ -75,9 +72,14 @@ const workLinks = links.workLinks;
     width: 100%;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (max-width: 1024px) {
     .link-list-wrapper {
-      flex-direction: row;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    .links-nav {
+      width: auto;
     }
   }
 

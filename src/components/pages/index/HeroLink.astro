@@ -21,10 +21,9 @@ const { url, label, iconClass, newTab = true } = Astro.props;
     text-decoration: none;
 
     border-radius: var(--radius-input);
-    outline: 1px solid var(--clr-surface-1);
+    outline: 1px solid var(--clr-surface-0);
 
     height: 2.4rem;
-    min-width: 16rem;
 
     overflow: hidden;
 
@@ -34,9 +33,13 @@ const { url, label, iconClass, newTab = true } = Astro.props;
   }
 
   a:hover {
-    outline: 1px solid var(--clr-primary);
+    outline: 1px solid var(--clr-surface-1);
     color: var(--clr-primary);
     background-color: var(--clr-base);
+  }
+
+  .hero-link {
+    width: auto;
   }
 
   .link-label {
@@ -141,11 +144,15 @@ const { url, label, iconClass, newTab = true } = Astro.props;
       flex-shrink: 1;
       min-width: fit-content;
     }
+
+    .hero-link {
+      width: 24rem;
+    }
   }
 </style>
 
 <a
-  class='hero-link'
+  class='hero-link box-shadow-1'
   href={url}
   target={newTab ? `_blank` : ''}>
   {
