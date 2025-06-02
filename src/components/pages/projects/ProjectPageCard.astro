@@ -80,7 +80,7 @@ const {
   }
 
   a.card-header-wrapper:hover {
-    background-color: var(--clr-base);
+    background-color: var(--clr-surface-0);
 
     outline: 1px solid var(--clr-surface-1);
   }
@@ -123,18 +123,21 @@ const {
     border-radius: var(--radius-input);
 
     font-size: 2rem;
+    font-weight: 700;
 
     max-width: fit-content;
 
     border-radius: var(--radius-circle);
 
-    transition-property: background-color;
+    transition-property: background-color, outline, color;
     transition-duration: 0.15s;
     transition-timing-function: ease-in-out;
   }
 
   .link:hover {
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-surface-1);
+    outline: 1px solid var(--clr-surface-2);
+    color: var(--clr-primary);
   }
 
   .link.disabled-link {

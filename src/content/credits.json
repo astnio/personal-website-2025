@@ -4,17 +4,17 @@
       "iconClass": "ri-flashlight-fill",
       "items": [
         {
-          "use": "Framework",
+          "use": "Meta Framework",
           "name": "Astro",
           "url": "https://astro.build/"
         },
         {
-          "use": "Framework Utility",
+          "use": "Rehype Plugin",
           "name": "Rehype Callouts",
           "url": "https://github.com/lin-stephanie/rehype-callouts"
         },
         {
-          "use": "Search Utility",
+          "use": "Search Library",
           "name": "Fuse.js",
           "url": "https://www.fusejs.io/"
         }
