@@ -25,10 +25,10 @@ const { credit } = Astro.props;
 
     margin: 0;
 
-    border-radius: var(--radius-base);
+    border-radius: var(--radius-surface);
     border: 1px solid var(--clr-surface-0);
 
-    background-color: var(--clr-mantle);
+    background-color: var(--clr-base);
 
     width: 100%;
   }
@@ -68,7 +68,7 @@ const { credit } = Astro.props;
 
     border-radius: var(--radius-input);
 
-    background-color: var(--clr-crust);
+    background-color: var(--clr-mantle);
     outline: 1px solid var(--clr-surface-0);
 
     font-size: 0.9rem;
@@ -101,9 +101,26 @@ const { credit } = Astro.props;
     align-self: center;
     justify-self: end;
   }
+
+  @media screen and (max-width: 768px) {
+    .credit-list-item {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
+    }
+
+    .credit-link {
+      grid-column: 1;
+      grid-row: 3;
+
+      justify-self: start;
+      align-self: start;
+
+      margin-left: -0.2rem; /* Just to help align the link to the items above it*/
+    }
+  }
 </style>
 
-<li class='credit-list-item'>
+<li class='credit-list-item box-shadow-1'>
   <h3 class='credit-name'>
     <a
       class='credit-list-item-link'

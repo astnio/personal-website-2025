@@ -12,14 +12,14 @@ const { categoryName, iconClass, creditItems } = Astro.props;
 
     width: 100%;
 
-    background-color: var(--clr-base);
+    /* background-color: var(--clr-base); */
 
-    padding: 1rem;
+    /* padding: 1rem; */
 
-    margin-bottom: 4rem;
+    margin-bottom: 1.5rem;
 
-    border-radius: var(--radius-surface);
-    outline: 1px solid var(--clr-surface-0);
+    /* border-radius: var(--radius-surface); */
+    /* outline: 1px solid var(--clr-surface-0); */
   }
 
   .category-title {
@@ -62,7 +62,7 @@ const { categoryName, iconClass, creditItems } = Astro.props;
   }
 </style>
 
-<div class='credits-card-wrapper box-shadow-3'>
+<div class='credits-card-wrapper'>
   <h2 class='category-title'>
     <span class={iconClass}></span>
     <span>{categoryName}</span>
