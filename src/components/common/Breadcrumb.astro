@@ -57,22 +57,7 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
     margin: 0;
 
     max-width: fit-content;
-
-    /* background-color: var(--clr-base); */
   }
-
-  /* .breadcrumb-list::after {
-    content: '';
-
-    position: absolute;
-    left: 0;
-    bottom: -0.4rem;
-
-    height: 1px;
-    width: 100%;
-
-    background-color: var(--clr-surface-0);
-  } */
 
   .breadcrumb-item {
     display: flex;
@@ -99,6 +84,12 @@ const breadcrumbs = generateBreadcrumbs(currentPath);
   .current {
     color: var(--clr-subtext-0);
     font-weight: 500;
+  }
+
+  @media screen and (max-width: 768px) {
+    .breadcrumb {
+      top: 6rem;
+    }
   }
 </style>
 
