@@ -1,6 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import ProjectCard from '@/components/pages/projects/ProjectCard.astro';
+import Heading from '@/components/typography/Heading.astro';
+import { getIcon } from '@/scripts/utils/iconHelper';
 
 export async function getStaticPaths() {
   const allProjectPosts = await getCollection('frontendProjects');
@@ -23,13 +26,108 @@ const { tag } = Astro.params;
 const { projectPosts } = Astro.props;
 ---
 
-<BaseLayout title={tag}>
-  <p>Posts tagged with {tag}</p>
-  <ul>
-    {
-      projectPosts.map((post) => (
-        <a href={`/projects/frontend/${post.slug}/`}>{post.data.title}</a>
-      ))
+<style>
+  .max-width {
+    padding-inline: 1rem;
+
+    margin-bottom: 8rem;
+  }
+
+  ul.projects-list {
+    display: grid;
+    gap: 2rem;
+
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  li.projects-list-item {
+    display: flex;
+  }
+
+  .title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 0.3ch;
+
+    height: 6rem;
+    width: fit-content;
+
+    font-size: 3rem;
+
+    margin: 0;
+    margin-bottom: 4rem;
+    padding-right: 1rem;
+
+    background-color: var(--clr-base);
+
+    outline: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-surface);
+
+    width: fit-content;
+
+    overflow: hidden;
+  }
+
+  .title-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    font-size: 4rem;
+
+    background-color: var(--clr-mantle);
+    width: 6rem;
+    height: 6rem;
+
+    height: 100%;
+
+    aspect-ratio: 1 / 1;
+  }
+
+  .title-text {
+    padding-inline: 2rem;
+    padding-block: 0.8rem;
+    margin: 0;
+  }
+
+  @media screen and (min-width: 1024px) {
+    ul.projects-list {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 2rem;
+
+      list-style: none;
+
+      padding: 0;
+      margin: 0;
     }
-  </ul>
+  }
+</style>
+
+<BaseLayout title={tag}>
+  <section class='max-width'>
+    <div class='title-wrapper box-shadow-2'>
+      <div class={`title-icon-wrapper`}>
+        <span class={`title-icon ${getIcon(tag)}`}></span>
+      </div>
+      <h2 class='title-text'>{tag}</h2>
+    </div>
+
+    <ul class='projects-list'>
+      {
+        projectPosts.map((post) => (
+          <li class='projects-list-item'>
+            <ProjectCard
+              url={`/projects/frontend/${post.slug}`}
+              data={post.data}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </BaseLayout>
