@@ -1,22 +1,76 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import ProjectTaxonomyCard from '@/components/pages/projects/ProjectTaxonomyCard.astro';
 
-const allPosts = await getCollection('frontendProjects');
-const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+const allFrontendProjects = await getCollection('frontendProjects');
+const tags = [
+  ...new Set(allFrontendProjects.map((post: any) => post.data.tags).flat()),
+];
+
+const tagCounts = new Map();
+
+allFrontendProjects.forEach((post: any) => {
+  post.data.tags.forEach((tag: string) => {
+    tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+  });
+});
 
 const title = 'Projects Tag Index';
 ---
 
-<BaseLayout title={title}>
-  <h1>Project Tags</h1>
-  <div>
-    {
-      tags.map((tag) => (
-        <p>
-          <a href={`/projects/frontend/tags/${tag}`}>{tag}</a>
-        </p>
-      ))
+<style>
+  .max-width {
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
+  .page-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+
+    font-size: 2.5rem;
+
+    margin-top: 0;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 2rem;
+
+    list-style-type: none;
+    padding: 0;
+
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    ul {
+      grid-template-columns: 1fr;
     }
-  </div>
+  }
+</style>
+
+<BaseLayout title={title}>
+  <section class='max-width'>
+    <h2 class='page-title'>
+      <span class='ri-price-tag-3-fill'></span>
+      <span>Project Tags</span>
+    </h2>
+    <ul>
+      {
+        tags.map((tag) => (
+          <li>
+            <ProjectTaxonomyCard
+              tag={tag}
+              projectsCount={tagCounts.get(tag)}
+              url={`/projects/frontend/tags/${tag}`}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </BaseLayout>
