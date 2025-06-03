@@ -15,7 +15,7 @@ const { url, label, iconClass, newTab = true } = Astro.props;
     justify-content: center;
     gap: 0.6rem;
 
-    background-color: var(--clr-mantle);
+    background-color: var(--clr-base);
 
     color: var(--clr-text);
     text-decoration: none;
@@ -35,7 +35,7 @@ const { url, label, iconClass, newTab = true } = Astro.props;
   a:hover {
     outline: 1px solid var(--clr-surface-1);
     color: var(--clr-primary);
-    background-color: var(--clr-base);
+    background-color: var(--clr-surface-0);
   }
 
   .hero-link {
@@ -78,7 +78,7 @@ const { url, label, iconClass, newTab = true } = Astro.props;
 
     aspect-ratio: 1;
 
-    background-color: var(--clr-base);
+    background-color: var(--clr-mantle);
 
     height: 100%;
 
@@ -88,7 +88,7 @@ const { url, label, iconClass, newTab = true } = Astro.props;
   }
 
   a:hover > .link-icon-wrapper {
-    background-color: var(--clr-surface-0);
+    background-color: var(--clr-base);
     color: var(--clr-primary);
   }
 
