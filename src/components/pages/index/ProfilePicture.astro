@@ -7,6 +7,7 @@ import profilePicture from '@assets/images/site/index/profile-pic-trans-bg.png';
 <style>
   .image-frame {
     isolation: isolate;
+    position: relative;
 
     display: flex;
     align-items: center;
@@ -15,12 +16,14 @@ import profilePicture from '@assets/images/site/index/profile-pic-trans-bg.png';
     outline: 0.4rem solid var(--clr-crust);
     border-radius: var(--radius-circle);
 
-    background-color: var(--clr-primary);
-
     width: 9rem;
     height: 9rem;
 
+    top: -2rem; /* Slight adjustment to make it visually look more centered */
+
     aspect-ratio: 1 / 1;
+
+    overflow: hidden;
 
     transition-property: scale, filter, box-shadow;
     transition-duration: 0.2s;
@@ -31,16 +34,37 @@ import profilePicture from '@assets/images/site/index/profile-pic-trans-bg.png';
     scale: 1.015;
   }
 
+  .image-frame:hover > .link > .bg-color {
+    opacity: 0.75;
+  }
+
+  .bg-color {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: var(--clr-secondary);
+
+    opacity: 0.65;
+
+    z-index: -1;
+
+    transition-property: opacity;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
   a.link {
     transition-property: scale, filter, box-shadow;
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
 
     z-index: 2;
-  }
-
-  a.link:hover {
-    filter: brightness(110%);
   }
 
   .profile-image {
@@ -74,6 +98,7 @@ import profilePicture from '@assets/images/site/index/profile-pic-trans-bg.png';
   <a
     class='link'
     href='/about'>
+    <div class='bg-color'></div>
     <Picture
       src={profilePicture}
       formats={['webp', 'png']}
