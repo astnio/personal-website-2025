@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import ProjectCard from '@components/pages/projects/ProjectCard.astro';
-import Heading from '@components/typography/Heading.astro';
 
 const featuredProjects = await getCollection('frontendProjects', ({ data }) => {
   return data.featured === true && data.archived !== true;

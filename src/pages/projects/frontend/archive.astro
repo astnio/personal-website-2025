@@ -1,15 +1,228 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import ProjectCard from '@components/pages/projects/ProjectCard.astro';
 
-const title = 'Archived Projects';
+const archivedProjects = await getCollection('frontendProjects', ({ data }) => {
+  return data.archived === true;
+});
+
+const title = 'Austin Hagel | Archived Frontend Projects';
 ---
 
+<style>
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+
+    list-style: none;
+  }
+
+  section {
+    width: 100%;
+    padding-inline: 1rem;
+  }
+
+  section.project-section {
+    margin-bottom: 2rem;
+  }
+
+  .section-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+  }
+
+  .section-title-icon {
+    position: relative;
+    top: -0.3rem; /* Adjustment to help visually center the icon */
+    font-size: 3rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  ul.projects-list {
+    display: grid;
+    gap: 2rem;
+
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  hr {
+    height: 1px;
+
+    background-color: var(--clr-surface-1);
+  }
+
+  hr.hr-short {
+    display: flex;
+
+    border-radius: var(--radius-pill);
+
+    background-color: var(--clr-primary);
+
+    height: 0.25rem;
+
+    min-width: auto;
+    width: 100%;
+    max-width: 5rem;
+
+    margin: 0;
+    margin-left: 0.15rem; /* just to help align it with the title */
+  }
+
+  hr.section-title-hr {
+    margin-bottom: 2rem;
+    margin-top: 0.2rem;
+  }
+
+  .section-spacer {
+    margin-top: 2.5rem;
+    margin-bottom: 4rem;
+
+    height: 1rem;
+    width: 100%;
+
+    padding-inline: 1rem;
+  }
+
+  section#archive {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 6rem;
+  }
+
+  a.other-project-page-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    padding-inline: 1rem;
+    padding-block: 0.6rem;
+
+    background-color: var(--clr-base);
+
+    width: fit-content;
+
+    outline: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-input);
+
+    transition-property: outline, background-color, color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a.other-project-page-link:hover {
+    color: var(--clr-primary);
+    background-color: var(--clr-surface-0);
+    outline: 1px solid var(--clr-surface-1);
+  }
+
+  .empty-state {
+    background-color: var(--clr-base);
+    padding: 1rem;
+    outline: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-surface);
+
+    margin-top: 2rem;
+  }
+
+  .empty-link {
+    color: var(--clr-primary);
+    font-weight: 600;
+  }
+
+  @media screen and (min-width: 1024px) {
+    ul.projects-list {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 2rem;
+
+      list-style: none;
+
+      padding: 0;
+      margin: 0;
+    }
+  }
+</style>
+
 <BaseLayout title={title}>
-  <h1>{title}</h1>
-  <p>My archived projects</p>
-  <ul>
-    <li>Archived Project 1</li>
-    <li>Archived Project 2</li>
-    <li>Archived Project 3</li>
-  </ul>
+  <section class='max-width project-section'>
+    <div class='section-title-wrapper'>
+      <span class='section-title-icon ri-archive-stack-fill'></span>
+      <h2 class='section-title'>Archived Projects</h2>
+    </div>
+    <hr class='hr-short section-title-hr' />
+    <ul class='projects-list'>
+      {
+        archivedProjects.length > 0 ? (
+          <ul class='projects-list'>
+            {archivedProjects.map((project) => (
+              <li class='projects-list-item'>
+                <ProjectCard
+                  url={`/projects/frontend/${project.slug}`}
+                  data={project.data}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div class='empty-state box-shadow-2'>
+            <p>No archived projects found.</p>
+            <p>
+              <span>Check back later or explore my </span>
+              <a
+                class='empty-link'
+                href='/projects/frontend'>
+                <span>featured projects</span>
+              </a>
+              <span>.</span>
+            </p>
+          </div>
+        )
+      }
+    </ul>
+  </section>
+
+  <div class='max-width section-spacer'>
+    <hr />
+  </div>
+
+  <section
+    id='archive'
+    class='max-width project-section'>
+    <a
+      class='other-project-page-link'
+      href='/projects/frontend'>
+      <span class='ri-star-fill'></span>
+      <span>Featured Projects</span>
+    </a>
+    <a
+      class='other-project-page-link'
+      href='/projects/frontend/tags'>
+      <span class='ri-archive-stack-fill'></span>
+      <span>Project Tags</span>
+    </a>
+  </section>
 </BaseLayout>
