@@ -17,7 +17,16 @@ console.log(allLinks);
   {
     allLinks.map((linkItem) => (
       <li>
-        <a href={linkItem.url}>{linkItem.label}</a>
+        {linkItem.internal === 'true' ? (
+          <a href={linkItem.url}>{linkItem.label}</a>
+        ) : (
+          <a
+            href={linkItem.url}
+            target='_blank'
+            rel='noopener noreferrer'>
+            {linkItem.label}
+          </a>
+        )}
       </li>
     ))
   }

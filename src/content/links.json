@@ -3,22 +3,26 @@
     {
       "url": "/",
       "label": "Home",
-      "iconClass": "ri-home-9-fill"
+      "iconClass": "ri-home-9-fill",
+      "internal": "true"
     },
     {
       "url": "/about",
       "label": "About",
-      "iconClass": "ri-user-3-fill"
+      "iconClass": "ri-user-3-fill",
+      "internal": "true"
     },
     {
       "url": "/blog",
       "label": "Blog",
-      "iconClass": "ri-article-fill"
+      "iconClass": "ri-article-fill",
+      "internal": "true"
     },
     {
       "url": "/projects",
       "label": "Projects",
-      "iconClass": "ri-folder-fill"
+      "iconClass": "ri-folder-fill",
+      "internal": "true"
     }
   ],
 
@@ -26,27 +30,32 @@
     {
       "url": "https://astn.sh/linkedin",
       "label": "LinkedIn",
-      "iconClass": "ri-linkedin-fill"
+      "iconClass": "ri-linkedin-fill",
+      "internal": "false"
     },
     {
       "url": "https://astn.sh/discord",
       "label": "Discord",
-      "iconClass": "ri-discord-fill"
+      "iconClass": "ri-discord-fill",
+      "internal": "false"
     },
     {
       "url": "https://astn.sh/facebook",
       "label": "Facebook",
-      "iconClass": "ri-facebook-fill"
+      "iconClass": "ri-facebook-fill",
+      "internal": "false"
     },
     {
       "url": "https://astn.sh/instagram",
       "label": "Instagram",
-      "iconClass": "ri-instagram-fill"
+      "iconClass": "ri-instagram-fill",
+      "internal": "false"
     },
     {
       "url": "https://astn.sh/bluesky",
       "label": "Bluesky",
-      "iconClass": "ri-bluesky-fill"
+      "iconClass": "ri-bluesky-fill",
+      "internal": "false"
     }
   ],
 
@@ -54,17 +63,20 @@
     {
       "url": "https://astn.sh/frontend-mentor",
       "label": "Frontend Mentor",
-      "iconClass": "ri-pencil-ruler-2-fill"
+      "iconClass": "ri-pencil-ruler-2-fill",
+      "internal": "false"
     },
     {
       "url": "https://astn.sh/github",
       "label": "Github",
-      "iconClass": "ri-github-fill"
+      "iconClass": "ri-github-fill",
+      "internal": "false"
     },
     {
       "url": "https://astn.sh/codepen",
       "label": "CodePen",
-      "iconClass": "ri-codepen-fill"
+      "iconClass": "ri-codepen-fill",
+      "internal": "false"
     }
   ],
 
@@ -72,17 +84,20 @@
     {
       "url": "https://astn.sh/leetcode",
       "label": "LeetCode",
-      "iconClass": "ri-code-box-fill"
+      "iconClass": "ri-code-box-fill",
+      "internal": "false"
     },
     {
       "url": "https://astn.sh/hackerrank",
       "label": "HackerRank",
-      "iconClass": "ri-terminal-box-fill"
+      "iconClass": "ri-terminal-box-fill",
+      "internal": "false"
     },
     {
       "url": "https://astn.sh/credly",
       "label": "Credly",
-      "iconClass": "ri-award-fill"
+      "iconClass": "ri-award-fill",
+      "internal": "false"
     }
   ]
 }
