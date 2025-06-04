@@ -74,19 +74,76 @@ const frontendStats = calculateFrontendStats();
     width: 100%;
   }
 
+  .page-intro-wrapper {
+    isolation: isolate;
+    position: relative;
+
+    background-color: var(--clr-base);
+
+    outline: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-surface);
+
+    padding: 1rem;
+    margin-bottom: 4rem;
+
+    overflow: hidden;
+  }
+
+  .page-intro-wrapper::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    height: 100%;
+    width: 0.4rem;
+
+    background-color: var(--clr-primary);
+  }
+
   .intro {
-    margin-bottom: 2rem;
     font-size: 1.4rem;
+    color: var(--clr-subtext-1);
+  }
+
+  .intro-sub {
+    font-style: italic;
+    color: var(--clr-subtext-1);
+  }
+
+  .page-intro-icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 12rem;
+    color: var(--clr-surface-0);
+    opacity: 0.6;
+
+    z-index: -1;
+  }
+
+  hr {
+    background-color: var(--clr-surface-1);
+    margin-bottom: 4rem;
   }
 </style>
 
 <BaseLayout title='Austin Hagel | Projects'>
   <section class='max-width'>
-    <p class='intro'>
-      I work on a variety of projects, primarily focusing on development and
-      programming. I do dabble in some art and graphic design, though, so feel
-      free to check out those projects when they are available!
-    </p>
+    <div class='page-intro-wrapper'>
+      <i class='page-intro-icon ri-double-quotes-l'></i>
+      <p class='intro'>
+        I work on a variety of projects, primarily focusing on development and
+        programming.
+      </p>
+      <p class='intro-sub'>
+        Feel free to check out those projects when they are available!
+      </p>
+    </div>
+
+    <hr />
 
     <div class='cards-wrapper'>
       <ProjectPageCard
