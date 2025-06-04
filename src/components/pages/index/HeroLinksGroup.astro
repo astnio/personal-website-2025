@@ -58,6 +58,23 @@ console.log(allLinks);
     outline: 1px solid var(--clr-surface-1);
     color: var(--clr-primary);
   }
+
+  @media screen and (max-width: 768px) {
+    ul.link-list {
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+    }
+
+    li {
+      width: 100%;
+    }
+
+    a.link-item {
+      width: 100%;
+    }
+  }
 </style>
 
 <ul class='link-list'>
