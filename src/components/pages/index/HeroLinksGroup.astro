@@ -13,18 +13,65 @@ const allLinks = [...filteredInternalLinks, ...workLinks, ...resumeLinks];
 console.log(allLinks);
 ---
 
-<ul>
+<style>
+  ul.link-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+
+    list-style-type: none;
+    padding: 0;
+  }
+
+  a.link-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6ch;
+
+    padding-inline: 1rem;
+    padding-block: 0.6rem;
+
+    background-color: var(--clr-base);
+
+    outline: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-input);
+
+    text-decoration: none;
+
+    transition-property: color, background-color, outline;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a.link-item:hover {
+    background-color: var(--clr-surface-0);
+    outline: 1px solid var(--clr-surface-1);
+    color: var(--clr-primary);
+  }
+</style>
+
+<ul class='link-list'>
   {
     allLinks.map((linkItem) => (
-      <li>
+      <li class='link-list-item'>
         {linkItem.internal === 'true' ? (
-          <a href={linkItem.url}>{linkItem.label}</a>
+          <a
+            class='link-item'
+            href={linkItem.url}>
+            <span class={`${linkItem.iconClass}`} />
+            <span>{linkItem.label}</span>
+          </a>
         ) : (
           <a
+            class='link-item'
             href={linkItem.url}
             target='_blank'
             rel='noopener noreferrer'>
-            {linkItem.label}
+            <span class={`${linkItem.iconClass}`} />
+            <span>{linkItem.label}</span>
           </a>
         )}
       </li>
