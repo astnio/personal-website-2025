@@ -4,107 +4,21 @@ import PostsSection from '@/components/pages/index/PostsSection.astro';
 import ProjectsSection from '@/components/pages/index/ProjectsSection.astro';
 import SocialLinksGroup from '@/components/pages/index/SocialLinksGroup.astro';
 import ProfilePicture from '@components/pages/index/ProfilePicture.astro';
-import Heading from '@components/typography/Heading.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 
 const title = 'Austin Hagel';
 ---
 
 <style>
-  .hero-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    padding-inline: 1rem;
-
-    width: 100%;
-
-    margin-top: -2rem;
-
-    min-height: 100dvh;
-  }
-
-  .hero-info-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-
-    margin-top: 0rem;
-    margin-bottom: 2rem;
-  }
-
-  .hero-paragraph {
-    max-width: 74ch;
-    font-size: 1rem;
-
-    padding: 0;
-    margin: 0;
-  }
-
-  .hero-link-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-
-    margin-top: 2rem;
-    margin-bottom: 4rem;
-  }
-
-  .hero-content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-
-    width: 100%;
-  }
-
-  .about-me {
-    max-width: 40ch;
-    text-align: justify;
-
-    margin: 0;
-    padding: 0;
-  }
-
   hr {
-    min-width: 100%;
-    width: 20rem;
-
     border: none;
 
     height: 1px;
 
-    background-color: var(--clr-text);
+    background-color: var(--clr-surface-0);
 
     margin: 0;
     padding: 0;
-  }
-
-  section.featured-projects {
-    margin-top: 6rem;
-    margin-bottom: 12rem;
-  }
-
-  section.info-section {
-    padding-inline: 1rem;
-    width: 100%;
-  }
-
-  section.about-section {
-    margin-bottom: 6rem;
-  }
-
-  hr.hero-hr {
-    margin-top: 3rem;
-    display: none;
   }
 
   hr.hr-short {
@@ -121,9 +35,91 @@ const title = 'Austin Hagel';
     max-width: 5rem;
   }
 
-  hr {
-    height: 1px;
-    background-color: var(--clr-surface-0);
+  hr.hero-hr {
+    max-width: 40rem;
+    width: 100%;
+  }
+
+  section.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+
+    padding-inline: 1rem;
+
+    width: 100%;
+
+    margin-top: -14rem;
+
+    min-height: 100dvh;
+  }
+
+  section.featured-projects {
+    margin-top: 6rem;
+    margin-bottom: 12rem;
+  }
+
+  section.info-section {
+    padding-inline: 1rem;
+    width: 100%;
+  }
+
+  section.about-section {
+    margin-bottom: 6rem;
+  }
+
+  .hero-content-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  h1.name {
+    font-size: 3.5rem;
+
+    margin: 0;
+  }
+
+  .title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+
+    font-size: 1.2rem;
+  }
+
+  .title-splitter {
+    content: '';
+
+    width: 2px;
+    height: 1.5rem;
+
+    border-radius: var(--radius-pill);
+
+    background-color: var(--clr-primary);
+  }
+
+  .profile-pic-wrapper {
+    width: 10rem;
+    margin-bottom: 1rem;
+  }
+
+  .title-wrapper {
+    margin-bottom: 1rem;
+  }
+
+  .title-wrapper > p {
+    margin: 0;
+
+    font-size: 1.4rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--clr-subtext-1);
   }
 
   .post-section-title {
@@ -140,67 +136,27 @@ const title = 'Austin Hagel';
     font-size: 3rem;
   }
 
+  .hero-summary {
+    max-width: 46ch;
+  }
+
+  .social-links-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  .hero-content-2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    max-width: 40rem;
+  }
+
   @media screen and (min-width: 1024px) {
-    .hero-wrapper {
-      flex-direction: column;
-
-      width: 100%;
-      margin-top: -8rem;
-      margin-bottom: 0;
-
-      min-width: 18rem;
-    }
-
-    .hero-content-wrapper {
-      grid-row: 1;
-      justify-self: end;
-
-      display: grid;
-      grid-template-columns: 1fr auto;
-
-      gap: 0 1rem;
-
-      width: 100%;
-    }
-
-    .profile-pic-wrapper {
-      grid-column-start: 2;
-      grid-row: span 3;
-    }
-
-    .title-wrapper {
-      grid-row: 1;
-      align-self: end;
-    }
-
-    .social-links-wrapper {
-      grid-row: 3;
-      align-self: start;
-    }
-
-    .hero-paragraph-wrapper {
-      grid-row: 2;
-      grid-column-start: 1;
-      grid-column-end: -1;
-    }
-
-    .hero-info-wrapper {
-      grid-row: 1;
-      width: 100%;
-      justify-self: start;
-
-      margin-top: 2rem;
-      margin-bottom: 4rem;
-    }
-
-    .about-me {
-      grid-column: 0;
-      grid-row: 2;
-
-      max-width: 50ch;
-      text-align: left;
-    }
-
     hr.hero-hr {
       display: flex;
     }
@@ -208,24 +164,19 @@ const title = 'Austin Hagel';
 </style>
 
 <BaseLayout title={title}>
-  <section class='hero-wrapper max-width'>
-    <div class='hero-content-wrapper'>
+  <section class='hero-section max-width'>
+    <div class='hero-content-1'>
       <div class='profile-pic-wrapper'>
         <ProfilePicture />
       </div>
+
+      <h1 class='name'>Austin Hagel</h1>
+
       <div class='title-wrapper'>
-        <Heading
-          type='title'
-          level={1}
-          size='l6x'>
-          <span>Austin Hagel</span>
-        </Heading>
-        <hr class='hr-short' />
+        <p>Developer</p>
+        <span class='title-splitter'></span>
+        <p>Designer</p>
       </div>
-      <p class='about-me'>
-        Welcome to my website, and explore with me the intersection of code,
-        design, and interactive media.
-      </p>
       <div class='social-links-wrapper'>
         <SocialLinksGroup />
       </div>
@@ -233,7 +184,7 @@ const title = 'Austin Hagel';
 
     <hr class='hero-hr' />
 
-    <div class='hero-info-wrapper'>
+    <div class='hero-content-2'>
       <div class='hero-link-list'>
         <HeroLinksGroup />
       </div>
