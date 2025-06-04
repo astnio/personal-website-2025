@@ -96,10 +96,13 @@ const title = 'Austin Hagel';
     margin-bottom: 12rem;
   }
 
-  section.featured-projects,
-  section.recent-posts {
+  section.info-section {
     padding-inline: 1rem;
     width: 100%;
+  }
+
+  section.about-section {
+    margin-bottom: 6rem;
   }
 
   hr.hero-hr {
@@ -124,6 +127,20 @@ const title = 'Austin Hagel';
   hr {
     height: 1px;
     background-color: var(--clr-surface-0);
+  }
+
+  .post-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+
+    font-size: 2rem;
+
+    margin: 0;
+  }
+
+  .post-section-title-icon {
+    font-size: 3rem;
   }
 
   @media screen and (min-width: 1024px) {
@@ -226,15 +243,43 @@ const title = 'Austin Hagel';
     </div>
   </section>
 
-  <section class='max-width about-section'>
-    <p>hello world</p>
+  <section class='max-width about-section info-section'>
+    <h2 class='post-section-title'>
+      <span class='post-section-title-icon ri-user-5-fill'></span>
+      <span>About</span>
+    </h2>
+    <hr class='hr-short' />
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+      reiciendis asperiores, obcaecati ut at odit vero. Voluptatibus similique,
+      laborum quam explicabo fuga reprehenderit qui, quibusdam sint adipisci
+      aliquid molestiae, dolores facere ab doloremque laudantium ipsa quisquam
+      odit! Aspernatur, dolorem culpa.
+    </p>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor vitae amet
+      animi deleniti tenetur sapiente ipsam, totam cupiditate velit nulla
+      eligendi esse illo, odit facere.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi unde beatae
+      cumque hic velit omnis laborum alias ea. Voluptatem iste nam voluptate
+      quidem consectetur vel eveniet molestias dicta ad ut?
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae unde sint
+      sed nulla in maxime molestiae veritatis nobis, esse at natus. Hic facilis
+      eligendi nulla alias numquam quo earum, quisquam ex pariatur! Aliquam
+      alias dolores, impedit nulla, dolorum facilis numquam quo est ducimus
+      maxime nam, fuga ipsam nihil sint dolore.
+    </p>
   </section>
 
-  <section class='max-width recent-posts'>
+  <section class='max-width recent-posts info-section'>
     <PostsSection />
   </section>
 
-  <section class='max-width featured-projects'>
+  <section class='max-width featured-projects info-section'>
     <ProjectsSection />
   </section>
 </BaseLayout>
