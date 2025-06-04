@@ -1,0 +1,140 @@
+---
+import { getCollection } from 'astro:content';
+import PostCard from '../blog/PostCard.astro';
+
+const allPosts = await getCollection('blog');
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
+);
+---
+
+<style>
+  .post-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5ch;
+
+    font-size: 2rem;
+
+    margin: 0;
+  }
+
+  .post-section-title-icon {
+    font-size: 3rem;
+  }
+
+  hr {
+    min-width: 100%;
+    width: 20rem;
+
+    border: none;
+
+    height: 1px;
+
+    background-color: var(--clr-text);
+
+    margin: 0;
+    padding: 0;
+  }
+
+  hr.hr-short {
+    display: flex;
+
+    border-radius: var(--radius-pill);
+
+    background-color: var(--clr-primary);
+
+    height: 0.25rem;
+
+    min-width: auto;
+    width: 100%;
+    max-width: 5rem;
+  }
+
+  .cards-list {
+    margin-top: 2rem;
+  }
+
+  ul.projects-list,
+  ul.blog-post-cards-list {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 2rem;
+
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.blog-post-cards-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  a.link-view-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6ch;
+
+    margin-left: auto;
+
+    background-color: var(--clr-mantle);
+
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+
+    width: fit-content;
+    padding-inline: 0.8rem;
+    padding-block: 0.6rem;
+
+    margin-top: 2rem;
+
+    border-radius: var(--radius-input);
+    outline: 2px solid var(--clr-surface-0);
+
+    transition-property: background-color, color, outline;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a.link-view-all:hover {
+    background-color: var(--clr-base);
+    color: var(--clr-primary);
+    outline: 2px solid var(--clr-surface-1);
+  }
+
+  @media screen and (min-width: 1024px) {
+    ul.projects-list,
+    ul.blog-post-cards-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+<>
+  <h2 class='post-section-title'>
+    <span class='post-section-title-icon ri-news-fill'></span>
+    <span>Recent Posts</span>
+  </h2>
+  <hr class='hr-short' />
+  <ul class='cards-list blog-post-cards-list'>
+    {
+      sortedPosts.slice(0, 4).map((post: any) => (
+        <li>
+          <PostCard
+            post={post}
+            transition:name={`post-card-${post.id}`}
+          />
+        </li>
+      ))
+    }
+  </ul>
+  <a
+    class='link-view-all'
+    href='/blog'>
+    <span class='ri-infinity-line'></span>
+    <span>View All</span>
+  </a>
+</>

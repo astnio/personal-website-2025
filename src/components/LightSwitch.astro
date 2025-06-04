@@ -153,28 +153,36 @@ const { id } = Astro.props;
     font-size: 0.9rem;
     color: var(--clr-subtext-0);
   }
+
+  .disable-user-select {
+    user-select: none;
+  }
 </style>
 
 <div class='light-switch-container'>
   <p class='light-switch-label-wrapper'>
-    <span class='light-switch-label'></span> Theme
+    <span class='light-switch-label disable-user-select'></span> Theme
   </p>
   <label
     class='switch'
     for=`light-switch-toggle-${id}`
     title='Toggle Light Mode'>
-    <span class='visually-hidden'>Toggle Color Scheme</span>
+    <span class='visually-hidden disable-user-select'>Toggle Color Scheme</span>
     <input
       type='checkbox'
-      class='chk-light-switch-toggle'
+      class='chk-light-switch-toggle disable-user-select'
       name=`light-switch-toggle-${id}`
       id=`light-switch-toggle-${id}`
       checked
     />
-    <span class='slider round'></span>
+    <span class='slider round disable-user-select'></span>
     <div class='light-switch-toggle-icon'>
-      <span class='light-switch-toggle-icon-light ri-sun-fill'></span>
-      <span class='light-switch-toggle-icon-dark ri-moon-clear-fill'></span>
+      <span
+        class='light-switch-toggle-icon-light ri-sun-fill disable-user-select'
+      ></span>
+      <span
+        class='light-switch-toggle-icon-dark ri-moon-clear-fill disable-user-select'
+      ></span>
     </div>
   </label>
 </div>

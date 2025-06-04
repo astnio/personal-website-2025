@@ -1,5 +1,7 @@
 ---
 import PostCard from '@/components/pages/blog/PostCard.astro';
+import PostsSection from '@/components/pages/index/PostsSection.astro';
+import ProjectsSection from '@/components/pages/index/ProjectsSection.astro';
 import SocialLinksGroup from '@/components/pages/index/SocialLinksGroup.astro';
 import ProjectCard from '@/components/pages/projects/ProjectCard.astro';
 import HeroLinksGroup from '@components/pages/index/HeroLinksGroup.astro';
@@ -9,16 +11,6 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const title = 'Austin Hagel';
-
-const featuredProjects = await getCollection('frontendProjects', ({ data }) => {
-  return data.featured === true;
-});
-
-const allPosts = await getCollection('blog');
-
-const sortedPosts = allPosts.sort(
-  (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
-);
 ---
 
 <style>
@@ -27,7 +19,6 @@ const sortedPosts = allPosts.sort(
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* gap: 1rem; */
 
     padding-inline: 1rem;
 
@@ -48,28 +39,6 @@ const sortedPosts = allPosts.sort(
 
     margin-top: 0rem;
     margin-bottom: 2rem;
-  }
-
-  .image-frame {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 10px solid var(--clr-base);
-    border-radius: var(--radius-circle);
-
-    background-color: var(--clr-surface-0);
-
-    overflow: hidden;
-
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25);
-  }
-
-  .profile-image {
-    --image-size: 256px;
-
-    width: var(--image-size);
-    height: var(--image-size);
   }
 
   .hero-paragraph {
@@ -122,22 +91,7 @@ const sortedPosts = allPosts.sort(
     padding: 0;
   }
 
-  ul.projects-list,
-  ul.blog-post-cards-list {
-    display: grid;
-    grid-template-columns: auto;
-    gap: 2rem;
-
-    list-style: none;
-    padding: 0;
-  }
-
-  ul.blog-post-cards-list {
-    list-style: none;
-    padding: 0;
-  }
-
-  .featured-projects {
+  section.featured-projects {
     margin-top: 6rem;
     margin-bottom: 12rem;
   }
@@ -148,51 +102,31 @@ const sortedPosts = allPosts.sort(
     width: 100%;
   }
 
-  a.link-view-all {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6ch;
-
-    margin-left: auto;
-
-    background-color: var(--clr-mantle);
-
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-
-    width: fit-content;
-    padding-inline: 0.8rem;
-    padding-block: 0.6rem;
-
-    margin-top: 2rem;
-
-    border-radius: var(--radius-input);
-    outline: 2px solid var(--clr-surface-0);
-
-    transition-property: background-color, color, outline;
-    transition-duration: 0.15s;
-    transition-timing-function: ease-out;
-  }
-
-  a.link-view-all:hover {
-    background-color: var(--clr-base);
-    color: var(--clr-primary);
-    outline: 2px solid var(--clr-surface-1);
-  }
-
   hr.hero-hr {
     margin-top: 3rem;
     display: none;
   }
 
-  @media screen and (min-width: 1024px) {
-    ul.projects-list,
-    ul.blog-post-cards-list {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  hr.hr-short {
+    display: flex;
 
+    border-radius: var(--radius-pill);
+
+    background-color: var(--clr-primary);
+
+    height: 0.25rem;
+
+    min-width: auto;
+    width: 100%;
+    max-width: 5rem;
+  }
+
+  hr {
+    height: 1px;
+    background-color: var(--clr-surface-0);
+  }
+
+  @media screen and (min-width: 1024px) {
     .hero-wrapper {
       flex-direction: column;
 
@@ -209,7 +143,6 @@ const sortedPosts = allPosts.sort(
 
       display: grid;
       grid-template-columns: 1fr auto;
-      /* grid-template-rows: repeat(2, 1fr); */
 
       gap: 0 1rem;
 
@@ -258,43 +191,6 @@ const sortedPosts = allPosts.sort(
       display: flex;
     }
   }
-
-  .post-section-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5ch;
-
-    font-size: 2rem;
-
-    margin: 0;
-  }
-
-  .post-section-title-icon {
-    font-size: 3rem;
-  }
-
-  hr.hr-short {
-    display: flex;
-
-    border-radius: var(--radius-pill);
-
-    background-color: var(--clr-primary);
-
-    height: 0.25rem;
-
-    min-width: auto;
-    width: 100%;
-    max-width: 5rem;
-  }
-
-  .cards-list {
-    margin-top: 2rem;
-  }
-
-  hr {
-    height: 1px;
-    background-color: var(--clr-surface-0);
-  }
 </style>
 
 <BaseLayout title={title}>
@@ -330,54 +226,15 @@ const sortedPosts = allPosts.sort(
     </div>
   </section>
 
-  <section class='max-width recent-posts'>
-    <h2 class='post-section-title'>
-      <span class='post-section-title-icon ri-news-fill'></span>
-      <span>Recent Posts</span>
-    </h2>
-    <hr class='hr-short' />
-    <ul class='cards-list blog-post-cards-list'>
-      {
-        sortedPosts.slice(0, 4).map((post: any) => (
-          <li>
-            <PostCard
-              post={post}
-              transition:name={`post-card-${post.id}`}
-            />
-          </li>
-        ))
-      }
-    </ul>
-    <a
-      class='link-view-all'
-      href='/blog'>
-      <span class='ri-infinity-line'></span>
-      <span>View All</span>
-    </a>
+  <section class='max-width about-section'>
+    <p>hello world</p>
   </section>
+
+  <section class='max-width recent-posts'>
+    <PostsSection />
+  </section>
+
   <section class='max-width featured-projects'>
-    <h2 class='post-section-title'>
-      <span class='post-section-title-icon ri-code-box-fill'></span>
-      <span>Featured Projects</span>
-    </h2>
-    <hr class='hr-short' />
-    <ul class='cards-list projects-list'>
-      {
-        featuredProjects.slice(0, 4).map((project) => (
-          <li class='projects-list-item'>
-            <ProjectCard
-              url={`/projects/frontend/${project.slug}`}
-              data={project.data}
-            />
-          </li>
-        ))
-      }
-    </ul>
-    <a
-      class='link-view-all'
-      href='/projects/frontend'>
-      <span class='ri-infinity-line'></span>
-      <span>View All</span>
-    </a>
+    <ProjectsSection />
   </section>
 </BaseLayout>
