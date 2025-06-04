@@ -1,0 +1,128 @@
+---
+import links from '@content/links.json';
+import HeroLinks from './HeroLinks.astro';
+
+const internalLinks = links.internalLinks.filter((link) => {
+  if (link.url === '/') return false;
+  else return true;
+});
+
+// const socialLinks = links.socialLinks;
+const workLinks = links.workLinks;
+---
+
+<style>
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  ul {
+    width: 100%;
+
+    padding: 0;
+
+    list-style: none;
+  }
+
+  li {
+    width: 100%;
+  }
+
+  .links-nav {
+    width: 100%;
+  }
+
+  .link-list-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+
+    margin-inline: auto;
+  }
+
+  .link-list-title-wrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+
+  .link-list-title-hr {
+    align-self: center;
+
+    width: 100%;
+    height: 2px;
+
+    background-color: var(--clr-primary);
+  }
+
+  .link-list-title {
+    text-align: center;
+    justify-self: center;
+    margin: 0;
+
+    padding-inline: 1rem;
+
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .link-list-wrapper {
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    .links-nav {
+      width: auto;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .link-list-title-wrapper {
+      display: flex;
+      align-items: start;
+      justify-content: center;
+    }
+
+    .link-list-title-hr-left {
+      display: none;
+    }
+
+    .link-list-title {
+      text-align: start;
+      padding: 0;
+      padding-right: 1.2rem;
+      width: fit-content;
+      flex-shrink: 0;
+    }
+  }
+</style>
+
+<div class='links-nav'>
+  <div class='link-list-wrapper'>
+    <HeroLinks
+      internalLink={true}
+      links={internalLinks}
+      title='Explore My Site'
+      iconClass='ri-compass-3-fill'
+    />
+
+    <HeroLinks
+      internalLink={false}
+      links={workLinks}
+      title='Discover My Work'
+      iconClass='ri-briefcase-fill'
+    />
+  </div>
+</div>
