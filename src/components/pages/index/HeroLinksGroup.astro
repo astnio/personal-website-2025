@@ -4,13 +4,6 @@ import links from '@content/links.json';
 const filteredInternalLinks = links.internalLinks.filter(
   (link) => link.url !== '/'
 );
-
-const workLinks = links.workLinks;
-const resumeLinks = links.resumeLinks;
-
-const allLinks = [...filteredInternalLinks, ...workLinks, ...resumeLinks];
-
-console.log(allLinks);
 ---
 
 <style>
@@ -81,7 +74,7 @@ console.log(allLinks);
 
 <ul class='link-list'>
   {
-    allLinks.map((linkItem) => (
+    filteredInternalLinks.map((linkItem) => (
       <li class='link-list-item'>
         {linkItem.internal === 'true' ? (
           <a

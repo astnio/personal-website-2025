@@ -1,0 +1,162 @@
+---
+import links from '@content/links.json';
+
+const workLinks = links.workLinks;
+const resumeLinks = links.resumeLinks;
+---
+
+<style>
+  article.link-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+
+    width: 100%;
+  }
+
+  .link-group-card-wrapper {
+    padding: 1rem;
+
+    background-color: var(--clr-base);
+
+    outline: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-surface);
+
+    width: 100%;
+  }
+
+  h3.link-group-title {
+    font-size: 1.2rem;
+  }
+
+  ul.link-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+
+    width: fit-content;
+
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    padding: 0;
+  }
+
+  a.link-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6ch;
+
+    padding-inline: 1rem;
+    padding-block: 0.6rem;
+
+    background-color: var(--clr-mantle);
+
+    outline: 1px solid var(--clr-surface-0);
+    border-radius: var(--radius-input);
+
+    text-decoration: none;
+
+    transition-property: color, background-color, outline;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a.link-item:hover {
+    background-color: var(--clr-surface-0);
+    outline: 1px solid var(--clr-surface-1);
+    color: var(--clr-primary);
+  }
+
+  @media screen and (max-width: 768px) {
+    ul.link-list {
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+    }
+
+    li {
+      width: 100%;
+    }
+
+    a.link-item {
+      width: 100%;
+
+      font-size: 1.4rem;
+    }
+  }
+</style>
+
+<article class='link-groups'>
+  <div class='link-group-card-wrapper'>
+    <h3 class='link-group-title'>
+      <span class='ri-briefcase-fill'></span>
+      <span>Portfolio & Projects</span>
+    </h3>
+    <ul class='link-list'>
+      {
+        workLinks.map((linkItem) => (
+          <li class='link-list-item'>
+            {linkItem.internal === 'true' ? (
+              <a
+                class='link-item'
+                href={linkItem.url}>
+                <span class={`${linkItem.iconClass}`} />
+                <span>{linkItem.label}</span>
+              </a>
+            ) : (
+              <a
+                class='link-item'
+                href={linkItem.url}
+                target='_blank'
+                rel='noopener noreferrer'>
+                <span class={`${linkItem.iconClass}`} />
+                <span>{linkItem.label}</span>
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class='link-group-card-wrapper'>
+    <h3 class='link-group-title'>
+      <span class='ri-medal-fill'></span>
+      <span> Skills & Challenges</span>
+    </h3>
+    <ul class='link-list'>
+      {
+        resumeLinks.map((linkItem) => (
+          <li class='link-list-item'>
+            {linkItem.internal === 'true' ? (
+              <a
+                class='link-item'
+                href={linkItem.url}>
+                <span class={`${linkItem.iconClass}`} />
+                <span>{linkItem.label}</span>
+              </a>
+            ) : (
+              <a
+                class='link-item'
+                href={linkItem.url}
+                target='_blank'
+                rel='noopener noreferrer'>
+                <span class={`${linkItem.iconClass}`} />
+                <span>{linkItem.label}</span>
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</article>

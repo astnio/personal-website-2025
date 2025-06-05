@@ -2,6 +2,7 @@
 import HeroLinksGroup from '@/components/pages/index/HeroLinksGroup.astro';
 import PostsSection from '@/components/pages/index/PostsSection.astro';
 import ProjectsSection from '@/components/pages/index/ProjectsSection.astro';
+import SectionLinksGroup from '@/components/pages/index/SectionLinksGroup.astro';
 import SocialLinksGroup from '@/components/pages/index/SocialLinksGroup.astro';
 import ProfilePicture from '@components/pages/index/ProfilePicture.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
@@ -40,6 +41,11 @@ const title = 'Austin Hagel';
     width: 100%;
   }
 
+  section.info-section {
+    padding-inline: 1rem;
+    width: 100%;
+  }
+
   section.hero-section {
     display: flex;
     align-items: center;
@@ -56,18 +62,20 @@ const title = 'Austin Hagel';
     min-height: 100lvh;
   }
 
-  section.featured-projects {
-    margin-top: 6rem;
-    margin-bottom: 12rem;
-  }
-
-  section.info-section {
-    padding-inline: 1rem;
-    width: 100%;
-  }
-
   section.about-section {
     margin-bottom: 6rem;
+  }
+
+  section.links-section {
+    margin-bottom: 6rem;
+  }
+
+  section.recent-posts {
+    margin-bottom: 6rem;
+  }
+
+  section.featured-projects {
+    margin-bottom: 8rem;
   }
 
   .hero-content-1 {
@@ -228,6 +236,17 @@ const title = 'Austin Hagel';
       Feel free to check out some of the <a href='#projects'>projects</a> I've made,
       or read some <a href='#blog-posts'>blog posts</a> I have written!
     </p>
+  </section>
+
+  <section class='max-width info-section links-section'>
+    <h2 class='post-section-title'>
+      <span class='post-section-title-icon ri-links-fill'></span>
+      <span>Links</span>
+    </h2>
+    <hr class='hr-short' />
+    <div class='section-link-list'>
+      <SectionLinksGroup />
+    </div>
   </section>
 
   <section
