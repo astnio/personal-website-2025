@@ -22,6 +22,7 @@ html,
 body {
   touch-action: auto;
   scrollbar-gutter: stable;
+  scroll-behavior: smooth;
 }
 
 button,
