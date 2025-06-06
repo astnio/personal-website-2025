@@ -40,7 +40,7 @@ export default function initColorSchemeDetector() {
     }
   }
 
-  function setPrefferedColorScheme() {
+  function setPreferredColorScheme() {
     if (prefersDarkTheme) {
       setColorScheme('dark');
       saveColorScheme('dark');
@@ -54,7 +54,7 @@ export default function initColorSchemeDetector() {
     if (getSavedColorScheme()) {
       setColorScheme(getSavedColorScheme());
     } else {
-      setPrefferedColorScheme();
+      setPreferredColorScheme();
     }
   }
 
@@ -65,7 +65,7 @@ export default function initColorSchemeDetector() {
     const lightToggles: NodeListOf<HTMLInputElement> =
       document.querySelectorAll('.chk-light-switch-toggle');
 
-    function toCaptialized(word: string) {
+    function toCapitalized(word: string) {
       return String(word).charAt(0).toUpperCase() + String(word).slice(1);
     }
 
@@ -73,7 +73,7 @@ export default function initColorSchemeDetector() {
       const colorScheme = localStorage.getItem('colorScheme');
 
       lightToggleLabels.forEach((toggleLabel: HTMLInputElement) => {
-        toggleLabel.innerText = toCaptialized(colorScheme as 'dark' | 'light');
+        toggleLabel.innerText = toCapitalized(colorScheme as 'dark' | 'light');
       });
 
       if (colorScheme === 'dark') {

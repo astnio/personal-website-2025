@@ -1,5 +1,5 @@
-import initColorSchemeDetector from './initColorScheme';
-import initSavedTheme from './initTheme';
+import initColorSchemeDetector from '@scripts/theme/initColorScheme';
+import initSavedTheme from '@scripts/theme/initTheme';
 import { initDrawerTouch } from './navDrawerTouchControl';
 
 initColorSchemeDetector();

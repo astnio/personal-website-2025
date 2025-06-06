@@ -23,9 +23,6 @@ document.addEventListener('astro:page-load', () => {
         case 'catppuccin':
           setTheme('catppuccin');
           break;
-        case 'test':
-          setTheme('test');
-          break;
         case 'high-contrast':
           setTheme('high-contrast');
           break;
