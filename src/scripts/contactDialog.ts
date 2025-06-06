@@ -54,7 +54,7 @@ document.addEventListener('astro:page-load', () => {
     btnContact.addEventListener('click', openModal);
   });
 
-  contactForm!.addEventListener('submit', (event) => {
+  contactForm!.addEventListener('submit', (/* event */) => {
     // event.preventDefault();
     timeoutClose();
   });
