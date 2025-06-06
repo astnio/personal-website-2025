@@ -79,24 +79,24 @@ const frontendProjectCollection = defineCollection({
   })
 });
 
-const jobCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    company: z.string(),
-    role: z.string(),
-    date_started: z.date(),
-    date_ended: z.date().optional(),
-    description: z.string(),
-    skills: z.array(z.string()).optional(),
-    job_page_url: z.string(),
-    tags: z.array(z.string()).optional(),
-    image: z.string().optional(),
-  }),
-});
+// const jobCollection = defineCollection({
+//   type: 'content',
+//   schema: z.object({
+//     company: z.string(),
+//     role: z.string(),
+//     date_started: z.date(),
+//     date_ended: z.date().optional(),
+//     description: z.string(),
+//     skills: z.array(z.string()).optional(),
+//     job_page_url: z.string(),
+//     tags: z.array(z.string()).optional(),
+//     image: z.string().optional(),
+//   }),
+// });
 
 // 3. Export a single `collections` object to register your collection(s)
 export const collections = {
   blog: blogCollection,
   frontendProjects: frontendProjectCollection,
-  jobs: jobCollection,
+  // jobs: jobCollection,
 };
