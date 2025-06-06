@@ -52,21 +52,15 @@ const sortedPosts = allPosts.sort(
     max-width: 5rem;
   }
 
-  .cards-list {
-    margin-top: 2rem;
-  }
-
-  ul.projects-list,
-  ul.blog-post-cards-list {
+  ul.cards-list {
     display: grid;
     grid-template-columns: auto;
     gap: 2rem;
+    align-items: stretch;
 
     list-style: none;
     padding: 0;
-  }
 
-  ul.blog-post-cards-list {
     list-style: none;
     padding: 0;
   }
@@ -106,8 +100,7 @@ const sortedPosts = allPosts.sort(
   }
 
   @media screen and (min-width: 1024px) {
-    ul.projects-list,
-    ul.blog-post-cards-list {
+    ul.cards-list {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -119,10 +112,10 @@ const sortedPosts = allPosts.sort(
     <span>Recent Posts</span>
   </h2>
   <hr class='hr-short' />
-  <ul class='cards-list blog-post-cards-list'>
+  <ul class='cards-list'>
     {
       sortedPosts.slice(0, 4).map((post: any) => (
-        <li>
+        <li class='cards-list-item'>
           <PostCard
             post={post}
             transition:name={`post-card-${post.id}`}
