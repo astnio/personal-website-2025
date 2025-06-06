@@ -42,7 +42,7 @@ const { id } = Astro.props;
       var(--clr-base) 100%
     ); */
 
-    outline: 1px solid var(--clr-surface-1);
+    outline: 1px solid var(--clr-surface-0);
 
     transition: 0.1s ease-out;
 
@@ -68,7 +68,7 @@ const { id } = Astro.props;
   }
 
   input:checked + .slider {
-    background-color: var(--clr-mantle);
+    background-color: var(--clr-base);
     /* background: linear-gradient(
       90deg,
       var(--clr-surface-0) 0%,
@@ -87,7 +87,7 @@ const { id } = Astro.props;
   input:checked + .slider:before {
     transform: translateX(1.85rem);
 
-    background: var(--clr-surface-0);
+    background: var(--clr-mantle);
   }
 
   .slider.round {
