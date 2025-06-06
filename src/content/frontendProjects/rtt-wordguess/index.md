@@ -5,7 +5,7 @@ tags: ['React', 'TypeScript', 'Tailwind', 'Framer Motion']
 status: 'in-progress'
 type: 'personal'
 date_completed: 2023-12-01
-featured: true
+featured: false
 github_url: https://astn.sh/gh-rtt-wordguess
 demo_url: https://astn.sh/rtt-wordguess
 cover: './rtt_wordguess.png'

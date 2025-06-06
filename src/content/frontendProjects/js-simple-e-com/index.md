@@ -10,6 +10,32 @@ github_url: https://astn.sh/gh-js-simple-e-com
 demo_url: https://astn.sh/js-simple-e-com
 cover: './simple_ecom.png'
 cover_alt: 'Project cover'
+images: [
+    {
+      src: './desktop-screenshots/js-simple-e-com-0-d.png',
+      alt: 'Home page (dark mode)',
+    },
+    {
+      src: './desktop-screenshots/js-simple-e-com-0-l.png',
+      alt: 'Home page (light mode)',
+    },
+    {
+      src: './desktop-screenshots/js-simple-e-com-1-d.png',
+      alt: 'Cart - empty (dark mode)',
+    },
+    {
+      src: './desktop-screenshots/js-simple-e-com-1-l.png',
+      alt: 'Cart - empty (light mode)',
+    },
+    {
+      src: './desktop-screenshots/js-simple-e-com-3-d.png',
+      alt: 'Cart - with items (dark mode)',
+    },
+    {
+      src: './desktop-screenshots/js-simple-e-com-3-l.png',
+      alt: 'Cart - with items (light mode)',
+    },
+  ]
 ---
 
 > [!IMPORTANT]

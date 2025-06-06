@@ -5,7 +5,7 @@ tags: ['SvelteKit', 'TypeScript', 'Tailwind', 'Skeleton', 'Vite']
 status: 'complete'
 type: 'personal'
 date_completed: 2023-12-01
-featured: true
+featured: false
 github_url: https://astn.sh/gh-personal-site-2024
 cover: './personal_website.png'
 cover_alt: 'Project cover'
