@@ -55,7 +55,7 @@ document.addEventListener('astro:page-load', () => {
   });
 
   contactForm!.addEventListener('submit', (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     timeoutClose();
   });
 });
