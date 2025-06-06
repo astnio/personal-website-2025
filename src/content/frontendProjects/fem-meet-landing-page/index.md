@@ -1,6 +1,6 @@
 ---
 title: Meet Landing Page
-description: "A nice layout-based challenge for beginners. This will test anyone who is new to multi-column and responsive layouts."
+description: "This HTML & CSS only challenge is perfect if you're starting to get a bit comfortable with your layout skills. The responsive layout shifts will also be a great test!"
 status: 'complete'
 type: 'frontend-mentor'
 tags: ['HTML', 'CSS']
