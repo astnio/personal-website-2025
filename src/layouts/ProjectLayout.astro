@@ -10,6 +10,8 @@ import DateLabel from '@components/interface/DateLabel.astro';
 import ProjectGalleryOverlay from '@/components/pages/projects/ProjectGalleryOverlay.astro';
 import ProjectGallery from '@/components/pages/projects/ProjectGallery.astro';
 import StatusDot from '@/components/pages/projects/StatusDot.astro';
+import Chip from '@/components/interface/Chip.astro';
+import { getIcon } from '@/scripts/utils/iconHelper';
 
 interface Props {
   frontmatter: any;
@@ -55,6 +57,8 @@ const hasImages = frontmatter.images ? true : false;
 
   .post-wrapper {
     background-color: var(--clr-base);
+    border-radius: var(--radius-surface);
+    overflow: hidden;
   }
 
   .post-header {
@@ -196,6 +200,20 @@ const hasImages = frontmatter.images ? true : false;
     font-size: 1.4rem;
   }
 
+  ul.tags-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    padding: 0;
+
+    list-style-type: none;
+  }
+
+  li.tags-list-item {
+    width: fit-content;
+  }
+
   @media screen and (min-width: 768px) {
     .post-wrapper-spacer {
       padding-inline: 1rem;
@@ -309,16 +327,29 @@ const hasImages = frontmatter.images ? true : false;
   </article>
   <footer class='max-width'>
     <div class='footer-content'>
-      <p>Tags</p>
-      <div class='tags'>
+      <ul class='tags-list'>
+        {
+          frontmatter.tags.map((tag: string) => (
+            <li class='tags-list-item'>
+              <Chip
+                url={`/projects/frontend/tags/${tag}`}
+                size='sm'>
+                <span class={`tech-icon ${getIcon(tag)}`} />
+                <span>{tag}</span>
+              </Chip>
+            </li>
+          ))
+        }
+      </ul>
+      <!-- <div class='tags'>
         {
           frontmatter.tags.map((tag: string) => (
             <Tag url={`/projects/frontend/tags/${tag}`}>{tag}</Tag>
           ))
         }
-      </div>
+      </div> -->
     </div>
   </footer>
 </main>
 
-<script src='../scripts/codeBlockCopy.ts'></script>
+<script src='@/scripts/codeBlockCopy.ts'></script>
