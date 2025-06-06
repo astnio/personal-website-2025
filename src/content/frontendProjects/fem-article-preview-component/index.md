@@ -21,6 +21,14 @@ images:
       src: './desktop-screenshots/fem-article-preview-component-1.png',
       alt: 'Share button active',
     },
+    {
+      src: './mobile-screenshots/fem-article-preview-component-0.png',
+      alt: 'Main page - mobile',
+    },
+    {
+      src: './mobile-screenshots/fem-article-preview-component-1.png',
+      alt: 'Share button active - mobile',
+    },
   ]
 ---
 
