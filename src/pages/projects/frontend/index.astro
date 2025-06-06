@@ -172,6 +172,24 @@ const title = 'Austin Hagel | Frontend Projects';
     outline: 1px solid var(--clr-surface-1);
   }
 
+  .intro-wrapper {
+    background-color: var(--clr-base);
+    padding: 1rem;
+    margin-bottom: 2rem;
+
+    border-radius: var(--radius-surface);
+    outline: 1px solid var(--clr-surface-0);
+  }
+
+  a.intro-link {
+    color: var(--clr-primary);
+    font-weight: 600;
+  }
+
+  a.intro-link:hover {
+    text-decoration: underline;
+  }
+
   @media screen and (max-width: 768px) {
     .section-title {
       font-size: 2rem;
@@ -200,6 +218,22 @@ const title = 'Austin Hagel | Frontend Projects';
   <section
     id='featured'
     class='max-width project-section'>
+    <div class='intro-wrapper'>
+      <p>
+        This is my collection of frontend projects. Feel free to check them out,
+        and don't forget to visit my profile on <a
+          class='intro-link'
+          target='_blank'
+          href='https://astn.sh/github'
+          >Github</a
+        > or <a
+          class='intro-link'
+          href='https://astn.sh/frontend-mentor'
+          target='_blank'
+          >Frontend Mentor</a
+        > if you want to see more!
+      </p>
+    </div>
     <div class='section-title-wrapper'>
       <span class='section-title-icon ri-star-fill'></span>
       <h2 class='section-title'>Featured Projects</h2>
