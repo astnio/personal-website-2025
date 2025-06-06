@@ -1,7 +1,7 @@
 ---
-const nameFieldID = 'namey4j6o';
-const emailFieldID = 'email82dtn';
-const messageFieldID = 'messageln7qk';
+const nameFieldID = 'name';
+const emailFieldID = 'email';
+const messageFieldID = 'message';
 ---
 
 <style>
@@ -219,16 +219,18 @@ const messageFieldID = 'messageln7qk';
         target='_blank'>
         <label
           class='somehoney visually-hidden'
-          for='name'
+          for='contact_name'
+          aria-hidden='true'
         ></label>
         <input
           class='somehoney visually-hidden'
           autocomplete='off'
           type='text'
-          id='name'
-          name='name'
+          id='contact_name'
+          name='contact_name'
           placeholder='Your name here'
           tabindex='-1'
+          inert
         />
 
         <input
