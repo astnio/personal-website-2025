@@ -174,35 +174,33 @@ const title = 'Austin Hagel | Archived Frontend Projects';
       <h2 class='section-title'>Archived Projects</h2>
     </div>
     <hr class='hr-short section-title-hr' />
-    <ul class='projects-list'>
-      {
-        archivedProjects.length > 0 ? (
-          <ul class='projects-list'>
-            {archivedProjects.map((project) => (
-              <li class='projects-list-item'>
-                <ProjectCard
-                  url={`/projects/frontend/${project.slug}`}
-                  data={project.data}
-                />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div class='empty-state box-shadow-2'>
-            <p>No archived projects found.</p>
-            <p>
-              <span>Check back later or explore my </span>
-              <a
-                class='empty-link'
-                href='/projects/frontend'>
-                <span>featured projects</span>
-              </a>
-              <span>.</span>
-            </p>
-          </div>
-        )
-      }
-    </ul>
+    {
+      archivedProjects.length > 0 ? (
+        <ul class='projects-list'>
+          {archivedProjects.map((project) => (
+            <li class='projects-list-item'>
+              <ProjectCard
+                url={`/projects/frontend/${project.slug}`}
+                data={project.data}
+              />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class='empty-state box-shadow-2'>
+          <p>No archived projects found.</p>
+          <p>
+            <span>Check back later or explore my </span>
+            <a
+              class='empty-link'
+              href='/projects/frontend'>
+              <span>featured projects</span>
+            </a>
+            <span>.</span>
+          </p>
+        </div>
+      )
+    }
   </section>
 
   <div class='max-width section-spacer'>
