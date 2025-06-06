@@ -1,5 +1,6 @@
 ---
 title: 'Month in Review: October 2023'
+slug: review-oct-2023
 description: 'My first monthly review for what I completed in October, and my plans moving forward.'
 date_published: 2023-11-01
 image: cover.jpg

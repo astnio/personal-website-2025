@@ -1,5 +1,6 @@
 ---
 title: 'Month in Review: November 2023'
+slug: review-nov-2023
 description: "November was a busy month, let's review what happened."
 date_published: 2023-12-04
 image: cover.jpg

@@ -1,5 +1,6 @@
 ---
 title: 'Where Are the Posts?'
+slug: where-are-the-posts
 description: Hello, I am back after about two weeks of silence after initiating this blog.
 date_published: 2023-10-07
 topic: Personal Review

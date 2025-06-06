@@ -1,5 +1,6 @@
 ---
 title: 'How I Created my Dark/Light Mode Toggle using TypeScript and Web Components'
+slug: simple-ecom-darkmode
 description: There are a lot of ways one can probably implement a dark mode toggle for their site, and today I want to talk to you about two ways I had achieved this. The first way is actually quite a mess to deal with, but it is what I experienced when making my project the first time. The second way is done in my remake, and I feel as though it is much more elegant and readable than my first approach.
 date_published: 2024-01-31
 topic: Development

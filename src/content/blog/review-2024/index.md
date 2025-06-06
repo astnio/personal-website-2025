@@ -1,8 +1,9 @@
 ---
 title: 'Year in Review: 2023'
+slug: review-2023
 description: 'I go over as to what happened to me in 2023.'
 date_published: 2023-12-24
-cover: ./cover.jpg
+cover: cover.jpg
 cover_alt: An overview of a snowy forest
 
 topic: Personal Review

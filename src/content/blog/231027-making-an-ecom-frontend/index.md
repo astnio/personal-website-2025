@@ -1,5 +1,6 @@
 ---
 title: 'My Ecommerce Frontend Project'
+slug: my-ecommerce-frontend-project
 description: 'I talk about how my project is going, where I want it to be, and what I have planned for the future.'
 date_published: 2023-10-27
 cover: cover.jpg

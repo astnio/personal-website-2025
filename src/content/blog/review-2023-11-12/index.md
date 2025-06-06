@@ -1,8 +1,10 @@
 ---
 title: 'Week in Review: November 12th'
+slug: review-nov-12-2023
 description: The first two weeks of November have passed, and I feel it's time to make another review.
 date_published: 2023-11-12
-image: cover.jpg
+cover: cover.jpg
+cover_alt: A view from within a train station
 
 topic: Personal Review
 category: Weekly Review

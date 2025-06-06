@@ -1,5 +1,6 @@
 ---
 title: "What a Busy Time!"
+slug: what-a-busy-time
 date_published: 2023-10-16
 description: Hello, it's been a while since my last post (again!).
 topic: Personal Review
