@@ -10,7 +10,11 @@ export async function getStaticPaths({
 }) {
   const allPosts = await getCollection('blog');
 
-  const sortedProcessedPosts = allPosts.sort(
+  const publishedPosts = allPosts.filter(
+    (post) => post.data.published !== false
+  );
+
+  const sortedProcessedPosts = publishedPosts.sort(
     (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
   );
 

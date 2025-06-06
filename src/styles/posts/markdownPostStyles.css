@@ -41,6 +41,12 @@ blockquote > blockquote::before {
   top: -2rem;
 }
 
+  img {
+    max-width: 100%;
+    height: fit-content;
+    object-fit: contain;
+  }
+
 .contains-task-list {
   list-style-type: none;
 }

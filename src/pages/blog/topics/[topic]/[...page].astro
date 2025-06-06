@@ -9,13 +9,16 @@ export async function getStaticPaths({
   paginate: PaginateFunction;
 }) {
   const allPosts = await getCollection('blog');
+  const publishedPosts = allPosts.filter(
+    (post) => post.data.published !== false
+  );
 
   const uniqueTopics = [
-    ...new Set(allPosts.map((post) => post.data.topic).flat()),
+    ...new Set(publishedPosts.map((post) => post.data.topic).flat()),
   ];
 
   return uniqueTopics.flatMap((topic) => {
-    const topicPosts = allPosts.filter(
+    const topicPosts = publishedPosts.filter(
       (post) => post.data.topic.toLowerCase() === topic.toLowerCase()
     );
 

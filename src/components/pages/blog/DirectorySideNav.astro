@@ -4,8 +4,9 @@ import { getCollection } from 'astro:content';
 import DirectorySideNavItem from './DirectorySideNavItem.astro';
 
 const allPosts = await getCollection('blog');
+const publishedPosts = allPosts.filter((post) => post.data.published !== false);
 
-const sortedPosts = allPosts
+const sortedPosts = publishedPosts
   .sort(
     (a, b) => b.data.date_published.valueOf() - a.data.date_published.valueOf()
   )
