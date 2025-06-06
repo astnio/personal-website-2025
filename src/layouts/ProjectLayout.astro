@@ -9,6 +9,7 @@ import Status from '@components/pages/projects/Status.astro';
 import DateLabel from '@components/interface/DateLabel.astro';
 import ProjectGalleryOverlay from '@/components/pages/projects/ProjectGalleryOverlay.astro';
 import ProjectGallery from '@/components/pages/projects/ProjectGallery.astro';
+import StatusDot from '@/components/pages/projects/StatusDot.astro';
 
 interface Props {
   frontmatter: any;
@@ -33,22 +34,31 @@ const hasImages = frontmatter.images ? true : false;
   hr {
     margin-top: 2.5rem;
     margin-bottom: 1.5rem;
+
+    background-color: var(--clr-surface-2);
+  }
+
+  .post-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    margin: 0;
+
+    font-size: 1.85rem;
   }
 
   .post-wrapper-spacer {
     padding-inline: 0;
     width: 100%;
-    /* margin-top: 4rem; */
   }
 
   .post-wrapper {
     background-color: var(--clr-base);
-    /* overflow: hidden; */
   }
 
   .post-header {
     padding-inline: 1rem;
-    /* margin-top: 2.5rem; */
   }
 
   .post-content {
@@ -102,10 +112,88 @@ const hasImages = frontmatter.images ? true : false;
 
   .post-info-wrapper {
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    align-items: start;
     justify-content: space-between;
 
-    margin-block: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  ul.links-list {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+  }
+
+  a.link {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* gap: 0.6rem; */
+
+    color: var(--clr-text);
+    text-decoration: none;
+
+    border-radius: var(--radius-circle);
+    outline: 1px solid var(--clr-surface-0);
+
+    background-color: var(--clr-mantle);
+
+    padding: 0.6rem;
+
+    overflow: hidden;
+
+    transition-property: color, background-color, outline;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+  }
+
+  a.link:hover {
+    outline: 1px solid var(--clr-surface-1);
+    color: var(--clr-primary);
+    background-color: var(--clr-base);
+  }
+
+  .link-label {
+    margin-right: auto;
+    padding-right: 2rem;
+    padding-left: 1rem;
+  }
+
+  .link-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: auto;
+
+    aspect-ratio: 1;
+
+    background-color: var(--clr-base);
+
+    height: 100%;
+
+    transition-property: background-color, color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+  }
+
+  a:hover > .link-icon-wrapper {
+    background-color: var(--clr-surface-0);
+    color: var(--clr-primary);
+  }
+
+  .link-icon {
+    font-size: 1.4rem;
   }
 
   @media screen and (min-width: 768px) {
@@ -161,20 +249,58 @@ const hasImages = frontmatter.images ? true : false;
     <header class='post-header'>
       <div class='post-info-wrapper'>
         <DateLabel date={frontmatter.date_completed} />
-        <Status type={frontmatter.status}>{frontmatter.status}</Status>
+        <ul class='links-list'>
+          {
+            frontmatter.github_url && (
+              <li class='link-list-item'>
+                <a
+                  title='Visit GitHub repository'
+                  class='link'
+                  href={frontmatter.github_url}
+                  target='_blank'>
+                  <span class='link-icon ri-git-repository-fill' />
+                  <span class='link-label visually-hidden'>GitHub</span>
+                </a>
+              </li>
+            )
+          }
+          {
+            frontmatter.demo_url && (
+              <li class='link-list-item'>
+                <a
+                  title='See demo'
+                  class='link'
+                  href={frontmatter.demo_url}
+                  target='_blank'>
+                  <span class='link-icon ri-pages-fill' />
+                  <span class='link-label visually-hidden'>Demo</span>
+                </a>
+              </li>
+            )
+          }
+          {
+            frontmatter.fem_url && (
+              <li class='link-list-item'>
+                <a
+                  title='Visit Frontend Mentor challenge page'
+                  class='link'
+                  href={frontmatter.fem_url}
+                  target='_blank'>
+                  <span class='link-icon ri-pencil-ruler-2-fill' />
+                  <span class='link-label visually-hidden'>Challenge</span>
+                </a>
+              </li>
+            )
+          }
+        </ul>
       </div>
-      <Heading
-        type='title'
-        level={1}
-        size='l4x'
-        >{frontmatter.title}</Heading
-      >
-      <Heading
-        type='subtitle'
-        level={3}
-        size='l2x'
-        >{frontmatter.description}</Heading
-      >
+      <h1 class='post-title'>
+        <span>
+          <StatusDot type={frontmatter.status} />
+        </span>
+        <span>{frontmatter.title}</span>
+      </h1>
+      <p class='post-subtitle'>{frontmatter.description}</p>
       <hr />
     </header>
     <div class='post-content'>
