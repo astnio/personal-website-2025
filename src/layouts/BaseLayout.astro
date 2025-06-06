@@ -15,7 +15,13 @@ import NavDrawer from '@components/NavDrawer.astro';
 import NavDrawerToggle from '@components/NavDrawerToggle.astro';
 import NavDrawerOverlay from '@components/NavDrawerOverlay.astro';
 
-const { title, description } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+  enableBreadcrumb?: boolean;
+}
+
+const { title, description, enableBreadcrumb = true } = Astro.props;
 ---
 
 <style>
@@ -43,7 +49,7 @@ const { title, description } = Astro.props;
     <NavDrawerToggle />
 
     <Logo mobileView={true} />
-    <Breadcrumb />
+    {enableBreadcrumb && <Breadcrumb />}
     <AppBar />
     <main>
       <slot />
