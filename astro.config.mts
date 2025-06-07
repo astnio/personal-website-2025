@@ -7,7 +7,7 @@ import rehypeCallouts from 'rehype-callouts';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://test.astn.io',
+  site: 'https://astn.io',
 
   markdown: {
     rehypePlugins: [

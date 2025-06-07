@@ -39,18 +39,18 @@ const fuseOptions = {
     },
 
     // Job Keys
-    {
-      name: 'company',
-      weight: 0.6,
-    },
-    {
-      name: 'skills',
-      weight: 0.5,
-    },
-    {
-      name: 'description',
-      weight: 0.4,
-    },
+    // {
+    //   name: 'company',
+    //   weight: 0.6,
+    // },
+    // {
+    //   name: 'skills',
+    //   weight: 0.5,
+    // },
+    // {
+    //   name: 'description',
+    //   weight: 0.4,
+    // },
   ],
 };
 

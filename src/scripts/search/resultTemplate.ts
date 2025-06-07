@@ -7,9 +7,9 @@ function getLink(result: any) {
     case 'frontendProjects':
       link = `/projects/frontend/${result.slug}`;
       break;
-    case 'jobs':
-      link = `/about`;
-      break;
+    // case 'jobs':
+    //   link = `/about`;
+    //   break;
   }
   return link;
 }

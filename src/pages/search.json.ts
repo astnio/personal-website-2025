@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 async function getAllContent() {
   const blogPosts = await getCollection('blog');
   const projects = await getCollection('frontendProjects');
-  const jobs = await getCollection('jobs');
+  // const jobs = await getCollection('jobs');
 
   const blogData = blogPosts.map((post) => ({
     slug: post.slug,
@@ -27,18 +27,18 @@ async function getAllContent() {
     source: 'frontendProjects',
   }));
 
-  const jobsData = jobs.map((job) => ({
-    slug: job.slug,
-    title: job.data.role,
-    company: job.data.company,
-    description: job.data.description,
-    skills: job.data.skills,
-    date: job.data.date_started,
-    tags: job.data.tags,
-    source: 'jobs',
-  }));
+  // const jobsData = jobs.map((job) => ({
+  //   slug: job.slug,
+  //   title: job.data.role,
+  //   company: job.data.company,
+  //   description: job.data.description,
+  //   skills: job.data.skills,
+  //   date: job.data.date_started,
+  //   tags: job.data.tags,
+  //   source: 'jobs',
+  // }));
 
-  return [...blogData, ...frontendProjectsData, ...jobsData];
+  return [...blogData, ...frontendProjectsData, /*...jobsData*/];
 }
 
 export async function GET({}) {

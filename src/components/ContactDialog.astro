@@ -151,7 +151,8 @@ const messageFieldID = 'message';
   }
 
   .submit-btn {
-    background: var(--clr-primary);
+    background: var(--clr-mantle);
+    outline: 1px solid var(--clr-surface-0);
 
     padding: 12px 24px;
 
@@ -160,14 +161,17 @@ const messageFieldID = 'message';
 
     font-size: 1rem;
     font-weight: 700;
-    color: var(--clr-base);
+
+    z-index: 910;
 
     cursor: pointer;
     transition: background-color 0.2s;
   }
 
   .submit-btn:hover {
-    background: var(--clr-primary);
+    background: var(--clr-surface-0);
+    color: var(--clr-primary);
+    outline: 1px solid var(--clr-surface-1);
   }
 
   @media (min-width: 768px) {
@@ -194,9 +198,10 @@ const messageFieldID = 'message';
 
     .submit-btn {
       grid-column: span 2;
-      max-width: fit-content;
       align-self: center;
       justify-self: end;
+
+      max-width: fit-content;
     }
   }
 </style>
